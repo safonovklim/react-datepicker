@@ -36,6 +36,7 @@ import FixedCalendar from './examples/fixed_calendar'
 import WeekNumbers from './examples/week_numbers'
 import CustomInput from './examples/custom_input'
 import MultiMonth from './examples/multi_month'
+import MultiMonthWithMaxDate from './examples/multi_month_with_max_date'
 import MultiMonthDrp from './examples/multi_month_drp'
 import Children from './examples/children'
 import Portal from './examples/portal'
@@ -215,6 +216,10 @@ export default class exampleComponents extends React.Component {
   {
     title: 'Multiple months',
     component: <MultiMonth />
+  },
+  {
+    title: 'Multiple months with max date',
+    component: <MultiMonthWithMaxDate />
   },
   {
     title: 'Multiple months with year dropdown',
