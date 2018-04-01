@@ -29,7 +29,8 @@ import {
   allDaysDisabledBefore,
   allDaysDisabledAfter,
   getEffectiveMinDate,
-  getEffectiveMaxDate
+  getEffectiveMaxDate,
+  getStartOfMonth
 } from "./date_utils";
 
 const DROPDOWN_FOCUS_CLASSNAMES = [
@@ -120,7 +121,7 @@ export default class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: this.localizeDate(this.getDateInView()),
+      date: this.localizeDate(this.checkForDisabledMonth(this.getDateInView())),
       selectingDate: null,
       monthContainer: this.monthContainer
     };
@@ -144,14 +145,18 @@ export default class Calendar extends React.Component {
       !isSameDay(nextProps.preSelection, this.props.preSelection)
     ) {
       this.setState({
-        date: this.localizeDate(nextProps.preSelection)
+        date: this.localizeDate(
+          this.checkForDisabledMonth(nextProps.preSelection)
+        )
       });
     } else if (
       nextProps.openToDate &&
       !isSameDay(nextProps.openToDate, this.props.openToDate)
     ) {
       this.setState({
-        date: this.localizeDate(nextProps.openToDate)
+        date: this.localizeDate(
+          this.checkForDisabledMonth(nextProps.openToDate)
+        )
       });
     }
   }
@@ -166,12 +171,27 @@ export default class Calendar extends React.Component {
     }
   };
 
+  checkForDisabledMonth = dateInView => {
+    const { monthsShown } = this.props;
+    const maxDate = getEffectiveMaxDate(this.props);
+
+    if (!(monthsShown > 1) || !maxDate) return dateInView;
+
+    const limitBefore = subtractMonths(
+      getStartOfMonth(cloneDate(maxDate)),
+      monthsShown - 1
+    );
+
+    return isAfter(dateInView, limitBefore) ? limitBefore : dateInView;
+  };
+
   getDateInView = () => {
     const { preSelection, selected, openToDate, utcOffset } = this.props;
     const minDate = getEffectiveMinDate(this.props);
     const maxDate = getEffectiveMaxDate(this.props);
     const current = now(utcOffset);
     const initialDate = openToDate || selected || preSelection;
+
     if (initialDate) {
       return initialDate;
     } else {

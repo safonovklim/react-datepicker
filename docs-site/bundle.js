@@ -111,7 +111,7 @@
     },
     /* 3 */
     /***/ function(module, exports, __webpack_require__) {
-      /** @license React v16.1.0
+      /** @license React v16.2.0
        * react.production.min.js
        *
        * Copyright (c) 2013-present, Facebook, Inc.
@@ -119,11 +119,19 @@
        * This source code is licensed under the MIT license found in the
        * LICENSE file in the root directory of this source tree.
        */
+
       "use strict";
       var m = __webpack_require__(4),
         n = __webpack_require__(5),
-        p = __webpack_require__(6);
-      function q(a) {
+        p = __webpack_require__(6),
+        q = "function" === typeof Symbol && Symbol["for"],
+        r = q ? Symbol["for"]("react.element") : 60103,
+        t = q ? Symbol["for"]("react.call") : 60104,
+        u = q ? Symbol["for"]("react.return") : 60105,
+        v = q ? Symbol["for"]("react.portal") : 60106,
+        w = q ? Symbol["for"]("react.fragment") : 60107,
+        x = "function" === typeof Symbol && Symbol.iterator;
+      function y(a) {
         for (
           var b = arguments.length - 1,
             e =
@@ -131,11 +139,11 @@
               a +
               "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" +
               a,
-            d = 0;
-          d < b;
-          d++
+            c = 0;
+          c < b;
+          c++
         )
-          e += "\x26args[]\x3d" + encodeURIComponent(arguments[d + 1]);
+          e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
         b = Error(
           e +
             " for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
@@ -144,7 +152,7 @@
         b.framesToPop = 1;
         throw b;
       }
-      var r = {
+      var z = {
         isMounted: function() {
           return !1;
         },
@@ -152,96 +160,80 @@
         enqueueReplaceState: function() {},
         enqueueSetState: function() {}
       };
-      function t(a, b, e) {
+      function A(a, b, e) {
         this.props = a;
         this.context = b;
         this.refs = n;
-        this.updater = e || r;
+        this.updater = e || z;
       }
-      t.prototype.isReactComponent = {};
-      t.prototype.setState = function(a, b) {
+      A.prototype.isReactComponent = {};
+      A.prototype.setState = function(a, b) {
         "object" !== typeof a && "function" !== typeof a && null != a
-          ? q("85")
+          ? y("85")
           : void 0;
         this.updater.enqueueSetState(this, a, b, "setState");
       };
-      t.prototype.forceUpdate = function(a) {
+      A.prototype.forceUpdate = function(a) {
         this.updater.enqueueForceUpdate(this, a, "forceUpdate");
       };
-      function u(a, b, e) {
+      function B(a, b, e) {
         this.props = a;
         this.context = b;
         this.refs = n;
-        this.updater = e || r;
+        this.updater = e || z;
       }
-      function v() {}
-      v.prototype = t.prototype;
-      var w = (u.prototype = new v());
-      w.constructor = u;
-      m(w, t.prototype);
-      w.isPureReactComponent = !0;
-      function x(a, b, e) {
+      function C() {}
+      C.prototype = A.prototype;
+      var D = (B.prototype = new C());
+      D.constructor = B;
+      m(D, A.prototype);
+      D.isPureReactComponent = !0;
+      function E(a, b, e) {
         this.props = a;
         this.context = b;
         this.refs = n;
-        this.updater = e || r;
+        this.updater = e || z;
       }
-      var y = (x.prototype = new v());
-      y.constructor = x;
-      m(y, t.prototype);
-      y.unstable_isAsyncReactComponent = !0;
-      y.render = function() {
+      var F = (E.prototype = new C());
+      F.constructor = E;
+      m(F, A.prototype);
+      F.unstable_isAsyncReactComponent = !0;
+      F.render = function() {
         return this.props.children;
       };
-      var z = { current: null },
-        A = Object.prototype.hasOwnProperty,
-        B =
-          ("function" === typeof Symbol &&
-            Symbol["for"] &&
-            Symbol["for"]("react.element")) ||
-          60103,
-        C = { key: !0, ref: !0, __self: !0, __source: !0 };
-      function D(a, b, e) {
-        var d,
-          c = {},
-          h = null,
+      var G = { current: null },
+        H = Object.prototype.hasOwnProperty,
+        I = { key: !0, ref: !0, __self: !0, __source: !0 };
+      function J(a, b, e) {
+        var c,
+          d = {},
+          g = null,
           k = null;
         if (null != b)
-          for (d in (void 0 !== b.ref && (k = b.ref),
-          void 0 !== b.key && (h = "" + b.key),
+          for (c in (void 0 !== b.ref && (k = b.ref),
+          void 0 !== b.key && (g = "" + b.key),
           b))
-            A.call(b, d) && !C.hasOwnProperty(d) && (c[d] = b[d]);
+            H.call(b, c) && !I.hasOwnProperty(c) && (d[c] = b[c]);
         var f = arguments.length - 2;
-        if (1 === f) c.children = e;
+        if (1 === f) d.children = e;
         else if (1 < f) {
-          for (var g = Array(f), l = 0; l < f; l++) g[l] = arguments[l + 2];
-          c.children = g;
+          for (var h = Array(f), l = 0; l < f; l++) h[l] = arguments[l + 2];
+          d.children = h;
         }
         if (a && a.defaultProps)
-          for (d in ((f = a.defaultProps), f)) void 0 === c[d] && (c[d] = f[d]);
+          for (c in ((f = a.defaultProps), f)) void 0 === d[c] && (d[c] = f[c]);
         return {
-          $$typeof: B,
+          $$typeof: r,
           type: a,
-          key: h,
+          key: g,
           ref: k,
-          props: c,
-          _owner: z.current
+          props: d,
+          _owner: G.current
         };
       }
-      function E(a) {
-        return "object" === typeof a && null !== a && a.$$typeof === B;
+      function K(a) {
+        return "object" === typeof a && null !== a && a.$$typeof === r;
       }
-      var F = "function" === typeof Symbol && Symbol.iterator,
-        G =
-          ("function" === typeof Symbol &&
-            Symbol["for"] &&
-            Symbol["for"]("react.element")) ||
-          60103,
-        H =
-          ("function" === typeof Symbol &&
-            Symbol["for"] &&
-            Symbol["for"]("react.portal")) ||
-          60106;
       function escape(a) {
         var b = { "\x3d": "\x3d0", ":": "\x3d2" };
         return (
@@ -251,182 +243,194 @@
           })
         );
       }
-      var I = /\/+/g,
-        J = [];
-      function K(a, b, e, d) {
-        if (J.length) {
-          var c = J.pop();
-          c.result = a;
-          c.keyPrefix = b;
-          c.func = e;
-          c.context = d;
-          c.count = 0;
-          return c;
+      var L = /\/+/g,
+        M = [];
+      function N(a, b, e, c) {
+        if (M.length) {
+          var d = M.pop();
+          d.result = a;
+          d.keyPrefix = b;
+          d.func = e;
+          d.context = c;
+          d.count = 0;
+          return d;
         }
-        return { result: a, keyPrefix: b, func: e, context: d, count: 0 };
+        return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
       }
-      function L(a) {
+      function O(a) {
         a.result = null;
         a.keyPrefix = null;
         a.func = null;
         a.context = null;
         a.count = 0;
-        10 > J.length && J.push(a);
+        10 > M.length && M.push(a);
       }
-      function M(a, b, e, d) {
-        var c = typeof a;
-        if ("undefined" === c || "boolean" === c) a = null;
-        if (
-          null === a ||
-          "string" === c ||
-          "number" === c ||
-          ("object" === c && a.$$typeof === G) ||
-          ("object" === c && a.$$typeof === H)
-        )
-          return e(d, a, "" === b ? "." + N(a, 0) : b), 1;
-        var h = 0;
+      function P(a, b, e, c) {
+        var d = typeof a;
+        if ("undefined" === d || "boolean" === d) a = null;
+        var g = !1;
+        if (null === a) g = !0;
+        else
+          switch (d) {
+            case "string":
+            case "number":
+              g = !0;
+              break;
+            case "object":
+              switch (a.$$typeof) {
+                case r:
+                case t:
+                case u:
+                case v:
+                  g = !0;
+              }
+          }
+        if (g) return e(c, a, "" === b ? "." + Q(a, 0) : b), 1;
+        g = 0;
         b = "" === b ? "." : b + ":";
         if (Array.isArray(a))
           for (var k = 0; k < a.length; k++) {
-            c = a[k];
-            var f = b + N(c, k);
-            h += M(c, f, e, d);
+            d = a[k];
+            var f = b + Q(d, k);
+            g += P(d, f, e, c);
           }
         else if (
-          ((f = (F && a[F]) || a["@@iterator"]), "function" === typeof f)
+          (null === a || "undefined" === typeof a
+            ? (f = null)
+            : ((f = (x && a[x]) || a["@@iterator"]),
+              (f = "function" === typeof f ? f : null)),
+          "function" === typeof f)
         )
-          for (a = f.call(a), k = 0; !(c = a.next()).done; )
-            (c = c.value), (f = b + N(c, k++)), (h += M(c, f, e, d));
+          for (a = f.call(a), k = 0; !(d = a.next()).done; )
+            (d = d.value), (f = b + Q(d, k++)), (g += P(d, f, e, c));
         else
-          "object" === c &&
+          "object" === d &&
             ((e = "" + a),
-            q(
+            y(
               "31",
               "[object Object]" === e
                 ? "object with keys {" + Object.keys(a).join(", ") + "}"
                 : e,
               ""
             ));
-        return h;
+        return g;
       }
-      function N(a, b) {
+      function Q(a, b) {
         return "object" === typeof a && null !== a && null != a.key
           ? escape(a.key)
           : b.toString(36);
       }
-      function O(a, b) {
+      function R(a, b) {
         a.func.call(a.context, b, a.count++);
       }
-      function P(a, b, e) {
-        var d = a.result,
-          c = a.keyPrefix;
+      function S(a, b, e) {
+        var c = a.result,
+          d = a.keyPrefix;
         a = a.func.call(a.context, b, a.count++);
         Array.isArray(a)
-          ? Q(a, d, e, p.thatReturnsArgument)
+          ? T(a, c, e, p.thatReturnsArgument)
           : null != a &&
-            (E(a) &&
+            (K(a) &&
               ((b =
-                c +
+                d +
                 (!a.key || (b && b.key === a.key)
                   ? ""
-                  : ("" + a.key).replace(I, "$\x26/") + "/") +
+                  : ("" + a.key).replace(L, "$\x26/") + "/") +
                 e),
               (a = {
-                $$typeof: B,
+                $$typeof: r,
                 type: a.type,
                 key: b,
                 ref: a.ref,
                 props: a.props,
                 _owner: a._owner
               })),
-            d.push(a));
+            c.push(a));
       }
-      function Q(a, b, e, d, c) {
-        var h = "";
-        null != e && (h = ("" + e).replace(I, "$\x26/") + "/");
-        b = K(b, h, d, c);
-        null == a || M(a, "", P, b);
-        L(b);
+      function T(a, b, e, c, d) {
+        var g = "";
+        null != e && (g = ("" + e).replace(L, "$\x26/") + "/");
+        b = N(b, g, c, d);
+        null == a || P(a, "", S, b);
+        O(b);
       }
-      "function" === typeof Symbol &&
-        Symbol["for"] &&
-        Symbol["for"]("react.fragment");
-      var R = {
+      var U = {
           Children: {
             map: function(a, b, e) {
               if (null == a) return a;
-              var d = [];
-              Q(a, d, null, b, e);
-              return d;
+              var c = [];
+              T(a, c, null, b, e);
+              return c;
             },
             forEach: function(a, b, e) {
               if (null == a) return a;
-              b = K(null, null, b, e);
-              null == a || M(a, "", O, b);
-              L(b);
+              b = N(null, null, b, e);
+              null == a || P(a, "", R, b);
+              O(b);
             },
             count: function(a) {
-              return null == a ? 0 : M(a, "", p.thatReturnsNull, null);
+              return null == a ? 0 : P(a, "", p.thatReturnsNull, null);
             },
             toArray: function(a) {
               var b = [];
-              Q(a, b, null, p.thatReturnsArgument);
+              T(a, b, null, p.thatReturnsArgument);
               return b;
             },
             only: function(a) {
-              E(a) ? void 0 : q("143");
+              K(a) ? void 0 : y("143");
               return a;
             }
           },
-          Component: t,
-          PureComponent: u,
-          unstable_AsyncComponent: x,
-          createElement: D,
+          Component: A,
+          PureComponent: B,
+          unstable_AsyncComponent: E,
+          Fragment: w,
+          createElement: J,
           cloneElement: function(a, b, e) {
-            var d = m({}, a.props),
-              c = a.key,
-              h = a.ref,
+            var c = m({}, a.props),
+              d = a.key,
+              g = a.ref,
               k = a._owner;
             if (null != b) {
-              void 0 !== b.ref && ((h = b.ref), (k = z.current));
-              void 0 !== b.key && (c = "" + b.key);
+              void 0 !== b.ref && ((g = b.ref), (k = G.current));
+              void 0 !== b.key && (d = "" + b.key);
               if (a.type && a.type.defaultProps) var f = a.type.defaultProps;
-              for (g in b)
-                A.call(b, g) &&
-                  !C.hasOwnProperty(g) &&
-                  (d[g] = void 0 === b[g] && void 0 !== f ? f[g] : b[g]);
+              for (h in b)
+                H.call(b, h) &&
+                  !I.hasOwnProperty(h) &&
+                  (c[h] = void 0 === b[h] && void 0 !== f ? f[h] : b[h]);
             }
-            var g = arguments.length - 2;
-            if (1 === g) d.children = e;
-            else if (1 < g) {
-              f = Array(g);
-              for (var l = 0; l < g; l++) f[l] = arguments[l + 2];
-              d.children = f;
+            var h = arguments.length - 2;
+            if (1 === h) c.children = e;
+            else if (1 < h) {
+              f = Array(h);
+              for (var l = 0; l < h; l++) f[l] = arguments[l + 2];
+              c.children = f;
             }
             return {
-              $$typeof: B,
+              $$typeof: r,
               type: a.type,
-              key: c,
-              ref: h,
-              props: d,
+              key: d,
+              ref: g,
+              props: c,
               _owner: k
             };
           },
           createFactory: function(a) {
-            var b = D.bind(null, a);
+            var b = J.bind(null, a);
             b.type = a;
             return b;
           },
-          isValidElement: E,
-          version: "16.1.0",
+          isValidElement: K,
+          version: "16.2.0",
           __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
-            ReactCurrentOwner: z,
+            ReactCurrentOwner: G,
             assign: m
           }
         },
-        S = Object.freeze({ default: R }),
-        T = (S && R) || S;
-      module.exports = T["default"] ? T["default"] : T;
+        V = Object.freeze({ default: U }),
+        W = (V && U) || V;
+      module.exports = W["default"] ? W["default"] : W;
 
       /***/
     },
@@ -639,7 +643,7 @@
     },
     /* 8 */
     /***/ function(module, exports, __webpack_require__) {
-      /** @license React v16.1.0
+      /** @license React v16.2.0
        * react-dom.production.min.js
        *
        * Copyright (c) 2013-present, Facebook, Inc.
@@ -647,21 +651,22 @@
        * This source code is licensed under the MIT license found in the
        * LICENSE file in the root directory of this source tree.
        */
+
       /*
 	 Modernizr 3.0.0pre (Custom Build) | MIT
 	*/
       "use strict";
       var aa = __webpack_require__(2),
-        m = __webpack_require__(9),
-        A = __webpack_require__(4),
-        B = __webpack_require__(6),
-        ca = __webpack_require__(10),
+        l = __webpack_require__(9),
+        B = __webpack_require__(4),
+        C = __webpack_require__(6),
+        ba = __webpack_require__(10),
         da = __webpack_require__(11),
         ea = __webpack_require__(12),
-        ha = __webpack_require__(13),
+        fa = __webpack_require__(13),
         ia = __webpack_require__(16),
-        C = __webpack_require__(5);
-      function D(a) {
+        D = __webpack_require__(5);
+      function E(a) {
         for (
           var b = arguments.length - 1,
             c =
@@ -682,8 +687,8 @@
         b.framesToPop = 1;
         throw b;
       }
-      aa ? void 0 : D("227");
-      var la = {
+      aa ? void 0 : E("227");
+      var oa = {
         children: !0,
         dangerouslySetInnerHTML: !0,
         defaultValue: !0,
@@ -693,10 +698,10 @@
         suppressHydrationWarning: !0,
         style: !0
       };
-      function qa(a, b) {
+      function pa(a, b) {
         return (a & b) === b;
       }
-      var ra = {
+      var ta = {
           MUST_USE_PROPERTY: 1,
           HAS_BOOLEAN_VALUE: 4,
           HAS_NUMERIC_VALUE: 8,
@@ -704,47 +709,47 @@
           HAS_OVERLOADED_BOOLEAN_VALUE: 32,
           HAS_STRING_BOOLEAN_VALUE: 64,
           injectDOMPropertyConfig: function(a) {
-            var b = ra,
+            var b = ta,
               c = a.Properties || {},
               d = a.DOMAttributeNamespaces || {},
               e = a.DOMAttributeNames || {};
             a = a.DOMMutationMethods || {};
             for (var f in c) {
-              sa.hasOwnProperty(f) ? D("48", f) : void 0;
+              ua.hasOwnProperty(f) ? E("48", f) : void 0;
               var g = f.toLowerCase(),
-                k = c[f];
+                h = c[f];
               g = {
                 attributeName: g,
                 attributeNamespace: null,
                 propertyName: f,
                 mutationMethod: null,
-                mustUseProperty: qa(k, b.MUST_USE_PROPERTY),
-                hasBooleanValue: qa(k, b.HAS_BOOLEAN_VALUE),
-                hasNumericValue: qa(k, b.HAS_NUMERIC_VALUE),
-                hasPositiveNumericValue: qa(k, b.HAS_POSITIVE_NUMERIC_VALUE),
-                hasOverloadedBooleanValue: qa(
-                  k,
+                mustUseProperty: pa(h, b.MUST_USE_PROPERTY),
+                hasBooleanValue: pa(h, b.HAS_BOOLEAN_VALUE),
+                hasNumericValue: pa(h, b.HAS_NUMERIC_VALUE),
+                hasPositiveNumericValue: pa(h, b.HAS_POSITIVE_NUMERIC_VALUE),
+                hasOverloadedBooleanValue: pa(
+                  h,
                   b.HAS_OVERLOADED_BOOLEAN_VALUE
                 ),
-                hasStringBooleanValue: qa(k, b.HAS_STRING_BOOLEAN_VALUE)
+                hasStringBooleanValue: pa(h, b.HAS_STRING_BOOLEAN_VALUE)
               };
               1 >=
               g.hasBooleanValue +
                 g.hasNumericValue +
                 g.hasOverloadedBooleanValue
                 ? void 0
-                : D("50", f);
+                : E("50", f);
               e.hasOwnProperty(f) && (g.attributeName = e[f]);
               d.hasOwnProperty(f) && (g.attributeNamespace = d[f]);
               a.hasOwnProperty(f) && (g.mutationMethod = a[f]);
-              sa[f] = g;
+              ua[f] = g;
             }
           }
         },
-        sa = {};
-      function ta(a, b) {
+        ua = {};
+      function va(a, b) {
         if (
-          la.hasOwnProperty(a) ||
+          oa.hasOwnProperty(a) ||
           (2 < a.length &&
             ("o" === a[0] || "O" === a[0]) &&
             ("n" === a[1] || "N" === a[1]))
@@ -754,9 +759,9 @@
         switch (typeof b) {
           case "boolean":
             return (
-              la.hasOwnProperty(a)
+              oa.hasOwnProperty(a)
                 ? (a = !0)
-                : (b = ua(a))
+                : (b = wa(a))
                   ? (a =
                       b.hasBooleanValue ||
                       b.hasStringBooleanValue ||
@@ -774,59 +779,60 @@
             return !1;
         }
       }
-      function ua(a) {
-        return sa.hasOwnProperty(a) ? sa[a] : null;
+      function wa(a) {
+        return ua.hasOwnProperty(a) ? ua[a] : null;
       }
-      var va = ra,
-        wa = va.MUST_USE_PROPERTY,
-        H = va.HAS_BOOLEAN_VALUE,
-        xa = va.HAS_NUMERIC_VALUE,
-        ya = va.HAS_POSITIVE_NUMERIC_VALUE,
-        za = va.HAS_STRING_BOOLEAN_VALUE,
-        Aa = {
+      var xa = ta,
+        ya = xa.MUST_USE_PROPERTY,
+        K = xa.HAS_BOOLEAN_VALUE,
+        za = xa.HAS_NUMERIC_VALUE,
+        Aa = xa.HAS_POSITIVE_NUMERIC_VALUE,
+        Ba = xa.HAS_OVERLOADED_BOOLEAN_VALUE,
+        Ca = xa.HAS_STRING_BOOLEAN_VALUE,
+        Da = {
           Properties: {
-            allowFullScreen: H,
-            autoFocus: za,
-            async: H,
-            autoPlay: H,
-            capture: H,
-            checked: wa | H,
-            cols: ya,
-            contentEditable: za,
-            controls: H,
-            default: H,
-            defer: H,
-            disabled: H,
-            download: va.HAS_OVERLOADED_BOOLEAN_VALUE,
-            draggable: za,
-            formNoValidate: H,
-            hidden: H,
-            loop: H,
-            multiple: wa | H,
-            muted: wa | H,
-            noValidate: H,
-            open: H,
-            playsInline: H,
-            readOnly: H,
-            required: H,
-            reversed: H,
-            rows: ya,
-            rowSpan: xa,
-            scoped: H,
-            seamless: H,
-            selected: wa | H,
-            size: ya,
-            start: xa,
-            span: ya,
-            spellCheck: za,
+            allowFullScreen: K,
+            async: K,
+            autoFocus: K,
+            autoPlay: K,
+            capture: Ba,
+            checked: ya | K,
+            cols: Aa,
+            contentEditable: Ca,
+            controls: K,
+            default: K,
+            defer: K,
+            disabled: K,
+            download: Ba,
+            draggable: Ca,
+            formNoValidate: K,
+            hidden: K,
+            loop: K,
+            multiple: ya | K,
+            muted: ya | K,
+            noValidate: K,
+            open: K,
+            playsInline: K,
+            readOnly: K,
+            required: K,
+            reversed: K,
+            rows: Aa,
+            rowSpan: za,
+            scoped: K,
+            seamless: K,
+            selected: ya | K,
+            size: Aa,
+            start: za,
+            span: Aa,
+            spellCheck: Ca,
             style: 0,
             tabIndex: 0,
-            itemScope: H,
+            itemScope: K,
             acceptCharset: 0,
             className: 0,
             htmlFor: 0,
             httpEquiv: 0,
-            value: za
+            value: Ca
           },
           DOMAttributeNames: {
             acceptCharset: "accept-charset",
@@ -846,16 +852,16 @@
             }
           }
         },
-        Ba = va.HAS_STRING_BOOLEAN_VALUE,
-        K = {
+        Ea = xa.HAS_STRING_BOOLEAN_VALUE,
+        M = {
           xlink: "http://www.w3.org/1999/xlink",
           xml: "http://www.w3.org/XML/1998/namespace"
         },
-        Ca = {
+        Ga = {
           Properties: {
-            autoReverse: Ba,
-            externalResourcesRequired: Ba,
-            preserveAlpha: Ba
+            autoReverse: Ea,
+            externalResourcesRequired: Ea,
+            preserveAlpha: Ea
           },
           DOMAttributeNames: {
             autoReverse: "autoReverse",
@@ -863,44 +869,44 @@
             preserveAlpha: "preserveAlpha"
           },
           DOMAttributeNamespaces: {
-            xlinkActuate: K.xlink,
-            xlinkArcrole: K.xlink,
-            xlinkHref: K.xlink,
-            xlinkRole: K.xlink,
-            xlinkShow: K.xlink,
-            xlinkTitle: K.xlink,
-            xlinkType: K.xlink,
-            xmlBase: K.xml,
-            xmlLang: K.xml,
-            xmlSpace: K.xml
+            xlinkActuate: M.xlink,
+            xlinkArcrole: M.xlink,
+            xlinkHref: M.xlink,
+            xlinkRole: M.xlink,
+            xlinkShow: M.xlink,
+            xlinkTitle: M.xlink,
+            xlinkType: M.xlink,
+            xmlBase: M.xml,
+            xmlLang: M.xml,
+            xmlSpace: M.xml
           }
         },
-        Da = /[\-\:]([a-z])/g;
-      function Ea(a) {
+        Ha = /[\-\:]([a-z])/g;
+      function Ia(a) {
         return a[1].toUpperCase();
       }
       "accent-height alignment-baseline arabic-form baseline-shift cap-height clip-path clip-rule color-interpolation color-interpolation-filters color-profile color-rendering dominant-baseline enable-background fill-opacity fill-rule flood-color flood-opacity font-family font-size font-size-adjust font-stretch font-style font-variant font-weight glyph-name glyph-orientation-horizontal glyph-orientation-vertical horiz-adv-x horiz-origin-x image-rendering letter-spacing lighting-color marker-end marker-mid marker-start overline-position overline-thickness paint-order panose-1 pointer-events rendering-intent shape-rendering stop-color stop-opacity strikethrough-position strikethrough-thickness stroke-dasharray stroke-dashoffset stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity stroke-width text-anchor text-decoration text-rendering underline-position underline-thickness unicode-bidi unicode-range units-per-em v-alphabetic v-hanging v-ideographic v-mathematical vector-effect vert-adv-y vert-origin-x vert-origin-y word-spacing writing-mode x-height xlink:actuate xlink:arcrole xlink:href xlink:role xlink:show xlink:title xlink:type xml:base xmlns:xlink xml:lang xml:space"
         .split(" ")
         .forEach(function(a) {
-          var b = a.replace(Da, Ea);
-          Ca.Properties[b] = 0;
-          Ca.DOMAttributeNames[b] = a;
+          var b = a.replace(Ha, Ia);
+          Ga.Properties[b] = 0;
+          Ga.DOMAttributeNames[b] = a;
         });
-      va.injectDOMPropertyConfig(Aa);
-      va.injectDOMPropertyConfig(Ca);
-      var N = {
+      xa.injectDOMPropertyConfig(Da);
+      xa.injectDOMPropertyConfig(Ga);
+      var P = {
         _caughtError: null,
         _hasCaughtError: !1,
         _rethrowError: null,
         _hasRethrowError: !1,
         injection: {
           injectErrorUtils: function(a) {
-            "function" !== typeof a.invokeGuardedCallback ? D("197") : void 0;
-            Ha = a.invokeGuardedCallback;
+            "function" !== typeof a.invokeGuardedCallback ? E("197") : void 0;
+            Ja = a.invokeGuardedCallback;
           }
         },
-        invokeGuardedCallback: function(a, b, c, d, e, f, g, k, h) {
-          Ha.apply(N, arguments);
+        invokeGuardedCallback: function(a, b, c, d, e, f, g, h, k) {
+          Ja.apply(P, arguments);
         },
         invokeGuardedCallbackAndCatchFirstError: function(
           a,
@@ -910,127 +916,127 @@
           e,
           f,
           g,
-          k,
-          h
+          h,
+          k
         ) {
-          N.invokeGuardedCallback.apply(this, arguments);
-          if (N.hasCaughtError()) {
-            var r = N.clearCaughtError();
-            N._hasRethrowError ||
-              ((N._hasRethrowError = !0), (N._rethrowError = r));
+          P.invokeGuardedCallback.apply(this, arguments);
+          if (P.hasCaughtError()) {
+            var q = P.clearCaughtError();
+            P._hasRethrowError ||
+              ((P._hasRethrowError = !0), (P._rethrowError = q));
           }
         },
         rethrowCaughtError: function() {
-          return Ia.apply(N, arguments);
+          return Ka.apply(P, arguments);
         },
         hasCaughtError: function() {
-          return N._hasCaughtError;
+          return P._hasCaughtError;
         },
         clearCaughtError: function() {
-          if (N._hasCaughtError) {
-            var a = N._caughtError;
-            N._caughtError = null;
-            N._hasCaughtError = !1;
+          if (P._hasCaughtError) {
+            var a = P._caughtError;
+            P._caughtError = null;
+            P._hasCaughtError = !1;
             return a;
           }
-          D("198");
+          E("198");
         }
       };
-      function Ha(a, b, c, d, e, f, g, k, h) {
-        N._hasCaughtError = !1;
-        N._caughtError = null;
-        var r = Array.prototype.slice.call(arguments, 3);
+      function Ja(a, b, c, d, e, f, g, h, k) {
+        P._hasCaughtError = !1;
+        P._caughtError = null;
+        var q = Array.prototype.slice.call(arguments, 3);
         try {
-          b.apply(c, r);
-        } catch (n) {
-          (N._caughtError = n), (N._hasCaughtError = !0);
+          b.apply(c, q);
+        } catch (v) {
+          (P._caughtError = v), (P._hasCaughtError = !0);
         }
       }
-      function Ia() {
-        if (N._hasRethrowError) {
-          var a = N._rethrowError;
-          N._rethrowError = null;
-          N._hasRethrowError = !1;
+      function Ka() {
+        if (P._hasRethrowError) {
+          var a = P._rethrowError;
+          P._rethrowError = null;
+          P._hasRethrowError = !1;
           throw a;
         }
       }
-      var Ja = null,
-        Ka = {};
-      function La() {
-        if (Ja)
-          for (var a in Ka) {
-            var b = Ka[a],
-              c = Ja.indexOf(a);
-            -1 < c ? void 0 : D("96", a);
-            if (!Ma[c]) {
-              b.extractEvents ? void 0 : D("97", a);
-              Ma[c] = b;
+      var La = null,
+        Ma = {};
+      function Na() {
+        if (La)
+          for (var a in Ma) {
+            var b = Ma[a],
+              c = La.indexOf(a);
+            -1 < c ? void 0 : E("96", a);
+            if (!Oa[c]) {
+              b.extractEvents ? void 0 : E("97", a);
+              Oa[c] = b;
               c = b.eventTypes;
               for (var d in c) {
                 var e = void 0;
                 var f = c[d],
                   g = b,
-                  k = d;
-                Na.hasOwnProperty(k) ? D("99", k) : void 0;
-                Na[k] = f;
-                var h = f.phasedRegistrationNames;
-                if (h) {
-                  for (e in h) h.hasOwnProperty(e) && Oa(h[e], g, k);
+                  h = d;
+                Pa.hasOwnProperty(h) ? E("99", h) : void 0;
+                Pa[h] = f;
+                var k = f.phasedRegistrationNames;
+                if (k) {
+                  for (e in k) k.hasOwnProperty(e) && Qa(k[e], g, h);
                   e = !0;
                 } else
                   f.registrationName
-                    ? (Oa(f.registrationName, g, k), (e = !0))
+                    ? (Qa(f.registrationName, g, h), (e = !0))
                     : (e = !1);
-                e ? void 0 : D("98", d, a);
+                e ? void 0 : E("98", d, a);
               }
             }
           }
       }
-      function Oa(a, b, c) {
-        Pa[a] ? D("100", a) : void 0;
-        Pa[a] = b;
-        Qa[a] = b.eventTypes[c].dependencies;
+      function Qa(a, b, c) {
+        Ra[a] ? E("100", a) : void 0;
+        Ra[a] = b;
+        Sa[a] = b.eventTypes[c].dependencies;
       }
-      var Ma = [],
-        Na = {},
+      var Oa = [],
         Pa = {},
-        Qa = {};
-      function Ra(a) {
-        Ja ? D("101") : void 0;
-        Ja = Array.prototype.slice.call(a);
-        La();
+        Ra = {},
+        Sa = {};
+      function Ta(a) {
+        La ? E("101") : void 0;
+        La = Array.prototype.slice.call(a);
+        Na();
       }
-      function Sa(a) {
+      function Ua(a) {
         var b = !1,
           c;
         for (c in a)
           if (a.hasOwnProperty(c)) {
             var d = a[c];
-            (Ka.hasOwnProperty(c) && Ka[c] === d) ||
-              (Ka[c] ? D("102", c) : void 0, (Ka[c] = d), (b = !0));
+            (Ma.hasOwnProperty(c) && Ma[c] === d) ||
+              (Ma[c] ? E("102", c) : void 0, (Ma[c] = d), (b = !0));
           }
-        b && La();
+        b && Na();
       }
-      var Ta = Object.freeze({
-          plugins: Ma,
-          eventNameDispatchConfigs: Na,
-          registrationNameModules: Pa,
-          registrationNameDependencies: Qa,
+      var Va = Object.freeze({
+          plugins: Oa,
+          eventNameDispatchConfigs: Pa,
+          registrationNameModules: Ra,
+          registrationNameDependencies: Sa,
           possibleRegistrationNames: null,
-          injectEventPluginOrder: Ra,
-          injectEventPluginsByName: Sa
+          injectEventPluginOrder: Ta,
+          injectEventPluginsByName: Ua
         }),
-        Ua = null,
-        Va = null,
-        Wa = null;
-      function Xa(a, b, c, d) {
+        Wa = null,
+        Xa = null,
+        Ya = null;
+      function Za(a, b, c, d) {
         b = a.type || "unknown-event";
-        a.currentTarget = Wa(d);
-        N.invokeGuardedCallbackAndCatchFirstError(b, c, void 0, a);
+        a.currentTarget = Ya(d);
+        P.invokeGuardedCallbackAndCatchFirstError(b, c, void 0, a);
         a.currentTarget = null;
       }
-      function Ya(a, b) {
-        null == b ? D("30") : void 0;
+      function $a(a, b) {
+        null == b ? E("30") : void 0;
         if (null == a) return b;
         if (Array.isArray(a)) {
           if (Array.isArray(b)) return a.push.apply(a, b), a;
@@ -1039,34 +1045,34 @@
         }
         return Array.isArray(b) ? [a].concat(b) : [a, b];
       }
-      function Za(a, b, c) {
+      function ab(a, b, c) {
         Array.isArray(a) ? a.forEach(b, c) : a && b.call(c, a);
       }
-      var $a = null;
-      function ab(a, b) {
+      var bb = null;
+      function cb(a, b) {
         if (a) {
           var c = a._dispatchListeners,
             d = a._dispatchInstances;
           if (Array.isArray(c))
             for (var e = 0; e < c.length && !a.isPropagationStopped(); e++)
-              Xa(a, b, c[e], d[e]);
-          else c && Xa(a, b, c, d);
+              Za(a, b, c[e], d[e]);
+          else c && Za(a, b, c, d);
           a._dispatchListeners = null;
           a._dispatchInstances = null;
           a.isPersistent() || a.constructor.release(a);
         }
       }
-      function bb(a) {
-        return ab(a, !0);
+      function db(a) {
+        return cb(a, !0);
       }
-      function cb(a) {
-        return ab(a, !1);
+      function gb(a) {
+        return cb(a, !1);
       }
-      var db = { injectEventPluginOrder: Ra, injectEventPluginsByName: Sa };
-      function eb(a, b) {
+      var hb = { injectEventPluginOrder: Ta, injectEventPluginsByName: Ua };
+      function ib(a, b) {
         var c = a.stateNode;
         if (!c) return null;
-        var d = Ua(c);
+        var d = Wa(c);
         if (!d) return null;
         c = d[b];
         a: switch (b) {
@@ -1094,29 +1100,30 @@
             a = !1;
         }
         if (a) return null;
-        c && "function" !== typeof c ? D("231", b, typeof c) : void 0;
+        c && "function" !== typeof c ? E("231", b, typeof c) : void 0;
         return c;
       }
       function jb(a, b, c, d) {
-        for (var e, f = 0; f < Ma.length; f++) {
-          var g = Ma[f];
-          g && (g = g.extractEvents(a, b, c, d)) && (e = Ya(e, g));
+        for (var e, f = 0; f < Oa.length; f++) {
+          var g = Oa[f];
+          g && (g = g.extractEvents(a, b, c, d)) && (e = $a(e, g));
         }
         return e;
       }
       function kb(a) {
-        a && ($a = Ya($a, a));
+        a && (bb = $a(bb, a));
       }
       function lb(a) {
-        var b = $a;
-        $a = null;
-        a ? Za(b, bb) : Za(b, cb);
-        $a ? D("95") : void 0;
-        N.rethrowCaughtError();
+        var b = bb;
+        bb = null;
+        b &&
+          (a ? ab(b, db) : ab(b, gb),
+          bb ? E("95") : void 0,
+          P.rethrowCaughtError());
       }
       var mb = Object.freeze({
-          injection: db,
-          getListener: eb,
+          injection: hb,
+          getListener: ib,
           extractEvents: jb,
           enqueueEvents: kb,
           processEventQueue: lb
@@ -1124,33 +1131,33 @@
         nb = Math.random()
           .toString(36)
           .slice(2),
-        O = "__reactInternalInstance$" + nb,
+        Q = "__reactInternalInstance$" + nb,
         ob = "__reactEventHandlers$" + nb;
       function pb(a) {
-        if (a[O]) return a[O];
-        for (var b = []; !a[O]; )
+        if (a[Q]) return a[Q];
+        for (var b = []; !a[Q]; )
           if ((b.push(a), a.parentNode)) a = a.parentNode;
           else return null;
         var c = void 0,
-          d = a[O];
+          d = a[Q];
         if (5 === d.tag || 6 === d.tag) return d;
-        for (; a && (d = a[O]); a = b.pop()) c = d;
+        for (; a && (d = a[Q]); a = b.pop()) c = d;
         return c;
       }
       function qb(a) {
         if (5 === a.tag || 6 === a.tag) return a.stateNode;
-        D("33");
+        E("33");
       }
       function rb(a) {
         return a[ob] || null;
       }
       var sb = Object.freeze({
         precacheFiberNode: function(a, b) {
-          b[O] = a;
+          b[Q] = a;
         },
         getClosestInstanceFromNode: pb,
         getInstanceFromNode: function(a) {
-          a = a[O];
+          a = a[Q];
           return !a || (5 !== a.tag && 6 !== a.tag) ? null : a;
         },
         getNodeFromInstance: qb,
@@ -1159,60 +1166,60 @@
           a[ob] = b;
         }
       });
-      function Q(a) {
+      function tb(a) {
         do a = a["return"];
         while (a && 5 !== a.tag);
         return a ? a : null;
       }
-      function tb(a, b, c) {
-        for (var d = []; a; ) d.push(a), (a = Q(a));
+      function ub(a, b, c) {
+        for (var d = []; a; ) d.push(a), (a = tb(a));
         for (a = d.length; 0 < a--; ) b(d[a], "captured", c);
         for (a = 0; a < d.length; a++) b(d[a], "bubbled", c);
       }
-      function ub(a, b, c) {
-        if ((b = eb(a, c.dispatchConfig.phasedRegistrationNames[b])))
-          (c._dispatchListeners = Ya(c._dispatchListeners, b)),
-            (c._dispatchInstances = Ya(c._dispatchInstances, a));
-      }
-      function vb(a) {
-        a &&
-          a.dispatchConfig.phasedRegistrationNames &&
-          tb(a._targetInst, ub, a);
+      function vb(a, b, c) {
+        if ((b = ib(a, c.dispatchConfig.phasedRegistrationNames[b])))
+          (c._dispatchListeners = $a(c._dispatchListeners, b)),
+            (c._dispatchInstances = $a(c._dispatchInstances, a));
       }
       function wb(a) {
+        a &&
+          a.dispatchConfig.phasedRegistrationNames &&
+          ub(a._targetInst, vb, a);
+      }
+      function xb(a) {
         if (a && a.dispatchConfig.phasedRegistrationNames) {
           var b = a._targetInst;
-          b = b ? Q(b) : null;
-          tb(b, ub, a);
+          b = b ? tb(b) : null;
+          ub(b, vb, a);
         }
       }
-      function xb(a, b, c) {
+      function yb(a, b, c) {
         a &&
           c &&
           c.dispatchConfig.registrationName &&
-          (b = eb(a, c.dispatchConfig.registrationName)) &&
-          ((c._dispatchListeners = Ya(c._dispatchListeners, b)),
-          (c._dispatchInstances = Ya(c._dispatchInstances, a)));
-      }
-      function yb(a) {
-        a && a.dispatchConfig.registrationName && xb(a._targetInst, null, a);
+          (b = ib(a, c.dispatchConfig.registrationName)) &&
+          ((c._dispatchListeners = $a(c._dispatchListeners, b)),
+          (c._dispatchInstances = $a(c._dispatchInstances, a)));
       }
       function zb(a) {
-        Za(a, vb);
+        a && a.dispatchConfig.registrationName && yb(a._targetInst, null, a);
       }
-      function Ab(a, b, c, d) {
+      function Ab(a) {
+        ab(a, wb);
+      }
+      function Bb(a, b, c, d) {
         if (c && d)
           a: {
             var e = c;
-            for (var f = d, g = 0, k = e; k; k = Q(k)) g++;
-            k = 0;
-            for (var h = f; h; h = Q(h)) k++;
-            for (; 0 < g - k; ) (e = Q(e)), g--;
-            for (; 0 < k - g; ) (f = Q(f)), k--;
+            for (var f = d, g = 0, h = e; h; h = tb(h)) g++;
+            h = 0;
+            for (var k = f; k; k = tb(k)) h++;
+            for (; 0 < g - h; ) (e = tb(e)), g--;
+            for (; 0 < h - g; ) (f = tb(f)), h--;
             for (; g--; ) {
               if (e === f || e === f.alternate) break a;
-              e = Q(e);
-              f = Q(f);
+              e = tb(e);
+              f = tb(f);
             }
             e = null;
           }
@@ -1222,62 +1229,62 @@
           g = c.alternate;
           if (null !== g && g === f) break;
           e.push(c);
-          c = Q(c);
+          c = tb(c);
         }
         for (c = []; d && d !== f; ) {
           g = d.alternate;
           if (null !== g && g === f) break;
           c.push(d);
-          d = Q(d);
+          d = tb(d);
         }
-        for (d = 0; d < e.length; d++) xb(e[d], "bubbled", a);
-        for (a = c.length; 0 < a--; ) xb(c[a], "captured", b);
+        for (d = 0; d < e.length; d++) yb(e[d], "bubbled", a);
+        for (a = c.length; 0 < a--; ) yb(c[a], "captured", b);
       }
-      var Bb = Object.freeze({
-          accumulateTwoPhaseDispatches: zb,
+      var Cb = Object.freeze({
+          accumulateTwoPhaseDispatches: Ab,
           accumulateTwoPhaseDispatchesSkipTarget: function(a) {
-            Za(a, wb);
+            ab(a, xb);
           },
-          accumulateEnterLeaveDispatches: Ab,
+          accumulateEnterLeaveDispatches: Bb,
           accumulateDirectDispatches: function(a) {
-            Za(a, yb);
+            ab(a, zb);
           }
         }),
-        Cb = null;
-      function Db() {
-        !Cb &&
-          m.canUseDOM &&
-          (Cb =
+        Db = null;
+      function Eb() {
+        !Db &&
+          l.canUseDOM &&
+          (Db =
             "textContent" in document.documentElement
               ? "textContent"
               : "innerText");
-        return Cb;
+        return Db;
       }
-      var R = { _root: null, _startText: null, _fallbackText: null };
-      function Eb() {
-        if (R._fallbackText) return R._fallbackText;
+      var S = { _root: null, _startText: null, _fallbackText: null };
+      function Fb() {
+        if (S._fallbackText) return S._fallbackText;
         var a,
-          b = R._startText,
+          b = S._startText,
           c = b.length,
           d,
-          e = Fb(),
+          e = Gb(),
           f = e.length;
         for (a = 0; a < c && b[a] === e[a]; a++);
         var g = c - a;
         for (d = 1; d <= g && b[c - d] === e[f - d]; d++);
-        R._fallbackText = e.slice(a, 1 < d ? 1 - d : void 0);
-        return R._fallbackText;
+        S._fallbackText = e.slice(a, 1 < d ? 1 - d : void 0);
+        return S._fallbackText;
       }
-      function Fb() {
-        return "value" in R._root ? R._root.value : R._root[Db()];
+      function Gb() {
+        return "value" in S._root ? S._root.value : S._root[Eb()];
       }
-      var Gb = "dispatchConfig _targetInst nativeEvent isDefaultPrevented isPropagationStopped _dispatchListeners _dispatchInstances".split(
+      var Hb = "dispatchConfig _targetInst nativeEvent isDefaultPrevented isPropagationStopped _dispatchListeners _dispatchInstances".split(
           " "
         ),
-        Hb = {
+        Ib = {
           type: null,
           target: null,
-          currentTarget: B.thatReturnsNull,
+          currentTarget: C.thatReturnsNull,
           eventPhase: null,
           bubbles: null,
           cancelable: null,
@@ -1287,7 +1294,7 @@
           defaultPrevented: null,
           isTrusted: null
         };
-      function S(a, b, c, d) {
+      function T(a, b, c, d) {
         this.dispatchConfig = a;
         this._targetInst = b;
         this.nativeEvent = c;
@@ -1300,12 +1307,12 @@
         this.isDefaultPrevented = (null != c.defaultPrevented
         ? c.defaultPrevented
         : !1 === c.returnValue)
-          ? B.thatReturnsTrue
-          : B.thatReturnsFalse;
-        this.isPropagationStopped = B.thatReturnsFalse;
+          ? C.thatReturnsTrue
+          : C.thatReturnsFalse;
+        this.isPropagationStopped = C.thatReturnsFalse;
         return this;
       }
-      A(S.prototype, {
+      B(T.prototype, {
         preventDefault: function() {
           this.defaultPrevented = !0;
           var a = this.nativeEvent;
@@ -1313,7 +1320,7 @@
             (a.preventDefault
               ? a.preventDefault()
               : "unknown" !== typeof a.returnValue && (a.returnValue = !1),
-            (this.isDefaultPrevented = B.thatReturnsTrue));
+            (this.isDefaultPrevented = C.thatReturnsTrue));
         },
         stopPropagation: function() {
           var a = this.nativeEvent;
@@ -1321,33 +1328,33 @@
             (a.stopPropagation
               ? a.stopPropagation()
               : "unknown" !== typeof a.cancelBubble && (a.cancelBubble = !0),
-            (this.isPropagationStopped = B.thatReturnsTrue));
+            (this.isPropagationStopped = C.thatReturnsTrue));
         },
         persist: function() {
-          this.isPersistent = B.thatReturnsTrue;
+          this.isPersistent = C.thatReturnsTrue;
         },
-        isPersistent: B.thatReturnsFalse,
+        isPersistent: C.thatReturnsFalse,
         destructor: function() {
           var a = this.constructor.Interface,
             b;
           for (b in a) this[b] = null;
-          for (a = 0; a < Gb.length; a++) this[Gb[a]] = null;
+          for (a = 0; a < Hb.length; a++) this[Hb[a]] = null;
         }
       });
-      S.Interface = Hb;
-      S.augmentClass = function(a, b) {
+      T.Interface = Ib;
+      T.augmentClass = function(a, b) {
         function c() {}
         c.prototype = this.prototype;
         var d = new c();
-        A(d, a.prototype);
+        B(d, a.prototype);
         a.prototype = d;
         a.prototype.constructor = a;
-        a.Interface = A({}, this.Interface, b);
+        a.Interface = B({}, this.Interface, b);
         a.augmentClass = this.augmentClass;
-        Ib(a);
+        Jb(a);
       };
-      Ib(S);
-      function Jb(a, b, c, d) {
+      Jb(T);
+      function Kb(a, b, c, d) {
         if (this.eventPool.length) {
           var e = this.eventPool.pop();
           this.call(e, a, b, c, d);
@@ -1355,41 +1362,41 @@
         }
         return new this(a, b, c, d);
       }
-      function Qb(a) {
-        a instanceof this ? void 0 : D("223");
+      function Lb(a) {
+        a instanceof this ? void 0 : E("223");
         a.destructor();
         10 > this.eventPool.length && this.eventPool.push(a);
       }
-      function Ib(a) {
+      function Jb(a) {
         a.eventPool = [];
-        a.getPooled = Jb;
-        a.release = Qb;
+        a.getPooled = Kb;
+        a.release = Lb;
       }
-      function Rb(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function Mb(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      S.augmentClass(Rb, { data: null });
-      function Sb(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      T.augmentClass(Mb, { data: null });
+      function Nb(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      S.augmentClass(Sb, { data: null });
-      var Tb = [9, 13, 27, 32],
-        Ub = m.canUseDOM && "CompositionEvent" in window,
-        Vb = null;
-      m.canUseDOM && "documentMode" in document && (Vb = document.documentMode);
-      var Wb;
-      if ((Wb = m.canUseDOM && "TextEvent" in window && !Vb)) {
-        var Xb = window.opera;
-        Wb = !(
-          "object" === typeof Xb &&
-          "function" === typeof Xb.version &&
-          12 >= parseInt(Xb.version(), 10)
+      T.augmentClass(Nb, { data: null });
+      var Pb = [9, 13, 27, 32],
+        Vb = l.canUseDOM && "CompositionEvent" in window,
+        Wb = null;
+      l.canUseDOM && "documentMode" in document && (Wb = document.documentMode);
+      var Xb;
+      if ((Xb = l.canUseDOM && "TextEvent" in window && !Wb)) {
+        var Yb = window.opera;
+        Xb = !(
+          "object" === typeof Yb &&
+          "function" === typeof Yb.version &&
+          12 >= parseInt(Yb.version(), 10)
         );
       }
-      var Yb = Wb,
-        Zb = m.canUseDOM && (!Ub || (Vb && 8 < Vb && 11 >= Vb)),
-        $b = String.fromCharCode(32),
-        ac = {
+      var Zb = Xb,
+        $b = l.canUseDOM && (!Vb || (Wb && 8 < Wb && 11 >= Wb)),
+        ac = String.fromCharCode(32),
+        bc = {
           beforeInput: {
             phasedRegistrationNames: {
               bubbled: "onBeforeInput",
@@ -1430,11 +1437,11 @@
             )
           }
         },
-        bc = !1;
-      function cc(a, b) {
+        cc = !1;
+      function dc(a, b) {
         switch (a) {
           case "topKeyUp":
-            return -1 !== Tb.indexOf(b.keyCode);
+            return -1 !== Pb.indexOf(b.keyCode);
           case "topKeyDown":
             return 229 !== b.keyCode;
           case "topKeyPress":
@@ -1445,33 +1452,33 @@
             return !1;
         }
       }
-      function dc(a) {
+      function ec(a) {
         a = a.detail;
         return "object" === typeof a && "data" in a ? a.data : null;
       }
-      var ec = !1;
-      function fc(a, b) {
+      var fc = !1;
+      function gc(a, b) {
         switch (a) {
           case "topCompositionEnd":
-            return dc(b);
+            return ec(b);
           case "topKeyPress":
             if (32 !== b.which) return null;
-            bc = !0;
-            return $b;
+            cc = !0;
+            return ac;
           case "topTextInput":
-            return (a = b.data), a === $b && bc ? null : a;
+            return (a = b.data), a === ac && cc ? null : a;
           default:
             return null;
         }
       }
-      function gc(a, b) {
-        if (ec)
-          return "topCompositionEnd" === a || (!Ub && cc(a, b))
-            ? ((a = Eb()),
-              (R._root = null),
-              (R._startText = null),
-              (R._fallbackText = null),
-              (ec = !1),
+      function hc(a, b) {
+        if (fc)
+          return "topCompositionEnd" === a || (!Vb && dc(a, b))
+            ? ((a = Fb()),
+              (S._root = null),
+              (S._startText = null),
+              (S._fallbackText = null),
+              (fc = !1),
               a)
             : null;
         switch (a) {
@@ -1487,102 +1494,102 @@
             }
             return null;
           case "topCompositionEnd":
-            return Zb ? null : b.data;
+            return $b ? null : b.data;
           default:
             return null;
         }
       }
-      var hc = {
-          eventTypes: ac,
+      var ic = {
+          eventTypes: bc,
           extractEvents: function(a, b, c, d) {
             var e;
-            if (Ub)
+            if (Vb)
               b: {
                 switch (a) {
                   case "topCompositionStart":
-                    var f = ac.compositionStart;
+                    var f = bc.compositionStart;
                     break b;
                   case "topCompositionEnd":
-                    f = ac.compositionEnd;
+                    f = bc.compositionEnd;
                     break b;
                   case "topCompositionUpdate":
-                    f = ac.compositionUpdate;
+                    f = bc.compositionUpdate;
                     break b;
                 }
                 f = void 0;
               }
             else
-              ec
-                ? cc(a, c) && (f = ac.compositionEnd)
+              fc
+                ? dc(a, c) && (f = bc.compositionEnd)
                 : "topKeyDown" === a &&
                   229 === c.keyCode &&
-                  (f = ac.compositionStart);
+                  (f = bc.compositionStart);
             f
-              ? (Zb &&
-                  (ec || f !== ac.compositionStart
-                    ? f === ac.compositionEnd && ec && (e = Eb())
-                    : ((R._root = d), (R._startText = Fb()), (ec = !0))),
-                (f = Rb.getPooled(f, b, c, d)),
-                e ? (f.data = e) : ((e = dc(c)), null !== e && (f.data = e)),
-                zb(f),
+              ? ($b &&
+                  (fc || f !== bc.compositionStart
+                    ? f === bc.compositionEnd && fc && (e = Fb())
+                    : ((S._root = d), (S._startText = Gb()), (fc = !0))),
+                (f = Mb.getPooled(f, b, c, d)),
+                e ? (f.data = e) : ((e = ec(c)), null !== e && (f.data = e)),
+                Ab(f),
                 (e = f))
               : (e = null);
-            (a = Yb ? fc(a, c) : gc(a, c))
-              ? ((b = Sb.getPooled(ac.beforeInput, b, c, d)),
+            (a = Zb ? gc(a, c) : hc(a, c))
+              ? ((b = Nb.getPooled(bc.beforeInput, b, c, d)),
                 (b.data = a),
-                zb(b))
+                Ab(b))
               : (b = null);
             return [e, b];
           }
         },
-        ic = null,
         jc = null,
-        kc = null;
-      function lc(a) {
-        if ((a = Va(a))) {
-          ic && "function" === typeof ic.restoreControlledState
+        kc = null,
+        lc = null;
+      function mc(a) {
+        if ((a = Xa(a))) {
+          jc && "function" === typeof jc.restoreControlledState
             ? void 0
-            : D("194");
-          var b = Ua(a.stateNode);
-          ic.restoreControlledState(a.stateNode, a.type, b);
+            : E("194");
+          var b = Wa(a.stateNode);
+          jc.restoreControlledState(a.stateNode, a.type, b);
         }
       }
-      var mc = {
+      var nc = {
         injectFiberControlledHostComponent: function(a) {
-          ic = a;
+          jc = a;
         }
       };
-      function nc(a) {
-        jc ? (kc ? kc.push(a) : (kc = [a])) : (jc = a);
+      function oc(a) {
+        kc ? (lc ? lc.push(a) : (lc = [a])) : (kc = a);
       }
-      function oc() {
-        if (jc) {
-          var a = jc,
-            b = kc;
-          kc = jc = null;
-          lc(a);
-          if (b) for (a = 0; a < b.length; a++) lc(b[a]);
+      function pc() {
+        if (kc) {
+          var a = kc,
+            b = lc;
+          lc = kc = null;
+          mc(a);
+          if (b) for (a = 0; a < b.length; a++) mc(b[a]);
         }
       }
-      var pc = Object.freeze({
-        injection: mc,
-        enqueueStateRestore: nc,
-        restoreStateIfNeeded: oc
+      var qc = Object.freeze({
+        injection: nc,
+        enqueueStateRestore: oc,
+        restoreStateIfNeeded: pc
       });
-      function qc(a, b) {
+      function rc(a, b) {
         return a(b);
       }
-      var rc = !1;
-      function sc(a, b) {
-        if (rc) return qc(a, b);
-        rc = !0;
+      var sc = !1;
+      function tc(a, b) {
+        if (sc) return rc(a, b);
+        sc = !0;
         try {
-          return qc(a, b);
+          return rc(a, b);
         } finally {
-          (rc = !1), oc();
+          (sc = !1), pc();
         }
       }
-      var tc = {
+      var uc = {
         color: !0,
         date: !0,
         datetime: !0,
@@ -1599,23 +1606,23 @@
         url: !0,
         week: !0
       };
-      function uc(a) {
-        var b = a && a.nodeName && a.nodeName.toLowerCase();
-        return "input" === b ? !!tc[a.type] : "textarea" === b ? !0 : !1;
-      }
       function vc(a) {
+        var b = a && a.nodeName && a.nodeName.toLowerCase();
+        return "input" === b ? !!uc[a.type] : "textarea" === b ? !0 : !1;
+      }
+      function wc(a) {
         a = a.target || a.srcElement || window;
         a.correspondingUseElement && (a = a.correspondingUseElement);
         return 3 === a.nodeType ? a.parentNode : a;
       }
-      var wc;
-      m.canUseDOM &&
-        (wc =
+      var xc;
+      l.canUseDOM &&
+        (xc =
           document.implementation &&
           document.implementation.hasFeature &&
           !0 !== document.implementation.hasFeature("", ""));
-      function xc(a, b) {
-        if (!m.canUseDOM || (b && !("addEventListener" in document))) return !1;
+      function yc(a, b) {
+        if (!l.canUseDOM || (b && !("addEventListener" in document))) return !1;
         b = "on" + a;
         var c = b in document;
         c ||
@@ -1623,12 +1630,12 @@
           c.setAttribute(b, "return;"),
           (c = "function" === typeof c[b]));
         !c &&
-          wc &&
+          xc &&
           "wheel" === a &&
           (c = document.implementation.hasFeature("Events.wheel", "3.0"));
         return c;
       }
-      function yc(a) {
+      function zc(a) {
         var b = a.type;
         return (
           (a = a.nodeName) &&
@@ -1636,8 +1643,8 @@
           ("checkbox" === b || "radio" === b)
         );
       }
-      function zc(a) {
-        var b = yc(a) ? "checked" : "value",
+      function Ac(a) {
+        var b = zc(a) ? "checked" : "value",
           c = Object.getOwnPropertyDescriptor(a.constructor.prototype, b),
           d = "" + a[b];
         if (
@@ -1671,20 +1678,20 @@
             }
           );
       }
-      function Ac(a) {
-        a._valueTracker || (a._valueTracker = zc(a));
-      }
       function Bc(a) {
+        a._valueTracker || (a._valueTracker = Ac(a));
+      }
+      function Cc(a) {
         if (!a) return !1;
         var b = a._valueTracker;
         if (!b) return !0;
         var c = b.getValue();
         var d = "";
-        a && (d = yc(a) ? (a.checked ? "true" : "false") : a.value);
+        a && (d = zc(a) ? (a.checked ? "true" : "false") : a.value);
         a = d;
         return a !== c ? (b.setValue(a), !0) : !1;
       }
-      var Cc = {
+      var Dc = {
         change: {
           phasedRegistrationNames: {
             bubbled: "onChange",
@@ -1695,79 +1702,79 @@
           )
         }
       };
-      function Dc(a, b, c) {
-        a = S.getPooled(Cc.change, a, b, c);
+      function Ec(a, b, c) {
+        a = T.getPooled(Dc.change, a, b, c);
         a.type = "change";
-        nc(c);
-        zb(a);
+        oc(c);
+        Ab(a);
         return a;
       }
-      var Ec = null,
-        Fc = null;
-      function Gc(a) {
+      var Fc = null,
+        Gc = null;
+      function Hc(a) {
         kb(a);
         lb(!1);
       }
-      function Hc(a) {
+      function Ic(a) {
         var b = qb(a);
-        if (Bc(b)) return a;
+        if (Cc(b)) return a;
       }
-      function Ic(a, b) {
+      function Jc(a, b) {
         if ("topChange" === a) return b;
       }
-      var Jc = !1;
-      m.canUseDOM &&
-        (Jc =
-          xc("input") && (!document.documentMode || 9 < document.documentMode));
-      function Qc() {
-        Ec && (Ec.detachEvent("onpropertychange", Rc), (Fc = Ec = null));
+      var Kc = !1;
+      l.canUseDOM &&
+        (Kc =
+          yc("input") && (!document.documentMode || 9 < document.documentMode));
+      function Lc() {
+        Fc && (Fc.detachEvent("onpropertychange", Mc), (Gc = Fc = null));
       }
-      function Rc(a) {
+      function Mc(a) {
         "value" === a.propertyName &&
-          Hc(Fc) &&
-          ((a = Dc(Fc, a, vc(a))), sc(Gc, a));
+          Ic(Gc) &&
+          ((a = Ec(Gc, a, wc(a))), tc(Hc, a));
       }
-      function Sc(a, b, c) {
+      function Nc(a, b, c) {
         "topFocus" === a
-          ? (Qc(), (Ec = b), (Fc = c), Ec.attachEvent("onpropertychange", Rc))
-          : "topBlur" === a && Qc();
+          ? (Lc(), (Fc = b), (Gc = c), Fc.attachEvent("onpropertychange", Mc))
+          : "topBlur" === a && Lc();
       }
-      function Tc(a) {
+      function Oc(a) {
         if (
           "topSelectionChange" === a ||
           "topKeyUp" === a ||
           "topKeyDown" === a
         )
-          return Hc(Fc);
+          return Ic(Gc);
       }
-      function Uc(a, b) {
-        if ("topClick" === a) return Hc(b);
+      function Pc(a, b) {
+        if ("topClick" === a) return Ic(b);
       }
-      function Vc(a, b) {
-        if ("topInput" === a || "topChange" === a) return Hc(b);
+      function $c(a, b) {
+        if ("topInput" === a || "topChange" === a) return Ic(b);
       }
-      var Wc = {
-        eventTypes: Cc,
-        _isInputEventSupported: Jc,
+      var ad = {
+        eventTypes: Dc,
+        _isInputEventSupported: Kc,
         extractEvents: function(a, b, c, d) {
           var e = b ? qb(b) : window,
             f = e.nodeName && e.nodeName.toLowerCase();
           if ("select" === f || ("input" === f && "file" === e.type))
-            var g = Ic;
-          else if (uc(e))
-            if (Jc) g = Vc;
+            var g = Jc;
+          else if (vc(e))
+            if (Kc) g = $c;
             else {
-              g = Tc;
-              var k = Sc;
+              g = Oc;
+              var h = Nc;
             }
           else
             (f = e.nodeName),
               !f ||
                 "input" !== f.toLowerCase() ||
                 ("checkbox" !== e.type && "radio" !== e.type) ||
-                (g = Uc);
-          if (g && (g = g(a, b))) return Dc(g, c, d);
-          k && k(a, e, b);
+                (g = Pc);
+          if (g && (g = g(a, b))) return Ec(g, c, d);
+          h && h(a, e, b);
           "topBlur" === a &&
             null != b &&
             (a = b._wrapperState || e._wrapperState) &&
@@ -1777,29 +1784,29 @@
             e.getAttribute("value") !== a && e.setAttribute("value", a));
         }
       };
-      function Xc(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function bd(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      S.augmentClass(Xc, { view: null, detail: null });
-      var Yc = {
+      T.augmentClass(bd, { view: null, detail: null });
+      var cd = {
         Alt: "altKey",
         Control: "ctrlKey",
         Meta: "metaKey",
         Shift: "shiftKey"
       };
-      function Zc(a) {
+      function dd(a) {
         var b = this.nativeEvent;
         return b.getModifierState
           ? b.getModifierState(a)
-          : (a = Yc[a]) ? !!b[a] : !1;
+          : (a = cd[a]) ? !!b[a] : !1;
       }
-      function $c() {
-        return Zc;
+      function ed() {
+        return dd;
       }
-      function ad(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function fd(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      Xc.augmentClass(ad, {
+      bd.augmentClass(fd, {
         screenX: null,
         screenY: null,
         clientX: null,
@@ -1810,7 +1817,7 @@
         shiftKey: null,
         altKey: null,
         metaKey: null,
-        getModifierState: $c,
+        getModifierState: ed,
         button: null,
         buttons: null,
         relatedTarget: function(a) {
@@ -1820,7 +1827,7 @@
           );
         }
       });
-      var bd = {
+      var gd = {
           mouseEnter: {
             registrationName: "onMouseEnter",
             dependencies: ["topMouseOut", "topMouseOver"]
@@ -1830,8 +1837,8 @@
             dependencies: ["topMouseOut", "topMouseOver"]
           }
         },
-        cd = {
-          eventTypes: bd,
+        hd = {
+          eventTypes: gd,
           extractEvents: function(a, b, c, d) {
             if (
               ("topMouseOver" === a && (c.relatedTarget || c.fromElement)) ||
@@ -1851,28 +1858,28 @@
             if (a === b) return null;
             var f = null == a ? e : qb(a);
             e = null == b ? e : qb(b);
-            var g = ad.getPooled(bd.mouseLeave, a, c, d);
+            var g = fd.getPooled(gd.mouseLeave, a, c, d);
             g.type = "mouseleave";
             g.target = f;
             g.relatedTarget = e;
-            c = ad.getPooled(bd.mouseEnter, b, c, d);
+            c = fd.getPooled(gd.mouseEnter, b, c, d);
             c.type = "mouseenter";
             c.target = e;
             c.relatedTarget = f;
-            Ab(g, c, a, b);
+            Bb(g, c, a, b);
             return [g, c];
           }
         },
-        dd =
+        id =
           aa.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
             .ReactCurrentOwner;
-      function ed(a) {
+      function jd(a) {
         a = a.type;
         return "string" === typeof a
           ? a
           : "function" === typeof a ? a.displayName || a.name : null;
       }
-      function fd(a) {
+      function kd(a) {
         var b = a;
         if (a.alternate) for (; b["return"]; ) b = b["return"];
         else {
@@ -1882,72 +1889,72 @@
         }
         return 3 === b.tag ? 2 : 3;
       }
-      function gd(a) {
-        return (a = a._reactInternalFiber) ? 2 === fd(a) : !1;
+      function ld(a) {
+        return (a = a._reactInternalFiber) ? 2 === kd(a) : !1;
       }
-      function hd(a) {
-        2 !== fd(a) ? D("188") : void 0;
+      function md(a) {
+        2 !== kd(a) ? E("188") : void 0;
       }
-      function id(a) {
+      function nd(a) {
         var b = a.alternate;
         if (!b)
-          return (b = fd(a)), 3 === b ? D("188") : void 0, 1 === b ? null : a;
+          return (b = kd(a)), 3 === b ? E("188") : void 0, 1 === b ? null : a;
         for (var c = a, d = b; ; ) {
           var e = c["return"],
             f = e ? e.alternate : null;
           if (!e || !f) break;
           if (e.child === f.child) {
             for (var g = e.child; g; ) {
-              if (g === c) return hd(e), a;
-              if (g === d) return hd(e), b;
+              if (g === c) return md(e), a;
+              if (g === d) return md(e), b;
               g = g.sibling;
             }
-            D("188");
+            E("188");
           }
           if (c["return"] !== d["return"]) (c = e), (d = f);
           else {
             g = !1;
-            for (var k = e.child; k; ) {
-              if (k === c) {
+            for (var h = e.child; h; ) {
+              if (h === c) {
                 g = !0;
                 c = e;
                 d = f;
                 break;
               }
-              if (k === d) {
+              if (h === d) {
                 g = !0;
                 d = e;
                 c = f;
                 break;
               }
-              k = k.sibling;
+              h = h.sibling;
             }
             if (!g) {
-              for (k = f.child; k; ) {
-                if (k === c) {
+              for (h = f.child; h; ) {
+                if (h === c) {
                   g = !0;
                   c = f;
                   d = e;
                   break;
                 }
-                if (k === d) {
+                if (h === d) {
                   g = !0;
                   d = f;
                   c = e;
                   break;
                 }
-                k = k.sibling;
+                h = h.sibling;
               }
-              g ? void 0 : D("189");
+              g ? void 0 : E("189");
             }
           }
-          c.alternate !== d ? D("190") : void 0;
+          c.alternate !== d ? E("190") : void 0;
         }
-        3 !== c.tag ? D("188") : void 0;
+        3 !== c.tag ? E("188") : void 0;
         return c.stateNode.current === c ? a : b;
       }
-      function jd(a) {
-        a = id(a);
+      function od(a) {
+        a = nd(a);
         if (!a) return null;
         for (var b = a; ; ) {
           if (5 === b.tag || 6 === b.tag) return b;
@@ -1964,8 +1971,8 @@
         }
         return null;
       }
-      function kd(a) {
-        a = id(a);
+      function pd(a) {
+        a = nd(a);
         if (!a) return null;
         for (var b = a; ; ) {
           if (5 === b.tag || 6 === b.tag) return b;
@@ -1982,8 +1989,8 @@
         }
         return null;
       }
-      var ld = [];
-      function md(a) {
+      var qd = [];
+      function rd(a) {
         var b = a.targetInst;
         do {
           if (!b) {
@@ -1999,26 +2006,26 @@
         } while (b);
         for (c = 0; c < a.ancestors.length; c++)
           (b = a.ancestors[c]),
-            nd(a.topLevelType, b, a.nativeEvent, vc(a.nativeEvent));
+            sd(a.topLevelType, b, a.nativeEvent, wc(a.nativeEvent));
       }
-      var od = !0,
-        nd = void 0;
-      function pd(a) {
-        od = !!a;
+      var td = !0,
+        sd = void 0;
+      function ud(a) {
+        td = !!a;
       }
       function U(a, b, c) {
-        return c ? ca.listen(c, b, qd.bind(null, a)) : null;
+        return c ? ba.listen(c, b, vd.bind(null, a)) : null;
       }
-      function rd(a, b, c) {
-        return c ? ca.capture(c, b, qd.bind(null, a)) : null;
+      function wd(a, b, c) {
+        return c ? ba.capture(c, b, vd.bind(null, a)) : null;
       }
-      function qd(a, b) {
-        if (od) {
-          var c = vc(b);
+      function vd(a, b) {
+        if (td) {
+          var c = wc(b);
           c = pb(c);
-          null === c || "number" !== typeof c.tag || 2 === fd(c) || (c = null);
-          if (ld.length) {
-            var d = ld.pop();
+          null === c || "number" !== typeof c.tag || 2 === kd(c) || (c = null);
+          if (qd.length) {
+            var d = qd.pop();
             d.topLevelType = a;
             d.nativeEvent = b;
             d.targetInst = c;
@@ -2031,35 +2038,35 @@
               ancestors: []
             };
           try {
-            sc(md, a);
+            tc(rd, a);
           } finally {
             (a.topLevelType = null),
               (a.nativeEvent = null),
               (a.targetInst = null),
               (a.ancestors.length = 0),
-              10 > ld.length && ld.push(a);
+              10 > qd.length && qd.push(a);
           }
         }
       }
-      var sd = Object.freeze({
+      var xd = Object.freeze({
         get _enabled() {
-          return od;
+          return td;
         },
         get _handleTopLevel() {
-          return nd;
+          return sd;
         },
         setHandleTopLevel: function(a) {
-          nd = a;
+          sd = a;
         },
-        setEnabled: pd,
+        setEnabled: ud,
         isEnabled: function() {
-          return od;
+          return td;
         },
         trapBubbledEvent: U,
-        trapCapturedEvent: rd,
-        dispatchEvent: qd
+        trapCapturedEvent: wd,
+        dispatchEvent: vd
       });
-      function td(a, b) {
+      function yd(a, b) {
         var c = {};
         c[a.toLowerCase()] = b.toLowerCase();
         c["Webkit" + a] = "webkit" + b;
@@ -2068,35 +2075,35 @@
         c["O" + a] = "o" + b.toLowerCase();
         return c;
       }
-      var ud = {
-          animationend: td("Animation", "AnimationEnd"),
-          animationiteration: td("Animation", "AnimationIteration"),
-          animationstart: td("Animation", "AnimationStart"),
-          transitionend: td("Transition", "TransitionEnd")
+      var zd = {
+          animationend: yd("Animation", "AnimationEnd"),
+          animationiteration: yd("Animation", "AnimationIteration"),
+          animationstart: yd("Animation", "AnimationStart"),
+          transitionend: yd("Transition", "TransitionEnd")
         },
-        vd = {},
-        wd = {};
-      m.canUseDOM &&
-        ((wd = document.createElement("div").style),
+        Ad = {},
+        Bd = {};
+      l.canUseDOM &&
+        ((Bd = document.createElement("div").style),
         "AnimationEvent" in window ||
-          (delete ud.animationend.animation,
-          delete ud.animationiteration.animation,
-          delete ud.animationstart.animation),
-        "TransitionEvent" in window || delete ud.transitionend.transition);
-      function xd(a) {
-        if (vd[a]) return vd[a];
-        if (!ud[a]) return a;
-        var b = ud[a],
+          (delete zd.animationend.animation,
+          delete zd.animationiteration.animation,
+          delete zd.animationstart.animation),
+        "TransitionEvent" in window || delete zd.transitionend.transition);
+      function Cd(a) {
+        if (Ad[a]) return Ad[a];
+        if (!zd[a]) return a;
+        var b = zd[a],
           c;
-        for (c in b) if (b.hasOwnProperty(c) && c in wd) return (vd[a] = b[c]);
+        for (c in b) if (b.hasOwnProperty(c) && c in Bd) return (Ad[a] = b[c]);
         return "";
       }
-      var yd = {
+      var Dd = {
           topAbort: "abort",
-          topAnimationEnd: xd("animationend") || "animationend",
+          topAnimationEnd: Cd("animationend") || "animationend",
           topAnimationIteration:
-            xd("animationiteration") || "animationiteration",
-          topAnimationStart: xd("animationstart") || "animationstart",
+            Cd("animationiteration") || "animationiteration",
+          topAnimationStart: Cd("animationstart") || "animationstart",
           topBlur: "blur",
           topCancel: "cancel",
           topCanPlay: "canplay",
@@ -2157,25 +2164,25 @@
           topTouchEnd: "touchend",
           topTouchMove: "touchmove",
           topTouchStart: "touchstart",
-          topTransitionEnd: xd("transitionend") || "transitionend",
+          topTransitionEnd: Cd("transitionend") || "transitionend",
           topVolumeChange: "volumechange",
           topWaiting: "waiting",
           topWheel: "wheel"
         },
-        zd = {},
-        Ad = 0,
-        Bd = "_reactListenersID" + ("" + Math.random()).slice(2);
-      function Cd(a) {
-        Object.prototype.hasOwnProperty.call(a, Bd) ||
-          ((a[Bd] = Ad++), (zd[a[Bd]] = {}));
-        return zd[a[Bd]];
+        Ed = {},
+        Fd = 0,
+        Gd = "_reactListenersID" + ("" + Math.random()).slice(2);
+      function Hd(a) {
+        Object.prototype.hasOwnProperty.call(a, Gd) ||
+          ((a[Gd] = Fd++), (Ed[a[Gd]] = {}));
+        return Ed[a[Gd]];
       }
-      function Dd(a) {
+      function Id(a) {
         for (; a && a.firstChild; ) a = a.firstChild;
         return a;
       }
-      function Ed(a, b) {
-        var c = Dd(a);
+      function Jd(a, b) {
+        var c = Id(a);
         a = 0;
         for (var d; c; ) {
           if (3 === c.nodeType) {
@@ -2193,10 +2200,10 @@
             }
             c = void 0;
           }
-          c = Dd(c);
+          c = Id(c);
         }
       }
-      function Fd(a) {
+      function Kd(a) {
         var b = a && a.nodeName && a.nodeName.toLowerCase();
         return (
           b &&
@@ -2205,11 +2212,11 @@
             "true" === a.contentEditable)
         );
       }
-      var Gd =
-          m.canUseDOM &&
+      var Ld =
+          l.canUseDOM &&
           "documentMode" in document &&
           11 >= document.documentMode,
-        Hd = {
+        Md = {
           select: {
             phasedRegistrationNames: {
               bubbled: "onSelect",
@@ -2220,14 +2227,14 @@
             )
           }
         },
-        Id = null,
-        Jd = null,
-        Kd = null,
-        Ld = !1;
-      function Md(a, b) {
-        if (Ld || null == Id || Id !== da()) return null;
-        var c = Id;
-        "selectionStart" in c && Fd(c)
+        Nd = null,
+        Od = null,
+        Pd = null,
+        Qd = !1;
+      function Rd(a, b) {
+        if (Qd || null == Nd || Nd !== da()) return null;
+        var c = Nd;
+        "selectionStart" in c && Kd(c)
           ? (c = { start: c.selectionStart, end: c.selectionEnd })
           : window.getSelection
             ? ((c = window.getSelection()),
@@ -2238,17 +2245,17 @@
                 focusOffset: c.focusOffset
               }))
             : (c = void 0);
-        return Kd && ea(Kd, c)
+        return Pd && ea(Pd, c)
           ? null
-          : ((Kd = c),
-            (a = S.getPooled(Hd.select, Jd, a, b)),
+          : ((Pd = c),
+            (a = T.getPooled(Md.select, Od, a, b)),
             (a.type = "select"),
-            (a.target = Id),
-            zb(a),
+            (a.target = Nd),
+            Ab(a),
             a);
       }
-      var Nd = {
-        eventTypes: Hd,
+      var Sd = {
+        eventTypes: Md,
         extractEvents: function(a, b, c, d) {
           var e =
               d.window === d
@@ -2257,11 +2264,11 @@
             f;
           if (!(f = !e)) {
             a: {
-              e = Cd(e);
-              f = Qa.onSelect;
+              e = Hd(e);
+              f = Sa.onSelect;
               for (var g = 0; g < f.length; g++) {
-                var k = f[g];
-                if (!e.hasOwnProperty(k) || !e[k]) {
+                var h = f[g];
+                if (!e.hasOwnProperty(h) || !e[h]) {
                   e = !1;
                   break a;
                 }
@@ -2274,55 +2281,55 @@
           e = b ? qb(b) : window;
           switch (a) {
             case "topFocus":
-              if (uc(e) || "true" === e.contentEditable)
-                (Id = e), (Jd = b), (Kd = null);
+              if (vc(e) || "true" === e.contentEditable)
+                (Nd = e), (Od = b), (Pd = null);
               break;
             case "topBlur":
-              Kd = Jd = Id = null;
+              Pd = Od = Nd = null;
               break;
             case "topMouseDown":
-              Ld = !0;
+              Qd = !0;
               break;
             case "topContextMenu":
             case "topMouseUp":
-              return (Ld = !1), Md(c, d);
+              return (Qd = !1), Rd(c, d);
             case "topSelectionChange":
-              if (Gd) break;
+              if (Ld) break;
             case "topKeyDown":
             case "topKeyUp":
-              return Md(c, d);
+              return Rd(c, d);
           }
           return null;
         }
       };
-      function Od(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function Td(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      S.augmentClass(Od, {
+      T.augmentClass(Td, {
         animationName: null,
         elapsedTime: null,
         pseudoElement: null
       });
-      function Pd(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function Ud(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      S.augmentClass(Pd, {
+      T.augmentClass(Ud, {
         clipboardData: function(a) {
           return "clipboardData" in a ? a.clipboardData : window.clipboardData;
         }
       });
-      function Qd(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function Vd(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      Xc.augmentClass(Qd, { relatedTarget: null });
-      function Rd(a) {
+      bd.augmentClass(Vd, { relatedTarget: null });
+      function Wd(a) {
         var b = a.keyCode;
         "charCode" in a
           ? ((a = a.charCode), 0 === a && 13 === b && (a = 13))
           : (a = b);
         return 32 <= a || 13 === a ? a : 0;
       }
-      var Sd = {
+      var Xd = {
           Esc: "Escape",
           Spacebar: " ",
           Left: "ArrowLeft",
@@ -2336,7 +2343,7 @@
           Scroll: "ScrollLock",
           MozPrintableKey: "Unidentified"
         },
-        Td = {
+        Yd = {
           8: "Backspace",
           9: "Tab",
           12: "Clear",
@@ -2374,19 +2381,19 @@
           145: "ScrollLock",
           224: "Meta"
         };
-      function Ud(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function Zd(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      Xc.augmentClass(Ud, {
+      bd.augmentClass(Zd, {
         key: function(a) {
           if (a.key) {
-            var b = Sd[a.key] || a.key;
+            var b = Xd[a.key] || a.key;
             if ("Unidentified" !== b) return b;
           }
           return "keypress" === a.type
-            ? ((a = Rd(a)), 13 === a ? "Enter" : String.fromCharCode(a))
+            ? ((a = Wd(a)), 13 === a ? "Enter" : String.fromCharCode(a))
             : "keydown" === a.type || "keyup" === a.type
-              ? Td[a.keyCode] || "Unidentified"
+              ? Yd[a.keyCode] || "Unidentified"
               : "";
         },
         location: null,
@@ -2396,27 +2403,27 @@
         metaKey: null,
         repeat: null,
         locale: null,
-        getModifierState: $c,
+        getModifierState: ed,
         charCode: function(a) {
-          return "keypress" === a.type ? Rd(a) : 0;
+          return "keypress" === a.type ? Wd(a) : 0;
         },
         keyCode: function(a) {
           return "keydown" === a.type || "keyup" === a.type ? a.keyCode : 0;
         },
         which: function(a) {
           return "keypress" === a.type
-            ? Rd(a)
+            ? Wd(a)
             : "keydown" === a.type || "keyup" === a.type ? a.keyCode : 0;
         }
       });
-      function Vd(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function $d(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      ad.augmentClass(Vd, { dataTransfer: null });
-      function Wd(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      fd.augmentClass($d, { dataTransfer: null });
+      function ae(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      Xc.augmentClass(Wd, {
+      bd.augmentClass(ae, {
         touches: null,
         targetTouches: null,
         changedTouches: null,
@@ -2424,20 +2431,20 @@
         metaKey: null,
         ctrlKey: null,
         shiftKey: null,
-        getModifierState: $c
+        getModifierState: ed
       });
-      function Xd(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function be(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      S.augmentClass(Xd, {
+      T.augmentClass(be, {
         propertyName: null,
         elapsedTime: null,
         pseudoElement: null
       });
-      function Yd(a, b, c, d) {
-        return S.call(this, a, b, c, d);
+      function ce(a, b, c, d) {
+        return T.call(this, a, b, c, d);
       }
-      ad.augmentClass(Yd, {
+      fd.augmentClass(ce, {
         deltaX: function(a) {
           return "deltaX" in a
             ? a.deltaX
@@ -2453,8 +2460,8 @@
         deltaZ: null,
         deltaMode: null
       });
-      var Zd = {},
-        $d = {};
+      var de = {},
+        ee = {};
       "abort animationEnd animationIteration animationStart blur cancel canPlay canPlayThrough click close contextMenu copy cut doubleClick drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error focus input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing progress rateChange reset scroll seeked seeking stalled submit suspend timeUpdate toggle touchCancel touchEnd touchMove touchStart transitionEnd volumeChange waiting wheel"
         .split(" ")
         .forEach(function(a) {
@@ -2465,24 +2472,24 @@
             phasedRegistrationNames: { bubbled: c, captured: c + "Capture" },
             dependencies: [b]
           };
-          Zd[a] = c;
-          $d[b] = c;
+          de[a] = c;
+          ee[b] = c;
         });
-      var ae = {
-        eventTypes: Zd,
+      var fe = {
+        eventTypes: de,
         extractEvents: function(a, b, c, d) {
-          var e = $d[a];
+          var e = ee[a];
           if (!e) return null;
           switch (a) {
             case "topKeyPress":
-              if (0 === Rd(c)) return null;
+              if (0 === Wd(c)) return null;
             case "topKeyDown":
             case "topKeyUp":
-              a = Ud;
+              a = Zd;
               break;
             case "topBlur":
             case "topFocus":
-              a = Qd;
+              a = Vd;
               break;
             case "topClick":
               if (2 === c.button) return null;
@@ -2493,7 +2500,7 @@
             case "topMouseOut":
             case "topMouseOver":
             case "topContextMenu":
-              a = ad;
+              a = fd;
               break;
             case "topDrag":
             case "topDragEnd":
@@ -2503,81 +2510,81 @@
             case "topDragOver":
             case "topDragStart":
             case "topDrop":
-              a = Vd;
+              a = $d;
               break;
             case "topTouchCancel":
             case "topTouchEnd":
             case "topTouchMove":
             case "topTouchStart":
-              a = Wd;
+              a = ae;
               break;
             case "topAnimationEnd":
             case "topAnimationIteration":
             case "topAnimationStart":
-              a = Od;
+              a = Td;
               break;
             case "topTransitionEnd":
-              a = Xd;
+              a = be;
               break;
             case "topScroll":
-              a = Xc;
+              a = bd;
               break;
             case "topWheel":
-              a = Yd;
+              a = ce;
               break;
             case "topCopy":
             case "topCut":
             case "topPaste":
-              a = Pd;
+              a = Ud;
               break;
             default:
-              a = S;
+              a = T;
           }
           b = a.getPooled(e, b, c, d);
-          zb(b);
+          Ab(b);
           return b;
         }
       };
-      nd = function(a, b, c, d) {
+      sd = function(a, b, c, d) {
         a = jb(a, b, c, d);
         kb(a);
         lb(!1);
       };
-      db.injectEventPluginOrder(
+      hb.injectEventPluginOrder(
         "ResponderEventPlugin SimpleEventPlugin TapEventPlugin EnterLeaveEventPlugin ChangeEventPlugin SelectEventPlugin BeforeInputEventPlugin".split(
           " "
         )
       );
-      Ua = sb.getFiberCurrentPropsFromNode;
-      Va = sb.getInstanceFromNode;
-      Wa = sb.getNodeFromInstance;
-      db.injectEventPluginsByName({
-        SimpleEventPlugin: ae,
-        EnterLeaveEventPlugin: cd,
-        ChangeEventPlugin: Wc,
-        SelectEventPlugin: Nd,
-        BeforeInputEventPlugin: hc
+      Wa = sb.getFiberCurrentPropsFromNode;
+      Xa = sb.getInstanceFromNode;
+      Ya = sb.getNodeFromInstance;
+      hb.injectEventPluginsByName({
+        SimpleEventPlugin: fe,
+        EnterLeaveEventPlugin: hd,
+        ChangeEventPlugin: ad,
+        SelectEventPlugin: Sd,
+        BeforeInputEventPlugin: ic
       });
-      var be = [],
-        ce = -1;
+      var ge = [],
+        he = -1;
       function V(a) {
-        0 > ce || ((a.current = be[ce]), (be[ce] = null), ce--);
+        0 > he || ((a.current = ge[he]), (ge[he] = null), he--);
       }
       function W(a, b) {
-        ce++;
-        be[ce] = a.current;
+        he++;
+        ge[he] = a.current;
         a.current = b;
       }
       new Set();
-      var de = { current: C },
+      var ie = { current: D },
         X = { current: !1 },
-        ee = C;
-      function fe(a) {
-        return ge(a) ? ee : de.current;
+        je = D;
+      function ke(a) {
+        return le(a) ? je : ie.current;
       }
-      function he(a, b) {
+      function me(a, b) {
         var c = a.type.contextTypes;
-        if (!c) return C;
+        if (!c) return D;
         var d = a.stateNode;
         if (d && d.__reactInternalMemoizedUnmaskedChildContext === b)
           return d.__reactInternalMemoizedMaskedChildContext;
@@ -2590,43 +2597,43 @@
           (a.__reactInternalMemoizedMaskedChildContext = e));
         return e;
       }
-      function ge(a) {
+      function le(a) {
         return 2 === a.tag && null != a.type.childContextTypes;
       }
-      function ie(a) {
-        ge(a) && (V(X, a), V(de, a));
+      function ne(a) {
+        le(a) && (V(X, a), V(ie, a));
       }
-      function je(a, b, c) {
-        null != de.cursor ? D("168") : void 0;
-        W(de, b, a);
+      function oe(a, b, c) {
+        null != ie.cursor ? E("168") : void 0;
+        W(ie, b, a);
         W(X, c, a);
       }
-      function ke(a, b) {
+      function pe(a, b) {
         var c = a.stateNode,
           d = a.type.childContextTypes;
         if ("function" !== typeof c.getChildContext) return b;
         c = c.getChildContext();
-        for (var e in c) e in d ? void 0 : D("108", ed(a) || "Unknown", e);
-        return A({}, b, c);
+        for (var e in c) e in d ? void 0 : E("108", jd(a) || "Unknown", e);
+        return B({}, b, c);
       }
-      function le(a) {
-        if (!ge(a)) return !1;
+      function qe(a) {
+        if (!le(a)) return !1;
         var b = a.stateNode;
-        b = (b && b.__reactInternalMemoizedMergedChildContext) || C;
-        ee = de.current;
-        W(de, b, a);
+        b = (b && b.__reactInternalMemoizedMergedChildContext) || D;
+        je = ie.current;
+        W(ie, b, a);
         W(X, X.current, a);
         return !0;
       }
-      function me(a, b) {
+      function re(a, b) {
         var c = a.stateNode;
-        c ? void 0 : D("169");
+        c ? void 0 : E("169");
         if (b) {
-          var d = ke(a, ee);
+          var d = pe(a, je);
           c.__reactInternalMemoizedMergedChildContext = d;
           V(X, a);
-          V(de, a);
-          W(de, d, a);
+          V(ie, a);
+          W(ie, d, a);
         } else V(X, a);
         W(X, b, a);
       }
@@ -2643,7 +2650,7 @@
         this.expirationTime = 0;
         this.alternate = null;
       }
-      function ne(a, b, c) {
+      function se(a, b, c) {
         var d = a.alternate;
         null === d
           ? ((d = new Y(a.tag, a.key, a.internalContextTag)),
@@ -2666,7 +2673,7 @@
         d.ref = a.ref;
         return d;
       }
-      function oe(a, b, c) {
+      function te(a, b, c) {
         var d = void 0,
           e = a.type,
           f = a.key;
@@ -2681,35 +2688,35 @@
             ? ((d = new Y(5, f, b)), (d.type = e), (d.pendingProps = a.props))
             : "object" === typeof e && null !== e && "number" === typeof e.tag
               ? ((d = e), (d.pendingProps = a.props))
-              : D("130", null == e ? e : typeof e, "");
+              : E("130", null == e ? e : typeof e, "");
         d.expirationTime = c;
         return d;
       }
-      function pe(a, b, c, d) {
+      function ue(a, b, c, d) {
         b = new Y(10, d, b);
         b.pendingProps = a;
         b.expirationTime = c;
         return b;
       }
-      function qe(a, b, c) {
+      function ve(a, b, c) {
         b = new Y(6, null, b);
         b.pendingProps = a;
         b.expirationTime = c;
         return b;
       }
-      function re(a, b, c) {
+      function we(a, b, c) {
         b = new Y(7, a.key, b);
         b.type = a.handler;
         b.pendingProps = a;
         b.expirationTime = c;
         return b;
       }
-      function se(a, b, c) {
+      function xe(a, b, c) {
         a = new Y(9, null, b);
         a.expirationTime = c;
         return a;
       }
-      function te(a, b, c) {
+      function ye(a, b, c) {
         b = new Y(4, a.key, b);
         b.pendingProps = a.children || [];
         b.expirationTime = c;
@@ -2720,37 +2727,37 @@
         };
         return b;
       }
-      var ue = null,
-        ve = null;
-      function we(a) {
+      var ze = null,
+        Ae = null;
+      function Be(a) {
         return function(b) {
           try {
             return a(b);
           } catch (c) {}
         };
       }
-      function xe(a) {
+      function Ce(a) {
         if ("undefined" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__) return !1;
         var b = __REACT_DEVTOOLS_GLOBAL_HOOK__;
         if (b.isDisabled || !b.supportsFiber) return !0;
         try {
           var c = b.inject(a);
-          ue = we(function(a) {
+          ze = Be(function(a) {
             return b.onCommitFiberRoot(c, a);
           });
-          ve = we(function(a) {
+          Ae = Be(function(a) {
             return b.onCommitFiberUnmount(c, a);
           });
         } catch (d) {}
         return !0;
       }
-      function ye(a) {
-        "function" === typeof ue && ue(a);
+      function De(a) {
+        "function" === typeof ze && ze(a);
       }
-      function ze(a) {
-        "function" === typeof ve && ve(a);
+      function Ee(a) {
+        "function" === typeof Ae && Ae(a);
       }
-      function Ae(a) {
+      function Fe(a) {
         return {
           baseState: a,
           expirationTime: 0,
@@ -2761,32 +2768,32 @@
           isInitialized: !1
         };
       }
-      function Be(a, b) {
+      function Ge(a, b) {
         null === a.last
           ? (a.first = a.last = b)
           : ((a.last.next = b), (a.last = b));
         if (0 === a.expirationTime || a.expirationTime > b.expirationTime)
           a.expirationTime = b.expirationTime;
       }
-      function Ce(a, b) {
+      function He(a, b) {
         var c = a.alternate,
           d = a.updateQueue;
-        null === d && (d = a.updateQueue = Ae(null));
+        null === d && (d = a.updateQueue = Fe(null));
         null !== c
-          ? ((a = c.updateQueue), null === a && (a = c.updateQueue = Ae(null)))
+          ? ((a = c.updateQueue), null === a && (a = c.updateQueue = Fe(null)))
           : (a = null);
         a = a !== d ? a : null;
         null === a
-          ? Be(d, b)
+          ? Ge(d, b)
           : null === d.last || null === a.last
-            ? (Be(d, b), Be(a, b))
-            : (Be(d, b), (a.last = b));
+            ? (Ge(d, b), Ge(a, b))
+            : (Ge(d, b), (a.last = b));
       }
-      function De(a, b, c, d) {
+      function Ie(a, b, c, d) {
         a = a.partialState;
         return "function" === typeof a ? a.call(b, c, d) : a;
       }
-      function Ke(a, b, c, d, e, f) {
+      function Je(a, b, c, d, e, f) {
         null !== a &&
           a.updateQueue === c &&
           (c = b.updateQueue = {
@@ -2802,55 +2809,55 @@
         c.isInitialized
           ? (a = c.baseState)
           : ((a = c.baseState = b.memoizedState), (c.isInitialized = !0));
-        for (var g = !0, k = c.first, h = !1; null !== k; ) {
-          var r = k.expirationTime;
-          if (r > f) {
-            var n = c.expirationTime;
-            if (0 === n || n > r) c.expirationTime = r;
-            h || ((h = !0), (c.baseState = a));
+        for (var g = !0, h = c.first, k = !1; null !== h; ) {
+          var q = h.expirationTime;
+          if (q > f) {
+            var v = c.expirationTime;
+            if (0 === v || v > q) c.expirationTime = q;
+            k || ((k = !0), (c.baseState = a));
           } else {
-            h || ((c.first = k.next), null === c.first && (c.last = null));
-            if (k.isReplace) (a = De(k, d, a, e)), (g = !0);
-            else if ((r = De(k, d, a, e)))
-              (a = g ? A({}, a, r) : A(a, r)), (g = !1);
-            k.isForced && (c.hasForceUpdate = !0);
-            null !== k.callback &&
-              ((r = c.callbackList),
-              null === r && (r = c.callbackList = []),
-              r.push(k));
+            k || ((c.first = h.next), null === c.first && (c.last = null));
+            if (h.isReplace) (a = Ie(h, d, a, e)), (g = !0);
+            else if ((q = Ie(h, d, a, e)))
+              (a = g ? B({}, a, q) : B(a, q)), (g = !1);
+            h.isForced && (c.hasForceUpdate = !0);
+            null !== h.callback &&
+              ((q = c.callbackList),
+              null === q && (q = c.callbackList = []),
+              q.push(h));
           }
-          k = k.next;
+          h = h.next;
         }
         null !== c.callbackList
           ? (b.effectTag |= 32)
           : null !== c.first || c.hasForceUpdate || (b.updateQueue = null);
-        h || (c.baseState = a);
+        k || (c.baseState = a);
         return a;
       }
-      function Le(a, b) {
+      function Ke(a, b) {
         var c = a.callbackList;
         if (null !== c)
           for (a.callbackList = null, a = 0; a < c.length; a++) {
             var d = c[a],
               e = d.callback;
             d.callback = null;
-            "function" !== typeof e ? D("191", e) : void 0;
+            "function" !== typeof e ? E("191", e) : void 0;
             e.call(b);
           }
       }
-      function Me(a, b, c, d) {
+      function Le(a, b, c, d) {
         function e(a, b) {
           b.updater = f;
           a.stateNode = b;
           b._reactInternalFiber = a;
         }
         var f = {
-          isMounted: gd,
+          isMounted: ld,
           enqueueSetState: function(c, d, e) {
             c = c._reactInternalFiber;
             e = void 0 === e ? null : e;
             var g = b(c);
-            Ce(c, {
+            He(c, {
               expirationTime: g,
               partialState: d,
               callback: e,
@@ -2864,9 +2871,9 @@
           enqueueReplaceState: function(c, d, e) {
             c = c._reactInternalFiber;
             e = void 0 === e ? null : e;
-            var f = b(c);
-            Ce(c, {
-              expirationTime: f,
+            var g = b(c);
+            He(c, {
+              expirationTime: g,
               partialState: d,
               callback: e,
               isReplace: !0,
@@ -2874,13 +2881,13 @@
               nextCallback: null,
               next: null
             });
-            a(c, f);
+            a(c, g);
           },
           enqueueForceUpdate: function(c, d) {
             c = c._reactInternalFiber;
             d = void 0 === d ? null : d;
             var e = b(c);
-            Ce(c, {
+            He(c, {
               expirationTime: e,
               partialState: null,
               callback: d,
@@ -2896,9 +2903,9 @@
           adoptClassInstance: e,
           constructClassInstance: function(a, b) {
             var c = a.type,
-              d = fe(a),
+              d = ke(a),
               f = 2 === a.tag && null != a.type.contextTypes,
-              g = f ? he(a, d) : C;
+              g = f ? me(a, d) : D;
             b = new c(b, g);
             e(a, b);
             f &&
@@ -2912,12 +2919,12 @@
               d = a.stateNode,
               e = d.state || null,
               g = a.pendingProps;
-            g ? void 0 : D("158");
-            var k = fe(a);
+            g ? void 0 : E("158");
+            var h = ke(a);
             d.props = g;
             d.state = a.memoizedState = e;
-            d.refs = C;
-            d.context = he(a, k);
+            d.refs = D;
+            d.context = me(a, h);
             null != a.type &&
               null != a.type.prototype &&
               !0 === a.type.prototype.unstable_isAsyncReactComponent &&
@@ -2927,29 +2934,29 @@
               d.componentWillMount(),
               e !== d.state && f.enqueueReplaceState(d, d.state, null),
               (e = a.updateQueue),
-              null !== e && (d.state = Ke(c, a, e, d, g, b)));
+              null !== e && (d.state = Je(c, a, e, d, g, b)));
             "function" === typeof d.componentDidMount && (a.effectTag |= 4);
           },
           updateClassInstance: function(a, b, e) {
             var g = b.stateNode;
             g.props = b.memoizedProps;
             g.state = b.memoizedState;
-            var k = b.memoizedProps,
-              h = b.pendingProps;
-            h || ((h = k), null == h ? D("159") : void 0);
+            var h = b.memoizedProps,
+              k = b.pendingProps;
+            k || ((k = h), null == k ? E("159") : void 0);
             var u = g.context,
-              x = fe(b);
-            x = he(b, x);
+              z = ke(b);
+            z = me(b, z);
             "function" !== typeof g.componentWillReceiveProps ||
-              (k === h && u === x) ||
+              (h === k && u === z) ||
               ((u = g.state),
-              g.componentWillReceiveProps(h, x),
+              g.componentWillReceiveProps(k, z),
               g.state !== u && f.enqueueReplaceState(g, g.state, null));
             u = b.memoizedState;
-            e = null !== b.updateQueue ? Ke(a, b, b.updateQueue, g, h, e) : u;
+            e = null !== b.updateQueue ? Je(a, b, b.updateQueue, g, k, e) : u;
             if (
               !(
-                k !== h ||
+                h !== k ||
                 u !== e ||
                 X.current ||
                 (null !== b.updateQueue && b.updateQueue.hasForceUpdate)
@@ -2957,102 +2964,82 @@
             )
               return (
                 "function" !== typeof g.componentDidUpdate ||
-                  (k === a.memoizedProps && u === a.memoizedState) ||
+                  (h === a.memoizedProps && u === a.memoizedState) ||
                   (b.effectTag |= 4),
                 !1
               );
-            var F = h;
+            var G = k;
             if (
-              null === k ||
+              null === h ||
               (null !== b.updateQueue && b.updateQueue.hasForceUpdate)
             )
-              F = !0;
+              G = !0;
             else {
-              var L = b.stateNode,
-                G = b.type;
-              F =
-                "function" === typeof L.shouldComponentUpdate
-                  ? L.shouldComponentUpdate(F, e, x)
-                  : G.prototype && G.prototype.isPureReactComponent
-                    ? !ea(k, F) || !ea(u, e)
+              var I = b.stateNode,
+                L = b.type;
+              G =
+                "function" === typeof I.shouldComponentUpdate
+                  ? I.shouldComponentUpdate(G, e, z)
+                  : L.prototype && L.prototype.isPureReactComponent
+                    ? !ea(h, G) || !ea(u, e)
                     : !0;
             }
-            F
+            G
               ? ("function" === typeof g.componentWillUpdate &&
-                  g.componentWillUpdate(h, e, x),
+                  g.componentWillUpdate(k, e, z),
                 "function" === typeof g.componentDidUpdate &&
                   (b.effectTag |= 4))
               : ("function" !== typeof g.componentDidUpdate ||
-                  (k === a.memoizedProps && u === a.memoizedState) ||
+                  (h === a.memoizedProps && u === a.memoizedState) ||
                   (b.effectTag |= 4),
-                c(b, h),
+                c(b, k),
                 d(b, e));
-            g.props = h;
+            g.props = k;
             g.state = e;
-            g.context = x;
-            return F;
+            g.context = z;
+            return G;
           }
         };
       }
-      var Ne =
-        ("function" === typeof Symbol &&
-          Symbol["for"] &&
-          Symbol["for"]("react.portal")) ||
-        60106;
-      function Oe(a, b, c) {
-        var d =
-          3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : null;
-        return {
-          $$typeof: Ne,
-          key: null == d ? null : "" + d,
-          children: a,
-          containerInfo: b,
-          implementation: c
-        };
-      }
-      var Pe = Array.isArray,
-        Qe = "function" === typeof Symbol && Symbol.iterator,
-        Re,
-        Se,
-        Te,
-        Ue;
-      "function" === typeof Symbol && Symbol["for"]
-        ? ((Re = Symbol["for"]("react.element")),
-          (Se = Symbol["for"]("react.call")),
-          (Te = Symbol["for"]("react.return")),
-          (Ue = Symbol["for"]("react.fragment")))
-        : ((Re = 60103), (Se = 60104), (Te = 60105), (Ue = 60107));
-      function Ve(a) {
+      var Qe = "function" === typeof Symbol && Symbol["for"],
+        Re = Qe ? Symbol["for"]("react.element") : 60103,
+        Se = Qe ? Symbol["for"]("react.call") : 60104,
+        Te = Qe ? Symbol["for"]("react.return") : 60105,
+        Ue = Qe ? Symbol["for"]("react.portal") : 60106,
+        Ve = Qe ? Symbol["for"]("react.fragment") : 60107,
+        We = "function" === typeof Symbol && Symbol.iterator;
+      function Xe(a) {
         if (null === a || "undefined" === typeof a) return null;
-        a = (Qe && a[Qe]) || a["@@iterator"];
+        a = (We && a[We]) || a["@@iterator"];
         return "function" === typeof a ? a : null;
       }
-      function We(a, b) {
+      var Ye = Array.isArray;
+      function Ze(a, b) {
         var c = b.ref;
         if (null !== c && "function" !== typeof c) {
           if (b._owner) {
             b = b._owner;
             var d = void 0;
-            b && (2 !== b.tag ? D("110") : void 0, (d = b.stateNode));
-            d ? void 0 : D("147", c);
+            b && (2 !== b.tag ? E("110") : void 0, (d = b.stateNode));
+            d ? void 0 : E("147", c);
             var e = "" + c;
             if (null !== a && null !== a.ref && a.ref._stringRef === e)
               return a.ref;
             a = function(a) {
-              var b = d.refs === C ? (d.refs = {}) : d.refs;
+              var b = d.refs === D ? (d.refs = {}) : d.refs;
               null === a ? delete b[e] : (b[e] = a);
             };
             a._stringRef = e;
             return a;
           }
-          "string" !== typeof c ? D("148") : void 0;
-          b._owner ? void 0 : D("149", c);
+          "string" !== typeof c ? E("148") : void 0;
+          b._owner ? void 0 : E("149", c);
         }
         return c;
       }
-      function Xe(a, b) {
+      function $e(a, b) {
         "textarea" !== a.type &&
-          D(
+          E(
             "31",
             "[object Object]" === Object.prototype.toString.call(b)
               ? "object with keys {" + Object.keys(b).join(", ") + "}"
@@ -3060,155 +3047,148 @@
             ""
           );
       }
-      function Ye(a, b) {
-        function c(c, d) {
-          if (b) {
-            if (!a) {
-              if (null === d.alternate) return;
-              d = d.alternate;
-            }
-            var p = c.lastEffect;
-            null !== p
-              ? ((p.nextEffect = d), (c.lastEffect = d))
-              : (c.firstEffect = c.lastEffect = d);
-            d.nextEffect = null;
-            d.effectTag = 8;
+      function af(a) {
+        function b(b, c) {
+          if (a) {
+            var d = b.lastEffect;
+            null !== d
+              ? ((d.nextEffect = c), (b.lastEffect = c))
+              : (b.firstEffect = b.lastEffect = c);
+            c.nextEffect = null;
+            c.effectTag = 8;
           }
         }
-        function d(a, d) {
-          if (!b) return null;
-          for (; null !== d; ) c(a, d), (d = d.sibling);
+        function c(c, d) {
+          if (!a) return null;
+          for (; null !== d; ) b(c, d), (d = d.sibling);
           return null;
         }
-        function e(a, b) {
+        function d(a, b) {
           for (a = new Map(); null !== b; )
             null !== b.key ? a.set(b.key, b) : a.set(b.index, b),
               (b = b.sibling);
           return a;
         }
-        function f(b, c, d) {
-          if (a) return (b = ne(b, c, d)), (b.index = 0), (b.sibling = null), b;
-          b.expirationTime = d;
-          b.effectTag = 0;
-          b.index = 0;
-          b.sibling = null;
-          b.pendingProps = c;
-          return b;
+        function e(a, b, c) {
+          a = se(a, b, c);
+          a.index = 0;
+          a.sibling = null;
+          return a;
         }
-        function g(a, c, d) {
-          a.index = d;
-          if (!b) return c;
-          d = a.alternate;
+        function f(b, c, d) {
+          b.index = d;
+          if (!a) return c;
+          d = b.alternate;
           if (null !== d)
-            return (d = d.index), d < c ? ((a.effectTag = 2), c) : d;
-          a.effectTag = 2;
+            return (d = d.index), d < c ? ((b.effectTag = 2), c) : d;
+          b.effectTag = 2;
           return c;
         }
-        function k(a) {
-          b && null === a.alternate && (a.effectTag = 2);
-          return a;
+        function g(b) {
+          a && null === b.alternate && (b.effectTag = 2);
+          return b;
         }
         function h(a, b, c, d) {
           if (null === b || 6 !== b.tag)
-            return (b = qe(c, a.internalContextTag, d)), (b["return"] = a), b;
-          b = f(b, c, d);
+            return (b = ve(c, a.internalContextTag, d)), (b["return"] = a), b;
+          b = e(b, c, d);
           b["return"] = a;
           return b;
         }
-        function r(a, b, c, d) {
+        function k(a, b, c, d) {
           if (null !== b && b.type === c.type)
             return (
-              (d = f(b, c.props, d)), (d.ref = We(b, c)), (d["return"] = a), d
+              (d = e(b, c.props, d)), (d.ref = Ze(b, c)), (d["return"] = a), d
             );
-          d = oe(c, a.internalContextTag, d);
-          d.ref = We(b, c);
+          d = te(c, a.internalContextTag, d);
+          d.ref = Ze(b, c);
           d["return"] = a;
           return d;
         }
-        function n(a, b, c, d) {
+        function q(a, b, c, d) {
           if (null === b || 7 !== b.tag)
-            return (b = re(c, a.internalContextTag, d)), (b["return"] = a), b;
-          b = f(b, c, d);
+            return (b = we(c, a.internalContextTag, d)), (b["return"] = a), b;
+          b = e(b, c, d);
           b["return"] = a;
           return b;
         }
-        function y(a, b, c, d) {
+        function v(a, b, c, d) {
           if (null === b || 9 !== b.tag)
             return (
-              (b = se(c, a.internalContextTag, d)),
+              (b = xe(c, a.internalContextTag, d)),
               (b.type = c.value),
               (b["return"] = a),
               b
             );
-          b = f(b, null, d);
+          b = e(b, null, d);
           b.type = c.value;
           b["return"] = a;
           return b;
         }
-        function u(a, b, c, d) {
+        function y(a, b, c, d) {
           if (
             null === b ||
             4 !== b.tag ||
             b.stateNode.containerInfo !== c.containerInfo ||
             b.stateNode.implementation !== c.implementation
           )
-            return (b = te(c, a.internalContextTag, d)), (b["return"] = a), b;
-          b = f(b, c.children || [], d);
+            return (b = ye(c, a.internalContextTag, d)), (b["return"] = a), b;
+          b = e(b, c.children || [], d);
           b["return"] = a;
           return b;
         }
-        function x(a, b, c, d, e) {
+        function u(a, b, c, d, f) {
           if (null === b || 10 !== b.tag)
             return (
-              (b = pe(c, a.internalContextTag, d, e)), (b["return"] = a), b
+              (b = ue(c, a.internalContextTag, d, f)), (b["return"] = a), b
             );
-          b = f(b, c, d);
+          b = e(b, c, d);
           b["return"] = a;
           return b;
         }
-        function F(a, b, c) {
+        function z(a, b, c) {
           if ("string" === typeof b || "number" === typeof b)
             return (
-              (b = qe("" + b, a.internalContextTag, c)), (b["return"] = a), b
+              (b = ve("" + b, a.internalContextTag, c)), (b["return"] = a), b
             );
           if ("object" === typeof b && null !== b) {
             switch (b.$$typeof) {
               case Re:
-                if (b.type === Ue)
+                if (b.type === Ve)
                   return (
-                    (b = pe(b.props.children, a.internalContextTag, c, b.key)),
+                    (b = ue(b.props.children, a.internalContextTag, c, b.key)),
                     (b["return"] = a),
                     b
                   );
-                c = oe(b, a.internalContextTag, c);
-                c.ref = We(null, b);
+                c = te(b, a.internalContextTag, c);
+                c.ref = Ze(null, b);
                 c["return"] = a;
                 return c;
               case Se:
                 return (
-                  (b = re(b, a.internalContextTag, c)), (b["return"] = a), b
+                  (b = we(b, a.internalContextTag, c)), (b["return"] = a), b
                 );
               case Te:
                 return (
-                  (c = se(b, a.internalContextTag, c)),
+                  (c = xe(b, a.internalContextTag, c)),
                   (c.type = b.value),
                   (c["return"] = a),
                   c
                 );
-              case Ne:
+              case Ue:
                 return (
-                  (b = te(b, a.internalContextTag, c)), (b["return"] = a), b
+                  (b = ye(b, a.internalContextTag, c)), (b["return"] = a), b
                 );
             }
-            if (Pe(b) || Ve(b))
+            if (Ye(b) || Xe(b))
               return (
-                (b = pe(b, a.internalContextTag, c, null)), (b["return"] = a), b
+                (b = ue(b, a.internalContextTag, c, null)), (b["return"] = a), b
               );
-            Xe(a, b);
+            $e(a, b);
           }
           return null;
         }
-        function L(a, b, c, d) {
+        function G(a, b, c, d) {
           var e = null !== b ? b.key : null;
           if ("string" === typeof c || "number" === typeof c)
             return null !== e ? null : h(a, b, "" + c, d);
@@ -3216,23 +3196,23 @@
             switch (c.$$typeof) {
               case Re:
                 return c.key === e
-                  ? c.type === Ue
-                    ? x(a, b, c.props.children, d, e)
-                    : r(a, b, c, d)
+                  ? c.type === Ve
+                    ? u(a, b, c.props.children, d, e)
+                    : k(a, b, c, d)
                   : null;
               case Se:
-                return c.key === e ? n(a, b, c, d) : null;
+                return c.key === e ? q(a, b, c, d) : null;
               case Te:
-                return null === e ? y(a, b, c, d) : null;
-              case Ne:
-                return c.key === e ? u(a, b, c, d) : null;
+                return null === e ? v(a, b, c, d) : null;
+              case Ue:
+                return c.key === e ? y(a, b, c, d) : null;
             }
-            if (Pe(c) || Ve(c)) return null !== e ? null : x(a, b, c, d, null);
-            Xe(a, c);
+            if (Ye(c) || Xe(c)) return null !== e ? null : u(a, b, c, d, null);
+            $e(a, c);
           }
           return null;
         }
-        function G(a, b, c, d, e) {
+        function I(a, b, c, d, e) {
           if ("string" === typeof d || "number" === typeof d)
             return (a = a.get(c) || null), h(b, a, "" + d, e);
           if ("object" === typeof d && null !== d) {
@@ -3240,315 +3220,312 @@
               case Re:
                 return (
                   (a = a.get(null === d.key ? c : d.key) || null),
-                  d.type === Ue
-                    ? x(b, a, d.props.children, e, d.key)
-                    : r(b, a, d, e)
+                  d.type === Ve
+                    ? u(b, a, d.props.children, e, d.key)
+                    : k(b, a, d, e)
                 );
               case Se:
                 return (
-                  (a = a.get(null === d.key ? c : d.key) || null), n(b, a, d, e)
+                  (a = a.get(null === d.key ? c : d.key) || null), q(b, a, d, e)
                 );
               case Te:
-                return (a = a.get(c) || null), y(b, a, d, e);
-              case Ne:
+                return (a = a.get(c) || null), v(b, a, d, e);
+              case Ue:
                 return (
-                  (a = a.get(null === d.key ? c : d.key) || null), u(b, a, d, e)
+                  (a = a.get(null === d.key ? c : d.key) || null), y(b, a, d, e)
                 );
             }
-            if (Pe(d) || Ve(d))
-              return (a = a.get(c) || null), x(b, a, d, e, null);
-            Xe(b, d);
+            if (Ye(d) || Xe(d))
+              return (a = a.get(c) || null), u(b, a, d, e, null);
+            $e(b, d);
           }
           return null;
         }
-        function T(a, f, v, k) {
+        function L(e, g, m, A) {
           for (
-            var p = null, z = null, l = f, h = (f = 0), t = null;
-            null !== l && h < v.length;
-            h++
+            var h = null, r = null, n = g, w = (g = 0), k = null;
+            null !== n && w < m.length;
+            w++
           ) {
-            l.index > h ? ((t = l), (l = null)) : (t = l.sibling);
-            var w = L(a, l, v[h], k);
-            if (null === w) {
-              null === l && (l = t);
+            n.index > w ? ((k = n), (n = null)) : (k = n.sibling);
+            var x = G(e, n, m[w], A);
+            if (null === x) {
+              null === n && (n = k);
               break;
             }
-            b && l && null === w.alternate && c(a, l);
-            f = g(w, f, h);
-            null === z ? (p = w) : (z.sibling = w);
-            z = w;
-            l = t;
+            a && n && null === x.alternate && b(e, n);
+            g = f(x, g, w);
+            null === r ? (h = x) : (r.sibling = x);
+            r = x;
+            n = k;
           }
-          if (h === v.length) return d(a, l), p;
-          if (null === l) {
-            for (; h < v.length; h++)
-              if ((l = F(a, v[h], k)))
-                (f = g(l, f, h)),
-                  null === z ? (p = l) : (z.sibling = l),
-                  (z = l);
-            return p;
+          if (w === m.length) return c(e, n), h;
+          if (null === n) {
+            for (; w < m.length; w++)
+              if ((n = z(e, m[w], A)))
+                (g = f(n, g, w)),
+                  null === r ? (h = n) : (r.sibling = n),
+                  (r = n);
+            return h;
           }
-          for (l = e(a, l); h < v.length; h++)
-            if ((t = G(l, a, h, v[h], k))) {
-              if (b && null !== t.alternate)
-                l["delete"](null === t.key ? h : t.key);
-              f = g(t, f, h);
-              null === z ? (p = t) : (z.sibling = t);
-              z = t;
+          for (n = d(e, n); w < m.length; w++)
+            if ((k = I(n, e, w, m[w], A))) {
+              if (a && null !== k.alternate)
+                n["delete"](null === k.key ? w : k.key);
+              g = f(k, g, w);
+              null === r ? (h = k) : (r.sibling = k);
+              r = k;
             }
-          b &&
-            l.forEach(function(b) {
-              return c(a, b);
+          a &&
+            n.forEach(function(a) {
+              return b(e, a);
             });
-          return p;
+          return h;
         }
-        function I(a, f, v, k) {
-          var p = Ve(v);
-          "function" !== typeof p ? D("150") : void 0;
-          v = p.call(v);
-          null == v ? D("151") : void 0;
+        function N(e, g, m, A) {
+          var h = Xe(m);
+          "function" !== typeof h ? E("150") : void 0;
+          m = h.call(m);
+          null == m ? E("151") : void 0;
           for (
-            var h = (p = null), l = f, z = (f = 0), t = null, w = v.next();
-            null !== l && !w.done;
-            z++, w = v.next()
+            var r = (h = null), n = g, w = (g = 0), k = null, x = m.next();
+            null !== n && !x.done;
+            w++, x = m.next()
           ) {
-            l.index > z ? ((t = l), (l = null)) : (t = l.sibling);
-            var n = L(a, l, w.value, k);
-            if (null === n) {
-              l || (l = t);
+            n.index > w ? ((k = n), (n = null)) : (k = n.sibling);
+            var J = G(e, n, x.value, A);
+            if (null === J) {
+              n || (n = k);
               break;
             }
-            b && l && null === n.alternate && c(a, l);
-            f = g(n, f, z);
-            null === h ? (p = n) : (h.sibling = n);
-            h = n;
-            l = t;
+            a && n && null === J.alternate && b(e, n);
+            g = f(J, g, w);
+            null === r ? (h = J) : (r.sibling = J);
+            r = J;
+            n = k;
           }
-          if (w.done) return d(a, l), p;
-          if (null === l) {
-            for (; !w.done; z++, w = v.next())
-              (w = F(a, w.value, k)),
-                null !== w &&
-                  ((f = g(w, f, z)),
-                  null === h ? (p = w) : (h.sibling = w),
-                  (h = w));
-            return p;
+          if (x.done) return c(e, n), h;
+          if (null === n) {
+            for (; !x.done; w++, x = m.next())
+              (x = z(e, x.value, A)),
+                null !== x &&
+                  ((g = f(x, g, w)),
+                  null === r ? (h = x) : (r.sibling = x),
+                  (r = x));
+            return h;
           }
-          for (l = e(a, l); !w.done; z++, w = v.next())
-            if (((w = G(l, a, z, w.value, k)), null !== w)) {
-              if (b && null !== w.alternate)
-                l["delete"](null === w.key ? z : w.key);
-              f = g(w, f, z);
-              null === h ? (p = w) : (h.sibling = w);
-              h = w;
+          for (n = d(e, n); !x.done; w++, x = m.next())
+            if (((x = I(n, e, w, x.value, A)), null !== x)) {
+              if (a && null !== x.alternate)
+                n["delete"](null === x.key ? w : x.key);
+              g = f(x, g, w);
+              null === r ? (h = x) : (r.sibling = x);
+              r = x;
             }
-          b &&
-            l.forEach(function(b) {
-              return c(a, b);
+          a &&
+            n.forEach(function(a) {
+              return b(e, a);
             });
-          return p;
+          return h;
         }
-        return function(a, b, e, g) {
-          var h = "object" === typeof e && null !== e;
-          if (h)
-            switch (e.$$typeof) {
+        return function(a, d, f, h) {
+          "object" === typeof f &&
+            null !== f &&
+            f.type === Ve &&
+            null === f.key &&
+            (f = f.props.children);
+          var m = "object" === typeof f && null !== f;
+          if (m)
+            switch (f.$$typeof) {
               case Re:
                 a: {
-                  var v = e.key;
-                  for (h = b; null !== h; ) {
-                    if (h.key === v)
-                      if (10 === h.tag ? e.type === Ue : h.type === e.type) {
-                        d(a, h.sibling);
-                        b = f(h, e.type === Ue ? e.props.children : e.props, g);
-                        b.ref = We(h, e);
-                        b["return"] = a;
-                        a = b;
+                  var r = f.key;
+                  for (m = d; null !== m; ) {
+                    if (m.key === r)
+                      if (10 === m.tag ? f.type === Ve : m.type === f.type) {
+                        c(a, m.sibling);
+                        d = e(m, f.type === Ve ? f.props.children : f.props, h);
+                        d.ref = Ze(m, f);
+                        d["return"] = a;
+                        a = d;
                         break a;
                       } else {
-                        d(a, h);
+                        c(a, m);
                         break;
                       }
-                    else c(a, h);
-                    h = h.sibling;
+                    else b(a, m);
+                    m = m.sibling;
                   }
-                  e.type === Ue
-                    ? ((e = pe(
-                        e.props.children,
+                  f.type === Ve
+                    ? ((d = ue(
+                        f.props.children,
                         a.internalContextTag,
-                        g,
-                        e.key
+                        h,
+                        f.key
                       )),
-                      (e["return"] = a),
-                      (a = e))
-                    : ((g = oe(e, a.internalContextTag, g)),
-                      (g.ref = We(b, e)),
-                      (g["return"] = a),
-                      (a = g));
+                      (d["return"] = a),
+                      (a = d))
+                    : ((h = te(f, a.internalContextTag, h)),
+                      (h.ref = Ze(d, f)),
+                      (h["return"] = a),
+                      (a = h));
                 }
-                return k(a);
+                return g(a);
               case Se:
                 a: {
-                  for (h = e.key; null !== b; ) {
-                    if (b.key === h)
-                      if (7 === b.tag) {
-                        d(a, b.sibling);
-                        e = f(b, e, g);
-                        e["return"] = a;
-                        a = e;
+                  for (m = f.key; null !== d; ) {
+                    if (d.key === m)
+                      if (7 === d.tag) {
+                        c(a, d.sibling);
+                        d = e(d, f, h);
+                        d["return"] = a;
+                        a = d;
                         break a;
                       } else {
-                        d(a, b);
+                        c(a, d);
                         break;
                       }
-                    else c(a, b);
-                    b = b.sibling;
+                    else b(a, d);
+                    d = d.sibling;
                   }
-                  e = re(e, a.internalContextTag, g);
-                  e["return"] = a;
-                  a = e;
+                  d = we(f, a.internalContextTag, h);
+                  d["return"] = a;
+                  a = d;
                 }
-                return k(a);
+                return g(a);
               case Te:
                 a: {
-                  if (null !== b)
-                    if (9 === b.tag) {
-                      d(a, b.sibling);
-                      b = f(b, null, g);
-                      b.type = e.value;
-                      b["return"] = a;
-                      a = b;
+                  if (null !== d)
+                    if (9 === d.tag) {
+                      c(a, d.sibling);
+                      d = e(d, null, h);
+                      d.type = f.value;
+                      d["return"] = a;
+                      a = d;
                       break a;
-                    } else d(a, b);
-                  b = se(e, a.internalContextTag, g);
-                  b.type = e.value;
-                  b["return"] = a;
-                  a = b;
+                    } else c(a, d);
+                  d = xe(f, a.internalContextTag, h);
+                  d.type = f.value;
+                  d["return"] = a;
+                  a = d;
                 }
-                return k(a);
-              case Ne:
+                return g(a);
+              case Ue:
                 a: {
-                  for (h = e.key; null !== b; ) {
-                    if (b.key === h)
+                  for (m = f.key; null !== d; ) {
+                    if (d.key === m)
                       if (
-                        4 === b.tag &&
-                        b.stateNode.containerInfo === e.containerInfo &&
-                        b.stateNode.implementation === e.implementation
+                        4 === d.tag &&
+                        d.stateNode.containerInfo === f.containerInfo &&
+                        d.stateNode.implementation === f.implementation
                       ) {
-                        d(a, b.sibling);
-                        e = f(b, e.children || [], g);
-                        e["return"] = a;
-                        a = e;
+                        c(a, d.sibling);
+                        d = e(d, f.children || [], h);
+                        d["return"] = a;
+                        a = d;
                         break a;
                       } else {
-                        d(a, b);
+                        c(a, d);
                         break;
                       }
-                    else c(a, b);
-                    b = b.sibling;
+                    else b(a, d);
+                    d = d.sibling;
                   }
-                  e = te(e, a.internalContextTag, g);
-                  e["return"] = a;
-                  a = e;
+                  d = ye(f, a.internalContextTag, h);
+                  d["return"] = a;
+                  a = d;
                 }
-                return k(a);
+                return g(a);
             }
-          if ("string" === typeof e || "number" === typeof e)
+          if ("string" === typeof f || "number" === typeof f)
             return (
-              (e = "" + e),
-              null !== b && 6 === b.tag
-                ? (d(a, b.sibling), (e = f(b, e, g)))
-                : (d(a, b), (e = qe(e, a.internalContextTag, g))),
-              (e["return"] = a),
-              (a = e),
-              k(a)
+              (f = "" + f),
+              null !== d && 6 === d.tag
+                ? (c(a, d.sibling), (d = e(d, f, h)))
+                : (c(a, d), (d = ve(f, a.internalContextTag, h))),
+              (d["return"] = a),
+              (a = d),
+              g(a)
             );
-          if (Pe(e)) return T(a, b, e, g);
-          if (Ve(e)) return I(a, b, e, g);
-          h && Xe(a, e);
-          if ("undefined" === typeof e)
+          if (Ye(f)) return L(a, d, f, h);
+          if (Xe(f)) return N(a, d, f, h);
+          m && $e(a, f);
+          if ("undefined" === typeof f)
             switch (a.tag) {
               case 2:
               case 1:
-                (e = a.type), D("152", e.displayName || e.name || "Component");
+                (h = a.type), E("152", h.displayName || h.name || "Component");
             }
-          return d(a, b);
+          return c(a, d);
         };
       }
-      var Ze = Ye(!0, !0),
-        $e = Ye(!1, !0),
-        af = Ye(!1, !1);
-      function bf(a, b, c, d, e) {
+      var bf = af(!0),
+        cf = af(!1);
+      function df(a, b, c, d, e) {
         function f(a, b, c) {
-          g(a, b, c, b.expirationTime);
+          var d = b.expirationTime;
+          b.child = null === a ? cf(b, null, c, d) : bf(b, a.child, c, d);
         }
-        function g(a, b, c, d) {
-          b.child =
-            null === a
-              ? af(b, b.child, c, d)
-              : a.child === b.child
-                ? Ze(b, b.child, c, d)
-                : $e(b, b.child, c, d);
-        }
-        function k(a, b) {
+        function g(a, b) {
           var c = b.ref;
           null === c || (a && a.ref === c) || (b.effectTag |= 128);
         }
         function h(a, b, c, d) {
-          k(a, b);
-          if (!c) return d && me(b, !1), n(a, b);
+          g(a, b);
+          if (!c) return d && re(b, !1), q(a, b);
           c = b.stateNode;
-          dd.current = b;
+          id.current = b;
           var e = c.render();
           b.effectTag |= 1;
           f(a, b, e);
           b.memoizedState = c.state;
           b.memoizedProps = c.props;
-          d && me(b, !0);
+          d && re(b, !0);
           return b.child;
         }
-        function r(a) {
+        function k(a) {
           var b = a.stateNode;
           b.pendingContext
-            ? je(a, b.pendingContext, b.pendingContext !== b.context)
-            : b.context && je(a, b.context, !1);
-          G(a, b.containerInfo);
+            ? oe(a, b.pendingContext, b.pendingContext !== b.context)
+            : b.context && oe(a, b.context, !1);
+          I(a, b.containerInfo);
         }
-        function n(a, b) {
-          null !== a && b.child !== a.child ? D("153") : void 0;
+        function q(a, b) {
+          null !== a && b.child !== a.child ? E("153") : void 0;
           if (null !== b.child) {
             a = b.child;
-            var c = ne(a, a.pendingProps, a.expirationTime);
+            var c = se(a, a.pendingProps, a.expirationTime);
             b.child = c;
             for (c["return"] = b; null !== a.sibling; )
               (a = a.sibling),
-                (c = c.sibling = ne(a, a.pendingProps, a.expirationTime)),
+                (c = c.sibling = se(a, a.pendingProps, a.expirationTime)),
                 (c["return"] = b);
             c.sibling = null;
           }
           return b.child;
         }
-        function y(a, b) {
+        function v(a, b) {
           switch (b.tag) {
             case 3:
-              r(b);
+              k(b);
               break;
             case 2:
-              le(b);
+              qe(b);
               break;
             case 4:
-              G(b, b.stateNode.containerInfo);
+              I(b, b.stateNode.containerInfo);
           }
           return null;
         }
-        var u = a.shouldSetTextContent,
-          x = a.useSyncScheduling,
-          F = a.shouldDeprioritizeSubtree,
-          L = b.pushHostContext,
-          G = b.pushHostContainer,
-          T = c.enterHydrationState,
-          I = c.resetHydrationState,
-          z = c.tryToClaimNextHydratableInstance;
-        a = Me(
+        var y = a.shouldSetTextContent,
+          u = a.useSyncScheduling,
+          z = a.shouldDeprioritizeSubtree,
+          G = b.pushHostContext,
+          I = b.pushHostContainer,
+          L = c.enterHydrationState,
+          N = c.resetHydrationState,
+          J = c.tryToClaimNextHydratableInstance;
+        a = Le(
           d,
           e,
           function(a, b) {
@@ -3558,29 +3535,29 @@
             a.memoizedState = b;
           }
         );
-        var p = a.adoptClassInstance,
-          v = a.constructClassInstance,
-          t = a.mountClassInstance,
-          Kb = a.updateClassInstance;
+        var w = a.adoptClassInstance,
+          m = a.constructClassInstance,
+          A = a.mountClassInstance,
+          Ob = a.updateClassInstance;
         return {
           beginWork: function(a, b, c) {
-            if (0 === b.expirationTime || b.expirationTime > c) return y(a, b);
+            if (0 === b.expirationTime || b.expirationTime > c) return v(a, b);
             switch (b.tag) {
               case 0:
-                null !== a ? D("155") : void 0;
+                null !== a ? E("155") : void 0;
                 var d = b.type,
                   e = b.pendingProps,
-                  g = fe(b);
-                g = he(b, g);
-                d = d(e, g);
+                  r = ke(b);
+                r = me(b, r);
+                d = d(e, r);
                 b.effectTag |= 1;
                 "object" === typeof d &&
                 null !== d &&
                 "function" === typeof d.render
                   ? ((b.tag = 2),
-                    (e = le(b)),
-                    p(b, d),
-                    t(b, c),
+                    (e = qe(b)),
+                    w(b, d),
+                    A(b, c),
                     (b = h(a, b, !0, e)))
                   : ((b.tag = 1),
                     f(a, b, d),
@@ -3594,11 +3571,11 @@
                   d = b.memoizedProps;
                   if (X.current) null === c && (c = d);
                   else if (null === c || d === c) {
-                    b = n(a, b);
+                    b = q(a, b);
                     break a;
                   }
-                  d = fe(b);
-                  d = he(b, d);
+                  d = ke(b);
+                  d = me(b, d);
                   e = e(c, d);
                   b.effectTag |= 1;
                   f(a, b, e);
@@ -3608,55 +3585,55 @@
                 return b;
               case 2:
                 return (
-                  (e = le(b)),
+                  (e = qe(b)),
                   (d = void 0),
                   null === a
                     ? b.stateNode
-                      ? D("153")
-                      : (v(b, b.pendingProps), t(b, c), (d = !0))
-                    : (d = Kb(a, b, c)),
+                      ? E("153")
+                      : (m(b, b.pendingProps), A(b, c), (d = !0))
+                    : (d = Ob(a, b, c)),
                   h(a, b, d, e)
                 );
               case 3:
                 return (
-                  r(b),
+                  k(b),
                   (e = b.updateQueue),
                   null !== e
                     ? ((d = b.memoizedState),
-                      (e = Ke(a, b, e, null, null, c)),
+                      (e = Je(a, b, e, null, null, c)),
                       d === e
-                        ? (I(), (b = n(a, b)))
+                        ? (N(), (b = q(a, b)))
                         : ((d = e.element),
-                          (g = b.stateNode),
-                          (null === a || null === a.child) && g.hydrate && T(b)
+                          (r = b.stateNode),
+                          (null === a || null === a.child) && r.hydrate && L(b)
                             ? ((b.effectTag |= 2),
-                              (b.child = af(b, b.child, d, c)))
-                            : (I(), f(a, b, d)),
+                              (b.child = cf(b, null, d, c)))
+                            : (N(), f(a, b, d)),
                           (b.memoizedState = e),
                           (b = b.child)))
-                    : (I(), (b = n(a, b))),
+                    : (N(), (b = q(a, b))),
                   b
                 );
               case 5:
-                L(b);
-                null === a && z(b);
+                G(b);
+                null === a && J(b);
                 e = b.type;
-                var l = b.memoizedProps;
+                var n = b.memoizedProps;
                 d = b.pendingProps;
-                null === d && ((d = l), null === d ? D("154") : void 0);
-                g = null !== a ? a.memoizedProps : null;
-                X.current || (null !== d && l !== d)
-                  ? ((l = d.children),
-                    u(e, d) ? (l = null) : g && u(e, g) && (b.effectTag |= 16),
-                    k(a, b),
-                    2147483647 !== c && !x && F(e, d)
+                null === d && ((d = n), null === d ? E("154") : void 0);
+                r = null !== a ? a.memoizedProps : null;
+                X.current || (null !== d && n !== d)
+                  ? ((n = d.children),
+                    y(e, d) ? (n = null) : r && y(e, r) && (b.effectTag |= 16),
+                    g(a, b),
+                    2147483647 !== c && !u && z(e, d)
                       ? ((b.expirationTime = 2147483647), (b = null))
-                      : (f(a, b, l), (b.memoizedProps = d), (b = b.child)))
-                  : (b = n(a, b));
+                      : (f(a, b, n), (b.memoizedProps = d), (b = b.child)))
+                  : (b = q(a, b));
                 return b;
               case 6:
                 return (
-                  null === a && z(b),
+                  null === a && J(b),
                   (a = b.pendingProps),
                   null === a && (a = b.memoizedProps),
                   (b.memoizedProps = a),
@@ -3669,33 +3646,31 @@
                 if (X.current)
                   null === e &&
                     ((e = a && a.memoizedProps),
-                    null === e ? D("154") : void 0);
+                    null === e ? E("154") : void 0);
                 else if (null === e || b.memoizedProps === e)
                   e = b.memoizedProps;
                 d = e.children;
                 b.stateNode =
                   null === a
-                    ? af(b, b.stateNode, d, c)
-                    : a.child === b.child
-                      ? Ze(b, b.stateNode, d, c)
-                      : $e(b, b.stateNode, d, c);
+                    ? cf(b, b.stateNode, d, c)
+                    : bf(b, b.stateNode, d, c);
                 b.memoizedProps = e;
                 return b.stateNode;
               case 9:
                 return null;
               case 4:
                 a: {
-                  G(b, b.stateNode.containerInfo);
+                  I(b, b.stateNode.containerInfo);
                   e = b.pendingProps;
                   if (X.current)
                     null === e &&
                       ((e = a && a.memoizedProps),
-                      null == e ? D("154") : void 0);
+                      null == e ? E("154") : void 0);
                   else if (null === e || b.memoizedProps === e) {
-                    b = n(a, b);
+                    b = q(a, b);
                     break a;
                   }
-                  null === a ? (b.child = $e(b, b.child, e, c)) : f(a, b, e);
+                  null === a ? (b.child = bf(b, null, e, c)) : f(a, b, e);
                   b.memoizedProps = e;
                   b = b.child;
                 }
@@ -3705,7 +3680,7 @@
                   c = b.pendingProps;
                   if (X.current) null === c && (c = b.memoizedProps);
                   else if (null === c || b.memoizedProps === c) {
-                    b = n(a, b);
+                    b = q(a, b);
                     break a;
                   }
                   f(a, b, c);
@@ -3714,28 +3689,29 @@
                 }
                 return b;
               default:
-                D("156");
+                E("156");
             }
           },
           beginFailedWork: function(a, b, c) {
             switch (b.tag) {
               case 2:
-                le(b);
+                qe(b);
                 break;
               case 3:
-                r(b);
+                k(b);
                 break;
               default:
-                D("157");
+                E("157");
             }
             b.effectTag |= 64;
             null === a
               ? (b.child = null)
               : b.child !== a.child && (b.child = a.child);
-            if (0 === b.expirationTime || b.expirationTime > c) return y(a, b);
+            if (0 === b.expirationTime || b.expirationTime > c) return v(a, b);
             b.firstEffect = null;
             b.lastEffect = null;
-            g(a, b, null, c);
+            b.child =
+              null === a ? cf(b, null, null, c) : bf(b, a.child, null, c);
             2 === b.tag &&
               ((a = b.stateNode),
               (b.memoizedProps = a.props),
@@ -3744,126 +3720,126 @@
           }
         };
       }
-      function cf(a, b, c) {
+      function ef(a, b, c) {
         function d(a) {
           a.effectTag |= 4;
         }
         var e = a.createInstance,
           f = a.createTextInstance,
           g = a.appendInitialChild,
-          k = a.finalizeInitialChildren,
-          h = a.prepareUpdate,
-          r = a.persistence,
-          n = b.getRootHostContainer,
+          h = a.finalizeInitialChildren,
+          k = a.prepareUpdate,
+          q = a.persistence,
+          v = b.getRootHostContainer,
           y = b.popHostContext,
           u = b.getHostContext,
-          x = b.popHostContainer,
-          F = c.prepareToHydrateHostInstance,
-          L = c.prepareToHydrateHostTextInstance,
-          G = c.popHydrationState,
-          T = void 0,
-          I = void 0,
-          z = void 0;
+          z = b.popHostContainer,
+          G = c.prepareToHydrateHostInstance,
+          I = c.prepareToHydrateHostTextInstance,
+          L = c.popHydrationState,
+          N = void 0,
+          J = void 0,
+          w = void 0;
         a.mutation
-          ? ((T = function() {}),
-            (I = function(a, b, c) {
+          ? ((N = function() {}),
+            (J = function(a, b, c) {
               (b.updateQueue = c) && d(b);
             }),
-            (z = function(a, b, c, e) {
+            (w = function(a, b, c, e) {
               c !== e && d(b);
             }))
-          : r ? D("235") : D("236");
+          : q ? E("235") : E("236");
         return {
           completeWork: function(a, b, c) {
-            var p = b.pendingProps;
-            if (null === p) p = b.memoizedProps;
+            var m = b.pendingProps;
+            if (null === m) m = b.memoizedProps;
             else if (2147483647 !== b.expirationTime || 2147483647 === c)
               b.pendingProps = null;
             switch (b.tag) {
               case 1:
                 return null;
               case 2:
-                return ie(b), null;
+                return ne(b), null;
               case 3:
-                x(b);
+                z(b);
                 V(X, b);
-                V(de, b);
-                p = b.stateNode;
-                p.pendingContext &&
-                  ((p.context = p.pendingContext), (p.pendingContext = null));
-                if (null === a || null === a.child) G(b), (b.effectTag &= -3);
-                T(b);
+                V(ie, b);
+                m = b.stateNode;
+                m.pendingContext &&
+                  ((m.context = m.pendingContext), (m.pendingContext = null));
+                if (null === a || null === a.child) L(b), (b.effectTag &= -3);
+                N(b);
                 return null;
               case 5:
                 y(b);
-                c = n();
-                var v = b.type;
+                c = v();
+                var A = b.type;
                 if (null !== a && null != b.stateNode) {
-                  var l = a.memoizedProps,
-                    t = b.stateNode,
-                    r = u();
-                  t = h(t, v, l, p, c, r);
-                  I(a, b, t, v, l, p, c);
+                  var p = a.memoizedProps,
+                    q = b.stateNode,
+                    x = u();
+                  q = k(q, A, p, m, c, x);
+                  J(a, b, q, A, p, m, c);
                   a.ref !== b.ref && (b.effectTag |= 128);
                 } else {
-                  if (!p) return null === b.stateNode ? D("166") : void 0, null;
+                  if (!m) return null === b.stateNode ? E("166") : void 0, null;
                   a = u();
-                  if (G(b)) F(b, c, a) && d(b);
+                  if (L(b)) G(b, c, a) && d(b);
                   else {
-                    a = e(v, p, c, a, b);
-                    a: for (l = b.child; null !== l; ) {
-                      if (5 === l.tag || 6 === l.tag) g(a, l.stateNode);
-                      else if (4 !== l.tag && null !== l.child) {
-                        l.child["return"] = l;
-                        l = l.child;
+                    a = e(A, m, c, a, b);
+                    a: for (p = b.child; null !== p; ) {
+                      if (5 === p.tag || 6 === p.tag) g(a, p.stateNode);
+                      else if (4 !== p.tag && null !== p.child) {
+                        p.child["return"] = p;
+                        p = p.child;
                         continue;
                       }
-                      if (l === b) break;
-                      for (; null === l.sibling; ) {
-                        if (null === l["return"] || l["return"] === b) break a;
-                        l = l["return"];
+                      if (p === b) break;
+                      for (; null === p.sibling; ) {
+                        if (null === p["return"] || p["return"] === b) break a;
+                        p = p["return"];
                       }
-                      l.sibling["return"] = l["return"];
-                      l = l.sibling;
+                      p.sibling["return"] = p["return"];
+                      p = p.sibling;
                     }
-                    k(a, v, p, c) && d(b);
+                    h(a, A, m, c) && d(b);
                     b.stateNode = a;
                   }
                   null !== b.ref && (b.effectTag |= 128);
                 }
                 return null;
               case 6:
-                if (a && null != b.stateNode) z(a, b, a.memoizedProps, p);
+                if (a && null != b.stateNode) w(a, b, a.memoizedProps, m);
                 else {
-                  if ("string" !== typeof p)
-                    return null === b.stateNode ? D("166") : void 0, null;
-                  a = n();
+                  if ("string" !== typeof m)
+                    return null === b.stateNode ? E("166") : void 0, null;
+                  a = v();
                   c = u();
-                  G(b) ? L(b) && d(b) : (b.stateNode = f(p, a, c, b));
+                  L(b) ? I(b) && d(b) : (b.stateNode = f(m, a, c, b));
                 }
                 return null;
               case 7:
-                (p = b.memoizedProps) ? void 0 : D("165");
+                (m = b.memoizedProps) ? void 0 : E("165");
                 b.tag = 8;
-                v = [];
-                a: for ((l = b.stateNode) && (l["return"] = b); null !== l; ) {
-                  if (5 === l.tag || 6 === l.tag || 4 === l.tag) D("247");
-                  else if (9 === l.tag) v.push(l.type);
-                  else if (null !== l.child) {
-                    l.child["return"] = l;
-                    l = l.child;
+                A = [];
+                a: for ((p = b.stateNode) && (p["return"] = b); null !== p; ) {
+                  if (5 === p.tag || 6 === p.tag || 4 === p.tag) E("247");
+                  else if (9 === p.tag) A.push(p.type);
+                  else if (null !== p.child) {
+                    p.child["return"] = p;
+                    p = p.child;
                     continue;
                   }
-                  for (; null === l.sibling; ) {
-                    if (null === l["return"] || l["return"] === b) break a;
-                    l = l["return"];
+                  for (; null === p.sibling; ) {
+                    if (null === p["return"] || p["return"] === b) break a;
+                    p = p["return"];
                   }
-                  l.sibling["return"] = l["return"];
-                  l = l.sibling;
+                  p.sibling["return"] = p["return"];
+                  p = p.sibling;
                 }
-                l = p.handler;
-                p = l(p.props, v);
-                b.child = Ze(b, null !== a ? a.child : null, p, c);
+                p = m.handler;
+                m = p(m.props, A);
+                b.child = bf(b, null !== a ? a.child : null, m, c);
                 return b.child;
               case 8:
                 return (b.tag = 7), null;
@@ -3872,27 +3848,27 @@
               case 10:
                 return null;
               case 4:
-                return x(b), T(b), null;
+                return z(b), N(b), null;
               case 0:
-                D("167");
+                E("167");
               default:
-                D("156");
+                E("156");
             }
           }
         };
       }
-      function df(a, b) {
+      function ff(a, b) {
         function c(a) {
           var c = a.ref;
           if (null !== c)
             try {
               c(null);
-            } catch (v) {
-              b(a, v);
+            } catch (A) {
+              b(a, A);
             }
         }
         function d(a) {
-          "function" === typeof ze && ze(a);
+          "function" === typeof Ee && Ee(a);
           switch (a.tag) {
             case 2:
               c(a);
@@ -3902,8 +3878,8 @@
                   (d.props = a.memoizedProps),
                     (d.state = a.memoizedState),
                     d.componentWillUnmount();
-                } catch (v) {
-                  b(a, v);
+                } catch (A) {
+                  b(a, A);
                 }
               break;
             case 5:
@@ -3913,12 +3889,12 @@
               e(a.stateNode);
               break;
             case 4:
-              h && g(a);
+              k && g(a);
           }
         }
         function e(a) {
           for (var b = a; ; )
-            if ((d(b), null === b.child || (h && 4 === b.tag))) {
+            if ((d(b), null === b.child || (k && 4 === b.tag))) {
               if (b === a) break;
               for (; null === b.sibling; ) {
                 if (null === b["return"] || b["return"] === a) return;
@@ -3936,7 +3912,7 @@
             if (!c) {
               c = b["return"];
               a: for (;;) {
-                null === c ? D("160") : void 0;
+                null === c ? E("160") : void 0;
                 switch (c.tag) {
                   case 5:
                     f = c.stateNode;
@@ -3956,7 +3932,7 @@
               c = !0;
             }
             if (5 === b.tag || 6 === b.tag)
-              e(b), g ? I(f, b.stateNode) : T(f, b.stateNode);
+              e(b), g ? J(f, b.stateNode) : N(f, b.stateNode);
             else if (
               (4 === b.tag ? (f = b.stateNode.containerInfo) : d(b),
               null !== b.child)
@@ -3975,20 +3951,20 @@
             b = b.sibling;
           }
         }
-        var k = a.getPublicInstance,
-          h = a.mutation;
+        var h = a.getPublicInstance,
+          k = a.mutation;
         a = a.persistence;
-        h || (a ? D("235") : D("236"));
-        var r = h.commitMount,
-          n = h.commitUpdate,
-          y = h.resetTextContent,
-          u = h.commitTextUpdate,
-          x = h.appendChild,
-          F = h.appendChildToContainer,
-          L = h.insertBefore,
-          G = h.insertInContainerBefore,
-          T = h.removeChild,
-          I = h.removeChildFromContainer;
+        k || (a ? E("235") : E("236"));
+        var q = k.commitMount,
+          v = k.commitUpdate,
+          y = k.resetTextContent,
+          u = k.commitTextUpdate,
+          z = k.appendChild,
+          G = k.appendChildToContainer,
+          I = k.insertBefore,
+          L = k.insertInContainerBefore,
+          N = k.removeChild,
+          J = k.removeChildFromContainer;
         return {
           commitResetTextContent: function(a) {
             y(a.stateNode);
@@ -4002,7 +3978,7 @@
                 }
                 b = b["return"];
               }
-              D("160");
+              E("160");
               c = void 0;
             }
             var d = (b = void 0);
@@ -4020,7 +3996,7 @@
                 d = !0;
                 break;
               default:
-                D("161");
+                E("161");
             }
             c.effectTag & 16 && (y(b), (c.effectTag &= -17));
             a: b: for (c = a; ; ) {
@@ -4045,8 +4021,8 @@
             for (var e = a; ; ) {
               if (5 === e.tag || 6 === e.tag)
                 c
-                  ? d ? G(b, e.stateNode, c) : L(b, e.stateNode, c)
-                  : d ? F(b, e.stateNode) : x(b, e.stateNode);
+                  ? d ? L(b, e.stateNode, c) : I(b, e.stateNode, c)
+                  : d ? G(b, e.stateNode) : z(b, e.stateNode);
               else if (4 !== e.tag && null !== e.child) {
                 e.child["return"] = e;
                 e = e.child;
@@ -4080,18 +4056,18 @@
                   var e = b.type,
                     f = b.updateQueue;
                   b.updateQueue = null;
-                  null !== f && n(c, f, e, a, d, b);
+                  null !== f && v(c, f, e, a, d, b);
                 }
                 break;
               case 6:
-                null === b.stateNode ? D("162") : void 0;
+                null === b.stateNode ? E("162") : void 0;
                 c = b.memoizedProps;
                 u(b.stateNode, null !== a ? a.memoizedProps : c, c);
                 break;
               case 3:
                 break;
               default:
-                D("163");
+                E("163");
             }
           },
           commitLifeCycles: function(a, b) {
@@ -4111,25 +4087,25 @@
                     c.componentDidUpdate(d, a);
                   }
                 b = b.updateQueue;
-                null !== b && Le(b, c);
+                null !== b && Ke(b, c);
                 break;
               case 3:
                 c = b.updateQueue;
                 null !== c &&
-                  Le(c, null !== b.child ? b.child.stateNode : null);
+                  Ke(c, null !== b.child ? b.child.stateNode : null);
                 break;
               case 5:
                 c = b.stateNode;
                 null === a &&
                   b.effectTag & 4 &&
-                  r(c, b.type, b.memoizedProps, b);
+                  q(c, b.type, b.memoizedProps, b);
                 break;
               case 6:
                 break;
               case 4:
                 break;
               default:
-                D("163");
+                E("163");
             }
           },
           commitAttachRef: function(a) {
@@ -4138,7 +4114,7 @@
               var c = a.stateNode;
               switch (a.tag) {
                 case 5:
-                  b(k(c));
+                  b(h(c));
                   break;
                 default:
                   b(c);
@@ -4151,17 +4127,17 @@
           }
         };
       }
-      var ef = {};
-      function ff(a) {
+      var gf = {};
+      function hf(a) {
         function b(a) {
-          a === ef ? D("174") : void 0;
+          a === gf ? E("174") : void 0;
           return a;
         }
         var c = a.getChildHostContext,
           d = a.getRootHostContext,
-          e = { current: ef },
-          f = { current: ef },
-          g = { current: ef };
+          e = { current: gf },
+          f = { current: gf },
+          g = { current: gf };
         return {
           getHostContext: function() {
             return b(e.current);
@@ -4185,17 +4161,17 @@
           },
           pushHostContext: function(a) {
             var d = b(g.current),
-              k = b(e.current);
-            d = c(k, a.type, d);
-            k !== d && (W(f, a, a), W(e, d, a));
+              h = b(e.current);
+            d = c(h, a.type, d);
+            h !== d && (W(f, a, a), W(e, d, a));
           },
           resetHostContainer: function() {
-            e.current = ef;
-            g.current = ef;
+            e.current = gf;
+            g.current = gf;
           }
         };
       }
-      function gf(a) {
+      function jf(a) {
         function b(a, b) {
           var c = new Y(5, null, 0);
           c.type = "DELETED";
@@ -4209,9 +4185,15 @@
         function c(a, b) {
           switch (a.tag) {
             case 5:
-              return f(b, a.type, a.pendingProps);
+              return (
+                (b = f(b, a.type, a.pendingProps)),
+                null !== b ? ((a.stateNode = b), !0) : !1
+              );
             case 6:
-              return g(b, a.pendingProps);
+              return (
+                (b = g(b, a.pendingProps)),
+                null !== b ? ((a.stateNode = b), !0) : !1
+              );
             default:
               return !1;
           }
@@ -4231,10 +4213,10 @@
             resetHydrationState: function() {},
             tryToClaimNextHydratableInstance: function() {},
             prepareToHydrateHostInstance: function() {
-              D("175");
+              E("175");
             },
             prepareToHydrateHostTextInstance: function() {
-              D("176");
+              E("176");
             },
             popHydrationState: function() {
               return !1;
@@ -4242,137 +4224,136 @@
           };
         var f = a.canHydrateInstance,
           g = a.canHydrateTextInstance,
-          k = a.getNextHydratableSibling,
-          h = a.getFirstHydratableChild,
-          r = a.hydrateInstance,
-          n = a.hydrateTextInstance,
+          h = a.getNextHydratableSibling,
+          k = a.getFirstHydratableChild,
+          q = a.hydrateInstance,
+          v = a.hydrateTextInstance,
           y = null,
           u = null,
-          x = !1;
+          z = !1;
         return {
           enterHydrationState: function(a) {
-            u = h(a.stateNode.containerInfo);
+            u = k(a.stateNode.containerInfo);
             y = a;
-            return (x = !0);
+            return (z = !0);
           },
           resetHydrationState: function() {
             u = y = null;
-            x = !1;
+            z = !1;
           },
           tryToClaimNextHydratableInstance: function(a) {
-            if (x) {
+            if (z) {
               var d = u;
               if (d) {
                 if (!c(a, d)) {
-                  d = k(d);
+                  d = h(d);
                   if (!d || !c(a, d)) {
                     a.effectTag |= 2;
-                    x = !1;
+                    z = !1;
                     y = a;
                     return;
                   }
                   b(y, u);
                 }
-                a.stateNode = d;
                 y = a;
-                u = h(d);
-              } else (a.effectTag |= 2), (x = !1), (y = a);
+                u = k(d);
+              } else (a.effectTag |= 2), (z = !1), (y = a);
             }
           },
           prepareToHydrateHostInstance: function(a, b, c) {
-            b = r(a.stateNode, a.type, a.memoizedProps, b, c, a);
+            b = q(a.stateNode, a.type, a.memoizedProps, b, c, a);
             a.updateQueue = b;
             return null !== b ? !0 : !1;
           },
           prepareToHydrateHostTextInstance: function(a) {
-            return n(a.stateNode, a.memoizedProps, a);
+            return v(a.stateNode, a.memoizedProps, a);
           },
           popHydrationState: function(a) {
             if (a !== y) return !1;
-            if (!x) return d(a), (x = !0), !1;
+            if (!z) return d(a), (z = !0), !1;
             var c = a.type;
             if (
               5 !== a.tag ||
               ("head" !== c && "body" !== c && !e(c, a.memoizedProps))
             )
-              for (c = u; c; ) b(a, c), (c = k(c));
+              for (c = u; c; ) b(a, c), (c = h(c));
             d(a);
-            u = y ? k(a.stateNode) : null;
+            u = y ? h(a.stateNode) : null;
             return !0;
           }
         };
       }
-      function hf(a) {
+      function kf(a) {
         function b(a) {
-          Lb = ma = !0;
+          Qb = ja = !0;
           var b = a.stateNode;
-          b.current === a ? D("177") : void 0;
+          b.current === a ? E("177") : void 0;
           b.isReadyForCommit = !1;
-          dd.current = null;
+          id.current = null;
           if (1 < a.effectTag)
             if (null !== a.lastEffect) {
               a.lastEffect.nextEffect = a;
               var c = a.firstEffect;
             } else c = a;
           else c = a.firstEffect;
-          ug();
-          for (q = c; null !== q; ) {
+          yg();
+          for (t = c; null !== t; ) {
             var d = !1,
               e = void 0;
             try {
-              for (; null !== q; ) {
-                var f = q.effectTag;
-                f & 16 && vg(q);
+              for (; null !== t; ) {
+                var f = t.effectTag;
+                f & 16 && zg(t);
                 if (f & 128) {
-                  var g = q.alternate;
-                  null !== g && wg(g);
+                  var g = t.alternate;
+                  null !== g && Ag(g);
                 }
                 switch (f & -242) {
                   case 2:
-                    Ge(q);
-                    q.effectTag &= -3;
+                    Ne(t);
+                    t.effectTag &= -3;
                     break;
                   case 6:
-                    Ge(q);
-                    q.effectTag &= -3;
-                    He(q.alternate, q);
+                    Ne(t);
+                    t.effectTag &= -3;
+                    Oe(t.alternate, t);
                     break;
                   case 4:
-                    He(q.alternate, q);
+                    Oe(t.alternate, t);
                     break;
                   case 8:
-                    (Lc = !0), xg(q), (Lc = !1);
+                    (Sc = !0), Bg(t), (Sc = !1);
                 }
-                q = q.nextEffect;
+                t = t.nextEffect;
               }
-            } catch (Mc) {
-              (d = !0), (e = Mc);
+            } catch (Tc) {
+              (d = !0), (e = Tc);
             }
             d &&
-              (null === q ? D("178") : void 0,
-              k(q, e),
-              null !== q && (q = q.nextEffect));
+              (null === t ? E("178") : void 0,
+              h(t, e),
+              null !== t && (t = t.nextEffect));
           }
-          yg();
+          Cg();
           b.current = a;
-          for (q = c; null !== q; ) {
+          for (t = c; null !== t; ) {
             c = !1;
             d = void 0;
             try {
-              for (; null !== q; ) {
-                var h = q.effectTag;
-                h & 36 && zg(q.alternate, q);
-                h & 128 && Ag(q);
-                if (h & 64)
-                  switch (((e = q),
+              for (; null !== t; ) {
+                var k = t.effectTag;
+                k & 36 && Dg(t.alternate, t);
+                k & 128 && Eg(t);
+                if (k & 64)
+                  switch (((e = t),
                   (f = void 0),
-                  null !== P &&
-                    ((f = P.get(e)),
-                    P["delete"](e),
+                  null !== R &&
+                    ((f = R.get(e)),
+                    R["delete"](e),
                     null == f &&
                       null !== e.alternate &&
-                      ((e = e.alternate), (f = P.get(e)), P["delete"](e))),
-                  null == f ? D("184") : void 0,
+                      ((e = e.alternate), (f = R.get(e)), R["delete"](e))),
+                  null == f ? E("184") : void 0,
                   e.tag)) {
                     case 2:
                       e.stateNode.componentDidCatch(f.error, {
@@ -4380,38 +4361,38 @@
                       });
                       break;
                     case 3:
-                      null === ba && (ba = f.error);
+                      null === ca && (ca = f.error);
                       break;
                     default:
-                      D("157");
+                      E("157");
                   }
-                var Fa = q.nextEffect;
-                q.nextEffect = null;
-                q = Fa;
+                var Qc = t.nextEffect;
+                t.nextEffect = null;
+                t = Qc;
               }
-            } catch (Mc) {
-              (c = !0), (d = Mc);
+            } catch (Tc) {
+              (c = !0), (d = Tc);
             }
             c &&
-              (null === q ? D("178") : void 0,
-              k(q, d),
-              null !== q && (q = q.nextEffect));
+              (null === t ? E("178") : void 0,
+              h(t, d),
+              null !== t && (t = t.nextEffect));
           }
-          ma = Lb = !1;
-          "function" === typeof ye && ye(a.stateNode);
-          fa && (fa.forEach(F), (fa = null));
-          null !== ba && ((a = ba), (ba = null), v(a));
+          ja = Qb = !1;
+          "function" === typeof De && De(a.stateNode);
+          ha && (ha.forEach(G), (ha = null));
+          null !== ca && ((a = ca), (ca = null), Ob(a));
           b = b.current.expirationTime;
-          0 === b && (na = P = null);
+          0 === b && (qa = R = null);
           return b;
         }
         function c(a) {
           for (;;) {
-            var b = ng(a.alternate, a, J),
+            var b = Fg(a.alternate, a, H),
               c = a["return"],
               d = a.sibling;
             var e = a;
-            if (2147483647 === J || 2147483647 !== e.expirationTime) {
+            if (2147483647 === H || 2147483647 !== e.expirationTime) {
               if (2 !== e.tag && 3 !== e.tag) var f = 0;
               else (f = e.updateQueue), (f = null === f ? 0 : f.expirationTime);
               for (var g = e.child; null !== g; )
@@ -4443,113 +4424,113 @@
           return null;
         }
         function d(a) {
-          var b = w(a.alternate, a, J);
+          var b = rg(a.alternate, a, H);
           null === b && (b = c(a));
-          dd.current = null;
+          id.current = null;
           return b;
         }
         function e(a) {
-          var b = mg(a.alternate, a, J);
+          var b = Gg(a.alternate, a, H);
           null === b && (b = c(a));
-          dd.current = null;
+          id.current = null;
           return b;
         }
         function f(a) {
-          if (null !== P) {
-            if (!(0 === J || J > a))
-              if (J <= Nc) for (; null !== E; ) E = h(E) ? e(E) : d(E);
-              else for (; null !== E && !p(); ) E = h(E) ? e(E) : d(E);
-          } else if (!(0 === J || J > a))
-            if (J <= Nc) for (; null !== E; ) E = d(E);
-            else for (; null !== E && !p(); ) E = d(E);
+          if (null !== R) {
+            if (!(0 === H || H > a))
+              if (H <= Uc) for (; null !== F; ) F = k(F) ? e(F) : d(F);
+              else for (; null !== F && !A(); ) F = k(F) ? e(F) : d(F);
+          } else if (!(0 === H || H > a))
+            if (H <= Uc) for (; null !== F; ) F = d(F);
+            else for (; null !== F && !A(); ) F = d(F);
         }
         function g(a, b) {
-          ma ? D("243") : void 0;
-          ma = !0;
+          ja ? E("243") : void 0;
+          ja = !0;
           a.isReadyForCommit = !1;
-          if (a !== fb || b !== J || null === E) {
-            for (; -1 < ce; ) (be[ce] = null), ce--;
-            ee = C;
-            de.current = C;
+          if (a !== ra || b !== H || null === F) {
+            for (; -1 < he; ) (ge[he] = null), he--;
+            je = D;
+            ie.current = D;
             X.current = !1;
-            lg();
-            fb = a;
-            J = b;
-            E = ne(fb.current, null, b);
+            x();
+            ra = a;
+            H = b;
+            F = se(ra.current, null, b);
           }
           var c = !1,
             d = null;
           try {
             f(b);
-          } catch (Kc) {
-            (c = !0), (d = Kc);
+          } catch (Rc) {
+            (c = !0), (d = Rc);
           }
           for (; c; ) {
-            if (gb) {
-              ba = d;
+            if (eb) {
+              ca = d;
               break;
             }
-            var g = E;
-            if (null === g) gb = !0;
+            var g = F;
+            if (null === g) eb = !0;
             else {
-              var h = k(g, d);
-              null === h ? D("183") : void 0;
-              if (!gb) {
+              var k = h(g, d);
+              null === k ? E("183") : void 0;
+              if (!eb) {
                 try {
-                  c = h;
+                  c = k;
                   d = b;
-                  for (h = c; null !== g; ) {
+                  for (k = c; null !== g; ) {
                     switch (g.tag) {
                       case 2:
-                        ie(g);
+                        ne(g);
                         break;
                       case 5:
-                        l(g);
+                        qg(g);
                         break;
                       case 3:
-                        Ee(g);
+                        p(g);
                         break;
                       case 4:
-                        Ee(g);
+                        p(g);
                     }
-                    if (g === h || g.alternate === h) break;
+                    if (g === k || g.alternate === k) break;
                     g = g["return"];
                   }
-                  E = e(c);
+                  F = e(c);
                   f(d);
-                } catch (Kc) {
+                } catch (Rc) {
                   c = !0;
-                  d = Kc;
+                  d = Rc;
                   continue;
                 }
                 break;
               }
             }
           }
-          b = ba;
-          gb = ma = !1;
-          ba = null;
-          null !== b && v(b);
+          b = ca;
+          eb = ja = !1;
+          ca = null;
+          null !== b && Ob(b);
           return a.isReadyForCommit ? a.current.alternate : null;
         }
-        function k(a, b) {
-          var c = (dd.current = null),
+        function h(a, b) {
+          var c = (id.current = null),
             d = !1,
             e = !1,
             f = null;
-          if (3 === a.tag) (c = a), r(a) && (gb = !0);
+          if (3 === a.tag) (c = a), q(a) && (eb = !0);
           else
             for (var g = a["return"]; null !== g && null === c; ) {
               2 === g.tag
                 ? "function" === typeof g.stateNode.componentDidCatch &&
-                  ((d = !0), (f = ed(g)), (c = g), (e = !0))
+                  ((d = !0), (f = jd(g)), (c = g), (e = !0))
                 : 3 === g.tag && (c = g);
-              if (r(g)) {
+              if (q(g)) {
                 if (
-                  Lc ||
-                  (null !== fa &&
-                    (fa.has(g) ||
-                      (null !== g.alternate && fa.has(g.alternate))))
+                  Sc ||
+                  (null !== ha &&
+                    (ha.has(g) ||
+                      (null !== g.alternate && ha.has(g.alternate))))
                 )
                   return null;
                 c = null;
@@ -4558,8 +4539,8 @@
               g = g["return"];
             }
           if (null !== c) {
-            null === na && (na = new Set());
-            na.add(c);
+            null === qa && (qa = new Set());
+            qa.add(c);
             var h = "";
             g = a;
             do {
@@ -4569,14 +4550,14 @@
                 case 2:
                 case 5:
                   var k = g._debugOwner,
-                    l = g._debugSource;
-                  var Fa = ed(g);
+                    Qc = g._debugSource;
+                  var m = jd(g);
                   var n = null;
-                  k && (n = ed(k));
-                  k = l;
-                  Fa =
+                  k && (n = jd(k));
+                  k = Qc;
+                  m =
                     "\n    in " +
-                    (Fa || "Unknown") +
+                    (m || "Unknown") +
                     (k
                       ? " (at " +
                         k.fileName.replace(/^.*[\\\/]/, "") +
@@ -4586,14 +4567,14 @@
                       : n ? " (created by " + n + ")" : "");
                   break a;
                 default:
-                  Fa = "";
+                  m = "";
               }
-              h += Fa;
+              h += m;
               g = g["return"];
             } while (g);
             g = h;
-            a = ed(a);
-            null === P && (P = new Map());
+            a = jd(a);
+            null === R && (R = new Map());
             b = {
               componentName: a,
               componentStack: g,
@@ -4603,42 +4584,43 @@
               errorBoundaryName: f,
               willRetry: e
             };
-            P.set(c, b);
+            R.set(c, b);
             try {
-              console.error(b.error);
-            } catch (Bg) {
-              console.error(Bg);
+              var p = b.error;
+              (p && p.suppressReactErrorLogging) || console.error(p);
+            } catch (Vc) {
+              (Vc && Vc.suppressReactErrorLogging) || console.error(Vc);
             }
-            Lb ? (null === fa && (fa = new Set()), fa.add(c)) : F(c);
+            Qb ? (null === ha && (ha = new Set()), ha.add(c)) : G(c);
             return c;
           }
-          null === ba && (ba = b);
+          null === ca && (ca = b);
           return null;
         }
-        function h(a) {
+        function k(a) {
           return (
-            null !== P &&
-            (P.has(a) || (null !== a.alternate && P.has(a.alternate)))
+            null !== R &&
+            (R.has(a) || (null !== a.alternate && R.has(a.alternate)))
           );
         }
-        function r(a) {
+        function q(a) {
           return (
-            null !== na &&
-            (na.has(a) || (null !== a.alternate && na.has(a.alternate)))
+            null !== qa &&
+            (qa.has(a) || (null !== a.alternate && qa.has(a.alternate)))
           );
         }
-        function n() {
-          return 20 * ((((L() + 100) / 20) | 0) + 1);
+        function v() {
+          return 20 * ((((I() + 100) / 20) | 0) + 1);
         }
         function y(a) {
-          return 0 !== ja
-            ? ja
-            : ma ? (Lb ? 1 : J) : !Cg || a.internalContextTag & 1 ? n() : 1;
+          return 0 !== ka
+            ? ka
+            : ja ? (Qb ? 1 : H) : !Hg || a.internalContextTag & 1 ? v() : 1;
         }
         function u(a, b) {
-          return x(a, b, !1);
+          return z(a, b, !1);
         }
-        function x(a, b) {
+        function z(a, b) {
           for (; null !== a; ) {
             if (0 === a.expirationTime || a.expirationTime > b)
               a.expirationTime = b;
@@ -4649,51 +4631,62 @@
             if (null === a["return"])
               if (3 === a.tag) {
                 var c = a.stateNode;
-                !ma && c === fb && b <= J && ((E = fb = null), (J = 0));
-                var d = b;
-                Mb > Dg && D("185");
-                if (null === c.nextScheduledRoot)
-                  (c.remainingExpirationTime = d),
-                    null === M
-                      ? ((oa = M = c), (c.nextScheduledRoot = c))
-                      : ((M = M.nextScheduledRoot = c),
-                        (M.nextScheduledRoot = oa));
+                !ja && c === ra && b < H && ((F = ra = null), (H = 0));
+                var d = c,
+                  e = b;
+                Rb > Ig && E("185");
+                if (null === d.nextScheduledRoot)
+                  (d.remainingExpirationTime = e),
+                    null === O
+                      ? ((sa = O = d), (d.nextScheduledRoot = d))
+                      : ((O = O.nextScheduledRoot = d),
+                        (O.nextScheduledRoot = sa));
                 else {
-                  var e = c.remainingExpirationTime;
-                  if (0 === e || d < e) c.remainingExpirationTime = d;
+                  var f = d.remainingExpirationTime;
+                  if (0 === f || e < f) d.remainingExpirationTime = e;
                 }
-                Ga ||
-                  (ka
-                    ? Nb && z(c, 1)
-                    : 1 === d ? I(1, null) : hb || ((hb = !0), Ie(T)));
+                Fa ||
+                  (la
+                    ? Sb && ((ma = d), (na = 1), m(ma, na))
+                    : 1 === e ? w(1, null) : L(e));
+                !ja && c === ra && b < H && ((F = ra = null), (H = 0));
               } else break;
             a = a["return"];
           }
         }
-        function F(a) {
-          x(a, 1, !0);
+        function G(a) {
+          z(a, 1, !0);
         }
-        function L() {
-          return (Nc = (((Je() - Eg) / 10) | 0) + 2);
+        function I() {
+          return (Uc = (((Wc() - Pe) / 10) | 0) + 2);
         }
-        function G() {
+        function L(a) {
+          if (0 !== Tb) {
+            if (a > Tb) return;
+            Jg(Xc);
+          }
+          var b = Wc() - Pe;
+          Tb = a;
+          Xc = Kg(J, { timeout: 10 * (a - 2) - b });
+        }
+        function N() {
           var a = 0,
             b = null;
-          if (null !== M)
-            for (var c = M, d = oa; null !== d; ) {
+          if (null !== O)
+            for (var c = O, d = sa; null !== d; ) {
               var e = d.remainingExpirationTime;
               if (0 === e) {
-                null === c || null === M ? D("244") : void 0;
+                null === c || null === O ? E("244") : void 0;
                 if (d === d.nextScheduledRoot) {
-                  oa = M = d.nextScheduledRoot = null;
+                  sa = O = d.nextScheduledRoot = null;
                   break;
-                } else if (d === oa)
-                  (oa = e = d.nextScheduledRoot),
-                    (M.nextScheduledRoot = e),
+                } else if (d === sa)
+                  (sa = e = d.nextScheduledRoot),
+                    (O.nextScheduledRoot = e),
                     (d.nextScheduledRoot = null);
-                else if (d === M) {
-                  M = c;
-                  M.nextScheduledRoot = oa;
+                else if (d === O) {
+                  O = c;
+                  O.nextScheduledRoot = sa;
                   d.nextScheduledRoot = null;
                   break;
                 } else
@@ -4702,34 +4695,34 @@
                 d = c.nextScheduledRoot;
               } else {
                 if (0 === a || e < a) (a = e), (b = d);
-                if (d === M) break;
+                if (d === O) break;
                 c = d;
                 d = d.nextScheduledRoot;
               }
             }
-          c = pa;
-          null !== c && c === b ? Mb++ : (Mb = 0);
-          pa = b;
-          Ob = a;
+          c = ma;
+          null !== c && c === b ? Rb++ : (Rb = 0);
+          ma = b;
+          na = a;
         }
-        function T(a) {
-          I(0, a);
+        function J(a) {
+          w(0, a);
         }
-        function I(a, b) {
-          ib = b;
-          for (G(); null !== pa && 0 !== Ob && (0 === a || Ob <= a) && !Oc; )
-            z(pa, Ob), G();
-          null !== ib && (hb = !1);
-          null === pa || hb || ((hb = !0), Ie(T));
-          ib = null;
-          Oc = !1;
-          Mb = 0;
-          if (Pb) throw ((a = Pc), (Pc = null), (Pb = !1), a);
+        function w(a, b) {
+          fb = b;
+          for (N(); null !== ma && 0 !== na && (0 === a || na <= a) && !Yc; )
+            m(ma, na), N();
+          null !== fb && ((Tb = 0), (Xc = -1));
+          0 !== na && L(na);
+          fb = null;
+          Yc = !1;
+          Rb = 0;
+          if (Ub) throw ((a = Zc), (Zc = null), (Ub = !1), a);
         }
-        function z(a, c) {
-          Ga ? D("245") : void 0;
-          Ga = !0;
-          if (c <= L()) {
+        function m(a, c) {
+          Fa ? E("245") : void 0;
+          Fa = !0;
+          if (c <= I()) {
             var d = a.finishedWork;
             null !== d
               ? ((a.finishedWork = null), (a.remainingExpirationTime = b(d)))
@@ -4743,133 +4736,135 @@
                 : ((a.finishedWork = null),
                   (d = g(a, c)),
                   null !== d &&
-                    (p()
+                    (A()
                       ? (a.finishedWork = d)
                       : (a.remainingExpirationTime = b(d))));
-          Ga = !1;
+          Fa = !1;
         }
-        function p() {
-          return null === ib || ib.timeRemaining() > Fg ? !1 : (Oc = !0);
+        function A() {
+          return null === fb || fb.timeRemaining() > Lg ? !1 : (Yc = !0);
         }
-        function v(a) {
-          null === pa ? D("246") : void 0;
-          pa.remainingExpirationTime = 0;
-          Pb || ((Pb = !0), (Pc = a));
+        function Ob(a) {
+          null === ma ? E("246") : void 0;
+          ma.remainingExpirationTime = 0;
+          Ub || ((Ub = !0), (Zc = a));
         }
-        var t = ff(a),
-          Kb = gf(a),
-          Ee = t.popHostContainer,
-          l = t.popHostContext,
-          lg = t.resetHostContainer,
-          Fe = bf(a, t, Kb, u, y),
-          w = Fe.beginWork,
-          mg = Fe.beginFailedWork,
-          ng = cf(a, t, Kb).completeWork;
-        t = df(a, k);
-        var vg = t.commitResetTextContent,
-          Ge = t.commitPlacement,
-          xg = t.commitDeletion,
-          He = t.commitWork,
-          zg = t.commitLifeCycles,
-          Ag = t.commitAttachRef,
-          wg = t.commitDetachRef,
-          Je = a.now,
-          Ie = a.scheduleDeferredCallback,
-          Cg = a.useSyncScheduling,
-          ug = a.prepareForCommit,
-          yg = a.resetAfterCommit,
-          Eg = Je(),
-          Nc = 2,
-          ja = 0,
-          ma = !1,
-          E = null,
+        var r = hf(a),
+          n = jf(a),
+          p = r.popHostContainer,
+          qg = r.popHostContext,
+          x = r.resetHostContainer,
+          Me = df(a, r, n, u, y),
+          rg = Me.beginWork,
+          Gg = Me.beginFailedWork,
+          Fg = ef(a, r, n).completeWork;
+        r = ff(a, h);
+        var zg = r.commitResetTextContent,
+          Ne = r.commitPlacement,
+          Bg = r.commitDeletion,
+          Oe = r.commitWork,
+          Dg = r.commitLifeCycles,
+          Eg = r.commitAttachRef,
+          Ag = r.commitDetachRef,
+          Wc = a.now,
+          Kg = a.scheduleDeferredCallback,
+          Jg = a.cancelDeferredCallback,
+          Hg = a.useSyncScheduling,
+          yg = a.prepareForCommit,
+          Cg = a.resetAfterCommit,
+          Pe = Wc(),
+          Uc = 2,
+          ka = 0,
+          ja = !1,
+          F = null,
+          ra = null,
+          H = 0,
+          t = null,
+          R = null,
+          qa = null,
+          ha = null,
+          ca = null,
+          eb = !1,
+          Qb = !1,
+          Sc = !1,
+          sa = null,
+          O = null,
+          Tb = 0,
+          Xc = -1,
+          Fa = !1,
+          ma = null,
+          na = 0,
+          Yc = !1,
+          Ub = !1,
+          Zc = null,
           fb = null,
-          J = 0,
-          q = null,
-          P = null,
-          na = null,
-          fa = null,
-          ba = null,
-          gb = !1,
-          Lb = !1,
-          Lc = !1,
-          oa = null,
-          M = null,
-          hb = !1,
-          Ga = !1,
-          pa = null,
-          Ob = 0,
-          Oc = !1,
-          Pb = !1,
-          Pc = null,
-          ib = null,
-          ka = !1,
-          Nb = !1,
-          Dg = 1e3,
-          Mb = 0,
-          Fg = 1;
+          la = !1,
+          Sb = !1,
+          Ig = 1e3,
+          Rb = 0,
+          Lg = 1;
         return {
-          computeAsyncExpiration: n,
+          computeAsyncExpiration: v,
           computeExpirationForFiber: y,
           scheduleWork: u,
           batchedUpdates: function(a, b) {
-            var c = ka;
-            ka = !0;
+            var c = la;
+            la = !0;
             try {
               return a(b);
             } finally {
-              (ka = c) || Ga || I(1, null);
+              (la = c) || Fa || w(1, null);
             }
           },
           unbatchedUpdates: function(a) {
-            if (ka && !Nb) {
-              Nb = !0;
+            if (la && !Sb) {
+              Sb = !0;
               try {
                 return a();
               } finally {
-                Nb = !1;
+                Sb = !1;
               }
             }
             return a();
           },
           flushSync: function(a) {
-            var b = ka;
-            ka = !0;
+            var b = la;
+            la = !0;
             try {
               a: {
-                var c = ja;
-                ja = 1;
+                var c = ka;
+                ka = 1;
                 try {
                   var d = a();
                   break a;
                 } finally {
-                  ja = c;
+                  ka = c;
                 }
                 d = void 0;
               }
               return d;
             } finally {
-              (ka = b), Ga ? D("187") : void 0, I(1, null);
+              (la = b), Fa ? E("187") : void 0, w(1, null);
             }
           },
           deferredUpdates: function(a) {
-            var b = ja;
-            ja = n();
+            var b = ka;
+            ka = v();
             try {
               return a();
             } finally {
-              ja = b;
+              ka = b;
             }
           }
         };
       }
-      function jf(a) {
+      function lf(a) {
         function b(a) {
-          a = jd(a);
+          a = od(a);
           return null === a ? null : a.stateNode;
         }
         var c = a.getPublicInstance;
-        a = hf(a);
+        a = kf(a);
         var d = a.computeAsyncExpiration,
           e = a.computeExpirationForFiber,
           f = a.scheduleWork;
@@ -4890,36 +4885,36 @@
             };
             return (c.stateNode = a);
           },
-          updateContainer: function(a, b, c, r) {
+          updateContainer: function(a, b, c, q) {
             var g = b.current;
             if (c) {
               c = c._reactInternalFiber;
               var h;
               b: {
-                2 === fd(c) && 2 === c.tag ? void 0 : D("170");
+                2 === kd(c) && 2 === c.tag ? void 0 : E("170");
                 for (h = c; 3 !== h.tag; ) {
-                  if (ge(h)) {
+                  if (le(h)) {
                     h = h.stateNode.__reactInternalMemoizedMergedChildContext;
                     break b;
                   }
-                  (h = h["return"]) ? void 0 : D("171");
+                  (h = h["return"]) ? void 0 : E("171");
                 }
                 h = h.stateNode.context;
               }
-              c = ge(c) ? ke(c, h) : h;
-            } else c = C;
+              c = le(c) ? pe(c, h) : h;
+            } else c = D;
             null === b.context ? (b.context = c) : (b.pendingContext = c);
-            b = r;
+            b = q;
             b = void 0 === b ? null : b;
-            r =
+            q =
               null != a &&
               null != a.type &&
               null != a.type.prototype &&
               !0 === a.type.prototype.unstable_isAsyncReactComponent
                 ? d()
                 : e(g);
-            Ce(g, {
-              expirationTime: r,
+            He(g, {
+              expirationTime: q,
               partialState: { element: a },
               callback: b,
               isReplace: !1,
@@ -4927,7 +4922,7 @@
               nextCallback: null,
               next: null
             });
-            f(g, r);
+            f(g, q);
           },
           batchedUpdates: a.batchedUpdates,
           unbatchedUpdates: a.unbatchedUpdates,
@@ -4945,13 +4940,13 @@
           },
           findHostInstance: b,
           findHostInstanceWithNoPortals: function(a) {
-            a = kd(a);
+            a = pd(a);
             return null === a ? null : a.stateNode;
           },
           injectIntoDevTools: function(a) {
             var c = a.findFiberByHostInstance;
-            return xe(
-              A({}, a, {
+            return Ce(
+              B({}, a, {
                 findHostInstanceByFiber: function(a) {
                   return b(a);
                 },
@@ -4963,42 +4958,62 @@
           }
         };
       }
-      var kf = Object.freeze({ default: jf }),
-        lf = (kf && jf) || kf,
-        mf = lf["default"] ? lf["default"] : lf,
-        nf =
+      var mf = Object.freeze({ default: lf }),
+        nf = (mf && lf) || mf,
+        of = nf["default"] ? nf["default"] : nf;
+      function pf(a, b, c) {
+        var d =
+          3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : null;
+        return {
+          $$typeof: Ue,
+          key: null == d ? null : "" + d,
+          children: a,
+          containerInfo: b,
+          implementation: c
+        };
+      }
+      var qf =
           "object" === typeof performance &&
           "function" === typeof performance.now,
-        of = void 0;
-      of = nf
+        rf = void 0;
+      rf = qf
         ? function() {
             return performance.now();
           }
         : function() {
             return Date.now();
           };
-      var pf = void 0;
-      if (m.canUseDOM)
-        if ("function" !== typeof requestIdleCallback) {
-          var qf = null,
-            rf = !1,
-            sf = !1,
-            tf = 0,
-            uf = 33,
-            vf = 33,
-            wf;
-          wf = nf
+      var sf = void 0,
+        tf = void 0;
+      if (l.canUseDOM)
+        if (
+          "function" !== typeof requestIdleCallback ||
+          "function" !== typeof cancelIdleCallback
+        ) {
+          var uf = null,
+            vf = !1,
+            wf = -1,
+            xf = !1,
+            yf = 0,
+            zf = 33,
+            Af = 33,
+            Bf;
+          Bf = qf
             ? {
+                didTimeout: !1,
                 timeRemaining: function() {
-                  return tf - performance.now();
+                  var a = yf - performance.now();
+                  return 0 < a ? a : 0;
                 }
               }
             : {
+                didTimeout: !1,
                 timeRemaining: function() {
-                  return tf - Date.now();
+                  var a = yf - Date.now();
+                  return 0 < a ? a : 0;
                 }
               };
-          var xf =
+          var Cf =
             "__reactIdleCallback$" +
             Math.random()
               .toString(36)
@@ -5006,51 +5021,74 @@
           window.addEventListener(
             "message",
             function(a) {
-              a.source === window &&
-                a.data === xf &&
-                ((rf = !1), (a = qf), (qf = null), null !== a && a(wf));
+              if (a.source === window && a.data === Cf) {
+                vf = !1;
+                a = rf();
+                if (0 >= yf - a)
+                  if (-1 !== wf && wf <= a) Bf.didTimeout = !0;
+                  else {
+                    xf || ((xf = !0), requestAnimationFrame(Df));
+                    return;
+                  }
+                else Bf.didTimeout = !1;
+                wf = -1;
+                a = uf;
+                uf = null;
+                null !== a && a(Bf);
+              }
             },
             !1
           );
-          var yf = function(a) {
-            sf = !1;
-            var b = a - tf + vf;
-            b < vf && uf < vf
-              ? (8 > b && (b = 8), (vf = b < uf ? uf : b))
-              : (uf = b);
-            tf = a + vf;
-            rf || ((rf = !0), window.postMessage(xf, "*"));
+          var Df = function(a) {
+            xf = !1;
+            var b = a - yf + Af;
+            b < Af && zf < Af
+              ? (8 > b && (b = 8), (Af = b < zf ? zf : b))
+              : (zf = b);
+            yf = a + Af;
+            vf || ((vf = !0), window.postMessage(Cf, "*"));
           };
-          pf = function(a) {
-            qf = a;
-            sf || ((sf = !0), requestAnimationFrame(yf));
+          sf = function(a, b) {
+            uf = a;
+            null != b &&
+              "number" === typeof b.timeout &&
+              (wf = rf() + b.timeout);
+            xf || ((xf = !0), requestAnimationFrame(Df));
             return 0;
           };
-        } else pf = requestIdleCallback;
+          tf = function() {
+            uf = null;
+            vf = !1;
+            wf = -1;
+          };
+        } else
+          (sf = window.requestIdleCallback), (tf = window.cancelIdleCallback);
       else
-        pf = function(a) {
-          setTimeout(function() {
+        (sf = function(a) {
+          return setTimeout(function() {
             a({
               timeRemaining: function() {
                 return Infinity;
               }
             });
           });
-          return 0;
-        };
-      var zf = /^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,
-        Af = {},
-        Bf = {};
-      function Cf(a) {
-        if (Bf.hasOwnProperty(a)) return !0;
-        if (Af.hasOwnProperty(a)) return !1;
-        if (zf.test(a)) return (Bf[a] = !0);
-        Af[a] = !0;
+        }),
+          (tf = function(a) {
+            clearTimeout(a);
+          });
+      var Ef = /^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,
+        Ff = {},
+        Gf = {};
+      function Hf(a) {
+        if (Gf.hasOwnProperty(a)) return !0;
+        if (Ff.hasOwnProperty(a)) return !1;
+        if (Ef.test(a)) return (Gf[a] = !0);
+        Ff[a] = !0;
         return !1;
       }
-      function Df(a, b, c) {
-        var d = ua(b);
-        if (d && ta(b, c)) {
+      function If(a, b, c) {
+        var d = wa(b);
+        if (d && va(b, c)) {
           var e = d.mutationMethod;
           e
             ? e(a, c)
@@ -5059,7 +5097,7 @@
               (d.hasNumericValue && isNaN(c)) ||
               (d.hasPositiveNumericValue && 1 > c) ||
               (d.hasOverloadedBooleanValue && !1 === c)
-              ? Ef(a, b)
+              ? Jf(a, b)
               : d.mustUseProperty
                 ? (a[d.propertyName] = c)
                 : ((b = d.attributeName),
@@ -5069,13 +5107,13 @@
                       (d.hasOverloadedBooleanValue && !0 === c)
                       ? a.setAttribute(b, "")
                       : a.setAttribute(b, "" + c));
-        } else Ff(a, b, ta(b, c) ? c : null);
+        } else Kf(a, b, va(b, c) ? c : null);
       }
-      function Ff(a, b, c) {
-        Cf(b) && (null == c ? a.removeAttribute(b) : a.setAttribute(b, "" + c));
+      function Kf(a, b, c) {
+        Hf(b) && (null == c ? a.removeAttribute(b) : a.setAttribute(b, "" + c));
       }
-      function Ef(a, b) {
-        var c = ua(b);
+      function Jf(a, b) {
+        var c = wa(b);
         c
           ? (b = c.mutationMethod)
             ? b(a, void 0)
@@ -5084,17 +5122,17 @@
               : a.removeAttribute(c.attributeName)
           : a.removeAttribute(b);
       }
-      function Gf(a, b) {
+      function Lf(a, b) {
         var c = b.value,
           d = b.checked;
-        return A({ type: void 0, step: void 0, min: void 0, max: void 0 }, b, {
+        return B({ type: void 0, step: void 0, min: void 0, max: void 0 }, b, {
           defaultChecked: void 0,
           defaultValue: void 0,
           value: null != c ? c : a._wrapperState.initialValue,
           checked: null != d ? d : a._wrapperState.initialChecked
         });
       }
-      function Hf(a, b) {
+      function Mf(a, b) {
         var c = b.defaultValue;
         a._wrapperState = {
           initialChecked: null != b.checked ? b.checked : b.defaultChecked,
@@ -5105,10 +5143,13 @@
               : null != b.value
         };
       }
-      function If(a, b) {
-        var c = b.checked;
-        null != c && Df(a, "checked", c || !1);
-        c = b.value;
+      function Nf(a, b) {
+        b = b.checked;
+        null != b && If(a, "checked", b);
+      }
+      function Of(a, b) {
+        Nf(a, b);
+        var c = b.value;
         if (null != c)
           if (0 === c && "" === a.value) a.value = "0";
           else if ("number" === b.type) {
@@ -5127,7 +5168,7 @@
               null != b.defaultChecked &&
               (a.defaultChecked = !!b.defaultChecked);
       }
-      function Jf(a, b) {
+      function Pf(a, b) {
         switch (b.type) {
           case "submit":
           case "reset":
@@ -5151,7 +5192,7 @@
         a.defaultChecked = !a.defaultChecked;
         "" !== b && (a.name = b);
       }
-      function Kf(a) {
+      function Qf(a) {
         var b = "";
         aa.Children.forEach(a, function(a) {
           null == a ||
@@ -5160,12 +5201,12 @@
         });
         return b;
       }
-      function Lf(a, b) {
-        a = A({ children: void 0 }, b);
-        if ((b = Kf(b.children))) a.children = b;
+      function Rf(a, b) {
+        a = B({ children: void 0 }, b);
+        if ((b = Qf(b.children))) a.children = b;
         return a;
       }
-      function Mf(a, b, c, d) {
+      function Sf(a, b, c, d) {
         a = a.options;
         if (b) {
           b = {};
@@ -5188,36 +5229,34 @@
           null !== b && (b.selected = !0);
         }
       }
-      function Nf(a, b) {
+      function Tf(a, b) {
         var c = b.value;
         a._wrapperState = {
           initialValue: null != c ? c : b.defaultValue,
           wasMultiple: !!b.multiple
         };
       }
-      function Of(a, b) {
-        null != b.dangerouslySetInnerHTML ? D("91") : void 0;
-        return A({}, b, {
+      function Uf(a, b) {
+        null != b.dangerouslySetInnerHTML ? E("91") : void 0;
+        return B({}, b, {
           value: void 0,
           defaultValue: void 0,
           children: "" + a._wrapperState.initialValue
         });
       }
-      function Pf(a, b) {
-        var c = b.value,
-          d = c;
+      function Vf(a, b) {
+        var c = b.value;
         null == c &&
           ((c = b.defaultValue),
           (b = b.children),
           null != b &&
-            (null != c ? D("92") : void 0,
-            Array.isArray(b) && (1 >= b.length ? void 0 : D("93"), (b = b[0])),
+            (null != c ? E("92") : void 0,
+            Array.isArray(b) && (1 >= b.length ? void 0 : E("93"), (b = b[0])),
             (c = "" + b)),
-          null == c && (c = ""),
-          (d = c));
-        a._wrapperState = { initialValue: "" + d };
+          null == c && (c = ""));
+        a._wrapperState = { initialValue: "" + c };
       }
-      function Qf(a, b) {
+      function Wf(a, b) {
         var c = b.value;
         null != c &&
           ((c = "" + c),
@@ -5225,16 +5264,16 @@
           null == b.defaultValue && (a.defaultValue = c));
         null != b.defaultValue && (a.defaultValue = b.defaultValue);
       }
-      function Rf(a) {
+      function Xf(a) {
         var b = a.textContent;
         b === a._wrapperState.initialValue && (a.value = b);
       }
-      var Sf = {
+      var Yf = {
         html: "http://www.w3.org/1999/xhtml",
         mathml: "http://www.w3.org/1998/Math/MathML",
         svg: "http://www.w3.org/2000/svg"
       };
-      function Tf(a) {
+      function Zf(a) {
         switch (a) {
           case "svg":
             return "http://www.w3.org/2000/svg";
@@ -5244,15 +5283,15 @@
             return "http://www.w3.org/1999/xhtml";
         }
       }
-      function Uf(a, b) {
+      function $f(a, b) {
         return null == a || "http://www.w3.org/1999/xhtml" === a
-          ? Tf(b)
+          ? Zf(b)
           : "http://www.w3.org/2000/svg" === a && "foreignObject" === b
             ? "http://www.w3.org/1999/xhtml"
             : a;
       }
-      var Vf = void 0,
-        Wf = (function(a) {
+      var ag = void 0,
+        bg = (function(a) {
           return "undefined" !== typeof MSApp && MSApp.execUnsafeLocalFunction
             ? function(b, c, d, e) {
                 MSApp.execUnsafeLocalFunction(function() {
@@ -5261,16 +5300,15 @@
               }
             : a;
         })(function(a, b) {
-          if (a.namespaceURI !== Sf.svg || "innerHTML" in a) a.innerHTML = b;
+          if (a.namespaceURI !== Yf.svg || "innerHTML" in a) a.innerHTML = b;
           else {
-            Vf = Vf || document.createElement("div");
-            Vf.innerHTML = "\x3csvg\x3e" + b + "\x3c/svg\x3e";
-            for (b = Vf.firstChild; a.firstChild; ) a.removeChild(a.firstChild);
+            ag = ag || document.createElement("div");
+            ag.innerHTML = "\x3csvg\x3e" + b + "\x3c/svg\x3e";
+            for (b = ag.firstChild; a.firstChild; ) a.removeChild(a.firstChild);
             for (; b.firstChild; ) a.appendChild(b.firstChild);
           }
-        }),
-        Xf = /["'&<>]/;
-      function Yf(a, b) {
+        });
+      function cg(a, b) {
         if (b) {
           var c = a.firstChild;
           if (c && c === a.lastChild && 3 === c.nodeType) {
@@ -5280,51 +5318,7 @@
         }
         a.textContent = b;
       }
-      m.canUseDOM &&
-        ("textContent" in document.documentElement ||
-          (Yf = function(a, b) {
-            if (3 === a.nodeType) a.nodeValue = b;
-            else {
-              if ("boolean" === typeof b || "number" === typeof b) b = "" + b;
-              else {
-                b = "" + b;
-                var c = Xf.exec(b);
-                if (c) {
-                  var d = "",
-                    e,
-                    f = 0;
-                  for (e = c.index; e < b.length; e++) {
-                    switch (b.charCodeAt(e)) {
-                      case 34:
-                        c = "\x26quot;";
-                        break;
-                      case 38:
-                        c = "\x26amp;";
-                        break;
-                      case 39:
-                        c = "\x26#x27;";
-                        break;
-                      case 60:
-                        c = "\x26lt;";
-                        break;
-                      case 62:
-                        c = "\x26gt;";
-                        break;
-                      default:
-                        continue;
-                    }
-                    f !== e && (d += b.substring(f, e));
-                    f = e + 1;
-                    d += c;
-                  }
-                  b = f !== e ? d + b.substring(f, e) : d;
-                }
-              }
-              Wf(a, b);
-            }
-          }));
-      var Zf = Yf,
-        $f = {
+      var dg = {
           animationIterationCount: !0,
           borderImageOutset: !0,
           borderImageSlice: !0,
@@ -5367,14 +5361,14 @@
           strokeOpacity: !0,
           strokeWidth: !0
         },
-        ag = ["Webkit", "ms", "Moz", "O"];
-      Object.keys($f).forEach(function(a) {
-        ag.forEach(function(b) {
+        eg = ["Webkit", "ms", "Moz", "O"];
+      Object.keys(dg).forEach(function(a) {
+        eg.forEach(function(b) {
           b = b + a.charAt(0).toUpperCase() + a.substring(1);
-          $f[b] = $f[a];
+          dg[b] = dg[a];
         });
       });
-      function bg(a, b) {
+      function fg(a, b) {
         a = a.style;
         for (var c in b)
           if (b.hasOwnProperty(c)) {
@@ -5387,14 +5381,14 @@
                 : d ||
                   "number" !== typeof f ||
                   0 === f ||
-                  ($f.hasOwnProperty(e) && $f[e])
+                  (dg.hasOwnProperty(e) && dg[e])
                   ? ("" + f).trim()
                   : f + "px";
             "float" === c && (c = "cssFloat");
             d ? a.setProperty(c, e) : (a[c] = e);
           }
       }
-      var cg = A(
+      var gg = B(
         { menuitem: !0 },
         {
           area: !0,
@@ -5414,23 +5408,23 @@
           wbr: !0
         }
       );
-      function dg(a, b, c) {
+      function hg(a, b, c) {
         b &&
-          (cg[a] &&
+          (gg[a] &&
             (null != b.children || null != b.dangerouslySetInnerHTML
-              ? D("137", a, c())
+              ? E("137", a, c())
               : void 0),
           null != b.dangerouslySetInnerHTML &&
-            (null != b.children ? D("60") : void 0,
+            (null != b.children ? E("60") : void 0,
             "object" === typeof b.dangerouslySetInnerHTML &&
             "__html" in b.dangerouslySetInnerHTML
               ? void 0
-              : D("61")),
+              : E("61")),
           null != b.style && "object" !== typeof b.style
-            ? D("62", c())
+            ? E("62", c())
             : void 0);
       }
-      function eg(a, b) {
+      function ig(a, b) {
         if (-1 === a.indexOf("-")) return "string" === typeof b.is;
         switch (a) {
           case "annotation-xml":
@@ -5446,39 +5440,33 @@
             return !0;
         }
       }
-      var fg = Sf.html,
-        gg = B.thatReturns("");
-      function hg(a, b) {
+      var jg = Yf.html,
+        kg = C.thatReturns("");
+      function lg(a, b) {
         a = 9 === a.nodeType || 11 === a.nodeType ? a : a.ownerDocument;
-        var c = Cd(a);
-        b = Qa[b];
+        var c = Hd(a);
+        b = Sa[b];
         for (var d = 0; d < b.length; d++) {
           var e = b[d];
           (c.hasOwnProperty(e) && c[e]) ||
-            ("topWheel" === e
-              ? xc("wheel")
-                ? U("topWheel", "wheel", a)
-                : xc("mousewheel")
-                  ? U("topWheel", "mousewheel", a)
-                  : U("topWheel", "DOMMouseScroll", a)
-              : "topScroll" === e
-                ? rd("topScroll", "scroll", a)
-                : "topFocus" === e || "topBlur" === e
-                  ? (rd("topFocus", "focus", a),
-                    rd("topBlur", "blur", a),
-                    (c.topBlur = !0),
-                    (c.topFocus = !0))
-                  : "topCancel" === e
-                    ? (xc("cancel", !0) && rd("topCancel", "cancel", a),
-                      (c.topCancel = !0))
-                    : "topClose" === e
-                      ? (xc("close", !0) && rd("topClose", "close", a),
-                        (c.topClose = !0))
-                      : yd.hasOwnProperty(e) && U(e, yd[e], a),
+            ("topScroll" === e
+              ? wd("topScroll", "scroll", a)
+              : "topFocus" === e || "topBlur" === e
+                ? (wd("topFocus", "focus", a),
+                  wd("topBlur", "blur", a),
+                  (c.topBlur = !0),
+                  (c.topFocus = !0))
+                : "topCancel" === e
+                  ? (yc("cancel", !0) && wd("topCancel", "cancel", a),
+                    (c.topCancel = !0))
+                  : "topClose" === e
+                    ? (yc("close", !0) && wd("topClose", "close", a),
+                      (c.topClose = !0))
+                    : Dd.hasOwnProperty(e) && U(e, Dd[e], a),
             (c[e] = !0));
         }
       }
-      var ig = {
+      var mg = {
         topAbort: "abort",
         topCanPlay: "canplay",
         topCanPlayThrough: "canplaythrough",
@@ -5503,10 +5491,10 @@
         topVolumeChange: "volumechange",
         topWaiting: "waiting"
       };
-      function jg(a, b, c, d) {
+      function ng(a, b, c, d) {
         c = 9 === c.nodeType ? c : c.ownerDocument;
-        d === fg && (d = Tf(a));
-        d === fg
+        d === jg && (d = Zf(a));
+        d === jg
           ? "script" === a
             ? ((a = c.createElement("div")),
               (a.innerHTML = "\x3cscript\x3e\x3c/script\x3e"),
@@ -5518,11 +5506,11 @@
           : (a = c.createElementNS(d, a));
         return a;
       }
-      function kg(a, b) {
+      function og(a, b) {
         return (9 === b.nodeType ? b : b.ownerDocument).createTextNode(a);
       }
-      function og(a, b, c, d) {
-        var e = eg(b, c);
+      function pg(a, b, c, d) {
+        var e = ig(b, c);
         switch (b) {
           case "iframe":
           case "object":
@@ -5531,7 +5519,7 @@
             break;
           case "video":
           case "audio":
-            for (f in ig) ig.hasOwnProperty(f) && U(f, ig[f], a);
+            for (f in mg) mg.hasOwnProperty(f) && U(f, mg[f], a);
             f = c;
             break;
           case "source":
@@ -5554,58 +5542,58 @@
             f = c;
             break;
           case "input":
-            Hf(a, c);
-            f = Gf(a, c);
+            Mf(a, c);
+            f = Lf(a, c);
             U("topInvalid", "invalid", a);
-            hg(d, "onChange");
+            lg(d, "onChange");
             break;
           case "option":
-            f = Lf(a, c);
+            f = Rf(a, c);
             break;
           case "select":
-            Nf(a, c);
-            f = A({}, c, { value: void 0 });
+            Tf(a, c);
+            f = B({}, c, { value: void 0 });
             U("topInvalid", "invalid", a);
-            hg(d, "onChange");
+            lg(d, "onChange");
             break;
           case "textarea":
-            Pf(a, c);
-            f = Of(a, c);
+            Vf(a, c);
+            f = Uf(a, c);
             U("topInvalid", "invalid", a);
-            hg(d, "onChange");
+            lg(d, "onChange");
             break;
           default:
             f = c;
         }
-        dg(b, f, gg);
+        hg(b, f, kg);
         var g = f,
-          k;
-        for (k in g)
-          if (g.hasOwnProperty(k)) {
-            var h = g[k];
-            "style" === k
-              ? bg(a, h, gg)
-              : "dangerouslySetInnerHTML" === k
-                ? ((h = h ? h.__html : void 0), null != h && Wf(a, h))
-                : "children" === k
-                  ? "string" === typeof h
-                    ? ("textarea" !== b || "" !== h) && Zf(a, h)
-                    : "number" === typeof h && Zf(a, "" + h)
-                  : "suppressContentEditableWarning" !== k &&
-                    "suppressHydrationWarning" !== k &&
-                    "autoFocus" !== k &&
-                    (Pa.hasOwnProperty(k)
-                      ? null != h && hg(d, k)
-                      : e ? Ff(a, k, h) : null != h && Df(a, k, h));
+          h;
+        for (h in g)
+          if (g.hasOwnProperty(h)) {
+            var k = g[h];
+            "style" === h
+              ? fg(a, k, kg)
+              : "dangerouslySetInnerHTML" === h
+                ? ((k = k ? k.__html : void 0), null != k && bg(a, k))
+                : "children" === h
+                  ? "string" === typeof k
+                    ? ("textarea" !== b || "" !== k) && cg(a, k)
+                    : "number" === typeof k && cg(a, "" + k)
+                  : "suppressContentEditableWarning" !== h &&
+                    "suppressHydrationWarning" !== h &&
+                    "autoFocus" !== h &&
+                    (Ra.hasOwnProperty(h)
+                      ? null != k && lg(d, h)
+                      : e ? Kf(a, h, k) : null != k && If(a, h, k));
           }
         switch (b) {
           case "input":
-            Ac(a);
-            Jf(a, c);
+            Bc(a);
+            Pf(a, c);
             break;
           case "textarea":
-            Ac(a);
-            Rf(a, c);
+            Bc(a);
+            Xf(a, c);
             break;
           case "option":
             null != c.value && a.setAttribute("value", c.value);
@@ -5614,115 +5602,115 @@
             a.multiple = !!c.multiple;
             b = c.value;
             null != b
-              ? Mf(a, !!c.multiple, b, !1)
+              ? Sf(a, !!c.multiple, b, !1)
               : null != c.defaultValue &&
-                Mf(a, !!c.multiple, c.defaultValue, !0);
+                Sf(a, !!c.multiple, c.defaultValue, !0);
             break;
           default:
-            "function" === typeof f.onClick && (a.onclick = B);
+            "function" === typeof f.onClick && (a.onclick = C);
         }
       }
-      function pg(a, b, c, d, e) {
+      function sg(a, b, c, d, e) {
         var f = null;
         switch (b) {
           case "input":
-            c = Gf(a, c);
-            d = Gf(a, d);
-            f = [];
-            break;
-          case "option":
             c = Lf(a, c);
             d = Lf(a, d);
             f = [];
             break;
+          case "option":
+            c = Rf(a, c);
+            d = Rf(a, d);
+            f = [];
+            break;
           case "select":
-            c = A({}, c, { value: void 0 });
-            d = A({}, d, { value: void 0 });
+            c = B({}, c, { value: void 0 });
+            d = B({}, d, { value: void 0 });
             f = [];
             break;
           case "textarea":
-            c = Of(a, c);
-            d = Of(a, d);
+            c = Uf(a, c);
+            d = Uf(a, d);
             f = [];
             break;
           default:
             "function" !== typeof c.onClick &&
               "function" === typeof d.onClick &&
-              (a.onclick = B);
+              (a.onclick = C);
         }
-        dg(b, d, gg);
-        var g, k;
+        hg(b, d, kg);
+        var g, h;
         a = null;
         for (g in c)
           if (!d.hasOwnProperty(g) && c.hasOwnProperty(g) && null != c[g])
             if ("style" === g)
-              for (k in ((b = c[g]), b))
-                b.hasOwnProperty(k) && (a || (a = {}), (a[k] = ""));
+              for (h in ((b = c[g]), b))
+                b.hasOwnProperty(h) && (a || (a = {}), (a[h] = ""));
             else
               "dangerouslySetInnerHTML" !== g &&
                 "children" !== g &&
                 "suppressContentEditableWarning" !== g &&
                 "suppressHydrationWarning" !== g &&
                 "autoFocus" !== g &&
-                (Pa.hasOwnProperty(g)
+                (Ra.hasOwnProperty(g)
                   ? f || (f = [])
                   : (f = f || []).push(g, null));
         for (g in d) {
-          var h = d[g];
+          var k = d[g];
           b = null != c ? c[g] : void 0;
-          if (d.hasOwnProperty(g) && h !== b && (null != h || null != b))
+          if (d.hasOwnProperty(g) && k !== b && (null != k || null != b))
             if ("style" === g)
               if (b) {
-                for (k in b)
-                  !b.hasOwnProperty(k) ||
-                    (h && h.hasOwnProperty(k)) ||
-                    (a || (a = {}), (a[k] = ""));
-                for (k in h)
-                  h.hasOwnProperty(k) &&
-                    b[k] !== h[k] &&
-                    (a || (a = {}), (a[k] = h[k]));
-              } else a || (f || (f = []), f.push(g, a)), (a = h);
+                for (h in b)
+                  !b.hasOwnProperty(h) ||
+                    (k && k.hasOwnProperty(h)) ||
+                    (a || (a = {}), (a[h] = ""));
+                for (h in k)
+                  k.hasOwnProperty(h) &&
+                    b[h] !== k[h] &&
+                    (a || (a = {}), (a[h] = k[h]));
+              } else a || (f || (f = []), f.push(g, a)), (a = k);
             else
               "dangerouslySetInnerHTML" === g
-                ? ((h = h ? h.__html : void 0),
+                ? ((k = k ? k.__html : void 0),
                   (b = b ? b.__html : void 0),
-                  null != h && b !== h && (f = f || []).push(g, "" + h))
+                  null != k && b !== k && (f = f || []).push(g, "" + k))
                 : "children" === g
-                  ? b === h ||
-                    ("string" !== typeof h && "number" !== typeof h) ||
-                    (f = f || []).push(g, "" + h)
+                  ? b === k ||
+                    ("string" !== typeof k && "number" !== typeof k) ||
+                    (f = f || []).push(g, "" + k)
                   : "suppressContentEditableWarning" !== g &&
                     "suppressHydrationWarning" !== g &&
-                    (Pa.hasOwnProperty(g)
-                      ? (null != h && hg(e, g), f || b === h || (f = []))
-                      : (f = f || []).push(g, h));
+                    (Ra.hasOwnProperty(g)
+                      ? (null != k && lg(e, g), f || b === k || (f = []))
+                      : (f = f || []).push(g, k));
         }
         a && (f = f || []).push("style", a);
         return f;
       }
-      function qg(a, b, c, d, e) {
-        eg(c, d);
-        d = eg(c, e);
+      function tg(a, b, c, d, e) {
+        "input" === c && "radio" === e.type && null != e.name && Nf(a, e);
+        ig(c, d);
+        d = ig(c, e);
         for (var f = 0; f < b.length; f += 2) {
           var g = b[f],
-            k = b[f + 1];
+            h = b[f + 1];
           "style" === g
-            ? bg(a, k, gg)
+            ? fg(a, h, kg)
             : "dangerouslySetInnerHTML" === g
-              ? Wf(a, k)
+              ? bg(a, h)
               : "children" === g
-                ? Zf(a, k)
+                ? cg(a, h)
                 : d
-                  ? null != k ? Ff(a, g, k) : a.removeAttribute(g)
-                  : null != k ? Df(a, g, k) : Ef(a, g);
+                  ? null != h ? Kf(a, g, h) : a.removeAttribute(g)
+                  : null != h ? If(a, g, h) : Jf(a, g);
         }
         switch (c) {
           case "input":
-            If(a, e);
-            Bc(a);
+            Of(a, e);
             break;
           case "textarea":
-            Qf(a, e);
+            Wf(a, e);
             break;
           case "select":
             (a._wrapperState.initialValue = void 0),
@@ -5730,14 +5718,14 @@
               (a._wrapperState.wasMultiple = !!e.multiple),
               (c = e.value),
               null != c
-                ? Mf(a, !!e.multiple, c, !1)
+                ? Sf(a, !!e.multiple, c, !1)
                 : b !== !!e.multiple &&
                   (null != e.defaultValue
-                    ? Mf(a, !!e.multiple, e.defaultValue, !0)
-                    : Mf(a, !!e.multiple, e.multiple ? [] : "", !1));
+                    ? Sf(a, !!e.multiple, e.defaultValue, !0)
+                    : Sf(a, !!e.multiple, e.multiple ? [] : "", !1));
         }
       }
-      function rg(a, b, c, d, e) {
+      function ug(a, b, c, d, e) {
         switch (b) {
           case "iframe":
           case "object":
@@ -5745,7 +5733,7 @@
             break;
           case "video":
           case "audio":
-            for (var f in ig) ig.hasOwnProperty(f) && U(f, ig[f], a);
+            for (var f in mg) mg.hasOwnProperty(f) && U(f, mg[f], a);
             break;
           case "source":
             U("topError", "error", a);
@@ -5763,19 +5751,19 @@
             U("topToggle", "toggle", a);
             break;
           case "input":
-            Hf(a, c);
+            Mf(a, c);
             U("topInvalid", "invalid", a);
-            hg(e, "onChange");
+            lg(e, "onChange");
             break;
           case "select":
-            Nf(a, c);
+            Tf(a, c);
             U("topInvalid", "invalid", a);
-            hg(e, "onChange");
+            lg(e, "onChange");
             break;
           case "textarea":
-            Pf(a, c), U("topInvalid", "invalid", a), hg(e, "onChange");
+            Vf(a, c), U("topInvalid", "invalid", a), lg(e, "onChange");
         }
-        dg(b, c, gg);
+        hg(b, c, kg);
         d = null;
         for (var g in c)
           c.hasOwnProperty(g) &&
@@ -5786,35 +5774,35 @@
                 : "number" === typeof f &&
                   a.textContent !== "" + f &&
                   (d = ["children", "" + f])
-              : Pa.hasOwnProperty(g) && null != f && hg(e, g));
+              : Ra.hasOwnProperty(g) && null != f && lg(e, g));
         switch (b) {
           case "input":
-            Ac(a);
-            Jf(a, c);
+            Bc(a);
+            Pf(a, c);
             break;
           case "textarea":
-            Ac(a);
-            Rf(a, c);
+            Bc(a);
+            Xf(a, c);
             break;
           case "select":
           case "option":
             break;
           default:
-            "function" === typeof c.onClick && (a.onclick = B);
+            "function" === typeof c.onClick && (a.onclick = C);
         }
         return d;
       }
-      function sg(a, b) {
+      function vg(a, b) {
         return a.nodeValue !== b;
       }
-      var tg = Object.freeze({
-        createElement: jg,
-        createTextNode: kg,
-        setInitialProperties: og,
-        diffProperties: pg,
-        updateProperties: qg,
-        diffHydratedProperties: rg,
-        diffHydratedText: sg,
+      var wg = Object.freeze({
+        createElement: ng,
+        createTextNode: og,
+        setInitialProperties: pg,
+        diffProperties: sg,
+        updateProperties: tg,
+        diffHydratedProperties: ug,
+        diffHydratedText: vg,
         warnForUnmatchedText: function() {},
         warnForDeletedHydratableElement: function() {},
         warnForDeletedHydratableText: function() {},
@@ -5823,7 +5811,7 @@
         restoreControlledState: function(a, b, c) {
           switch (b) {
             case "input":
-              If(a, c);
+              Of(a, c);
               b = c.name;
               if ("radio" === c.type && null != b) {
                 for (c = a; c.parentNode; ) c = c.parentNode;
@@ -5836,24 +5824,25 @@
                   var d = c[b];
                   if (d !== a && d.form === a.form) {
                     var e = rb(d);
-                    e ? void 0 : D("90");
-                    If(d, e);
+                    e ? void 0 : E("90");
+                    Cc(d);
+                    Of(d, e);
                   }
                 }
               }
               break;
             case "textarea":
-              Qf(a, c);
+              Wf(a, c);
               break;
             case "select":
-              (b = c.value), null != b && Mf(a, !!c.multiple, b, !1);
+              (b = c.value), null != b && Sf(a, !!c.multiple, b, !1);
           }
         }
       });
-      mc.injectFiberControlledHostComponent(tg);
-      var Gg = null,
-        Hg = null;
-      function Ig(a) {
+      nc.injectFiberControlledHostComponent(wg);
+      var xg = null,
+        Mg = null;
+      function Ng(a) {
         return !(
           !a ||
           (1 !== a.nodeType &&
@@ -5863,36 +5852,36 @@
               " react-mount-point-unstable " !== a.nodeValue))
         );
       }
-      function Jg(a) {
+      function Og(a) {
         a = a ? (9 === a.nodeType ? a.documentElement : a.firstChild) : null;
         return !(!a || 1 !== a.nodeType || !a.hasAttribute("data-reactroot"));
       }
-      var Z = mf({
+      var Z = of({
         getRootHostContext: function(a) {
           var b = a.nodeType;
           switch (b) {
             case 9:
             case 11:
-              a = (a = a.documentElement) ? a.namespaceURI : Uf(null, "");
+              a = (a = a.documentElement) ? a.namespaceURI : $f(null, "");
               break;
             default:
               (b = 8 === b ? a.parentNode : a),
                 (a = b.namespaceURI || null),
                 (b = b.tagName),
-                (a = Uf(a, b));
+                (a = $f(a, b));
           }
           return a;
         },
         getChildHostContext: function(a, b) {
-          return Uf(a, b);
+          return $f(a, b);
         },
         getPublicInstance: function(a) {
           return a;
         },
         prepareForCommit: function() {
-          Gg = od;
+          xg = td;
           var a = da();
-          if (Fd(a)) {
+          if (Kd(a)) {
             if ("selectionStart" in a)
               var b = { start: a.selectionStart, end: a.selectionEnd };
             else
@@ -5905,51 +5894,51 @@
                   c = c.focusOffset;
                   try {
                     b.nodeType, e.nodeType;
-                  } catch (x) {
+                  } catch (z) {
                     b = null;
                     break a;
                   }
                   var f = 0,
                     g = -1,
-                    k = -1,
-                    h = 0,
-                    r = 0,
-                    n = a,
+                    h = -1,
+                    k = 0,
+                    q = 0,
+                    v = a,
                     y = null;
                   b: for (;;) {
                     for (var u; ; ) {
-                      n !== b || (0 !== d && 3 !== n.nodeType) || (g = f + d);
-                      n !== e || (0 !== c && 3 !== n.nodeType) || (k = f + c);
-                      3 === n.nodeType && (f += n.nodeValue.length);
-                      if (null === (u = n.firstChild)) break;
-                      y = n;
-                      n = u;
+                      v !== b || (0 !== d && 3 !== v.nodeType) || (g = f + d);
+                      v !== e || (0 !== c && 3 !== v.nodeType) || (h = f + c);
+                      3 === v.nodeType && (f += v.nodeValue.length);
+                      if (null === (u = v.firstChild)) break;
+                      y = v;
+                      v = u;
                     }
                     for (;;) {
-                      if (n === a) break b;
-                      y === b && ++h === d && (g = f);
-                      y === e && ++r === c && (k = f);
-                      if (null !== (u = n.nextSibling)) break;
-                      n = y;
-                      y = n.parentNode;
+                      if (v === a) break b;
+                      y === b && ++k === d && (g = f);
+                      y === e && ++q === c && (h = f);
+                      if (null !== (u = v.nextSibling)) break;
+                      v = y;
+                      y = v.parentNode;
                     }
-                    n = u;
+                    v = u;
                   }
-                  b = -1 === g || -1 === k ? null : { start: g, end: k };
+                  b = -1 === g || -1 === h ? null : { start: g, end: h };
                 } else b = null;
               }
             b = b || { start: 0, end: 0 };
           } else b = null;
-          Hg = { focusedElem: a, selectionRange: b };
-          pd(!1);
+          Mg = { focusedElem: a, selectionRange: b };
+          ud(!1);
         },
         resetAfterCommit: function() {
-          var a = Hg,
+          var a = Mg,
             b = da(),
             c = a.focusedElem,
             d = a.selectionRange;
-          if (b !== c && ha(document.documentElement, c)) {
-            if (Fd(c))
+          if (b !== c && fa(document.documentElement, c)) {
+            if (Kd(c))
               if (
                 ((b = d.start),
                 (a = d.end),
@@ -5960,12 +5949,12 @@
                   (c.selectionEnd = Math.min(a, c.value.length));
               else if (window.getSelection) {
                 b = window.getSelection();
-                var e = c[Db()].length;
+                var e = c[Eb()].length;
                 a = Math.min(d.start, e);
                 d = void 0 === d.end ? a : Math.min(d.end, e);
                 !b.extend && a > d && ((e = d), (d = a), (a = e));
-                e = Ed(c, a);
-                var f = Ed(c, d);
+                e = Jd(c, a);
+                var f = Jd(c, d);
                 if (
                   e &&
                   f &&
@@ -5993,13 +5982,13 @@
                 (a.element.scrollLeft = a.left),
                 (a.element.scrollTop = a.top);
           }
-          Hg = null;
-          pd(Gg);
-          Gg = null;
+          Mg = null;
+          ud(xg);
+          xg = null;
         },
         createInstance: function(a, b, c, d, e) {
-          a = jg(a, b, c, d);
-          a[O] = e;
+          a = ng(a, b, c, d);
+          a[Q] = e;
           a[ob] = b;
           return a;
         },
@@ -6007,7 +5996,7 @@
           a.appendChild(b);
         },
         finalizeInitialChildren: function(a, b, c, d) {
-          og(a, b, c, d);
+          pg(a, b, c, d);
           a: {
             switch (b) {
               case "button":
@@ -6022,7 +6011,7 @@
           return a;
         },
         prepareUpdate: function(a, b, c, d, e) {
-          return pg(a, b, c, d, e);
+          return sg(a, b, c, d, e);
         },
         shouldSetTextContent: function(a, b) {
           return (
@@ -6038,18 +6027,18 @@
           return !!b.hidden;
         },
         createTextInstance: function(a, b, c, d) {
-          a = kg(a, b);
-          a[O] = d;
+          a = og(a, b);
+          a[Q] = d;
           return a;
         },
-        now: of,
+        now: rf,
         mutation: {
           commitMount: function(a) {
             a.focus();
           },
           commitUpdate: function(a, b, c, d, e) {
             a[ob] = e;
-            qg(a, b, c, d, e);
+            tg(a, b, c, d, e);
           },
           resetTextContent: function(a) {
             a.textContent = "";
@@ -6082,12 +6071,13 @@
         },
         hydration: {
           canHydrateInstance: function(a, b) {
-            return (
-              1 === a.nodeType && b.toLowerCase() === a.nodeName.toLowerCase()
-            );
+            return 1 !== a.nodeType ||
+              b.toLowerCase() !== a.nodeName.toLowerCase()
+              ? null
+              : a;
           },
           canHydrateTextInstance: function(a, b) {
-            return "" === b ? !1 : 3 === a.nodeType;
+            return "" === b || 3 !== a.nodeType ? null : a;
           },
           getNextHydratableSibling: function(a) {
             for (a = a.nextSibling; a && 1 !== a.nodeType && 3 !== a.nodeType; )
@@ -6100,13 +6090,13 @@
             return a;
           },
           hydrateInstance: function(a, b, c, d, e, f) {
-            a[O] = f;
+            a[Q] = f;
             a[ob] = c;
-            return rg(a, b, c, e, d);
+            return ug(a, b, c, e, d);
           },
           hydrateTextInstance: function(a, b, c) {
-            a[O] = c;
-            return sg(a, b);
+            a[Q] = c;
+            return vg(a, b);
           },
           didNotMatchHydratedContainerTextInstance: function() {},
           didNotMatchHydratedTextInstance: function() {},
@@ -6117,16 +6107,17 @@
           didNotFindHydratableInstance: function() {},
           didNotFindHydratableTextInstance: function() {}
         },
-        scheduleDeferredCallback: pf,
+        scheduleDeferredCallback: sf,
+        cancelDeferredCallback: tf,
         useSyncScheduling: !0
       });
-      qc = Z.batchedUpdates;
-      function Kg(a, b, c, d, e) {
-        Ig(c) ? void 0 : D("200");
+      rc = Z.batchedUpdates;
+      function Pg(a, b, c, d, e) {
+        Ng(c) ? void 0 : E("200");
         var f = c._reactRootContainer;
         if (f) Z.updateContainer(b, f, a, e);
         else {
-          d = d || Jg(c);
+          d = d || Og(c);
           if (!d) for (f = void 0; (f = c.lastChild); ) c.removeChild(f);
           var g = Z.createContainer(c, d);
           f = c._reactRootContainer = g;
@@ -6136,73 +6127,73 @@
         }
         return Z.getPublicRootInstance(f);
       }
-      function Lg(a, b) {
+      function Qg(a, b) {
         var c =
           2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : null;
-        Ig(b) ? void 0 : D("200");
-        return Oe(a, b, null, c);
+        Ng(b) ? void 0 : E("200");
+        return pf(a, b, null, c);
       }
-      function Mg(a, b) {
+      function Rg(a, b) {
         this._reactRootContainer = Z.createContainer(a, b);
       }
-      Mg.prototype.render = function(a, b) {
+      Rg.prototype.render = function(a, b) {
         Z.updateContainer(a, this._reactRootContainer, null, b);
       };
-      Mg.prototype.unmount = function(a) {
+      Rg.prototype.unmount = function(a) {
         Z.updateContainer(null, this._reactRootContainer, null, a);
       };
-      var Ng = {
-        createPortal: Lg,
+      var Sg = {
+        createPortal: Qg,
         findDOMNode: function(a) {
           if (null == a) return null;
           if (1 === a.nodeType) return a;
           var b = a._reactInternalFiber;
           if (b) return Z.findHostInstance(b);
-          "function" === typeof a.render ? D("188") : D("213", Object.keys(a));
+          "function" === typeof a.render ? E("188") : E("213", Object.keys(a));
         },
         hydrate: function(a, b, c) {
-          return Kg(null, a, b, !0, c);
+          return Pg(null, a, b, !0, c);
         },
         render: function(a, b, c) {
-          return Kg(null, a, b, !1, c);
+          return Pg(null, a, b, !1, c);
         },
         unstable_renderSubtreeIntoContainer: function(a, b, c, d) {
-          null == a || void 0 === a._reactInternalFiber ? D("38") : void 0;
-          return Kg(a, b, c, !1, d);
+          null == a || void 0 === a._reactInternalFiber ? E("38") : void 0;
+          return Pg(a, b, c, !1, d);
         },
         unmountComponentAtNode: function(a) {
-          Ig(a) ? void 0 : D("40");
+          Ng(a) ? void 0 : E("40");
           return a._reactRootContainer
             ? (Z.unbatchedUpdates(function() {
-                Kg(null, null, a, !1, function() {
+                Pg(null, null, a, !1, function() {
                   a._reactRootContainer = null;
                 });
               }),
               !0)
             : !1;
         },
-        unstable_createPortal: Lg,
-        unstable_batchedUpdates: sc,
+        unstable_createPortal: Qg,
+        unstable_batchedUpdates: tc,
         unstable_deferredUpdates: Z.deferredUpdates,
         flushSync: Z.flushSync,
         __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
           EventPluginHub: mb,
-          EventPluginRegistry: Ta,
-          EventPropagators: Bb,
-          ReactControlledComponent: pc,
+          EventPluginRegistry: Va,
+          EventPropagators: Cb,
+          ReactControlledComponent: qc,
           ReactDOMComponentTree: sb,
-          ReactDOMEventListener: sd
+          ReactDOMEventListener: xd
         }
       };
       Z.injectIntoDevTools({
         findFiberByHostInstance: pb,
         bundleType: 0,
-        version: "16.1.0",
+        version: "16.2.0",
         rendererPackageName: "react-dom"
       });
-      var Og = Object.freeze({ default: Ng }),
-        Pg = (Og && Ng) || Og;
-      module.exports = Pg["default"] ? Pg["default"] : Pg;
+      var Tg = Object.freeze({ default: Sg }),
+        Ug = (Tg && Sg) || Tg;
+      module.exports = Ug["default"] ? Ug["default"] : Ug;
 
       /***/
     },
@@ -6595,7 +6586,7 @@
 
       var _example_components2 = _interopRequireDefault(_example_components);
 
-      var _hero_example = __webpack_require__(390);
+      var _hero_example = __webpack_require__(396);
 
       var _hero_example2 = _interopRequireDefault(_hero_example);
 
@@ -6807,209 +6798,213 @@
 
       var _default2 = _interopRequireDefault(_default);
 
-      var _code_example_component = __webpack_require__(342);
+      var _code_example_component = __webpack_require__(347);
 
       var _code_example_component2 = _interopRequireDefault(
         _code_example_component
       );
 
-      var _custom_date_format = __webpack_require__(343);
+      var _custom_date_format = __webpack_require__(348);
 
       var _custom_date_format2 = _interopRequireDefault(_custom_date_format);
 
-      var _custom_class_name = __webpack_require__(344);
+      var _custom_class_name = __webpack_require__(349);
 
       var _custom_class_name2 = _interopRequireDefault(_custom_class_name);
 
-      var _custom_calendar_class_name = __webpack_require__(345);
+      var _custom_calendar_class_name = __webpack_require__(350);
 
       var _custom_calendar_class_name2 = _interopRequireDefault(
         _custom_calendar_class_name
       );
 
-      var _custom_day_class_names = __webpack_require__(346);
+      var _custom_day_class_names = __webpack_require__(351);
 
       var _custom_day_class_names2 = _interopRequireDefault(
         _custom_day_class_names
       );
 
-      var _placeholder_text = __webpack_require__(347);
+      var _placeholder_text = __webpack_require__(352);
 
       var _placeholder_text2 = _interopRequireDefault(_placeholder_text);
 
-      var _specific_date_range = __webpack_require__(348);
+      var _specific_date_range = __webpack_require__(353);
 
       var _specific_date_range2 = _interopRequireDefault(_specific_date_range);
 
-      var _locale = __webpack_require__(349);
+      var _locale = __webpack_require__(354);
 
       var _locale2 = _interopRequireDefault(_locale);
 
-      var _exclude_dates = __webpack_require__(350);
+      var _exclude_dates = __webpack_require__(355);
 
       var _exclude_dates2 = _interopRequireDefault(_exclude_dates);
 
-      var _highlight_dates = __webpack_require__(351);
+      var _highlight_dates = __webpack_require__(356);
 
       var _highlight_dates2 = _interopRequireDefault(_highlight_dates);
 
-      var _highlight_dates_with_ranges = __webpack_require__(352);
+      var _highlight_dates_with_ranges = __webpack_require__(357);
 
       var _highlight_dates_with_ranges2 = _interopRequireDefault(
         _highlight_dates_with_ranges
       );
 
-      var _include_dates = __webpack_require__(353);
+      var _include_dates = __webpack_require__(358);
 
       var _include_dates2 = _interopRequireDefault(_include_dates);
 
-      var _filter_dates = __webpack_require__(354);
+      var _filter_dates = __webpack_require__(359);
 
       var _filter_dates2 = _interopRequireDefault(_filter_dates);
 
-      var _disabled = __webpack_require__(355);
+      var _disabled = __webpack_require__(360);
 
       var _disabled2 = _interopRequireDefault(_disabled);
 
-      var _disabled_keyboard_navigation = __webpack_require__(356);
+      var _disabled_keyboard_navigation = __webpack_require__(361);
 
       var _disabled_keyboard_navigation2 = _interopRequireDefault(
         _disabled_keyboard_navigation
       );
 
-      var _clear_input = __webpack_require__(357);
+      var _clear_input = __webpack_require__(362);
 
       var _clear_input2 = _interopRequireDefault(_clear_input);
 
-      var _on_blur_callbacks = __webpack_require__(358);
+      var _on_blur_callbacks = __webpack_require__(363);
 
       var _on_blur_callbacks2 = _interopRequireDefault(_on_blur_callbacks);
 
-      var _configurePopper = __webpack_require__(359);
+      var _configurePopper = __webpack_require__(364);
 
       var _configurePopper2 = _interopRequireDefault(_configurePopper);
 
-      var _date_range = __webpack_require__(360);
+      var _date_range = __webpack_require__(365);
 
       var _date_range2 = _interopRequireDefault(_date_range);
 
-      var _date_range_with_show_disabled_navigation = __webpack_require__(361);
+      var _date_range_with_show_disabled_navigation = __webpack_require__(366);
 
       var _date_range_with_show_disabled_navigation2 = _interopRequireDefault(
         _date_range_with_show_disabled_navigation
       );
 
-      var _tab_index = __webpack_require__(362);
+      var _tab_index = __webpack_require__(367);
 
       var _tab_index2 = _interopRequireDefault(_tab_index);
 
-      var _year_dropdown = __webpack_require__(363);
+      var _year_dropdown = __webpack_require__(368);
 
       var _year_dropdown2 = _interopRequireDefault(_year_dropdown);
 
-      var _month_dropdown = __webpack_require__(364);
+      var _month_dropdown = __webpack_require__(369);
 
       var _month_dropdown2 = _interopRequireDefault(_month_dropdown);
 
-      var _month_year_dropdown = __webpack_require__(365);
+      var _month_year_dropdown = __webpack_require__(370);
 
       var _month_year_dropdown2 = _interopRequireDefault(_month_year_dropdown);
 
-      var _month_dropdown_short = __webpack_require__(366);
+      var _month_dropdown_short = __webpack_require__(371);
 
       var _month_dropdown_short2 = _interopRequireDefault(
         _month_dropdown_short
       );
 
-      var _year_select_dropdown = __webpack_require__(367);
+      var _year_select_dropdown = __webpack_require__(372);
 
       var _year_select_dropdown2 = _interopRequireDefault(
         _year_select_dropdown
       );
 
-      var _today = __webpack_require__(368);
+      var _today = __webpack_require__(373);
 
       var _today2 = _interopRequireDefault(_today);
 
-      var _timezone_date = __webpack_require__(369);
+      var _timezone_date = __webpack_require__(374);
 
       var _timezone_date2 = _interopRequireDefault(_timezone_date);
 
-      var _inline = __webpack_require__(370);
+      var _inline = __webpack_require__(375);
 
       var _inline2 = _interopRequireDefault(_inline);
 
-      var _open_to_date = __webpack_require__(371);
+      var _open_to_date = __webpack_require__(376);
 
       var _open_to_date2 = _interopRequireDefault(_open_to_date);
 
-      var _fixed_calendar = __webpack_require__(372);
+      var _fixed_calendar = __webpack_require__(377);
 
       var _fixed_calendar2 = _interopRequireDefault(_fixed_calendar);
 
-      var _week_numbers = __webpack_require__(373);
+      var _week_numbers = __webpack_require__(378);
 
       var _week_numbers2 = _interopRequireDefault(_week_numbers);
 
-      var _custom_input = __webpack_require__(374);
+      var _custom_input = __webpack_require__(379);
 
       var _custom_input2 = _interopRequireDefault(_custom_input);
 
-      var _multi_month = __webpack_require__(375);
+      var _multi_month = __webpack_require__(380);
 
       var _multi_month2 = _interopRequireDefault(_multi_month);
 
-      var _multi_month_drp = __webpack_require__(376);
+      var _multi_month_drp = __webpack_require__(381);
 
       var _multi_month_drp2 = _interopRequireDefault(_multi_month_drp);
 
-      var _children = __webpack_require__(377);
+      var _children = __webpack_require__(382);
 
       var _children2 = _interopRequireDefault(_children);
 
-      var _portal = __webpack_require__(378);
+      var _portal = __webpack_require__(383);
 
       var _portal2 = _interopRequireDefault(_portal);
 
-      var _inline_portal = __webpack_require__(379);
+      var _inline_portal = __webpack_require__(384);
 
       var _inline_portal2 = _interopRequireDefault(_inline_portal);
 
-      var _raw_change = __webpack_require__(380);
+      var _raw_change = __webpack_require__(385);
 
       var _raw_change2 = _interopRequireDefault(_raw_change);
 
-      var _show_time = __webpack_require__(381);
+      var _show_time = __webpack_require__(386);
 
       var _show_time2 = _interopRequireDefault(_show_time);
 
-      var _show_time_only = __webpack_require__(382);
+      var _show_time_only = __webpack_require__(387);
 
       var _show_time_only2 = _interopRequireDefault(_show_time_only);
 
-      var _exclude_times = __webpack_require__(383);
+      var _exclude_times = __webpack_require__(388);
 
       var _exclude_times2 = _interopRequireDefault(_exclude_times);
 
-      var _exclude_time_period = __webpack_require__(384);
+      var _exclude_time_period = __webpack_require__(389);
 
       var _exclude_time_period2 = _interopRequireDefault(_exclude_time_period);
 
-      var _include_times = __webpack_require__(385);
+      var _include_times = __webpack_require__(390);
 
       var _include_times2 = _interopRequireDefault(_include_times);
 
-      var _dont_close_onSelect = __webpack_require__(386);
+      var _inject_times = __webpack_require__(391);
+
+      var _inject_times2 = _interopRequireDefault(_inject_times);
+
+      var _dont_close_onSelect = __webpack_require__(392);
 
       var _dont_close_onSelect2 = _interopRequireDefault(_dont_close_onSelect);
 
-      var _open_by_default = __webpack_require__(387);
+      var _open_by_default = __webpack_require__(393);
 
       var _open_by_default2 = _interopRequireDefault(_open_by_default);
 
-      __webpack_require__(388);
+      __webpack_require__(394);
 
-      __webpack_require__(389);
+      __webpack_require__(395);
 
       function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : { default: obj };
@@ -7108,6 +7103,13 @@
                 title: "Include Times",
                 component: _react2.default.createElement(
                   _include_times2.default,
+                  null
+                )
+              },
+              {
+                title: "Inject Specific Times",
+                component: _react2.default.createElement(
+                  _inject_times2.default,
                   null
                 )
               },
@@ -7391,7 +7393,11 @@
               return _this.examples.map(function(example, index) {
                 return _react2.default.createElement(
                   _code_example_component2.default,
-                  { key: "example-" + index, id: index, title: example.title },
+                  {
+                    key: "example-" + index,
+                    id: index,
+                    title: example.title
+                  },
                   example.component
                 );
               });
@@ -26664,6 +26670,7 @@
                 highlightDates: _this.state.highlightDates,
                 includeDates: _this.props.includeDates,
                 includeTimes: _this.props.includeTimes,
+                injectTimes: _this.props.injectTimes,
                 inline: _this.props.inline,
                 peekNextMonth: _this.props.peekNextMonth,
                 showMonthDropdown: _this.props.showMonthDropdown,
@@ -26757,10 +26764,11 @@
 
           _this.renderClearButton = function() {
             if (_this.props.isClearable && _this.props.selected != null) {
-              return _react2.default.createElement("a", {
+              return _react2.default.createElement("button", {
                 className: "react-datepicker__close-icon",
-                href: "javascript:void(0)",
-                onClick: _this.onClearClick
+                onClick: _this.onClearClick,
+                title: _this.props.clearButtonTitle,
+                tabIndex: -1
               });
             } else {
               return null;
@@ -26874,6 +26882,7 @@
         id: _propTypes2.default.string,
         includeDates: _propTypes2.default.array,
         includeTimes: _propTypes2.default.array,
+        injectTimes: _propTypes2.default.array,
         inline: _propTypes2.default.bool,
         isClearable: _propTypes2.default.bool,
         locale: _propTypes2.default.string,
@@ -26934,7 +26943,8 @@
         minTime: _propTypes2.default.object,
         maxTime: _propTypes2.default.object,
         excludeTimes: _propTypes2.default.array,
-        useShortMonthInDropdown: _propTypes2.default.bool
+        useShortMonthInDropdown: _propTypes2.default.bool,
+        clearButtonTitle: _propTypes2.default.string
       };
       exports.default = DatePicker;
 
@@ -27092,6 +27102,25 @@
             }
           };
 
+          _this.checkForDisabledMonth = function(dateInView) {
+            var monthsShown = _this.props.monthsShown;
+
+            var maxDate = (0, _date_utils.getEffectiveMaxDate)(_this.props);
+
+            if (!(monthsShown > 1) || !maxDate) return dateInView;
+
+            var limitBefore = (0, _date_utils.subtractMonths)(
+              (0, _date_utils.getStartOfMonth)(
+                (0, _date_utils.cloneDate)(maxDate)
+              ),
+              monthsShown - 1
+            );
+
+            return (0, _date_utils.isAfter)(dateInView, limitBefore)
+              ? limitBefore
+              : dateInView;
+          };
+
           _this.getDateInView = function() {
             var _this$props = _this.props,
               preSelection = _this$props.preSelection,
@@ -27103,6 +27132,7 @@
             var maxDate = (0, _date_utils.getEffectiveMaxDate)(_this.props);
             var current = (0, _date_utils.now)(utcOffset);
             var initialDate = openToDate || selected || preSelection;
+
             if (initialDate) {
               return initialDate;
             } else {
@@ -27563,13 +27593,16 @@
                 showMonthYearDropdown: _this.props.showMonthYearDropdown,
                 showYearDropdown: _this.props.showYearDropdown,
                 withPortal: _this.props.withPortal,
-                monthRef: _this.state.monthContainer
+                monthRef: _this.state.monthContainer,
+                injectTimes: _this.props.injectTimes
               });
             }
           };
 
           _this.state = {
-            date: _this.localizeDate(_this.getDateInView()),
+            date: _this.localizeDate(
+              _this.checkForDisabledMonth(_this.getDateInView())
+            ),
             selectingDate: null,
             monthContainer: _this.monthContainer
           };
@@ -27601,7 +27634,9 @@
             )
           ) {
             this.setState({
-              date: this.localizeDate(nextProps.preSelection)
+              date: this.localizeDate(
+                this.checkForDisabledMonth(nextProps.preSelection)
+              )
             });
           } else if (
             nextProps.openToDate &&
@@ -27611,7 +27646,9 @@
             )
           ) {
             this.setState({
-              date: this.localizeDate(nextProps.openToDate)
+              date: this.localizeDate(
+                this.checkForDisabledMonth(nextProps.openToDate)
+              )
             });
           }
         };
@@ -27661,6 +27698,7 @@
         highlightDates: _propTypes2.default.instanceOf(Map),
         includeDates: _propTypes2.default.array,
         includeTimes: _propTypes2.default.array,
+        injectTimes: _propTypes2.default.array,
         inline: _propTypes2.default.bool,
         locale: _propTypes2.default.string,
         maxDate: _propTypes2.default.object,
@@ -28906,6 +28944,7 @@
       exports.getEndOfWeek = getEndOfWeek;
       exports.getEndOfMonth = getEndOfMonth;
       exports.addMinutes = addMinutes;
+      exports.addHours = addHours;
       exports.addDays = addDays;
       exports.addWeeks = addWeeks;
       exports.addMonths = addMonths;
@@ -28941,6 +28980,7 @@
       exports.getEffectiveMinDate = getEffectiveMinDate;
       exports.getEffectiveMaxDate = getEffectiveMaxDate;
       exports.getHightLightDaysMap = getHightLightDaysMap;
+      exports.timesToInjectAfter = timesToInjectAfter;
 
       var _moment = __webpack_require__(209);
 
@@ -29162,6 +29202,10 @@
 
       function addMinutes(date, amount) {
         return add(date, amount, "minutes");
+      }
+
+      function addHours(date, amount) {
+        return add(date, amount, "hours");
       }
 
       function addDays(date, amount) {
@@ -29494,6 +29538,33 @@
         }
 
         return dateClasses;
+      }
+
+      function timesToInjectAfter(
+        startOfDay,
+        currentTime,
+        currentMultiplier,
+        intervals,
+        injectedTimes
+      ) {
+        var l = injectedTimes.length;
+        var times = [];
+        for (var i = 0; i < l; i++) {
+          var injectedTime = addMinutes(
+            addHours(cloneDate(startOfDay), getHour(injectedTimes[i])),
+            getMinute(injectedTimes[i])
+          );
+          var nextTime = addMinutes(
+            cloneDate(startOfDay),
+            (currentMultiplier + 1) * intervals
+          );
+
+          if (injectedTime.isBetween(currentTime, nextTime)) {
+            times.push(injectedTimes[i]);
+          }
+        }
+
+        return times;
       }
 
       /***/
@@ -49639,6 +49710,15 @@
               ) {
                 classes.push("react-datepicker__time-list-item--disabled");
               }
+              if (
+                _this.props.injectTimes &&
+                ((0, _date_utils.getHour)(time) * 60 +
+                  (0, _date_utils.getMinute)(time)) %
+                  _this.props.intervals !==
+                  0
+              ) {
+                classes.push("react-datepicker__time-list-item--injected");
+              }
 
               return classes.join(" ");
             }),
@@ -49655,13 +49735,28 @@
                 (0, _date_utils.newDate)()
               );
               var multiplier = 1440 / intervals;
+              var sortedInjectTimes =
+                _this.props.injectTimes &&
+                _this.props.injectTimes.sort(function(a, b) {
+                  return a - b;
+                });
               for (var i = 0; i < multiplier; i++) {
-                times.push(
-                  (0, _date_utils.addMinutes)(
-                    (0, _date_utils.cloneDate)(base),
-                    i * intervals
-                  )
+                var currentTime = (0, _date_utils.addMinutes)(
+                  (0, _date_utils.cloneDate)(base),
+                  i * intervals
                 );
+                times.push(currentTime);
+
+                if (sortedInjectTimes) {
+                  var timesToInject = (0, _date_utils.timesToInjectAfter)(
+                    base,
+                    currentTime,
+                    i,
+                    intervals,
+                    sortedInjectTimes
+                  );
+                  times = times.concat(timesToInject);
+                }
               }
 
               return times.map(function(time, i) {
@@ -49769,7 +49864,8 @@
         maxTime: _propTypes2.default.object,
         excludeTimes: _propTypes2.default.array,
         monthRef: _propTypes2.default.object,
-        timeCaption: _propTypes2.default.string
+        timeCaption: _propTypes2.default.string,
+        injectTimes: _propTypes2.default.array
       };
       exports.default = Time;
 
@@ -49969,1164 +50065,1024 @@
     },
     /* 341 */
     /***/ function(module, exports, __webpack_require__) {
-      /*!
-	 * React Popper 0.8.3
-	 * https://github.com/souporserious/react-popper
-	 * Copyright (c) 2018 React Popper Authors
-	 */
-      (function webpackUniversalModuleDefinition(root, factory) {
-        if (true)
-          module.exports = factory(
-            __webpack_require__(2),
-            __webpack_require__(201)
+      "use strict";
+
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+
+      var _Manager = __webpack_require__(342);
+
+      Object.defineProperty(exports, "Manager", {
+        enumerable: true,
+        get: function get() {
+          return _interopRequireDefault(_Manager).default;
+        }
+      });
+
+      var _Target = __webpack_require__(343);
+
+      Object.defineProperty(exports, "Target", {
+        enumerable: true,
+        get: function get() {
+          return _interopRequireDefault(_Target).default;
+        }
+      });
+
+      var _Popper = __webpack_require__(344);
+
+      Object.defineProperty(exports, "Popper", {
+        enumerable: true,
+        get: function get() {
+          return _interopRequireDefault(_Popper).default;
+        }
+      });
+
+      var _Arrow = __webpack_require__(346);
+
+      Object.defineProperty(exports, "Arrow", {
+        enumerable: true,
+        get: function get() {
+          return _interopRequireDefault(_Arrow).default;
+        }
+      });
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      /***/
+    },
+    /* 342 */
+    /***/ function(module, exports, __webpack_require__) {
+      "use strict";
+
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+
+      var _createClass = (function() {
+        function defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ("value" in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }
+        return function(Constructor, protoProps, staticProps) {
+          if (protoProps) defineProperties(Constructor.prototype, protoProps);
+          if (staticProps) defineProperties(Constructor, staticProps);
+          return Constructor;
+        };
+      })();
+
+      var _react = __webpack_require__(2);
+
+      var _propTypes = __webpack_require__(201);
+
+      var _propTypes2 = _interopRequireDefault(_propTypes);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      function _objectWithoutProperties(obj, keys) {
+        var target = {};
+        for (var i in obj) {
+          if (keys.indexOf(i) >= 0) continue;
+          if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+          target[i] = obj[i];
+        }
+        return target;
+      }
+
+      function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      function _possibleConstructorReturn(self, call) {
+        if (!self) {
+          throw new ReferenceError(
+            "this hasn't been initialised - super() hasn't been called"
           );
-        else if (typeof define === "function" && define.amd)
-          define(["react", "prop-types"], factory);
-        else if (typeof exports === "object")
-          exports["ReactPopper"] = factory(
-            require("react"),
-            require("prop-types")
+        }
+        return call && (typeof call === "object" || typeof call === "function")
+          ? call
+          : self;
+      }
+
+      function _inherits(subClass, superClass) {
+        if (typeof superClass !== "function" && superClass !== null) {
+          throw new TypeError(
+            "Super expression must either be null or a function, not " +
+              typeof superClass
           );
-        else root["ReactPopper"] = factory(root["React"], root["PropTypes"]);
-      })(typeof self !== "undefined" ? self : this, function(
-        __WEBPACK_EXTERNAL_MODULE_0__,
-        __WEBPACK_EXTERNAL_MODULE_1__
-      ) {
-        return /******/ (function(modules) {
-          // webpackBootstrap
-          /******/ // The module cache
-          /******/ var installedModules = {}; // The require function
-          /******/
-          /******/ /******/ function __webpack_require__(moduleId) {
-            /******/
-            /******/ // Check if module is in cache
-            /******/ if (installedModules[moduleId]) {
-              /******/ return installedModules[moduleId].exports;
-              /******/
-            } // Create a new module (and put it into the cache)
-            /******/ /******/ var module = (installedModules[moduleId] = {
-              /******/ i: moduleId,
-              /******/ l: false,
-              /******/ exports: {}
-              /******/
-            }); // Execute the module function
-            /******/
-            /******/ /******/ modules[moduleId].call(
-              module.exports,
-              module,
-              module.exports,
-              __webpack_require__
-            ); // Flag the module as loaded
-            /******/
-            /******/ /******/ module.l = true; // Return the exports of the module
-            /******/
-            /******/ /******/ return module.exports;
-            /******/
-          } // expose the modules object (__webpack_modules__)
-          /******/
-          /******/
-          /******/ /******/ __webpack_require__.m = modules; // expose the module cache
-          /******/
-          /******/ /******/ __webpack_require__.c = installedModules; // define getter function for harmony exports
-          /******/
-          /******/ /******/ __webpack_require__.d = function(
-            exports,
-            name,
-            getter
+        }
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+          constructor: {
+            value: subClass,
+            enumerable: false,
+            writable: true,
+            configurable: true
+          }
+        });
+        if (superClass)
+          Object.setPrototypeOf
+            ? Object.setPrototypeOf(subClass, superClass)
+            : (subClass.__proto__ = superClass);
+      }
+
+      var Manager = (function(_Component) {
+        _inherits(Manager, _Component);
+
+        function Manager() {
+          var _ref;
+
+          var _temp, _this, _ret;
+
+          _classCallCheck(this, Manager);
+
+          for (
+            var _len = arguments.length, args = Array(_len), _key = 0;
+            _key < _len;
+            _key++
           ) {
-            /******/ if (!__webpack_require__.o(exports, name)) {
-              /******/ Object.defineProperty(exports, name, {
-                /******/ configurable: false,
-                /******/ enumerable: true,
-                /******/ get: getter
-                /******/
-              });
-              /******/
-            }
-            /******/
-          }; // getDefaultExport function for compatibility with non-harmony modules
-          /******/
-          /******/ /******/ __webpack_require__.n = function(module) {
-            /******/ var getter =
-              module && module.__esModule
-                ? /******/ function getDefault() {
-                    return module["default"];
-                  }
-                : /******/ function getModuleExports() {
-                    return module;
-                  };
-            /******/ __webpack_require__.d(getter, "a", getter);
-            /******/ return getter;
-            /******/
-          }; // Object.prototype.hasOwnProperty.call
-          /******/
-          /******/ /******/ __webpack_require__.o = function(object, property) {
-            return Object.prototype.hasOwnProperty.call(object, property);
-          }; // __webpack_public_path__
-          /******/
-          /******/ /******/ __webpack_require__.p = "dist/"; // Load entry module and return exports
-          /******/
-          /******/ /******/ return __webpack_require__(
-            (__webpack_require__.s = 2)
+            args[_key] = arguments[_key];
+          }
+
+          return (
+            (_ret = ((_temp = ((_this = _possibleConstructorReturn(
+              this,
+              (_ref =
+                Manager.__proto__ || Object.getPrototypeOf(Manager)).call.apply(
+                _ref,
+                [this].concat(args)
+              )
+            )),
+            _this)),
+            (_this._setTargetNode = function(node) {
+              _this._targetNode = node;
+            }),
+            (_this._getTargetNode = function() {
+              return _this._targetNode;
+            }),
+            _temp)),
+            _possibleConstructorReturn(_this, _ret)
           );
-          /******/
-        })(
-          /************************************************************************/
-          /******/ [
-            /* 0 */
-            /***/ function(module, exports) {
-              module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+        }
 
-              /***/
-            },
-            /* 1 */
-            /***/ function(module, exports) {
-              module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-              /***/
-            },
-            /* 2 */
-            /***/ function(module, exports, __webpack_require__) {
-              "use strict";
-
-              Object.defineProperty(exports, "__esModule", {
-                value: true
-              });
-              exports.Arrow = exports.Popper = exports.Target = exports.Manager = undefined;
-
-              var _Manager2 = __webpack_require__(3);
-
-              var _Manager3 = _interopRequireDefault(_Manager2);
-
-              var _Target2 = __webpack_require__(4);
-
-              var _Target3 = _interopRequireDefault(_Target2);
-
-              var _Popper2 = __webpack_require__(5);
-
-              var _Popper3 = _interopRequireDefault(_Popper2);
-
-              var _Arrow2 = __webpack_require__(8);
-
-              var _Arrow3 = _interopRequireDefault(_Arrow2);
-
-              function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-              }
-
-              exports.Manager = _Manager3.default;
-              exports.Target = _Target3.default;
-              exports.Popper = _Popper3.default;
-              exports.Arrow = _Arrow3.default;
-
-              /***/
-            },
-            /* 3 */
-            /***/ function(module, exports, __webpack_require__) {
-              "use strict";
-
-              Object.defineProperty(exports, "__esModule", {
-                value: true
-              });
-
-              var _createClass = (function() {
-                function defineProperties(target, props) {
-                  for (var i = 0; i < props.length; i++) {
-                    var descriptor = props[i];
-                    descriptor.enumerable = descriptor.enumerable || false;
-                    descriptor.configurable = true;
-                    if ("value" in descriptor) descriptor.writable = true;
-                    Object.defineProperty(target, descriptor.key, descriptor);
-                  }
+        _createClass(Manager, [
+          {
+            key: "getChildContext",
+            value: function getChildContext() {
+              return {
+                popperManager: {
+                  setTargetNode: this._setTargetNode,
+                  getTargetNode: this._getTargetNode
                 }
-                return function(Constructor, protoProps, staticProps) {
-                  if (protoProps)
-                    defineProperties(Constructor.prototype, protoProps);
-                  if (staticProps) defineProperties(Constructor, staticProps);
-                  return Constructor;
-                };
-              })();
-
-              var _react = __webpack_require__(0);
-
-              var _propTypes = __webpack_require__(1);
-
-              var _propTypes2 = _interopRequireDefault(_propTypes);
-
-              function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-              }
-
-              function _objectWithoutProperties(obj, keys) {
-                var target = {};
-                for (var i in obj) {
-                  if (keys.indexOf(i) >= 0) continue;
-                  if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-                  target[i] = obj[i];
-                }
-                return target;
-              }
-
-              function _classCallCheck(instance, Constructor) {
-                if (!(instance instanceof Constructor)) {
-                  throw new TypeError("Cannot call a class as a function");
-                }
-              }
-
-              function _possibleConstructorReturn(self, call) {
-                if (!self) {
-                  throw new ReferenceError(
-                    "this hasn't been initialised - super() hasn't been called"
-                  );
-                }
-                return call &&
-                  (typeof call === "object" || typeof call === "function")
-                  ? call
-                  : self;
-              }
-
-              function _inherits(subClass, superClass) {
-                if (typeof superClass !== "function" && superClass !== null) {
-                  throw new TypeError(
-                    "Super expression must either be null or a function, not " +
-                      typeof superClass
-                  );
-                }
-                subClass.prototype = Object.create(
-                  superClass && superClass.prototype,
-                  {
-                    constructor: {
-                      value: subClass,
-                      enumerable: false,
-                      writable: true,
-                      configurable: true
-                    }
-                  }
-                );
-                if (superClass)
-                  Object.setPrototypeOf
-                    ? Object.setPrototypeOf(subClass, superClass)
-                    : (subClass.__proto__ = superClass);
-              }
-
-              var Manager = (function(_Component) {
-                _inherits(Manager, _Component);
-
-                function Manager() {
-                  var _ref;
-
-                  var _temp, _this, _ret;
-
-                  _classCallCheck(this, Manager);
-
-                  for (
-                    var _len = arguments.length, args = Array(_len), _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
-
-                  return (
-                    (_ret = ((_temp = ((_this = _possibleConstructorReturn(
-                      this,
-                      (_ref =
-                        Manager.__proto__ ||
-                        Object.getPrototypeOf(Manager)).call.apply(
-                        _ref,
-                        [this].concat(args)
-                      )
-                    )),
-                    _this)),
-                    (_this._setTargetNode = function(node) {
-                      _this._targetNode = node;
-                    }),
-                    (_this._getTargetNode = function() {
-                      return _this._targetNode;
-                    }),
-                    _temp)),
-                    _possibleConstructorReturn(_this, _ret)
-                  );
-                }
-
-                _createClass(Manager, [
-                  {
-                    key: "getChildContext",
-                    value: function getChildContext() {
-                      return {
-                        popperManager: {
-                          setTargetNode: this._setTargetNode,
-                          getTargetNode: this._getTargetNode
-                        }
-                      };
-                    }
-                  },
-                  {
-                    key: "render",
-                    value: function render() {
-                      var _props = this.props,
-                        tag = _props.tag,
-                        children = _props.children,
-                        restProps = _objectWithoutProperties(_props, [
-                          "tag",
-                          "children"
-                        ]);
-
-                      if (tag !== false) {
-                        return (0, _react.createElement)(
-                          tag,
-                          restProps,
-                          children
-                        );
-                      } else {
-                        return children;
-                      }
-                    }
-                  }
+              };
+            }
+          },
+          {
+            key: "render",
+            value: function render() {
+              var _props = this.props,
+                tag = _props.tag,
+                children = _props.children,
+                restProps = _objectWithoutProperties(_props, [
+                  "tag",
+                  "children"
                 ]);
 
-                return Manager;
-              })(_react.Component);
+              if (tag !== false) {
+                return (0, _react.createElement)(tag, restProps, children);
+              } else {
+                return children;
+              }
+            }
+          }
+        ]);
 
-              Manager.childContextTypes = {
-                popperManager: _propTypes2.default.object.isRequired
-              };
-              Manager.propTypes = {
-                tag: _propTypes2.default.oneOfType([
-                  _propTypes2.default.string,
-                  _propTypes2.default.bool
-                ]),
-                children: _propTypes2.default.oneOfType([
-                  _propTypes2.default.node,
-                  _propTypes2.default.func
-                ])
-              };
-              Manager.defaultProps = {
-                tag: "div"
-              };
-              exports.default = Manager;
+        return Manager;
+      })(_react.Component);
 
-              /***/
-            },
-            /* 4 */
-            /***/ function(module, exports, __webpack_require__) {
-              "use strict";
+      Manager.childContextTypes = {
+        popperManager: _propTypes2.default.object.isRequired
+      };
+      Manager.propTypes = {
+        tag: _propTypes2.default.oneOfType([
+          _propTypes2.default.string,
+          _propTypes2.default.bool
+        ]),
+        children: _propTypes2.default.oneOfType([
+          _propTypes2.default.node,
+          _propTypes2.default.func
+        ])
+      };
+      Manager.defaultProps = {
+        tag: "div"
+      };
+      exports.default = Manager;
 
-              Object.defineProperty(exports, "__esModule", {
-                value: true
+      /***/
+    },
+    /* 343 */
+    /***/ function(module, exports, __webpack_require__) {
+      "use strict";
+
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+
+      var _extends =
+        Object.assign ||
+        function(target) {
+          for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+          return target;
+        };
+
+      var _react = __webpack_require__(2);
+
+      var _propTypes = __webpack_require__(201);
+
+      var _propTypes2 = _interopRequireDefault(_propTypes);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      function _objectWithoutProperties(obj, keys) {
+        var target = {};
+        for (var i in obj) {
+          if (keys.indexOf(i) >= 0) continue;
+          if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+          target[i] = obj[i];
+        }
+        return target;
+      }
+
+      var Target = function Target(props, context) {
+        var _props$component = props.component,
+          component = _props$component === undefined ? "div" : _props$component,
+          innerRef = props.innerRef,
+          children = props.children,
+          restProps = _objectWithoutProperties(props, [
+            "component",
+            "innerRef",
+            "children"
+          ]);
+
+        var popperManager = context.popperManager;
+
+        var targetRef = function targetRef(node) {
+          popperManager.setTargetNode(node);
+          if (typeof innerRef === "function") {
+            innerRef(node);
+          }
+        };
+
+        if (typeof children === "function") {
+          var targetProps = { ref: targetRef };
+          return children({ targetProps: targetProps, restProps: restProps });
+        }
+
+        var componentProps = _extends({}, restProps);
+
+        if (typeof component === "string") {
+          componentProps.ref = targetRef;
+        } else {
+          componentProps.innerRef = targetRef;
+        }
+
+        return (0, _react.createElement)(component, componentProps, children);
+      };
+
+      Target.contextTypes = {
+        popperManager: _propTypes2.default.object.isRequired
+      };
+
+      Target.propTypes = {
+        component: _propTypes2.default.oneOfType([
+          _propTypes2.default.node,
+          _propTypes2.default.func
+        ]),
+        innerRef: _propTypes2.default.func,
+        children: _propTypes2.default.oneOfType([
+          _propTypes2.default.node,
+          _propTypes2.default.func
+        ])
+      };
+
+      exports.default = Target;
+
+      /***/
+    },
+    /* 344 */
+    /***/ function(module, exports, __webpack_require__) {
+      "use strict";
+
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+
+      var _extends =
+        Object.assign ||
+        function(target) {
+          for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+          return target;
+        };
+
+      var _createClass = (function() {
+        function defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ("value" in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }
+        return function(Constructor, protoProps, staticProps) {
+          if (protoProps) defineProperties(Constructor.prototype, protoProps);
+          if (staticProps) defineProperties(Constructor, staticProps);
+          return Constructor;
+        };
+      })();
+
+      var _react = __webpack_require__(2);
+
+      var _propTypes = __webpack_require__(201);
+
+      var _propTypes2 = _interopRequireDefault(_propTypes);
+
+      var _popper = __webpack_require__(345);
+
+      var _popper2 = _interopRequireDefault(_popper);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      function _objectWithoutProperties(obj, keys) {
+        var target = {};
+        for (var i in obj) {
+          if (keys.indexOf(i) >= 0) continue;
+          if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+          target[i] = obj[i];
+        }
+        return target;
+      }
+
+      function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      function _possibleConstructorReturn(self, call) {
+        if (!self) {
+          throw new ReferenceError(
+            "this hasn't been initialised - super() hasn't been called"
+          );
+        }
+        return call && (typeof call === "object" || typeof call === "function")
+          ? call
+          : self;
+      }
+
+      function _inherits(subClass, superClass) {
+        if (typeof superClass !== "function" && superClass !== null) {
+          throw new TypeError(
+            "Super expression must either be null or a function, not " +
+              typeof superClass
+          );
+        }
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+          constructor: {
+            value: subClass,
+            enumerable: false,
+            writable: true,
+            configurable: true
+          }
+        });
+        if (superClass)
+          Object.setPrototypeOf
+            ? Object.setPrototypeOf(subClass, superClass)
+            : (subClass.__proto__ = superClass);
+      }
+
+      var Popper = (function(_Component) {
+        _inherits(Popper, _Component);
+
+        function Popper() {
+          var _ref;
+
+          var _temp, _this, _ret;
+
+          _classCallCheck(this, Popper);
+
+          for (
+            var _len = arguments.length, args = Array(_len), _key = 0;
+            _key < _len;
+            _key++
+          ) {
+            args[_key] = arguments[_key];
+          }
+
+          return (
+            (_ret = ((_temp = ((_this = _possibleConstructorReturn(
+              this,
+              (_ref =
+                Popper.__proto__ || Object.getPrototypeOf(Popper)).call.apply(
+                _ref,
+                [this].concat(args)
+              )
+            )),
+            _this)),
+            (_this.state = {}),
+            (_this._setArrowNode = function(node) {
+              _this._arrowNode = node;
+            }),
+            (_this._getTargetNode = function() {
+              return _this.context.popperManager.getTargetNode();
+            }),
+            (_this._getOffsets = function(data) {
+              return Object.keys(data.offsets).map(function(key) {
+                return data.offsets[key];
               });
-
-              var _extends =
-                Object.assign ||
-                function(target) {
-                  for (var i = 1; i < arguments.length; i++) {
-                    var source = arguments[i];
-                    for (var key in source) {
-                      if (Object.prototype.hasOwnProperty.call(source, key)) {
-                        target[key] = source[key];
-                      }
-                    }
-                  }
-                  return target;
-                };
-
-              var _react = __webpack_require__(0);
-
-              var _propTypes = __webpack_require__(1);
-
-              var _propTypes2 = _interopRequireDefault(_propTypes);
-
-              function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-              }
-
-              function _objectWithoutProperties(obj, keys) {
-                var target = {};
-                for (var i in obj) {
-                  if (keys.indexOf(i) >= 0) continue;
-                  if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-                  target[i] = obj[i];
-                }
-                return target;
-              }
-
-              var Target = function Target(props, context) {
-                var _props$component = props.component,
-                  component =
-                    _props$component === undefined ? "div" : _props$component,
-                  innerRef = props.innerRef,
-                  children = props.children,
-                  restProps = _objectWithoutProperties(props, [
-                    "component",
-                    "innerRef",
-                    "children"
-                  ]);
-
-                var popperManager = context.popperManager;
-
-                var targetRef = function targetRef(node) {
-                  popperManager.setTargetNode(node);
-                  if (typeof innerRef === "function") {
-                    innerRef(node);
-                  }
-                };
-
-                if (typeof children === "function") {
-                  var targetProps = { ref: targetRef };
-                  return children({
-                    targetProps: targetProps,
-                    restProps: restProps
-                  });
-                }
-
-                var componentProps = _extends({}, restProps);
-
-                if (typeof component === "string") {
-                  componentProps.ref = targetRef;
-                } else {
-                  componentProps.innerRef = targetRef;
-                }
-
-                return (0, _react.createElement)(
-                  component,
-                  componentProps,
-                  children
+            }),
+            (_this._isDataDirty = function(data) {
+              if (_this.state.data) {
+                return (
+                  JSON.stringify(_this._getOffsets(_this.state.data)) !==
+                  JSON.stringify(_this._getOffsets(data))
                 );
+              } else {
+                return true;
+              }
+            }),
+            (_this._updateStateModifier = {
+              enabled: true,
+              order: 900,
+              fn: function fn(data) {
+                if (_this._isDataDirty(data)) {
+                  _this.setState({ data: data });
+                }
+                return data;
+              }
+            }),
+            (_this._getPopperStyle = function() {
+              var data = _this.state.data;
+
+              if (!_this._popper || !data) {
+                return {
+                  position: "absolute",
+                  pointerEvents: "none",
+                  opacity: 0
+                };
+              }
+
+              return _extends(
+                {
+                  position: data.offsets.popper.position
+                },
+                data.styles
+              );
+            }),
+            (_this._getPopperPlacement = function() {
+              return _this.state.data ? _this.state.data.placement : undefined;
+            }),
+            (_this._getPopperHide = function() {
+              return !!_this.state.data && _this.state.data.hide
+                ? ""
+                : undefined;
+            }),
+            (_this._getArrowStyle = function() {
+              if (!_this.state.data || !_this.state.data.offsets.arrow) {
+                return {};
+              } else {
+                var _this$state$data$offs = _this.state.data.offsets.arrow,
+                  top = _this$state$data$offs.top,
+                  left = _this$state$data$offs.left;
+
+                return { top: top, left: left };
+              }
+            }),
+            (_this._handlePopperRef = function(node) {
+              _this._popperNode = node;
+              if (node) {
+                _this._createPopper();
+              } else {
+                _this._destroyPopper();
+              }
+              if (_this.props.innerRef) {
+                _this.props.innerRef(node);
+              }
+            }),
+            (_this._scheduleUpdate = function() {
+              _this._popper && _this._popper.scheduleUpdate();
+            }),
+            _temp)),
+            _possibleConstructorReturn(_this, _ret)
+          );
+        }
+
+        _createClass(Popper, [
+          {
+            key: "getChildContext",
+            value: function getChildContext() {
+              return {
+                popper: {
+                  setArrowNode: this._setArrowNode,
+                  getArrowStyle: this._getArrowStyle
+                }
               };
+            }
+          },
+          {
+            key: "componentDidUpdate",
+            value: function componentDidUpdate(lastProps) {
+              if (
+                lastProps.placement !== this.props.placement ||
+                lastProps.eventsEnabled !== this.props.eventsEnabled
+              ) {
+                this._destroyPopper();
+                this._createPopper();
+              }
+              if (lastProps.children !== this.props.children) {
+                this._scheduleUpdate();
+              }
+            }
+          },
+          {
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+              this._destroyPopper();
+            }
+          },
+          {
+            key: "_createPopper",
+            value: function _createPopper() {
+              var _this2 = this;
 
-              Target.contextTypes = {
-                popperManager: _propTypes2.default.object.isRequired
-              };
+              var _props = this.props,
+                placement = _props.placement,
+                eventsEnabled = _props.eventsEnabled;
 
-              Target.propTypes = {
-                component: _propTypes2.default.oneOfType([
-                  _propTypes2.default.node,
-                  _propTypes2.default.func
-                ]),
-                innerRef: _propTypes2.default.func,
-                children: _propTypes2.default.oneOfType([
-                  _propTypes2.default.node,
-                  _propTypes2.default.func
-                ])
-              };
-
-              exports.default = Target;
-
-              /***/
-            },
-            /* 5 */
-            /***/ function(module, exports, __webpack_require__) {
-              "use strict";
-
-              Object.defineProperty(exports, "__esModule", {
-                value: true
+              var modifiers = _extends({}, this.props.modifiers, {
+                applyStyle: { enabled: false },
+                updateState: this._updateStateModifier
               });
-
-              var _extends =
-                Object.assign ||
-                function(target) {
-                  for (var i = 1; i < arguments.length; i++) {
-                    var source = arguments[i];
-                    for (var key in source) {
-                      if (Object.prototype.hasOwnProperty.call(source, key)) {
-                        target[key] = source[key];
-                      }
-                    }
-                  }
-                  return target;
+              if (this._arrowNode) {
+                modifiers.arrow = {
+                  element: this._arrowNode
                 };
-
-              var _createClass = (function() {
-                function defineProperties(target, props) {
-                  for (var i = 0; i < props.length; i++) {
-                    var descriptor = props[i];
-                    descriptor.enumerable = descriptor.enumerable || false;
-                    descriptor.configurable = true;
-                    if ("value" in descriptor) descriptor.writable = true;
-                    Object.defineProperty(target, descriptor.key, descriptor);
-                  }
-                }
-                return function(Constructor, protoProps, staticProps) {
-                  if (protoProps)
-                    defineProperties(Constructor.prototype, protoProps);
-                  if (staticProps) defineProperties(Constructor, staticProps);
-                  return Constructor;
-                };
-              })();
-
-              var _react = __webpack_require__(0);
-
-              var _propTypes = __webpack_require__(1);
-
-              var _propTypes2 = _interopRequireDefault(_propTypes);
-
-              var _popper = __webpack_require__(6);
-
-              var _popper2 = _interopRequireDefault(_popper);
-
-              function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
               }
-
-              function _objectWithoutProperties(obj, keys) {
-                var target = {};
-                for (var i in obj) {
-                  if (keys.indexOf(i) >= 0) continue;
-                  if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-                  target[i] = obj[i];
+              this._popper = new _popper2.default(
+                this._getTargetNode(),
+                this._popperNode,
+                {
+                  placement: placement,
+                  eventsEnabled: eventsEnabled,
+                  modifiers: modifiers
                 }
-                return target;
+              );
+
+              // TODO: look into setTimeout scheduleUpdate call, without it, the popper will not position properly on creation
+              setTimeout(function() {
+                return _this2._scheduleUpdate();
+              });
+            }
+          },
+          {
+            key: "_destroyPopper",
+            value: function _destroyPopper() {
+              if (this._popper) {
+                this._popper.destroy();
               }
-
-              function _classCallCheck(instance, Constructor) {
-                if (!(instance instanceof Constructor)) {
-                  throw new TypeError("Cannot call a class as a function");
-                }
-              }
-
-              function _possibleConstructorReturn(self, call) {
-                if (!self) {
-                  throw new ReferenceError(
-                    "this hasn't been initialised - super() hasn't been called"
-                  );
-                }
-                return call &&
-                  (typeof call === "object" || typeof call === "function")
-                  ? call
-                  : self;
-              }
-
-              function _inherits(subClass, superClass) {
-                if (typeof superClass !== "function" && superClass !== null) {
-                  throw new TypeError(
-                    "Super expression must either be null or a function, not " +
-                      typeof superClass
-                  );
-                }
-                subClass.prototype = Object.create(
-                  superClass && superClass.prototype,
-                  {
-                    constructor: {
-                      value: subClass,
-                      enumerable: false,
-                      writable: true,
-                      configurable: true
-                    }
-                  }
-                );
-                if (superClass)
-                  Object.setPrototypeOf
-                    ? Object.setPrototypeOf(subClass, superClass)
-                    : (subClass.__proto__ = superClass);
-              }
-
-              var Popper = (function(_Component) {
-                _inherits(Popper, _Component);
-
-                function Popper() {
-                  var _ref;
-
-                  var _temp, _this, _ret;
-
-                  _classCallCheck(this, Popper);
-
-                  for (
-                    var _len = arguments.length, args = Array(_len), _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
-
-                  return (
-                    (_ret = ((_temp = ((_this = _possibleConstructorReturn(
-                      this,
-                      (_ref =
-                        Popper.__proto__ ||
-                        Object.getPrototypeOf(Popper)).call.apply(
-                        _ref,
-                        [this].concat(args)
-                      )
-                    )),
-                    _this)),
-                    (_this.state = {}),
-                    (_this._setArrowNode = function(node) {
-                      _this._arrowNode = node;
-                    }),
-                    (_this._getTargetNode = function() {
-                      return _this.context.popperManager.getTargetNode();
-                    }),
-                    (_this._getOffsets = function(data) {
-                      return Object.keys(data.offsets).map(function(key) {
-                        return data.offsets[key];
-                      });
-                    }),
-                    (_this._isDataDirty = function(data) {
-                      if (_this.state.data) {
-                        return (
-                          JSON.stringify(
-                            _this._getOffsets(_this.state.data)
-                          ) !== JSON.stringify(_this._getOffsets(data))
-                        );
-                      } else {
-                        return true;
-                      }
-                    }),
-                    (_this._updateStateModifier = {
-                      enabled: true,
-                      order: 900,
-                      fn: function fn(data) {
-                        if (_this._isDataDirty(data)) {
-                          _this.setState({ data: data });
-                        }
-                        return data;
-                      }
-                    }),
-                    (_this._getPopperStyle = function() {
-                      var data = _this.state.data;
-
-                      if (!_this._popper || !data) {
-                        return {
-                          position: "absolute",
-                          pointerEvents: "none",
-                          opacity: 0
-                        };
-                      }
-
-                      return _extends(
-                        {
-                          position: data.offsets.popper.position
-                        },
-                        data.styles
-                      );
-                    }),
-                    (_this._getPopperPlacement = function() {
-                      return _this.state.data
-                        ? _this.state.data.placement
-                        : undefined;
-                    }),
-                    (_this._getPopperHide = function() {
-                      return !!_this.state.data && _this.state.data.hide
-                        ? ""
-                        : undefined;
-                    }),
-                    (_this._getArrowStyle = function() {
-                      if (
-                        !_this.state.data ||
-                        !_this.state.data.offsets.arrow
-                      ) {
-                        return {};
-                      } else {
-                        var _this$state$data$offs =
-                            _this.state.data.offsets.arrow,
-                          top = _this$state$data$offs.top,
-                          left = _this$state$data$offs.left;
-
-                        return { top: top, left: left };
-                      }
-                    }),
-                    (_this._handlePopperRef = function(node) {
-                      _this._popperNode = node;
-                      if (node) {
-                        _this._createPopper();
-                      } else {
-                        _this._destroyPopper();
-                      }
-                      if (_this.props.innerRef) {
-                        _this.props.innerRef(node);
-                      }
-                    }),
-                    (_this._scheduleUpdate = function() {
-                      _this._popper && _this._popper.scheduleUpdate();
-                    }),
-                    _temp)),
-                    _possibleConstructorReturn(_this, _ret)
-                  );
-                }
-
-                _createClass(Popper, [
-                  {
-                    key: "getChildContext",
-                    value: function getChildContext() {
-                      return {
-                        popper: {
-                          setArrowNode: this._setArrowNode,
-                          getArrowStyle: this._getArrowStyle
-                        }
-                      };
-                    }
-                  },
-                  {
-                    key: "componentDidUpdate",
-                    value: function componentDidUpdate(lastProps) {
-                      if (
-                        lastProps.placement !== this.props.placement ||
-                        lastProps.eventsEnabled !== this.props.eventsEnabled
-                      ) {
-                        this._destroyPopper();
-                        this._createPopper();
-                      }
-                      if (lastProps.children !== this.props.children) {
-                        this._scheduleUpdate();
-                      }
-                    }
-                  },
-                  {
-                    key: "componentWillUnmount",
-                    value: function componentWillUnmount() {
-                      this._destroyPopper();
-                    }
-                  },
-                  {
-                    key: "_createPopper",
-                    value: function _createPopper() {
-                      var _this2 = this;
-
-                      var _props = this.props,
-                        placement = _props.placement,
-                        eventsEnabled = _props.eventsEnabled;
-
-                      var modifiers = _extends({}, this.props.modifiers, {
-                        applyStyle: { enabled: false },
-                        updateState: this._updateStateModifier
-                      });
-                      if (this._arrowNode) {
-                        modifiers.arrow = {
-                          element: this._arrowNode
-                        };
-                      }
-                      this._popper = new _popper2.default(
-                        this._getTargetNode(),
-                        this._popperNode,
-                        {
-                          placement: placement,
-                          eventsEnabled: eventsEnabled,
-                          modifiers: modifiers
-                        }
-                      );
-
-                      // TODO: look into setTimeout scheduleUpdate call, without it, the popper will not position properly on creation
-                      setTimeout(function() {
-                        return _this2._scheduleUpdate();
-                      });
-                    }
-                  },
-                  {
-                    key: "_destroyPopper",
-                    value: function _destroyPopper() {
-                      if (this._popper) {
-                        this._popper.destroy();
-                      }
-                    }
-                  },
-                  {
-                    key: "render",
-                    value: function render() {
-                      var _props2 = this.props,
-                        component = _props2.component,
-                        innerRef = _props2.innerRef,
-                        placement = _props2.placement,
-                        eventsEnabled = _props2.eventsEnabled,
-                        modifiers = _props2.modifiers,
-                        children = _props2.children,
-                        restProps = _objectWithoutProperties(_props2, [
-                          "component",
-                          "innerRef",
-                          "placement",
-                          "eventsEnabled",
-                          "modifiers",
-                          "children"
-                        ]);
-
-                      var popperStyle = this._getPopperStyle();
-                      var popperPlacement = this._getPopperPlacement();
-                      var popperHide = this._getPopperHide();
-
-                      if (typeof children === "function") {
-                        var popperProps = {
-                          ref: this._handlePopperRef,
-                          style: popperStyle,
-                          "data-placement": popperPlacement,
-                          "data-x-out-of-boundaries": popperHide
-                        };
-                        return children({
-                          popperProps: popperProps,
-                          restProps: restProps,
-                          scheduleUpdate: this._scheduleUpdate
-                        });
-                      }
-
-                      var componentProps = _extends({}, restProps, {
-                        style: _extends({}, restProps.style, popperStyle),
-                        "data-placement": popperPlacement,
-                        "data-x-out-of-boundaries": popperHide
-                      });
-
-                      if (typeof component === "string") {
-                        componentProps.ref = this._handlePopperRef;
-                      } else {
-                        componentProps.innerRef = this._handlePopperRef;
-                      }
-
-                      return (0, _react.createElement)(
-                        component,
-                        componentProps,
-                        children
-                      );
-                    }
-                  }
+            }
+          },
+          {
+            key: "render",
+            value: function render() {
+              var _props2 = this.props,
+                component = _props2.component,
+                innerRef = _props2.innerRef,
+                placement = _props2.placement,
+                eventsEnabled = _props2.eventsEnabled,
+                modifiers = _props2.modifiers,
+                children = _props2.children,
+                restProps = _objectWithoutProperties(_props2, [
+                  "component",
+                  "innerRef",
+                  "placement",
+                  "eventsEnabled",
+                  "modifiers",
+                  "children"
                 ]);
 
-                return Popper;
-              })(_react.Component);
+              var popperStyle = this._getPopperStyle();
+              var popperPlacement = this._getPopperPlacement();
+              var popperHide = this._getPopperHide();
 
-              Popper.contextTypes = {
-                popperManager: _propTypes2.default.object.isRequired
-              };
-              Popper.childContextTypes = {
-                popper: _propTypes2.default.object.isRequired
-              };
-              Popper.propTypes = {
-                component: _propTypes2.default.oneOfType([
-                  _propTypes2.default.node,
-                  _propTypes2.default.func
-                ]),
-                innerRef: _propTypes2.default.func,
-                placement: _propTypes2.default.oneOf(
-                  _popper2.default.placements
-                ),
-                eventsEnabled: _propTypes2.default.bool,
-                modifiers: _propTypes2.default.object,
-                children: _propTypes2.default.oneOfType([
-                  _propTypes2.default.node,
-                  _propTypes2.default.func
-                ])
-              };
-              Popper.defaultProps = {
-                component: "div",
-                placement: "bottom",
-                eventsEnabled: true,
-                modifiers: {}
-              };
-              exports.default = Popper;
+              if (typeof children === "function") {
+                var popperProps = {
+                  ref: this._handlePopperRef,
+                  style: popperStyle,
+                  "data-placement": popperPlacement,
+                  "data-x-out-of-boundaries": popperHide
+                };
+                return children({
+                  popperProps: popperProps,
+                  restProps: restProps,
+                  scheduleUpdate: this._scheduleUpdate
+                });
+              }
 
-              /***/
-            },
-            /* 6 */
-            /***/ function(module, __webpack_exports__, __webpack_require__) {
-              "use strict";
-              Object.defineProperty(__webpack_exports__, "__esModule", {
-                value: true
+              var componentProps = _extends({}, restProps, {
+                style: _extends({}, restProps.style, popperStyle),
+                "data-placement": popperPlacement,
+                "data-x-out-of-boundaries": popperHide
               });
-              /* WEBPACK VAR INJECTION */ (function(global) {
-                /**!
-                 * @fileOverview Kickass library to create and place poppers near their reference elements.
-                 * @version 1.12.9
-                 * @license
-                 * Copyright (c) 2016 Federico Zivolo and contributors
-                 *
-                 * Permission is hereby granted, free of charge, to any person obtaining a copy
-                 * of this software and associated documentation files (the "Software"), to deal
-                 * in the Software without restriction, including without limitation the rights
-                 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-                 * copies of the Software, and to permit persons to whom the Software is
-                 * furnished to do so, subject to the following conditions:
-                 *
-                 * The above copyright notice and this permission notice shall be included in all
-                 * copies or substantial portions of the Software.
-                 *
-                 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                 * SOFTWARE.
-                 */
-                var isBrowser =
-                  typeof window !== "undefined" &&
-                  typeof document !== "undefined";
-                var longerTimeoutBrowsers = ["Edge", "Trident", "Firefox"];
-                var timeoutDuration = 0;
-                for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
-                  if (
-                    isBrowser &&
-                    navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0
-                  ) {
-                    timeoutDuration = 1;
-                    break;
-                  }
-                }
 
-                function microtaskDebounce(fn) {
-                  var called = false;
-                  return function() {
-                    if (called) {
-                      return;
-                    }
-                    called = true;
-                    window.Promise.resolve().then(function() {
-                      called = false;
-                      fn();
-                    });
-                  };
-                }
+              if (typeof component === "string") {
+                componentProps.ref = this._handlePopperRef;
+              } else {
+                componentProps.innerRef = this._handlePopperRef;
+              }
 
-                function taskDebounce(fn) {
-                  var scheduled = false;
-                  return function() {
-                    if (!scheduled) {
-                      scheduled = true;
-                      setTimeout(function() {
-                        scheduled = false;
-                        fn();
-                      }, timeoutDuration);
-                    }
-                  };
-                }
+              return (0, _react.createElement)(
+                component,
+                componentProps,
+                children
+              );
+            }
+          }
+        ]);
 
-                var supportsMicroTasks = isBrowser && window.Promise;
+        return Popper;
+      })(_react.Component);
 
-                /**
-                 * Create a debounced version of a method, that's asynchronously deferred
-                 * but called in the minimum time possible.
-                 *
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Function} fn
-                 * @returns {Function}
-                 */
-                var debounce = supportsMicroTasks
-                  ? microtaskDebounce
-                  : taskDebounce;
+      Popper.contextTypes = {
+        popperManager: _propTypes2.default.object.isRequired
+      };
+      Popper.childContextTypes = {
+        popper: _propTypes2.default.object.isRequired
+      };
+      Popper.propTypes = {
+        component: _propTypes2.default.oneOfType([
+          _propTypes2.default.node,
+          _propTypes2.default.func
+        ]),
+        innerRef: _propTypes2.default.func,
+        placement: _propTypes2.default.oneOf(_popper2.default.placements),
+        eventsEnabled: _propTypes2.default.bool,
+        modifiers: _propTypes2.default.object,
+        children: _propTypes2.default.oneOfType([
+          _propTypes2.default.node,
+          _propTypes2.default.func
+        ])
+      };
+      Popper.defaultProps = {
+        component: "div",
+        placement: "bottom",
+        eventsEnabled: true,
+        modifiers: {}
+      };
+      exports.default = Popper;
 
-                /**
-                 * Check if the given variable is a function
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Any} functionToCheck - variable to check
-                 * @returns {Boolean} answer to: is a function?
-                 */
-                function isFunction(functionToCheck) {
-                  var getType = {};
-                  return (
-                    functionToCheck &&
-                    getType.toString.call(functionToCheck) ===
-                      "[object Function]"
-                  );
-                }
+      /***/
+    },
+    /* 345 */
+    /***/ function(module, exports, __webpack_require__) {
+      /* WEBPACK VAR INJECTION */ (function(global) {
+        /**!
+         * @fileOverview Kickass library to create and place poppers near their reference elements.
+         * @version 1.12.9
+         * @license
+         * Copyright (c) 2016 Federico Zivolo and contributors
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in all
+         * copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+         * SOFTWARE.
+         */
+        (function(global, factory) {
+          true
+            ? (module.exports = factory())
+            : typeof define === "function" && define.amd
+              ? define(factory)
+              : (global.Popper = factory());
+        })(this, function() {
+          "use strict";
 
-                /**
-                 * Get CSS computed property of the given element
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Eement} element
-                 * @argument {String} property
-                 */
-                function getStyleComputedProperty(element, property) {
-                  if (element.nodeType !== 1) {
-                    return [];
-                  }
-                  // NOTE: 1 DOM access here
-                  var css = getComputedStyle(element, null);
-                  return property ? css[property] : css;
-                }
+          var isBrowser =
+            typeof window !== "undefined" && typeof document !== "undefined";
+          var longerTimeoutBrowsers = ["Edge", "Trident", "Firefox"];
+          var timeoutDuration = 0;
+          for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
+            if (
+              isBrowser &&
+              navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0
+            ) {
+              timeoutDuration = 1;
+              break;
+            }
+          }
 
-                /**
-                 * Returns the parentNode or the host of the element
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element
-                 * @returns {Element} parent
-                 */
-                function getParentNode(element) {
-                  if (element.nodeName === "HTML") {
-                    return element;
-                  }
-                  return element.parentNode || element.host;
-                }
+          function microtaskDebounce(fn) {
+            var called = false;
+            return function() {
+              if (called) {
+                return;
+              }
+              called = true;
+              window.Promise.resolve().then(function() {
+                called = false;
+                fn();
+              });
+            };
+          }
 
-                /**
-                 * Returns the scrolling parent of the given element
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element
-                 * @returns {Element} scroll parent
-                 */
-                function getScrollParent(element) {
-                  // Return body, `getScroll` will take care to get the correct `scrollTop` from it
-                  if (!element) {
-                    return document.body;
-                  }
+          function taskDebounce(fn) {
+            var scheduled = false;
+            return function() {
+              if (!scheduled) {
+                scheduled = true;
+                setTimeout(function() {
+                  scheduled = false;
+                  fn();
+                }, timeoutDuration);
+              }
+            };
+          }
 
-                  switch (element.nodeName) {
-                    case "HTML":
-                    case "BODY":
-                      return element.ownerDocument.body;
-                    case "#document":
-                      return element.body;
-                  }
+          var supportsMicroTasks = isBrowser && window.Promise;
 
-                  // Firefox want us to check `-x` and `-y` variations as well
+          /**
+           * Create a debounced version of a method, that's asynchronously deferred
+           * but called in the minimum time possible.
+           *
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Function} fn
+           * @returns {Function}
+           */
+          var debounce = supportsMicroTasks ? microtaskDebounce : taskDebounce;
 
-                  var _getStyleComputedProp = getStyleComputedProperty(element),
-                    overflow = _getStyleComputedProp.overflow,
-                    overflowX = _getStyleComputedProp.overflowX,
-                    overflowY = _getStyleComputedProp.overflowY;
+          /**
+           * Check if the given variable is a function
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Any} functionToCheck - variable to check
+           * @returns {Boolean} answer to: is a function?
+           */
+          function isFunction(functionToCheck) {
+            var getType = {};
+            return (
+              functionToCheck &&
+              getType.toString.call(functionToCheck) === "[object Function]"
+            );
+          }
 
-                  if (/(auto|scroll)/.test(overflow + overflowY + overflowX)) {
-                    return element;
-                  }
+          /**
+           * Get CSS computed property of the given element
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Eement} element
+           * @argument {String} property
+           */
+          function getStyleComputedProperty(element, property) {
+            if (element.nodeType !== 1) {
+              return [];
+            }
+            // NOTE: 1 DOM access here
+            var css = getComputedStyle(element, null);
+            return property ? css[property] : css;
+          }
 
-                  return getScrollParent(getParentNode(element));
-                }
+          /**
+           * Returns the parentNode or the host of the element
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element
+           * @returns {Element} parent
+           */
+          function getParentNode(element) {
+            if (element.nodeName === "HTML") {
+              return element;
+            }
+            return element.parentNode || element.host;
+          }
 
-                /**
-                 * Returns the offset parent of the given element
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element
-                 * @returns {Element} offset parent
-                 */
-                function getOffsetParent(element) {
-                  // NOTE: 1 DOM access here
-                  var offsetParent = element && element.offsetParent;
-                  var nodeName = offsetParent && offsetParent.nodeName;
+          /**
+           * Returns the scrolling parent of the given element
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element
+           * @returns {Element} scroll parent
+           */
+          function getScrollParent(element) {
+            // Return body, `getScroll` will take care to get the correct `scrollTop` from it
+            if (!element) {
+              return document.body;
+            }
 
-                  if (!nodeName || nodeName === "BODY" || nodeName === "HTML") {
-                    if (element) {
-                      return element.ownerDocument.documentElement;
-                    }
+            switch (element.nodeName) {
+              case "HTML":
+              case "BODY":
+                return element.ownerDocument.body;
+              case "#document":
+                return element.body;
+            }
 
-                    return document.documentElement;
-                  }
+            // Firefox want us to check `-x` and `-y` variations as well
 
-                  // .offsetParent will return the closest TD or TABLE in case
-                  // no offsetParent is present, I hate this job...
-                  if (
-                    ["TD", "TABLE"].indexOf(offsetParent.nodeName) !== -1 &&
-                    getStyleComputedProperty(offsetParent, "position") ===
-                      "static"
-                  ) {
-                    return getOffsetParent(offsetParent);
-                  }
+            var _getStyleComputedProp = getStyleComputedProperty(element),
+              overflow = _getStyleComputedProp.overflow,
+              overflowX = _getStyleComputedProp.overflowX,
+              overflowY = _getStyleComputedProp.overflowY;
 
-                  return offsetParent;
-                }
+            if (/(auto|scroll)/.test(overflow + overflowY + overflowX)) {
+              return element;
+            }
 
-                function isOffsetContainer(element) {
-                  var nodeName = element.nodeName;
+            return getScrollParent(getParentNode(element));
+          }
 
-                  if (nodeName === "BODY") {
-                    return false;
-                  }
-                  return (
-                    nodeName === "HTML" ||
-                    getOffsetParent(element.firstElementChild) === element
-                  );
-                }
+          /**
+           * Returns the offset parent of the given element
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element
+           * @returns {Element} offset parent
+           */
+          function getOffsetParent(element) {
+            // NOTE: 1 DOM access here
+            var offsetParent = element && element.offsetParent;
+            var nodeName = offsetParent && offsetParent.nodeName;
 
-                /**
-                 * Finds the root node (document, shadowDOM root) of the given element
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} node
-                 * @returns {Element} root node
-                 */
-                function getRoot(node) {
-                  if (node.parentNode !== null) {
-                    return getRoot(node.parentNode);
-                  }
+            if (!nodeName || nodeName === "BODY" || nodeName === "HTML") {
+              if (element) {
+                return element.ownerDocument.documentElement;
+              }
 
-                  return node;
-                }
+              return document.documentElement;
+            }
 
-                /**
-                 * Finds the offset parent common to the two provided nodes
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element1
-                 * @argument {Element} element2
-                 * @returns {Element} common offset parent
-                 */
-                function findCommonOffsetParent(element1, element2) {
-                  // This check is needed to avoid errors in case one of the elements isn't defined for any reason
-                  if (
-                    !element1 ||
-                    !element1.nodeType ||
-                    !element2 ||
-                    !element2.nodeType
-                  ) {
-                    return document.documentElement;
-                  }
+            // .offsetParent will return the closest TD or TABLE in case
+            // no offsetParent is present, I hate this job...
+            if (
+              ["TD", "TABLE"].indexOf(offsetParent.nodeName) !== -1 &&
+              getStyleComputedProperty(offsetParent, "position") === "static"
+            ) {
+              return getOffsetParent(offsetParent);
+            }
 
-                  // Here we make sure to give as "start" the element that comes first in the DOM
-                  var order =
-                    element1.compareDocumentPosition(element2) &
-                    Node.DOCUMENT_POSITION_FOLLOWING;
-                  var start = order ? element1 : element2;
-                  var end = order ? element2 : element1;
+            return offsetParent;
+          }
 
-                  // Get common ancestor container
-                  var range = document.createRange();
-                  range.setStart(start, 0);
-                  range.setEnd(end, 0);
-                  var commonAncestorContainer = range.commonAncestorContainer;
+          function isOffsetContainer(element) {
+            var nodeName = element.nodeName;
 
-                  // Both nodes are inside #document
+            if (nodeName === "BODY") {
+              return false;
+            }
+            return (
+              nodeName === "HTML" ||
+              getOffsetParent(element.firstElementChild) === element
+            );
+          }
 
-                  if (
-                    (element1 !== commonAncestorContainer &&
-                      element2 !== commonAncestorContainer) ||
-                    start.contains(end)
-                  ) {
-                    if (isOffsetContainer(commonAncestorContainer)) {
-                      return commonAncestorContainer;
-                    }
+          /**
+           * Finds the root node (document, shadowDOM root) of the given element
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} node
+           * @returns {Element} root node
+           */
+          function getRoot(node) {
+            if (node.parentNode !== null) {
+              return getRoot(node.parentNode);
+            }
 
-                    return getOffsetParent(commonAncestorContainer);
-                  }
+            return node;
+          }
 
-                  // one of the nodes is inside shadowDOM, find which one
-                  var element1root = getRoot(element1);
-                  if (element1root.host) {
-                    return findCommonOffsetParent(element1root.host, element2);
-                  } else {
-                    return findCommonOffsetParent(
-                      element1,
-                      getRoot(element2).host
-                    );
-                  }
-                }
+          /**
+           * Finds the offset parent common to the two provided nodes
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element1
+           * @argument {Element} element2
+           * @returns {Element} common offset parent
+           */
+          function findCommonOffsetParent(element1, element2) {
+            // This check is needed to avoid errors in case one of the elements isn't defined for any reason
+            if (
+              !element1 ||
+              !element1.nodeType ||
+              !element2 ||
+              !element2.nodeType
+            ) {
+              return document.documentElement;
+            }
 
-                /**
-                 * Gets the scroll value of the given element in the given side (top and left)
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element
-                 * @argument {String} side `top` or `left`
-                 * @returns {number} amount of scrolled pixels
-                 */
-                function getScroll(element) {
-                  var side =
-                    arguments.length > 1 && arguments[1] !== undefined
-                      ? arguments[1]
-                      : "top";
+            // Here we make sure to give as "start" the element that comes first in the DOM
+            var order =
+              element1.compareDocumentPosition(element2) &
+              Node.DOCUMENT_POSITION_FOLLOWING;
+            var start = order ? element1 : element2;
+            var end = order ? element2 : element1;
 
-                  var upperSide = side === "top" ? "scrollTop" : "scrollLeft";
-                  var nodeName = element.nodeName;
+            // Get common ancestor container
+            var range = document.createRange();
+            range.setStart(start, 0);
+            range.setEnd(end, 0);
+            var commonAncestorContainer = range.commonAncestorContainer;
 
-                  if (nodeName === "BODY" || nodeName === "HTML") {
-                    var html = element.ownerDocument.documentElement;
-                    var scrollingElement =
-                      element.ownerDocument.scrollingElement || html;
-                    return scrollingElement[upperSide];
-                  }
+            // Both nodes are inside #document
 
-                  return element[upperSide];
-                }
+            if (
+              (element1 !== commonAncestorContainer &&
+                element2 !== commonAncestorContainer) ||
+              start.contains(end)
+            ) {
+              if (isOffsetContainer(commonAncestorContainer)) {
+                return commonAncestorContainer;
+              }
 
-                /*
+              return getOffsetParent(commonAncestorContainer);
+            }
+
+            // one of the nodes is inside shadowDOM, find which one
+            var element1root = getRoot(element1);
+            if (element1root.host) {
+              return findCommonOffsetParent(element1root.host, element2);
+            } else {
+              return findCommonOffsetParent(element1, getRoot(element2).host);
+            }
+          }
+
+          /**
+           * Gets the scroll value of the given element in the given side (top and left)
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element
+           * @argument {String} side `top` or `left`
+           * @returns {number} amount of scrolled pixels
+           */
+          function getScroll(element) {
+            var side =
+              arguments.length > 1 && arguments[1] !== undefined
+                ? arguments[1]
+                : "top";
+
+            var upperSide = side === "top" ? "scrollTop" : "scrollLeft";
+            var nodeName = element.nodeName;
+
+            if (nodeName === "BODY" || nodeName === "HTML") {
+              var html = element.ownerDocument.documentElement;
+              var scrollingElement =
+                element.ownerDocument.scrollingElement || html;
+              return scrollingElement[upperSide];
+            }
+
+            return element[upperSide];
+          }
+
+          /*
 	 * Sum or subtract the element scroll values (left and top) from a given rect object
 	 * @method
 	 * @memberof Popper.Utils
@@ -51135,23 +51091,23 @@
 	 * @param {Boolean} subtract - set to true if you want to subtract the scroll values
 	 * @return {Object} rect - The modifier rect object
 	 */
-                function includeScroll(rect, element) {
-                  var subtract =
-                    arguments.length > 2 && arguments[2] !== undefined
-                      ? arguments[2]
-                      : false;
+          function includeScroll(rect, element) {
+            var subtract =
+              arguments.length > 2 && arguments[2] !== undefined
+                ? arguments[2]
+                : false;
 
-                  var scrollTop = getScroll(element, "top");
-                  var scrollLeft = getScroll(element, "left");
-                  var modifier = subtract ? -1 : 1;
-                  rect.top += scrollTop * modifier;
-                  rect.bottom += scrollTop * modifier;
-                  rect.left += scrollLeft * modifier;
-                  rect.right += scrollLeft * modifier;
-                  return rect;
-                }
+            var scrollTop = getScroll(element, "top");
+            var scrollLeft = getScroll(element, "left");
+            var modifier = subtract ? -1 : 1;
+            rect.top += scrollTop * modifier;
+            rect.bottom += scrollTop * modifier;
+            rect.left += scrollLeft * modifier;
+            rect.right += scrollLeft * modifier;
+            return rect;
+          }
 
-                /*
+          /*
 	 * Helper to detect borders of a given element
 	 * @method
 	 * @memberof Popper.Utils
@@ -51161,2760 +51117,2629 @@
 	 * @return {number} borders - The borders size of the given axis
 	 */
 
-                function getBordersSize(styles, axis) {
-                  var sideA = axis === "x" ? "Left" : "Top";
-                  var sideB = sideA === "Left" ? "Right" : "Bottom";
-
-                  return (
-                    parseFloat(styles["border" + sideA + "Width"], 10) +
-                    parseFloat(styles["border" + sideB + "Width"], 10)
-                  );
-                }
-
-                /**
-                 * Tells if you are running Internet Explorer 10
-                 * @method
-                 * @memberof Popper.Utils
-                 * @returns {Boolean} isIE10
-                 */
-                var isIE10 = undefined;
-
-                var isIE10$1 = function() {
-                  if (isIE10 === undefined) {
-                    isIE10 = navigator.appVersion.indexOf("MSIE 10") !== -1;
-                  }
-                  return isIE10;
-                };
-
-                function getSize(axis, body, html, computedStyle) {
-                  return Math.max(
-                    body["offset" + axis],
-                    body["scroll" + axis],
-                    html["client" + axis],
-                    html["offset" + axis],
-                    html["scroll" + axis],
-                    isIE10$1()
-                      ? html["offset" + axis] +
-                        computedStyle[
-                          "margin" + (axis === "Height" ? "Top" : "Left")
-                        ] +
-                        computedStyle[
-                          "margin" + (axis === "Height" ? "Bottom" : "Right")
-                        ]
-                      : 0
-                  );
-                }
-
-                function getWindowSizes() {
-                  var body = document.body;
-                  var html = document.documentElement;
-                  var computedStyle = isIE10$1() && getComputedStyle(html);
-
-                  return {
-                    height: getSize("Height", body, html, computedStyle),
-                    width: getSize("Width", body, html, computedStyle)
-                  };
-                }
-
-                var classCallCheck = function(instance, Constructor) {
-                  if (!(instance instanceof Constructor)) {
-                    throw new TypeError("Cannot call a class as a function");
-                  }
-                };
-
-                var createClass = (function() {
-                  function defineProperties(target, props) {
-                    for (var i = 0; i < props.length; i++) {
-                      var descriptor = props[i];
-                      descriptor.enumerable = descriptor.enumerable || false;
-                      descriptor.configurable = true;
-                      if ("value" in descriptor) descriptor.writable = true;
-                      Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                  }
-
-                  return function(Constructor, protoProps, staticProps) {
-                    if (protoProps)
-                      defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) defineProperties(Constructor, staticProps);
-                    return Constructor;
-                  };
-                })();
-
-                var defineProperty = function(obj, key, value) {
-                  if (key in obj) {
-                    Object.defineProperty(obj, key, {
-                      value: value,
-                      enumerable: true,
-                      configurable: true,
-                      writable: true
-                    });
-                  } else {
-                    obj[key] = value;
-                  }
-
-                  return obj;
-                };
-
-                var _extends =
-                  Object.assign ||
-                  function(target) {
-                    for (var i = 1; i < arguments.length; i++) {
-                      var source = arguments[i];
-
-                      for (var key in source) {
-                        if (Object.prototype.hasOwnProperty.call(source, key)) {
-                          target[key] = source[key];
-                        }
-                      }
-                    }
-
-                    return target;
-                  };
-
-                /**
-                 * Given element offsets, generate an output similar to getBoundingClientRect
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Object} offsets
-                 * @returns {Object} ClientRect like output
-                 */
-                function getClientRect(offsets) {
-                  return _extends({}, offsets, {
-                    right: offsets.left + offsets.width,
-                    bottom: offsets.top + offsets.height
-                  });
-                }
-
-                /**
-                 * Get bounding client rect of given element
-                 * @method
-                 * @memberof Popper.Utils
-                 * @param {HTMLElement} element
-                 * @return {Object} client rect
-                 */
-                function getBoundingClientRect(element) {
-                  var rect = {};
-
-                  // IE10 10 FIX: Please, don't ask, the element isn't
-                  // considered in DOM in some circumstances...
-                  // This isn't reproducible in IE10 compatibility mode of IE11
-                  if (isIE10$1()) {
-                    try {
-                      rect = element.getBoundingClientRect();
-                      var scrollTop = getScroll(element, "top");
-                      var scrollLeft = getScroll(element, "left");
-                      rect.top += scrollTop;
-                      rect.left += scrollLeft;
-                      rect.bottom += scrollTop;
-                      rect.right += scrollLeft;
-                    } catch (err) {}
-                  } else {
-                    rect = element.getBoundingClientRect();
-                  }
-
-                  var result = {
-                    left: rect.left,
-                    top: rect.top,
-                    width: rect.right - rect.left,
-                    height: rect.bottom - rect.top
-                  };
-
-                  // subtract scrollbar size from sizes
-                  var sizes =
-                    element.nodeName === "HTML" ? getWindowSizes() : {};
-                  var width =
-                    sizes.width ||
-                    element.clientWidth ||
-                    result.right - result.left;
-                  var height =
-                    sizes.height ||
-                    element.clientHeight ||
-                    result.bottom - result.top;
-
-                  var horizScrollbar = element.offsetWidth - width;
-                  var vertScrollbar = element.offsetHeight - height;
-
-                  // if an hypothetical scrollbar is detected, we must be sure it's not a `border`
-                  // we make this check conditional for performance reasons
-                  if (horizScrollbar || vertScrollbar) {
-                    var styles = getStyleComputedProperty(element);
-                    horizScrollbar -= getBordersSize(styles, "x");
-                    vertScrollbar -= getBordersSize(styles, "y");
-
-                    result.width -= horizScrollbar;
-                    result.height -= vertScrollbar;
-                  }
-
-                  return getClientRect(result);
-                }
-
-                function getOffsetRectRelativeToArbitraryNode(
-                  children,
-                  parent
-                ) {
-                  var isIE10 = isIE10$1();
-                  var isHTML = parent.nodeName === "HTML";
-                  var childrenRect = getBoundingClientRect(children);
-                  var parentRect = getBoundingClientRect(parent);
-                  var scrollParent = getScrollParent(children);
-
-                  var styles = getStyleComputedProperty(parent);
-                  var borderTopWidth = parseFloat(styles.borderTopWidth, 10);
-                  var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
-
-                  var offsets = getClientRect({
-                    top: childrenRect.top - parentRect.top - borderTopWidth,
-                    left: childrenRect.left - parentRect.left - borderLeftWidth,
-                    width: childrenRect.width,
-                    height: childrenRect.height
-                  });
-                  offsets.marginTop = 0;
-                  offsets.marginLeft = 0;
-
-                  // Subtract margins of documentElement in case it's being used as parent
-                  // we do this only on HTML because it's the only element that behaves
-                  // differently when margins are applied to it. The margins are included in
-                  // the box of the documentElement, in the other cases not.
-                  if (!isIE10 && isHTML) {
-                    var marginTop = parseFloat(styles.marginTop, 10);
-                    var marginLeft = parseFloat(styles.marginLeft, 10);
-
-                    offsets.top -= borderTopWidth - marginTop;
-                    offsets.bottom -= borderTopWidth - marginTop;
-                    offsets.left -= borderLeftWidth - marginLeft;
-                    offsets.right -= borderLeftWidth - marginLeft;
-
-                    // Attach marginTop and marginLeft because in some circumstances we may need them
-                    offsets.marginTop = marginTop;
-                    offsets.marginLeft = marginLeft;
-                  }
-
-                  if (
-                    isIE10
-                      ? parent.contains(scrollParent)
-                      : parent === scrollParent &&
-                        scrollParent.nodeName !== "BODY"
-                  ) {
-                    offsets = includeScroll(offsets, parent);
-                  }
-
-                  return offsets;
-                }
-
-                function getViewportOffsetRectRelativeToArtbitraryNode(
-                  element
-                ) {
-                  var html = element.ownerDocument.documentElement;
-                  var relativeOffset = getOffsetRectRelativeToArbitraryNode(
-                    element,
-                    html
-                  );
-                  var width = Math.max(
-                    html.clientWidth,
-                    window.innerWidth || 0
-                  );
-                  var height = Math.max(
-                    html.clientHeight,
-                    window.innerHeight || 0
-                  );
-
-                  var scrollTop = getScroll(html);
-                  var scrollLeft = getScroll(html, "left");
-
-                  var offset = {
-                    top:
-                      scrollTop - relativeOffset.top + relativeOffset.marginTop,
-                    left:
-                      scrollLeft -
-                      relativeOffset.left +
-                      relativeOffset.marginLeft,
-                    width: width,
-                    height: height
-                  };
-
-                  return getClientRect(offset);
-                }
-
-                /**
-                 * Check if the given element is fixed or is inside a fixed parent
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element
-                 * @argument {Element} customContainer
-                 * @returns {Boolean} answer to "isFixed?"
-                 */
-                function isFixed(element) {
-                  var nodeName = element.nodeName;
-                  if (nodeName === "BODY" || nodeName === "HTML") {
-                    return false;
-                  }
-                  if (
-                    getStyleComputedProperty(element, "position") === "fixed"
-                  ) {
-                    return true;
-                  }
-                  return isFixed(getParentNode(element));
-                }
-
-                /**
-                 * Computed the boundaries limits and return them
-                 * @method
-                 * @memberof Popper.Utils
-                 * @param {HTMLElement} popper
-                 * @param {HTMLElement} reference
-                 * @param {number} padding
-                 * @param {HTMLElement} boundariesElement - Element used to define the boundaries
-                 * @returns {Object} Coordinates of the boundaries
-                 */
-                function getBoundaries(
-                  popper,
-                  reference,
-                  padding,
-                  boundariesElement
-                ) {
-                  // NOTE: 1 DOM access here
-                  var boundaries = { top: 0, left: 0 };
-                  var offsetParent = findCommonOffsetParent(popper, reference);
-
-                  // Handle viewport case
-                  if (boundariesElement === "viewport") {
-                    boundaries = getViewportOffsetRectRelativeToArtbitraryNode(
-                      offsetParent
-                    );
-                  } else {
-                    // Handle other cases based on DOM element used as boundaries
-                    var boundariesNode = void 0;
-                    if (boundariesElement === "scrollParent") {
-                      boundariesNode = getScrollParent(
-                        getParentNode(reference)
-                      );
-                      if (boundariesNode.nodeName === "BODY") {
-                        boundariesNode = popper.ownerDocument.documentElement;
-                      }
-                    } else if (boundariesElement === "window") {
-                      boundariesNode = popper.ownerDocument.documentElement;
-                    } else {
-                      boundariesNode = boundariesElement;
-                    }
-
-                    var offsets = getOffsetRectRelativeToArbitraryNode(
-                      boundariesNode,
-                      offsetParent
-                    );
-
-                    // In case of HTML, we need a different computation
-                    if (
-                      boundariesNode.nodeName === "HTML" &&
-                      !isFixed(offsetParent)
-                    ) {
-                      var _getWindowSizes = getWindowSizes(),
-                        height = _getWindowSizes.height,
-                        width = _getWindowSizes.width;
-
-                      boundaries.top += offsets.top - offsets.marginTop;
-                      boundaries.bottom = height + offsets.top;
-                      boundaries.left += offsets.left - offsets.marginLeft;
-                      boundaries.right = width + offsets.left;
-                    } else {
-                      // for all the other DOM elements, this one is good
-                      boundaries = offsets;
-                    }
-                  }
-
-                  // Add paddings
-                  boundaries.left += padding;
-                  boundaries.top += padding;
-                  boundaries.right -= padding;
-                  boundaries.bottom -= padding;
-
-                  return boundaries;
-                }
-
-                function getArea(_ref) {
-                  var width = _ref.width,
-                    height = _ref.height;
-
-                  return width * height;
-                }
-
-                /**
-                 * Utility used to transform the `auto` placement to the placement with more
-                 * available space.
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Object} data - The data object generated by update method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function computeAutoPlacement(
-                  placement,
-                  refRect,
-                  popper,
-                  reference,
-                  boundariesElement
-                ) {
-                  var padding =
-                    arguments.length > 5 && arguments[5] !== undefined
-                      ? arguments[5]
-                      : 0;
-
-                  if (placement.indexOf("auto") === -1) {
-                    return placement;
-                  }
-
-                  var boundaries = getBoundaries(
-                    popper,
-                    reference,
-                    padding,
-                    boundariesElement
-                  );
-
-                  var rects = {
-                    top: {
-                      width: boundaries.width,
-                      height: refRect.top - boundaries.top
-                    },
-                    right: {
-                      width: boundaries.right - refRect.right,
-                      height: boundaries.height
-                    },
-                    bottom: {
-                      width: boundaries.width,
-                      height: boundaries.bottom - refRect.bottom
-                    },
-                    left: {
-                      width: refRect.left - boundaries.left,
-                      height: boundaries.height
-                    }
-                  };
-
-                  var sortedAreas = Object.keys(rects)
-                    .map(function(key) {
-                      return _extends(
-                        {
-                          key: key
-                        },
-                        rects[key],
-                        {
-                          area: getArea(rects[key])
-                        }
-                      );
-                    })
-                    .sort(function(a, b) {
-                      return b.area - a.area;
-                    });
-
-                  var filteredAreas = sortedAreas.filter(function(_ref2) {
-                    var width = _ref2.width,
-                      height = _ref2.height;
-                    return (
-                      width >= popper.clientWidth &&
-                      height >= popper.clientHeight
-                    );
-                  });
-
-                  var computedPlacement =
-                    filteredAreas.length > 0
-                      ? filteredAreas[0].key
-                      : sortedAreas[0].key;
-
-                  var variation = placement.split("-")[1];
-
-                  return computedPlacement + (variation ? "-" + variation : "");
-                }
-
-                /**
-                 * Get offsets to the reference element
-                 * @method
-                 * @memberof Popper.Utils
-                 * @param {Object} state
-                 * @param {Element} popper - the popper element
-                 * @param {Element} reference - the reference element (the popper will be relative to this)
-                 * @returns {Object} An object containing the offsets which will be applied to the popper
-                 */
-                function getReferenceOffsets(state, popper, reference) {
-                  var commonOffsetParent = findCommonOffsetParent(
-                    popper,
-                    reference
-                  );
-                  return getOffsetRectRelativeToArbitraryNode(
-                    reference,
-                    commonOffsetParent
-                  );
-                }
-
-                /**
-                 * Get the outer sizes of the given element (offset size + margins)
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element
-                 * @returns {Object} object containing width and height properties
-                 */
-                function getOuterSizes(element) {
-                  var styles = getComputedStyle(element);
-                  var x =
-                    parseFloat(styles.marginTop) +
-                    parseFloat(styles.marginBottom);
-                  var y =
-                    parseFloat(styles.marginLeft) +
-                    parseFloat(styles.marginRight);
-                  var result = {
-                    width: element.offsetWidth + y,
-                    height: element.offsetHeight + x
-                  };
-                  return result;
-                }
-
-                /**
-                 * Get the opposite placement of the given one
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {String} placement
-                 * @returns {String} flipped placement
-                 */
-                function getOppositePlacement(placement) {
-                  var hash = {
-                    left: "right",
-                    right: "left",
-                    bottom: "top",
-                    top: "bottom"
-                  };
-                  return placement.replace(/left|right|bottom|top/g, function(
-                    matched
-                  ) {
-                    return hash[matched];
-                  });
-                }
-
-                /**
-                 * Get offsets to the popper
-                 * @method
-                 * @memberof Popper.Utils
-                 * @param {Object} position - CSS position the Popper will get applied
-                 * @param {HTMLElement} popper - the popper element
-                 * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
-                 * @param {String} placement - one of the valid placement options
-                 * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
-                 */
-                function getPopperOffsets(popper, referenceOffsets, placement) {
-                  placement = placement.split("-")[0];
-
-                  // Get popper node sizes
-                  var popperRect = getOuterSizes(popper);
-
-                  // Add position, width and height to our offsets object
-                  var popperOffsets = {
-                    width: popperRect.width,
-                    height: popperRect.height
-                  };
-
-                  // depending by the popper placement we have to compute its offsets slightly differently
-                  var isHoriz = ["right", "left"].indexOf(placement) !== -1;
-                  var mainSide = isHoriz ? "top" : "left";
-                  var secondarySide = isHoriz ? "left" : "top";
-                  var measurement = isHoriz ? "height" : "width";
-                  var secondaryMeasurement = !isHoriz ? "height" : "width";
-
-                  popperOffsets[mainSide] =
-                    referenceOffsets[mainSide] +
-                    referenceOffsets[measurement] / 2 -
-                    popperRect[measurement] / 2;
-                  if (placement === secondarySide) {
-                    popperOffsets[secondarySide] =
-                      referenceOffsets[secondarySide] -
-                      popperRect[secondaryMeasurement];
-                  } else {
-                    popperOffsets[secondarySide] =
-                      referenceOffsets[getOppositePlacement(secondarySide)];
-                  }
-
-                  return popperOffsets;
-                }
-
-                /**
-                 * Mimics the `find` method of Array
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Array} arr
-                 * @argument prop
-                 * @argument value
-                 * @returns index or -1
-                 */
-                function find(arr, check) {
-                  // use native find if supported
-                  if (Array.prototype.find) {
-                    return arr.find(check);
-                  }
-
-                  // use `filter` to obtain the same behavior of `find`
-                  return arr.filter(check)[0];
-                }
-
-                /**
-                 * Return the index of the matching object
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Array} arr
-                 * @argument prop
-                 * @argument value
-                 * @returns index or -1
-                 */
-                function findIndex(arr, prop, value) {
-                  // use native findIndex if supported
-                  if (Array.prototype.findIndex) {
-                    return arr.findIndex(function(cur) {
-                      return cur[prop] === value;
-                    });
-                  }
-
-                  // use `find` + `indexOf` if `findIndex` isn't supported
-                  var match = find(arr, function(obj) {
-                    return obj[prop] === value;
-                  });
-                  return arr.indexOf(match);
-                }
-
-                /**
-                 * Loop trough the list of modifiers and run them in order,
-                 * each of them will then edit the data object.
-                 * @method
-                 * @memberof Popper.Utils
-                 * @param {dataObject} data
-                 * @param {Array} modifiers
-                 * @param {String} ends - Optional modifier name used as stopper
-                 * @returns {dataObject}
-                 */
-                function runModifiers(modifiers, data, ends) {
-                  var modifiersToRun =
-                    ends === undefined
-                      ? modifiers
-                      : modifiers.slice(0, findIndex(modifiers, "name", ends));
-
-                  modifiersToRun.forEach(function(modifier) {
-                    if (modifier["function"]) {
-                      // eslint-disable-line dot-notation
-                      console.warn(
-                        "`modifier.function` is deprecated, use `modifier.fn`!"
-                      );
-                    }
-                    var fn = modifier["function"] || modifier.fn; // eslint-disable-line dot-notation
-                    if (modifier.enabled && isFunction(fn)) {
-                      // Add properties to offsets to make them a complete clientRect object
-                      // we do this before each modifier to make sure the previous one doesn't
-                      // mess with these values
-                      data.offsets.popper = getClientRect(data.offsets.popper);
-                      data.offsets.reference = getClientRect(
-                        data.offsets.reference
-                      );
-
-                      data = fn(data, modifier);
-                    }
-                  });
-
-                  return data;
-                }
-
-                /**
-                 * Updates the position of the popper, computing the new offsets and applying
-                 * the new style.<br />
-                 * Prefer `scheduleUpdate` over `update` because of performance reasons.
-                 * @method
-                 * @memberof Popper
-                 */
-                function update() {
-                  // if popper is destroyed, don't perform any further update
-                  if (this.state.isDestroyed) {
-                    return;
-                  }
-
-                  var data = {
-                    instance: this,
-                    styles: {},
-                    arrowStyles: {},
-                    attributes: {},
-                    flipped: false,
-                    offsets: {}
-                  };
-
-                  // compute reference element offsets
-                  data.offsets.reference = getReferenceOffsets(
-                    this.state,
-                    this.popper,
-                    this.reference
-                  );
-
-                  // compute auto placement, store placement inside the data object,
-                  // modifiers will be able to edit `placement` if needed
-                  // and refer to originalPlacement to know the original value
-                  data.placement = computeAutoPlacement(
-                    this.options.placement,
-                    data.offsets.reference,
-                    this.popper,
-                    this.reference,
-                    this.options.modifiers.flip.boundariesElement,
-                    this.options.modifiers.flip.padding
-                  );
-
-                  // store the computed placement inside `originalPlacement`
-                  data.originalPlacement = data.placement;
-
-                  // compute the popper offsets
-                  data.offsets.popper = getPopperOffsets(
-                    this.popper,
-                    data.offsets.reference,
-                    data.placement
-                  );
-                  data.offsets.popper.position = "absolute";
-
-                  // run the modifiers
-                  data = runModifiers(this.modifiers, data);
-
-                  // the first `update` will call `onCreate` callback
-                  // the other ones will call `onUpdate` callback
-                  if (!this.state.isCreated) {
-                    this.state.isCreated = true;
-                    this.options.onCreate(data);
-                  } else {
-                    this.options.onUpdate(data);
+          function getBordersSize(styles, axis) {
+            var sideA = axis === "x" ? "Left" : "Top";
+            var sideB = sideA === "Left" ? "Right" : "Bottom";
+
+            return (
+              parseFloat(styles["border" + sideA + "Width"], 10) +
+              parseFloat(styles["border" + sideB + "Width"], 10)
+            );
+          }
+
+          /**
+           * Tells if you are running Internet Explorer 10
+           * @method
+           * @memberof Popper.Utils
+           * @returns {Boolean} isIE10
+           */
+          var isIE10 = undefined;
+
+          var isIE10$1 = function() {
+            if (isIE10 === undefined) {
+              isIE10 = navigator.appVersion.indexOf("MSIE 10") !== -1;
+            }
+            return isIE10;
+          };
+
+          function getSize(axis, body, html, computedStyle) {
+            return Math.max(
+              body["offset" + axis],
+              body["scroll" + axis],
+              html["client" + axis],
+              html["offset" + axis],
+              html["scroll" + axis],
+              isIE10$1()
+                ? html["offset" + axis] +
+                  computedStyle[
+                    "margin" + (axis === "Height" ? "Top" : "Left")
+                  ] +
+                  computedStyle[
+                    "margin" + (axis === "Height" ? "Bottom" : "Right")
+                  ]
+                : 0
+            );
+          }
+
+          function getWindowSizes() {
+            var body = document.body;
+            var html = document.documentElement;
+            var computedStyle = isIE10$1() && getComputedStyle(html);
+
+            return {
+              height: getSize("Height", body, html, computedStyle),
+              width: getSize("Width", body, html, computedStyle)
+            };
+          }
+
+          var classCallCheck = function(instance, Constructor) {
+            if (!(instance instanceof Constructor)) {
+              throw new TypeError("Cannot call a class as a function");
+            }
+          };
+
+          var createClass = (function() {
+            function defineProperties(target, props) {
+              for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || false;
+                descriptor.configurable = true;
+                if ("value" in descriptor) descriptor.writable = true;
+                Object.defineProperty(target, descriptor.key, descriptor);
+              }
+            }
+
+            return function(Constructor, protoProps, staticProps) {
+              if (protoProps)
+                defineProperties(Constructor.prototype, protoProps);
+              if (staticProps) defineProperties(Constructor, staticProps);
+              return Constructor;
+            };
+          })();
+
+          var defineProperty = function(obj, key, value) {
+            if (key in obj) {
+              Object.defineProperty(obj, key, {
+                value: value,
+                enumerable: true,
+                configurable: true,
+                writable: true
+              });
+            } else {
+              obj[key] = value;
+            }
+
+            return obj;
+          };
+
+          var _extends =
+            Object.assign ||
+            function(target) {
+              for (var i = 1; i < arguments.length; i++) {
+                var source = arguments[i];
+
+                for (var key in source) {
+                  if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
                   }
                 }
-
-                /**
-                 * Helper used to know if the given modifier is enabled.
-                 * @method
-                 * @memberof Popper.Utils
-                 * @returns {Boolean}
-                 */
-                function isModifierEnabled(modifiers, modifierName) {
-                  return modifiers.some(function(_ref) {
-                    var name = _ref.name,
-                      enabled = _ref.enabled;
-                    return enabled && name === modifierName;
-                  });
-                }
-
-                /**
-                 * Get the prefixed supported property name
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {String} property (camelCase)
-                 * @returns {String} prefixed property (camelCase or PascalCase, depending on the vendor prefix)
-                 */
-                function getSupportedPropertyName(property) {
-                  var prefixes = [false, "ms", "Webkit", "Moz", "O"];
-                  var upperProp =
-                    property.charAt(0).toUpperCase() + property.slice(1);
-
-                  for (var i = 0; i < prefixes.length - 1; i++) {
-                    var prefix = prefixes[i];
-                    var toCheck = prefix ? "" + prefix + upperProp : property;
-                    if (typeof document.body.style[toCheck] !== "undefined") {
-                      return toCheck;
-                    }
-                  }
-                  return null;
-                }
-
-                /**
-                 * Destroy the popper
-                 * @method
-                 * @memberof Popper
-                 */
-                function destroy() {
-                  this.state.isDestroyed = true;
-
-                  // touch DOM only if `applyStyle` modifier is enabled
-                  if (isModifierEnabled(this.modifiers, "applyStyle")) {
-                    this.popper.removeAttribute("x-placement");
-                    this.popper.style.left = "";
-                    this.popper.style.position = "";
-                    this.popper.style.top = "";
-                    this.popper.style[getSupportedPropertyName("transform")] =
-                      "";
-                  }
-
-                  this.disableEventListeners();
-
-                  // remove the popper if user explicity asked for the deletion on destroy
-                  // do not use `remove` because IE11 doesn't support it
-                  if (this.options.removeOnDestroy) {
-                    this.popper.parentNode.removeChild(this.popper);
-                  }
-                  return this;
-                }
-
-                /**
-                 * Get the window associated with the element
-                 * @argument {Element} element
-                 * @returns {Window}
-                 */
-                function getWindow(element) {
-                  var ownerDocument = element.ownerDocument;
-                  return ownerDocument ? ownerDocument.defaultView : window;
-                }
-
-                function attachToScrollParents(
-                  scrollParent,
-                  event,
-                  callback,
-                  scrollParents
-                ) {
-                  var isBody = scrollParent.nodeName === "BODY";
-                  var target = isBody
-                    ? scrollParent.ownerDocument.defaultView
-                    : scrollParent;
-                  target.addEventListener(event, callback, { passive: true });
-
-                  if (!isBody) {
-                    attachToScrollParents(
-                      getScrollParent(target.parentNode),
-                      event,
-                      callback,
-                      scrollParents
-                    );
-                  }
-                  scrollParents.push(target);
-                }
-
-                /**
-                 * Setup needed event listeners used to update the popper position
-                 * @method
-                 * @memberof Popper.Utils
-                 * @private
-                 */
-                function setupEventListeners(
-                  reference,
-                  options,
-                  state,
-                  updateBound
-                ) {
-                  // Resize event listener on window
-                  state.updateBound = updateBound;
-                  getWindow(reference).addEventListener(
-                    "resize",
-                    state.updateBound,
-                    { passive: true }
-                  );
-
-                  // Scroll event listener on scroll parents
-                  var scrollElement = getScrollParent(reference);
-                  attachToScrollParents(
-                    scrollElement,
-                    "scroll",
-                    state.updateBound,
-                    state.scrollParents
-                  );
-                  state.scrollElement = scrollElement;
-                  state.eventsEnabled = true;
-
-                  return state;
-                }
-
-                /**
-                 * It will add resize/scroll events and start recalculating
-                 * position of the popper element when they are triggered.
-                 * @method
-                 * @memberof Popper
-                 */
-                function enableEventListeners() {
-                  if (!this.state.eventsEnabled) {
-                    this.state = setupEventListeners(
-                      this.reference,
-                      this.options,
-                      this.state,
-                      this.scheduleUpdate
-                    );
-                  }
-                }
-
-                /**
-                 * Remove event listeners used to update the popper position
-                 * @method
-                 * @memberof Popper.Utils
-                 * @private
-                 */
-                function removeEventListeners(reference, state) {
-                  // Remove resize event listener on window
-                  getWindow(reference).removeEventListener(
-                    "resize",
-                    state.updateBound
-                  );
-
-                  // Remove scroll event listener on scroll parents
-                  state.scrollParents.forEach(function(target) {
-                    target.removeEventListener("scroll", state.updateBound);
-                  });
-
-                  // Reset state
-                  state.updateBound = null;
-                  state.scrollParents = [];
-                  state.scrollElement = null;
-                  state.eventsEnabled = false;
-                  return state;
-                }
-
-                /**
-                 * It will remove resize/scroll events and won't recalculate popper position
-                 * when they are triggered. It also won't trigger onUpdate callback anymore,
-                 * unless you call `update` method manually.
-                 * @method
-                 * @memberof Popper
-                 */
-                function disableEventListeners() {
-                  if (this.state.eventsEnabled) {
-                    cancelAnimationFrame(this.scheduleUpdate);
-                    this.state = removeEventListeners(
-                      this.reference,
-                      this.state
-                    );
-                  }
-                }
-
-                /**
-                 * Tells if a given input is a number
-                 * @method
-                 * @memberof Popper.Utils
-                 * @param {*} input to check
-                 * @return {Boolean}
-                 */
-                function isNumeric(n) {
-                  return n !== "" && !isNaN(parseFloat(n)) && isFinite(n);
-                }
-
-                /**
-                 * Set the style to the given popper
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element - Element to apply the style to
-                 * @argument {Object} styles
-                 * Object with a list of properties and values which will be applied to the element
-                 */
-                function setStyles(element, styles) {
-                  Object.keys(styles).forEach(function(prop) {
-                    var unit = "";
-                    // add unit if the value is numeric and is one of the following
-                    if (
-                      [
-                        "width",
-                        "height",
-                        "top",
-                        "right",
-                        "bottom",
-                        "left"
-                      ].indexOf(prop) !== -1 &&
-                      isNumeric(styles[prop])
-                    ) {
-                      unit = "px";
-                    }
-                    element.style[prop] = styles[prop] + unit;
-                  });
-                }
-
-                /**
-                 * Set the attributes to the given popper
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {Element} element - Element to apply the attributes to
-                 * @argument {Object} styles
-                 * Object with a list of properties and values which will be applied to the element
-                 */
-                function setAttributes(element, attributes) {
-                  Object.keys(attributes).forEach(function(prop) {
-                    var value = attributes[prop];
-                    if (value !== false) {
-                      element.setAttribute(prop, attributes[prop]);
-                    } else {
-                      element.removeAttribute(prop);
-                    }
-                  });
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by `update` method
-                 * @argument {Object} data.styles - List of style properties - values to apply to popper element
-                 * @argument {Object} data.attributes - List of attribute properties - values to apply to popper element
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The same data object
-                 */
-                function applyStyle(data) {
-                  // any property present in `data.styles` will be applied to the popper,
-                  // in this way we can make the 3rd party modifiers add custom styles to it
-                  // Be aware, modifiers could override the properties defined in the previous
-                  // lines of this modifier!
-                  setStyles(data.instance.popper, data.styles);
-
-                  // any property present in `data.attributes` will be applied to the popper,
-                  // they will be set as HTML attributes of the element
-                  setAttributes(data.instance.popper, data.attributes);
-
-                  // if arrowElement is defined and arrowStyles has some properties
-                  if (
-                    data.arrowElement &&
-                    Object.keys(data.arrowStyles).length
-                  ) {
-                    setStyles(data.arrowElement, data.arrowStyles);
-                  }
-
-                  return data;
-                }
-
-                /**
-                 * Set the x-placement attribute before everything else because it could be used
-                 * to add margins to the popper margins needs to be calculated to get the
-                 * correct popper offsets.
-                 * @method
-                 * @memberof Popper.modifiers
-                 * @param {HTMLElement} reference - The reference element used to position the popper
-                 * @param {HTMLElement} popper - The HTML element used as popper.
-                 * @param {Object} options - Popper.js options
-                 */
-                function applyStyleOnLoad(
-                  reference,
-                  popper,
-                  options,
-                  modifierOptions,
-                  state
-                ) {
-                  // compute reference element offsets
-                  var referenceOffsets = getReferenceOffsets(
-                    state,
-                    popper,
-                    reference
-                  );
-
-                  // compute auto placement, store placement inside the data object,
-                  // modifiers will be able to edit `placement` if needed
-                  // and refer to originalPlacement to know the original value
-                  var placement = computeAutoPlacement(
-                    options.placement,
-                    referenceOffsets,
-                    popper,
-                    reference,
-                    options.modifiers.flip.boundariesElement,
-                    options.modifiers.flip.padding
-                  );
-
-                  popper.setAttribute("x-placement", placement);
-
-                  // Apply `position` to popper before anything else because
-                  // without the position applied we can't guarantee correct computations
-                  setStyles(popper, { position: "absolute" });
-
-                  return options;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by `update` method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function computeStyle(data, options) {
-                  var x = options.x,
-                    y = options.y;
-                  var popper = data.offsets.popper;
-
-                  // Remove this legacy support in Popper.js v2
-
-                  var legacyGpuAccelerationOption = find(
-                    data.instance.modifiers,
-                    function(modifier) {
-                      return modifier.name === "applyStyle";
-                    }
-                  ).gpuAcceleration;
-                  if (legacyGpuAccelerationOption !== undefined) {
-                    console.warn(
-                      "WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!"
-                    );
-                  }
-                  var gpuAcceleration =
-                    legacyGpuAccelerationOption !== undefined
-                      ? legacyGpuAccelerationOption
-                      : options.gpuAcceleration;
-
-                  var offsetParent = getOffsetParent(data.instance.popper);
-                  var offsetParentRect = getBoundingClientRect(offsetParent);
-
-                  // Styles
-                  var styles = {
-                    position: popper.position
-                  };
-
-                  // floor sides to avoid blurry text
-                  var offsets = {
-                    left: Math.floor(popper.left),
-                    top: Math.floor(popper.top),
-                    bottom: Math.floor(popper.bottom),
-                    right: Math.floor(popper.right)
-                  };
-
-                  var sideA = x === "bottom" ? "top" : "bottom";
-                  var sideB = y === "right" ? "left" : "right";
-
-                  // if gpuAcceleration is set to `true` and transform is supported,
-                  //  we use `translate3d` to apply the position to the popper we
-                  // automatically use the supported prefixed version if needed
-                  var prefixedProperty = getSupportedPropertyName("transform");
-
-                  // now, let's make a step back and look at this code closely (wtf?)
-                  // If the content of the popper grows once it's been positioned, it
-                  // may happen that the popper gets misplaced because of the new content
-                  // overflowing its reference element
-                  // To avoid this problem, we provide two options (x and y), which allow
-                  // the consumer to define the offset origin.
-                  // If we position a popper on top of a reference element, we can set
-                  // `x` to `top` to make the popper grow towards its top instead of
-                  // its bottom.
-                  var left = void 0,
-                    top = void 0;
-                  if (sideA === "bottom") {
-                    top = -offsetParentRect.height + offsets.bottom;
-                  } else {
-                    top = offsets.top;
-                  }
-                  if (sideB === "right") {
-                    left = -offsetParentRect.width + offsets.right;
-                  } else {
-                    left = offsets.left;
-                  }
-                  if (gpuAcceleration && prefixedProperty) {
-                    styles[prefixedProperty] =
-                      "translate3d(" + left + "px, " + top + "px, 0)";
-                    styles[sideA] = 0;
-                    styles[sideB] = 0;
-                    styles.willChange = "transform";
-                  } else {
-                    // othwerise, we use the standard `top`, `left`, `bottom` and `right` properties
-                    var invertTop = sideA === "bottom" ? -1 : 1;
-                    var invertLeft = sideB === "right" ? -1 : 1;
-                    styles[sideA] = top * invertTop;
-                    styles[sideB] = left * invertLeft;
-                    styles.willChange = sideA + ", " + sideB;
-                  }
-
-                  // Attributes
-                  var attributes = {
-                    "x-placement": data.placement
-                  };
-
-                  // Update `data` attributes, styles and arrowStyles
-                  data.attributes = _extends({}, attributes, data.attributes);
-                  data.styles = _extends({}, styles, data.styles);
-                  data.arrowStyles = _extends(
-                    {},
-                    data.offsets.arrow,
-                    data.arrowStyles
-                  );
-
-                  return data;
-                }
-
-                /**
-                 * Helper used to know if the given modifier depends from another one.<br />
-                 * It checks if the needed modifier is listed and enabled.
-                 * @method
-                 * @memberof Popper.Utils
-                 * @param {Array} modifiers - list of modifiers
-                 * @param {String} requestingName - name of requesting modifier
-                 * @param {String} requestedName - name of requested modifier
-                 * @returns {Boolean}
-                 */
-                function isModifierRequired(
-                  modifiers,
-                  requestingName,
-                  requestedName
-                ) {
-                  var requesting = find(modifiers, function(_ref) {
-                    var name = _ref.name;
-                    return name === requestingName;
-                  });
-
-                  var isRequired =
-                    !!requesting &&
-                    modifiers.some(function(modifier) {
-                      return (
-                        modifier.name === requestedName &&
-                        modifier.enabled &&
-                        modifier.order < requesting.order
-                      );
-                    });
-
-                  if (!isRequired) {
-                    var _requesting = "`" + requestingName + "`";
-                    var requested = "`" + requestedName + "`";
-                    console.warn(
-                      requested +
-                        " modifier is required by " +
-                        _requesting +
-                        " modifier in order to work, be sure to include it before " +
-                        _requesting +
-                        "!"
-                    );
-                  }
-                  return isRequired;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by update method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function arrow(data, options) {
-                  var _data$offsets$arrow;
-
-                  // arrow depends on keepTogether in order to work
-                  if (
-                    !isModifierRequired(
-                      data.instance.modifiers,
-                      "arrow",
-                      "keepTogether"
-                    )
-                  ) {
-                    return data;
-                  }
-
-                  var arrowElement = options.element;
-
-                  // if arrowElement is a string, suppose it's a CSS selector
-                  if (typeof arrowElement === "string") {
-                    arrowElement = data.instance.popper.querySelector(
-                      arrowElement
-                    );
-
-                    // if arrowElement is not found, don't run the modifier
-                    if (!arrowElement) {
-                      return data;
-                    }
-                  } else {
-                    // if the arrowElement isn't a query selector we must check that the
-                    // provided DOM node is child of its popper node
-                    if (!data.instance.popper.contains(arrowElement)) {
-                      console.warn(
-                        "WARNING: `arrow.element` must be child of its popper element!"
-                      );
-                      return data;
-                    }
-                  }
-
-                  var placement = data.placement.split("-")[0];
-                  var _data$offsets = data.offsets,
-                    popper = _data$offsets.popper,
-                    reference = _data$offsets.reference;
-
-                  var isVertical = ["left", "right"].indexOf(placement) !== -1;
-
-                  var len = isVertical ? "height" : "width";
-                  var sideCapitalized = isVertical ? "Top" : "Left";
-                  var side = sideCapitalized.toLowerCase();
-                  var altSide = isVertical ? "left" : "top";
-                  var opSide = isVertical ? "bottom" : "right";
-                  var arrowElementSize = getOuterSizes(arrowElement)[len];
-
-                  //
-                  // extends keepTogether behavior making sure the popper and its
-                  // reference have enough pixels in conjuction
-                  //
-
-                  // top/left side
-                  if (reference[opSide] - arrowElementSize < popper[side]) {
-                    data.offsets.popper[side] -=
-                      popper[side] - (reference[opSide] - arrowElementSize);
-                  }
-                  // bottom/right side
-                  if (reference[side] + arrowElementSize > popper[opSide]) {
-                    data.offsets.popper[side] +=
-                      reference[side] + arrowElementSize - popper[opSide];
-                  }
-                  data.offsets.popper = getClientRect(data.offsets.popper);
-
-                  // compute center of the popper
-                  var center =
-                    reference[side] + reference[len] / 2 - arrowElementSize / 2;
-
-                  // Compute the sideValue using the updated popper offsets
-                  // take popper margin in account because we don't have this info available
-                  var css = getStyleComputedProperty(data.instance.popper);
-                  var popperMarginSide = parseFloat(
-                    css["margin" + sideCapitalized],
-                    10
-                  );
-                  var popperBorderSide = parseFloat(
-                    css["border" + sideCapitalized + "Width"],
-                    10
-                  );
-                  var sideValue =
-                    center -
-                    data.offsets.popper[side] -
-                    popperMarginSide -
-                    popperBorderSide;
-
-                  // prevent arrowElement from being placed not contiguously to its popper
-                  sideValue = Math.max(
-                    Math.min(popper[len] - arrowElementSize, sideValue),
-                    0
-                  );
-
-                  data.arrowElement = arrowElement;
-                  data.offsets.arrow = ((_data$offsets$arrow = {}),
-                  defineProperty(
-                    _data$offsets$arrow,
-                    side,
-                    Math.round(sideValue)
-                  ),
-                  defineProperty(_data$offsets$arrow, altSide, ""),
-                  _data$offsets$arrow);
-
-                  return data;
-                }
-
-                /**
-                 * Get the opposite placement variation of the given one
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {String} placement variation
-                 * @returns {String} flipped placement variation
-                 */
-                function getOppositeVariation(variation) {
-                  if (variation === "end") {
-                    return "start";
-                  } else if (variation === "start") {
-                    return "end";
-                  }
-                  return variation;
-                }
-
-                /**
-                 * List of accepted placements to use as values of the `placement` option.<br />
-                 * Valid placements are:
-                 * - `auto`
-                 * - `top`
-                 * - `right`
-                 * - `bottom`
-                 * - `left`
-                 *
-                 * Each placement can have a variation from this list:
-                 * - `-start`
-                 * - `-end`
-                 *
-                 * Variations are interpreted easily if you think of them as the left to right
-                 * written languages. Horizontally (`top` and `bottom`), `start` is left and `end`
-                 * is right.<br />
-                 * Vertically (`left` and `right`), `start` is top and `end` is bottom.
-                 *
-                 * Some valid examples are:
-                 * - `top-end` (on top of reference, right aligned)
-                 * - `right-start` (on right of reference, top aligned)
-                 * - `bottom` (on bottom, centered)
-                 * - `auto-right` (on the side with more space available, alignment depends by placement)
-                 *
-                 * @static
-                 * @type {Array}
-                 * @enum {String}
-                 * @readonly
-                 * @method placements
-                 * @memberof Popper
-                 */
-                var placements = [
-                  "auto-start",
-                  "auto",
-                  "auto-end",
-                  "top-start",
-                  "top",
-                  "top-end",
-                  "right-start",
-                  "right",
-                  "right-end",
-                  "bottom-end",
-                  "bottom",
-                  "bottom-start",
-                  "left-end",
-                  "left",
-                  "left-start"
-                ];
-
-                // Get rid of `auto` `auto-start` and `auto-end`
-                var validPlacements = placements.slice(3);
-
-                /**
-                 * Given an initial placement, returns all the subsequent placements
-                 * clockwise (or counter-clockwise).
-                 *
-                 * @method
-                 * @memberof Popper.Utils
-                 * @argument {String} placement - A valid placement (it accepts variations)
-                 * @argument {Boolean} counter - Set to true to walk the placements counterclockwise
-                 * @returns {Array} placements including their variations
-                 */
-                function clockwise(placement) {
-                  var counter =
-                    arguments.length > 1 && arguments[1] !== undefined
-                      ? arguments[1]
-                      : false;
-
-                  var index = validPlacements.indexOf(placement);
-                  var arr = validPlacements
-                    .slice(index + 1)
-                    .concat(validPlacements.slice(0, index));
-                  return counter ? arr.reverse() : arr;
-                }
-
-                var BEHAVIORS = {
-                  FLIP: "flip",
-                  CLOCKWISE: "clockwise",
-                  COUNTERCLOCKWISE: "counterclockwise"
-                };
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by update method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function flip(data, options) {
-                  // if `inner` modifier is enabled, we can't use the `flip` modifier
-                  if (isModifierEnabled(data.instance.modifiers, "inner")) {
-                    return data;
-                  }
-
-                  if (
-                    data.flipped &&
-                    data.placement === data.originalPlacement
-                  ) {
-                    // seems like flip is trying to loop, probably there's not enough space on any of the flippable sides
-                    return data;
-                  }
-
-                  var boundaries = getBoundaries(
-                    data.instance.popper,
-                    data.instance.reference,
-                    options.padding,
-                    options.boundariesElement
-                  );
-
-                  var placement = data.placement.split("-")[0];
-                  var placementOpposite = getOppositePlacement(placement);
-                  var variation = data.placement.split("-")[1] || "";
-
-                  var flipOrder = [];
-
-                  switch (options.behavior) {
-                    case BEHAVIORS.FLIP:
-                      flipOrder = [placement, placementOpposite];
-                      break;
-                    case BEHAVIORS.CLOCKWISE:
-                      flipOrder = clockwise(placement);
-                      break;
-                    case BEHAVIORS.COUNTERCLOCKWISE:
-                      flipOrder = clockwise(placement, true);
-                      break;
-                    default:
-                      flipOrder = options.behavior;
-                  }
-
-                  flipOrder.forEach(function(step, index) {
-                    if (placement !== step || flipOrder.length === index + 1) {
-                      return data;
-                    }
-
-                    placement = data.placement.split("-")[0];
-                    placementOpposite = getOppositePlacement(placement);
-
-                    var popperOffsets = data.offsets.popper;
-                    var refOffsets = data.offsets.reference;
-
-                    // using floor because the reference offsets may contain decimals we are not going to consider here
-                    var floor = Math.floor;
-                    var overlapsRef =
-                      (placement === "left" &&
-                        floor(popperOffsets.right) > floor(refOffsets.left)) ||
-                      (placement === "right" &&
-                        floor(popperOffsets.left) < floor(refOffsets.right)) ||
-                      (placement === "top" &&
-                        floor(popperOffsets.bottom) > floor(refOffsets.top)) ||
-                      (placement === "bottom" &&
-                        floor(popperOffsets.top) < floor(refOffsets.bottom));
-
-                    var overflowsLeft =
-                      floor(popperOffsets.left) < floor(boundaries.left);
-                    var overflowsRight =
-                      floor(popperOffsets.right) > floor(boundaries.right);
-                    var overflowsTop =
-                      floor(popperOffsets.top) < floor(boundaries.top);
-                    var overflowsBottom =
-                      floor(popperOffsets.bottom) > floor(boundaries.bottom);
-
-                    var overflowsBoundaries =
-                      (placement === "left" && overflowsLeft) ||
-                      (placement === "right" && overflowsRight) ||
-                      (placement === "top" && overflowsTop) ||
-                      (placement === "bottom" && overflowsBottom);
-
-                    // flip the variation if required
-                    var isVertical =
-                      ["top", "bottom"].indexOf(placement) !== -1;
-                    var flippedVariation =
-                      !!options.flipVariations &&
-                      ((isVertical && variation === "start" && overflowsLeft) ||
-                        (isVertical && variation === "end" && overflowsRight) ||
-                        (!isVertical &&
-                          variation === "start" &&
-                          overflowsTop) ||
-                        (!isVertical &&
-                          variation === "end" &&
-                          overflowsBottom));
-
-                    if (
-                      overlapsRef ||
-                      overflowsBoundaries ||
-                      flippedVariation
-                    ) {
-                      // this boolean to detect any flip loop
-                      data.flipped = true;
-
-                      if (overlapsRef || overflowsBoundaries) {
-                        placement = flipOrder[index + 1];
-                      }
-
-                      if (flippedVariation) {
-                        variation = getOppositeVariation(variation);
-                      }
-
-                      data.placement =
-                        placement + (variation ? "-" + variation : "");
-
-                      // this object contains `position`, we want to preserve it along with
-                      // any additional property we may add in the future
-                      data.offsets.popper = _extends(
-                        {},
-                        data.offsets.popper,
-                        getPopperOffsets(
-                          data.instance.popper,
-                          data.offsets.reference,
-                          data.placement
-                        )
-                      );
-
-                      data = runModifiers(
-                        data.instance.modifiers,
-                        data,
-                        "flip"
-                      );
-                    }
-                  });
-                  return data;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by update method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function keepTogether(data) {
-                  var _data$offsets = data.offsets,
-                    popper = _data$offsets.popper,
-                    reference = _data$offsets.reference;
-
-                  var placement = data.placement.split("-")[0];
-                  var floor = Math.floor;
-                  var isVertical = ["top", "bottom"].indexOf(placement) !== -1;
-                  var side = isVertical ? "right" : "bottom";
-                  var opSide = isVertical ? "left" : "top";
-                  var measurement = isVertical ? "width" : "height";
-
-                  if (popper[side] < floor(reference[opSide])) {
-                    data.offsets.popper[opSide] =
-                      floor(reference[opSide]) - popper[measurement];
-                  }
-                  if (popper[opSide] > floor(reference[side])) {
-                    data.offsets.popper[opSide] = floor(reference[side]);
-                  }
-
-                  return data;
-                }
-
-                /**
-                 * Converts a string containing value + unit into a px value number
-                 * @function
-                 * @memberof {modifiers~offset}
-                 * @private
-                 * @argument {String} str - Value + unit string
-                 * @argument {String} measurement - `height` or `width`
-                 * @argument {Object} popperOffsets
-                 * @argument {Object} referenceOffsets
-                 * @returns {Number|String}
-                 * Value in pixels, or original string if no values were extracted
-                 */
-                function toValue(
-                  str,
-                  measurement,
-                  popperOffsets,
-                  referenceOffsets
-                ) {
-                  // separate value from unit
-                  var split = str.match(/((?:\-|\+)?\d*\.?\d*)(.*)/);
-                  var value = +split[1];
-                  var unit = split[2];
-
-                  // If it's not a number it's an operator, I guess
-                  if (!value) {
-                    return str;
-                  }
-
-                  if (unit.indexOf("%") === 0) {
-                    var element = void 0;
-                    switch (unit) {
-                      case "%p":
-                        element = popperOffsets;
-                        break;
-                      case "%":
-                      case "%r":
-                      default:
-                        element = referenceOffsets;
-                    }
-
-                    var rect = getClientRect(element);
-                    return rect[measurement] / 100 * value;
-                  } else if (unit === "vh" || unit === "vw") {
-                    // if is a vh or vw, we calculate the size based on the viewport
-                    var size = void 0;
-                    if (unit === "vh") {
-                      size = Math.max(
-                        document.documentElement.clientHeight,
-                        window.innerHeight || 0
-                      );
-                    } else {
-                      size = Math.max(
-                        document.documentElement.clientWidth,
-                        window.innerWidth || 0
-                      );
-                    }
-                    return size / 100 * value;
-                  } else {
-                    // if is an explicit pixel unit, we get rid of the unit and keep the value
-                    // if is an implicit unit, it's px, and we return just the value
-                    return value;
-                  }
-                }
-
-                /**
-                 * Parse an `offset` string to extrapolate `x` and `y` numeric offsets.
-                 * @function
-                 * @memberof {modifiers~offset}
-                 * @private
-                 * @argument {String} offset
-                 * @argument {Object} popperOffsets
-                 * @argument {Object} referenceOffsets
-                 * @argument {String} basePlacement
-                 * @returns {Array} a two cells array with x and y offsets in numbers
-                 */
-                function parseOffset(
-                  offset,
-                  popperOffsets,
-                  referenceOffsets,
-                  basePlacement
-                ) {
-                  var offsets = [0, 0];
-
-                  // Use height if placement is left or right and index is 0 otherwise use width
-                  // in this way the first offset will use an axis and the second one
-                  // will use the other one
-                  var useHeight =
-                    ["right", "left"].indexOf(basePlacement) !== -1;
-
-                  // Split the offset string to obtain a list of values and operands
-                  // The regex addresses values with the plus or minus sign in front (+10, -20, etc)
-                  var fragments = offset.split(/(\+|\-)/).map(function(frag) {
-                    return frag.trim();
-                  });
-
-                  // Detect if the offset string contains a pair of values or a single one
-                  // they could be separated by comma or space
-                  var divider = fragments.indexOf(
-                    find(fragments, function(frag) {
-                      return frag.search(/,|\s/) !== -1;
-                    })
-                  );
-
-                  if (
-                    fragments[divider] &&
-                    fragments[divider].indexOf(",") === -1
-                  ) {
-                    console.warn(
-                      "Offsets separated by white space(s) are deprecated, use a comma (,) instead."
-                    );
-                  }
-
-                  // If divider is found, we divide the list of values and operands to divide
-                  // them by ofset X and Y.
-                  var splitRegex = /\s*,\s*|\s+/;
-                  var ops =
-                    divider !== -1
-                      ? [
-                          fragments
-                            .slice(0, divider)
-                            .concat([fragments[divider].split(splitRegex)[0]]),
-                          [fragments[divider].split(splitRegex)[1]].concat(
-                            fragments.slice(divider + 1)
-                          )
-                        ]
-                      : [fragments];
-
-                  // Convert the values with units to absolute pixels to allow our computations
-                  ops = ops.map(function(op, index) {
-                    // Most of the units rely on the orientation of the popper
-                    var measurement = (index === 1 ? !useHeight : useHeight)
-                      ? "height"
-                      : "width";
-                    var mergeWithPrevious = false;
-                    return (op
-                        // This aggregates any `+` or `-` sign that aren't considered operators
-                        // e.g.: 10 + +5 => [10, +, +5]
-                        .reduce(function(a, b) {
-                          if (
-                            a[a.length - 1] === "" &&
-                            ["+", "-"].indexOf(b) !== -1
-                          ) {
-                            a[a.length - 1] = b;
-                            mergeWithPrevious = true;
-                            return a;
-                          } else if (mergeWithPrevious) {
-                            a[a.length - 1] += b;
-                            mergeWithPrevious = false;
-                            return a;
-                          } else {
-                            return a.concat(b);
-                          }
-                        }, [])
-                        // Here we convert the string values into number values (in px)
-                        .map(function(str) {
-                          return toValue(
-                            str,
-                            measurement,
-                            popperOffsets,
-                            referenceOffsets
-                          );
-                        }) );
-                  });
-
-                  // Loop trough the offsets arrays and execute the operations
-                  ops.forEach(function(op, index) {
-                    op.forEach(function(frag, index2) {
-                      if (isNumeric(frag)) {
-                        offsets[index] +=
-                          frag * (op[index2 - 1] === "-" ? -1 : 1);
-                      }
-                    });
-                  });
-                  return offsets;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by update method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @argument {Number|String} options.offset=0
-                 * The offset value as described in the modifier description
-                 * @returns {Object} The data object, properly modified
-                 */
-                function offset(data, _ref) {
-                  var offset = _ref.offset;
-                  var placement = data.placement,
-                    _data$offsets = data.offsets,
-                    popper = _data$offsets.popper,
-                    reference = _data$offsets.reference;
-
-                  var basePlacement = placement.split("-")[0];
-
-                  var offsets = void 0;
-                  if (isNumeric(+offset)) {
-                    offsets = [+offset, 0];
-                  } else {
-                    offsets = parseOffset(
-                      offset,
-                      popper,
-                      reference,
-                      basePlacement
-                    );
-                  }
-
-                  if (basePlacement === "left") {
-                    popper.top += offsets[0];
-                    popper.left -= offsets[1];
-                  } else if (basePlacement === "right") {
-                    popper.top += offsets[0];
-                    popper.left += offsets[1];
-                  } else if (basePlacement === "top") {
-                    popper.left += offsets[0];
-                    popper.top -= offsets[1];
-                  } else if (basePlacement === "bottom") {
-                    popper.left += offsets[0];
-                    popper.top += offsets[1];
-                  }
-
-                  data.popper = popper;
-                  return data;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by `update` method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function preventOverflow(data, options) {
-                  var boundariesElement =
-                    options.boundariesElement ||
-                    getOffsetParent(data.instance.popper);
-
-                  // If offsetParent is the reference element, we really want to
-                  // go one step up and use the next offsetParent as reference to
-                  // avoid to make this modifier completely useless and look like broken
-                  if (data.instance.reference === boundariesElement) {
-                    boundariesElement = getOffsetParent(boundariesElement);
-                  }
-
-                  var boundaries = getBoundaries(
-                    data.instance.popper,
-                    data.instance.reference,
-                    options.padding,
-                    boundariesElement
-                  );
-                  options.boundaries = boundaries;
-
-                  var order = options.priority;
-                  var popper = data.offsets.popper;
-
-                  var check = {
-                    primary: function primary(placement) {
-                      var value = popper[placement];
-                      if (
-                        popper[placement] < boundaries[placement] &&
-                        !options.escapeWithReference
-                      ) {
-                        value = Math.max(
-                          popper[placement],
-                          boundaries[placement]
-                        );
-                      }
-                      return defineProperty({}, placement, value);
-                    },
-                    secondary: function secondary(placement) {
-                      var mainSide = placement === "right" ? "left" : "top";
-                      var value = popper[mainSide];
-                      if (
-                        popper[placement] > boundaries[placement] &&
-                        !options.escapeWithReference
-                      ) {
-                        value = Math.min(
-                          popper[mainSide],
-                          boundaries[placement] -
-                            (placement === "right"
-                              ? popper.width
-                              : popper.height)
-                        );
-                      }
-                      return defineProperty({}, mainSide, value);
-                    }
-                  };
-
-                  order.forEach(function(placement) {
-                    var side =
-                      ["left", "top"].indexOf(placement) !== -1
-                        ? "primary"
-                        : "secondary";
-                    popper = _extends({}, popper, check[side](placement));
-                  });
-
-                  data.offsets.popper = popper;
-
-                  return data;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by `update` method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function shift(data) {
-                  var placement = data.placement;
-                  var basePlacement = placement.split("-")[0];
-                  var shiftvariation = placement.split("-")[1];
-
-                  // if shift shiftvariation is specified, run the modifier
-                  if (shiftvariation) {
-                    var _data$offsets = data.offsets,
-                      reference = _data$offsets.reference,
-                      popper = _data$offsets.popper;
-
-                    var isVertical =
-                      ["bottom", "top"].indexOf(basePlacement) !== -1;
-                    var side = isVertical ? "left" : "top";
-                    var measurement = isVertical ? "width" : "height";
-
-                    var shiftOffsets = {
-                      start: defineProperty({}, side, reference[side]),
-                      end: defineProperty(
-                        {},
-                        side,
-                        reference[side] +
-                          reference[measurement] -
-                          popper[measurement]
-                      )
-                    };
-
-                    data.offsets.popper = _extends(
-                      {},
-                      popper,
-                      shiftOffsets[shiftvariation]
-                    );
-                  }
-
-                  return data;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by update method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function hide(data) {
-                  if (
-                    !isModifierRequired(
-                      data.instance.modifiers,
-                      "hide",
-                      "preventOverflow"
-                    )
-                  ) {
-                    return data;
-                  }
-
-                  var refRect = data.offsets.reference;
-                  var bound = find(data.instance.modifiers, function(modifier) {
-                    return modifier.name === "preventOverflow";
-                  }).boundaries;
-
-                  if (
-                    refRect.bottom < bound.top ||
-                    refRect.left > bound.right ||
-                    refRect.top > bound.bottom ||
-                    refRect.right < bound.left
-                  ) {
-                    // Avoid unnecessary DOM access if visibility hasn't changed
-                    if (data.hide === true) {
-                      return data;
-                    }
-
-                    data.hide = true;
-                    data.attributes["x-out-of-boundaries"] = "";
-                  } else {
-                    // Avoid unnecessary DOM access if visibility hasn't changed
-                    if (data.hide === false) {
-                      return data;
-                    }
-
-                    data.hide = false;
-                    data.attributes["x-out-of-boundaries"] = false;
-                  }
-
-                  return data;
-                }
-
-                /**
-                 * @function
-                 * @memberof Modifiers
-                 * @argument {Object} data - The data object generated by `update` method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {Object} The data object, properly modified
-                 */
-                function inner(data) {
-                  var placement = data.placement;
-                  var basePlacement = placement.split("-")[0];
-                  var _data$offsets = data.offsets,
-                    popper = _data$offsets.popper,
-                    reference = _data$offsets.reference;
-
-                  var isHoriz = ["left", "right"].indexOf(basePlacement) !== -1;
-
-                  var subtractLength =
-                    ["top", "left"].indexOf(basePlacement) === -1;
-
-                  popper[isHoriz ? "left" : "top"] =
-                    reference[basePlacement] -
-                    (subtractLength ? popper[isHoriz ? "width" : "height"] : 0);
-
-                  data.placement = getOppositePlacement(placement);
-                  data.offsets.popper = getClientRect(popper);
-
-                  return data;
-                }
-
-                /**
-                 * Modifier function, each modifier can have a function of this type assigned
-                 * to its `fn` property.<br />
-                 * These functions will be called on each update, this means that you must
-                 * make sure they are performant enough to avoid performance bottlenecks.
-                 *
-                 * @function ModifierFn
-                 * @argument {dataObject} data - The data object generated by `update` method
-                 * @argument {Object} options - Modifiers configuration and options
-                 * @returns {dataObject} The data object, properly modified
-                 */
-
-                /**
-                 * Modifiers are plugins used to alter the behavior of your poppers.<br />
-                 * Popper.js uses a set of 9 modifiers to provide all the basic functionalities
-                 * needed by the library.
-                 *
-                 * Usually you don't want to override the `order`, `fn` and `onLoad` props.
-                 * All the other properties are configurations that could be tweaked.
-                 * @namespace modifiers
-                 */
-                var modifiers = {
-                  /**
-                   * Modifier used to shift the popper on the start or end of its reference
-                   * element.<br />
-                   * It will read the variation of the `placement` property.<br />
-                   * It can be one either `-end` or `-start`.
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  shift: {
-                    /** @prop {number} order=100 - Index used to define the order of execution */
-                    order: 100,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: shift
-                  },
-
-                  /**
-                   * The `offset` modifier can shift your popper on both its axis.
-                   *
-                   * It accepts the following units:
-                   * - `px` or unitless, interpreted as pixels
-                   * - `%` or `%r`, percentage relative to the length of the reference element
-                   * - `%p`, percentage relative to the length of the popper element
-                   * - `vw`, CSS viewport width unit
-                   * - `vh`, CSS viewport height unit
-                   *
-                   * For length is intended the main axis relative to the placement of the popper.<br />
-                   * This means that if the placement is `top` or `bottom`, the length will be the
-                   * `width`. In case of `left` or `right`, it will be the height.
-                   *
-                   * You can provide a single value (as `Number` or `String`), or a pair of values
-                   * as `String` divided by a comma or one (or more) white spaces.<br />
-                   * The latter is a deprecated method because it leads to confusion and will be
-                   * removed in v2.<br />
-                   * Additionally, it accepts additions and subtractions between different units.
-                   * Note that multiplications and divisions aren't supported.
-                   *
-                   * Valid examples are:
-                   * ```
-                   * 10
-                   * '10%'
-                   * '10, 10'
-                   * '10%, 10'
-                   * '10 + 10%'
-                   * '10 - 5vh + 3%'
-                   * '-10px + 5vh, 5px - 6%'
-                   * ```
-                   * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
-                   * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
-                   * > More on this [reading this issue](https://github.com/FezVrasta/popper.js/issues/373)
-                   *
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  offset: {
-                    /** @prop {number} order=200 - Index used to define the order of execution */
-                    order: 200,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: offset,
-                    /** @prop {Number|String} offset=0
-                     * The offset value as described in the modifier description
-                     */
-                    offset: 0
-                  },
-
-                  /**
-                   * Modifier used to prevent the popper from being positioned outside the boundary.
-                   *
-                   * An scenario exists where the reference itself is not within the boundaries.<br />
-                   * We can say it has "escaped the boundaries" — or just "escaped".<br />
-                   * In this case we need to decide whether the popper should either:
-                   *
-                   * - detach from the reference and remain "trapped" in the boundaries, or
-                   * - if it should ignore the boundary and "escape with its reference"
-                   *
-                   * When `escapeWithReference` is set to`true` and reference is completely
-                   * outside its boundaries, the popper will overflow (or completely leave)
-                   * the boundaries in order to remain attached to the edge of the reference.
-                   *
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  preventOverflow: {
-                    /** @prop {number} order=300 - Index used to define the order of execution */
-                    order: 300,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: preventOverflow,
-                    /**
-                     * @prop {Array} [priority=['left','right','top','bottom']]
-                     * Popper will try to prevent overflow following these priorities by default,
-                     * then, it could overflow on the left and on top of the `boundariesElement`
-                     */
-                    priority: ["left", "right", "top", "bottom"],
-                    /**
-                     * @prop {number} padding=5
-                     * Amount of pixel used to define a minimum distance between the boundaries
-                     * and the popper this makes sure the popper has always a little padding
-                     * between the edges of its container
-                     */
-                    padding: 5,
-                    /**
-                     * @prop {String|HTMLElement} boundariesElement='scrollParent'
-                     * Boundaries used by the modifier, can be `scrollParent`, `window`,
-                     * `viewport` or any DOM element.
-                     */
-                    boundariesElement: "scrollParent"
-                  },
-
-                  /**
-                   * Modifier used to make sure the reference and its popper stay near eachothers
-                   * without leaving any gap between the two. Expecially useful when the arrow is
-                   * enabled and you want to assure it to point to its reference element.
-                   * It cares only about the first axis, you can still have poppers with margin
-                   * between the popper and its reference element.
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  keepTogether: {
-                    /** @prop {number} order=400 - Index used to define the order of execution */
-                    order: 400,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: keepTogether
-                  },
-
-                  /**
-                   * This modifier is used to move the `arrowElement` of the popper to make
-                   * sure it is positioned between the reference element and its popper element.
-                   * It will read the outer size of the `arrowElement` node to detect how many
-                   * pixels of conjuction are needed.
-                   *
-                   * It has no effect if no `arrowElement` is provided.
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  arrow: {
-                    /** @prop {number} order=500 - Index used to define the order of execution */
-                    order: 500,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: arrow,
-                    /** @prop {String|HTMLElement} element='[x-arrow]' - Selector or node used as arrow */
-                    element: "[x-arrow]"
-                  },
-
-                  /**
-                   * Modifier used to flip the popper's placement when it starts to overlap its
-                   * reference element.
-                   *
-                   * Requires the `preventOverflow` modifier before it in order to work.
-                   *
-                   * **NOTE:** this modifier will interrupt the current update cycle and will
-                   * restart it if it detects the need to flip the placement.
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  flip: {
-                    /** @prop {number} order=600 - Index used to define the order of execution */
-                    order: 600,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: flip,
-                    /**
-                     * @prop {String|Array} behavior='flip'
-                     * The behavior used to change the popper's placement. It can be one of
-                     * `flip`, `clockwise`, `counterclockwise` or an array with a list of valid
-                     * placements (with optional variations).
-                     */
-                    behavior: "flip",
-                    /**
-                     * @prop {number} padding=5
-                     * The popper will flip if it hits the edges of the `boundariesElement`
-                     */
-                    padding: 5,
-                    /**
-                     * @prop {String|HTMLElement} boundariesElement='viewport'
-                     * The element which will define the boundaries of the popper position,
-                     * the popper will never be placed outside of the defined boundaries
-                     * (except if keepTogether is enabled)
-                     */
-                    boundariesElement: "viewport"
-                  },
-
-                  /**
-                   * Modifier used to make the popper flow toward the inner of the reference element.
-                   * By default, when this modifier is disabled, the popper will be placed outside
-                   * the reference element.
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  inner: {
-                    /** @prop {number} order=700 - Index used to define the order of execution */
-                    order: 700,
-                    /** @prop {Boolean} enabled=false - Whether the modifier is enabled or not */
-                    enabled: false,
-                    /** @prop {ModifierFn} */
-                    fn: inner
-                  },
-
-                  /**
-                   * Modifier used to hide the popper when its reference element is outside of the
-                   * popper boundaries. It will set a `x-out-of-boundaries` attribute which can
-                   * be used to hide with a CSS selector the popper when its reference is
-                   * out of boundaries.
-                   *
-                   * Requires the `preventOverflow` modifier before it in order to work.
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  hide: {
-                    /** @prop {number} order=800 - Index used to define the order of execution */
-                    order: 800,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: hide
-                  },
-
-                  /**
-                   * Computes the style that will be applied to the popper element to gets
-                   * properly positioned.
-                   *
-                   * Note that this modifier will not touch the DOM, it just prepares the styles
-                   * so that `applyStyle` modifier can apply it. This separation is useful
-                   * in case you need to replace `applyStyle` with a custom implementation.
-                   *
-                   * This modifier has `850` as `order` value to maintain backward compatibility
-                   * with previous versions of Popper.js. Expect the modifiers ordering method
-                   * to change in future major versions of the library.
-                   *
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  computeStyle: {
-                    /** @prop {number} order=850 - Index used to define the order of execution */
-                    order: 850,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: computeStyle,
-                    /**
-                     * @prop {Boolean} gpuAcceleration=true
-                     * If true, it uses the CSS 3d transformation to position the popper.
-                     * Otherwise, it will use the `top` and `left` properties.
-                     */
-                    gpuAcceleration: true,
-                    /**
-                     * @prop {string} [x='bottom']
-                     * Where to anchor the X axis (`bottom` or `top`). AKA X offset origin.
-                     * Change this if your popper should grow in a direction different from `bottom`
-                     */
-                    x: "bottom",
-                    /**
-                     * @prop {string} [x='left']
-                     * Where to anchor the Y axis (`left` or `right`). AKA Y offset origin.
-                     * Change this if your popper should grow in a direction different from `right`
-                     */
-                    y: "right"
-                  },
-
-                  /**
-                   * Applies the computed styles to the popper element.
-                   *
-                   * All the DOM manipulations are limited to this modifier. This is useful in case
-                   * you want to integrate Popper.js inside a framework or view library and you
-                   * want to delegate all the DOM manipulations to it.
-                   *
-                   * Note that if you disable this modifier, you must make sure the popper element
-                   * has its position set to `absolute` before Popper.js can do its work!
-                   *
-                   * Just disable this modifier and define you own to achieve the desired effect.
-                   *
-                   * @memberof modifiers
-                   * @inner
-                   */
-                  applyStyle: {
-                    /** @prop {number} order=900 - Index used to define the order of execution */
-                    order: 900,
-                    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-                    enabled: true,
-                    /** @prop {ModifierFn} */
-                    fn: applyStyle,
-                    /** @prop {Function} */
-                    onLoad: applyStyleOnLoad,
-                    /**
-                     * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
-                     * @prop {Boolean} gpuAcceleration=true
-                     * If true, it uses the CSS 3d transformation to position the popper.
-                     * Otherwise, it will use the `top` and `left` properties.
-                     */
-                    gpuAcceleration: undefined
-                  }
-                };
-
-                /**
-                 * The `dataObject` is an object containing all the informations used by Popper.js
-                 * this object get passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
-                 * @name dataObject
-                 * @property {Object} data.instance The Popper.js instance
-                 * @property {String} data.placement Placement applied to popper
-                 * @property {String} data.originalPlacement Placement originally defined on init
-                 * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
-                 * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper.
-                 * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
-                 * @property {Object} data.styles Any CSS property defined here will be applied to the popper, it expects the JavaScript nomenclature (eg. `marginBottom`)
-                 * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow, it expects the JavaScript nomenclature (eg. `marginBottom`)
-                 * @property {Object} data.boundaries Offsets of the popper boundaries
-                 * @property {Object} data.offsets The measurements of popper, reference and arrow elements.
-                 * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
-                 * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
-                 * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
-                 */
-
-                /**
-                 * Default options provided to Popper.js constructor.<br />
-                 * These can be overriden using the `options` argument of Popper.js.<br />
-                 * To override an option, simply pass as 3rd argument an object with the same
-                 * structure of this object, example:
-                 * ```
-                 * new Popper(ref, pop, {
-                 *   modifiers: {
-                 *     preventOverflow: { enabled: false }
-                 *   }
-                 * })
-                 * ```
-                 * @type {Object}
-                 * @static
-                 * @memberof Popper
-                 */
-                var Defaults = {
-                  /**
-                   * Popper's placement
-                   * @prop {Popper.placements} placement='bottom'
-                   */
-                  placement: "bottom",
-
-                  /**
-                   * Whether events (resize, scroll) are initially enabled
-                   * @prop {Boolean} eventsEnabled=true
-                   */
-                  eventsEnabled: true,
-
-                  /**
-                   * Set to true if you want to automatically remove the popper when
-                   * you call the `destroy` method.
-                   * @prop {Boolean} removeOnDestroy=false
-                   */
-                  removeOnDestroy: false,
-
-                  /**
-                   * Callback called when the popper is created.<br />
-                   * By default, is set to no-op.<br />
-                   * Access Popper.js instance with `data.instance`.
-                   * @prop {onCreate}
-                   */
-                  onCreate: function onCreate() {},
-
-                  /**
-                   * Callback called when the popper is updated, this callback is not called
-                   * on the initialization/creation of the popper, but only on subsequent
-                   * updates.<br />
-                   * By default, is set to no-op.<br />
-                   * Access Popper.js instance with `data.instance`.
-                   * @prop {onUpdate}
-                   */
-                  onUpdate: function onUpdate() {},
-
-                  /**
-                   * List of modifiers used to modify the offsets before they are applied to the popper.
-                   * They provide most of the functionalities of Popper.js
-                   * @prop {modifiers}
-                   */
-                  modifiers: modifiers
-                };
-
-                /**
-                 * @callback onCreate
-                 * @param {dataObject} data
-                 */
-
-                /**
-                 * @callback onUpdate
-                 * @param {dataObject} data
-                 */
-
-                // Utils
-                // Methods
-                var Popper = (function() {
-                  /**
-                   * Create a new Popper.js instance
-                   * @class Popper
-                   * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
-                   * @param {HTMLElement} popper - The HTML element used as popper.
-                   * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
-                   * @return {Object} instance - The generated Popper.js instance
-                   */
-                  function Popper(reference, popper) {
-                    var _this = this;
-
-                    var options =
-                      arguments.length > 2 && arguments[2] !== undefined
-                        ? arguments[2]
-                        : {};
-                    classCallCheck(this, Popper);
-
-                    this.scheduleUpdate = function() {
-                      return requestAnimationFrame(_this.update);
-                    };
-
-                    // make update() debounced, so that it only runs at most once-per-tick
-                    this.update = debounce(this.update.bind(this));
-
-                    // with {} we create a new object with the options inside it
-                    this.options = _extends({}, Popper.Defaults, options);
-
-                    // init state
-                    this.state = {
-                      isDestroyed: false,
-                      isCreated: false,
-                      scrollParents: []
-                    };
-
-                    // get reference and popper elements (allow jQuery wrappers)
-                    this.reference =
-                      reference && reference.jquery ? reference[0] : reference;
-                    this.popper = popper && popper.jquery ? popper[0] : popper;
-
-                    // Deep merge modifiers options
-                    this.options.modifiers = {};
-                    Object.keys(
-                      _extends({}, Popper.Defaults.modifiers, options.modifiers)
-                    ).forEach(function(name) {
-                      _this.options.modifiers[name] = _extends(
-                        {},
-                        Popper.Defaults.modifiers[name] || {},
-                        options.modifiers ? options.modifiers[name] : {}
-                      );
-                    });
-
-                    // Refactoring modifiers' list (Object => Array)
-                    this.modifiers = Object.keys(this.options.modifiers)
-                      .map(function(name) {
-                        return _extends(
-                          {
-                            name: name
-                          },
-                          _this.options.modifiers[name]
-                        );
-                      })
-                      // sort the modifiers by order
-                      .sort(function(a, b) {
-                        return a.order - b.order;
-                      });
-
-                    // modifiers have the ability to execute arbitrary code when Popper.js get inited
-                    // such code is executed in the same order of its modifier
-                    // they could add new properties to their options configuration
-                    // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
-                    this.modifiers.forEach(function(modifierOptions) {
-                      if (
-                        modifierOptions.enabled &&
-                        isFunction(modifierOptions.onLoad)
-                      ) {
-                        modifierOptions.onLoad(
-                          _this.reference,
-                          _this.popper,
-                          _this.options,
-                          modifierOptions,
-                          _this.state
-                        );
-                      }
-                    });
-
-                    // fire the first update to position the popper in the right place
-                    this.update();
-
-                    var eventsEnabled = this.options.eventsEnabled;
-                    if (eventsEnabled) {
-                      // setup event listeners, they will take care of update the position in specific situations
-                      this.enableEventListeners();
-                    }
-
-                    this.state.eventsEnabled = eventsEnabled;
-                  }
-
-                  // We can't use class properties because they don't get listed in the
-                  // class prototype and break stuff like Sinon stubs
-
-                  createClass(Popper, [
-                    {
-                      key: "update",
-                      value: function update$$1() {
-                        return update.call(this);
-                      }
-                    },
-                    {
-                      key: "destroy",
-                      value: function destroy$$1() {
-                        return destroy.call(this);
-                      }
-                    },
-                    {
-                      key: "enableEventListeners",
-                      value: function enableEventListeners$$1() {
-                        return enableEventListeners.call(this);
-                      }
-                    },
-                    {
-                      key: "disableEventListeners",
-                      value: function disableEventListeners$$1() {
-                        return disableEventListeners.call(this);
-                      }
-
-                      /**
-                       * Schedule an update, it will run on the next UI update available
-                       * @method scheduleUpdate
-                       * @memberof Popper
-                       */
-
-                      /**
-                       * Collection of utilities useful when writing custom modifiers.
-                       * Starting from version 1.7, this method is available only if you
-                       * include `popper-utils.js` before `popper.js`.
-                       *
-                       * **DEPRECATION**: This way to access PopperUtils is deprecated
-                       * and will be removed in v2! Use the PopperUtils module directly instead.
-                       * Due to the high instability of the methods contained in Utils, we can't
-                       * guarantee them to follow semver. Use them at your own risk!
-                       * @static
-                       * @private
-                       * @type {Object}
-                       * @deprecated since version 1.8
-                       * @member Utils
-                       * @memberof Popper
-                       */
-                    }
-                  ]);
-                  return Popper;
-                })();
-
-                /**
-                 * The `referenceObject` is an object that provides an interface compatible with Popper.js
-                 * and lets you use it as replacement of a real DOM node.<br />
-                 * You can use this method to position a popper relatively to a set of coordinates
-                 * in case you don't have a DOM node to use as reference.
-                 *
-                 * ```
-                 * new Popper(referenceObject, popperNode);
-                 * ```
-                 *
-                 * NB: This feature isn't supported in Internet Explorer 10
-                 * @name referenceObject
-                 * @property {Function} data.getBoundingClientRect
-                 * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
-                 * @property {number} data.clientWidth
-                 * An ES6 getter that will return the width of the virtual reference element.
-                 * @property {number} data.clientHeight
-                 * An ES6 getter that will return the height of the virtual reference element.
-                 */
-
-                Popper.Utils = (typeof window !== "undefined"
-                  ? window
-                  : global
-                ).PopperUtils;
-                Popper.placements = placements;
-                Popper.Defaults = Defaults;
-
-                /* harmony default export */ __webpack_exports__[
-                  "default"
-                ] = Popper;
-                //# sourceMappingURL=popper.js.map
-
-                /* WEBPACK VAR INJECTION */
-              }.call(__webpack_exports__, __webpack_require__(7)));
-
-              /***/
-            },
-            /* 7 */
-            /***/ function(module, exports) {
-              var g;
-
-              // This works in non-strict mode
-              g = (function() {
-                return this;
-              })();
-
-              try {
-                // This works if eval is allowed (see CSP)
-                g = g || Function("return this")() || (1, eval)("this");
-              } catch (e) {
-                // This works if the window reference is available
-                if (typeof window === "object") g = window;
               }
 
-              // g can still be undefined, but nothing to do about it...
-              // We return undefined, instead of nothing here, so it's
-              // easier to handle this case. if(!global) { ...}
+              return target;
+            };
 
-              module.exports = g;
+          /**
+           * Given element offsets, generate an output similar to getBoundingClientRect
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Object} offsets
+           * @returns {Object} ClientRect like output
+           */
+          function getClientRect(offsets) {
+            return _extends({}, offsets, {
+              right: offsets.left + offsets.width,
+              bottom: offsets.top + offsets.height
+            });
+          }
 
-              /***/
-            },
-            /* 8 */
-            /***/ function(module, exports, __webpack_require__) {
-              "use strict";
+          /**
+           * Get bounding client rect of given element
+           * @method
+           * @memberof Popper.Utils
+           * @param {HTMLElement} element
+           * @return {Object} client rect
+           */
+          function getBoundingClientRect(element) {
+            var rect = {};
 
-              Object.defineProperty(exports, "__esModule", {
-                value: true
+            // IE10 10 FIX: Please, don't ask, the element isn't
+            // considered in DOM in some circumstances...
+            // This isn't reproducible in IE10 compatibility mode of IE11
+            if (isIE10$1()) {
+              try {
+                rect = element.getBoundingClientRect();
+                var scrollTop = getScroll(element, "top");
+                var scrollLeft = getScroll(element, "left");
+                rect.top += scrollTop;
+                rect.left += scrollLeft;
+                rect.bottom += scrollTop;
+                rect.right += scrollLeft;
+              } catch (err) {}
+            } else {
+              rect = element.getBoundingClientRect();
+            }
+
+            var result = {
+              left: rect.left,
+              top: rect.top,
+              width: rect.right - rect.left,
+              height: rect.bottom - rect.top
+            };
+
+            // subtract scrollbar size from sizes
+            var sizes = element.nodeName === "HTML" ? getWindowSizes() : {};
+            var width =
+              sizes.width || element.clientWidth || result.right - result.left;
+            var height =
+              sizes.height ||
+              element.clientHeight ||
+              result.bottom - result.top;
+
+            var horizScrollbar = element.offsetWidth - width;
+            var vertScrollbar = element.offsetHeight - height;
+
+            // if an hypothetical scrollbar is detected, we must be sure it's not a `border`
+            // we make this check conditional for performance reasons
+            if (horizScrollbar || vertScrollbar) {
+              var styles = getStyleComputedProperty(element);
+              horizScrollbar -= getBordersSize(styles, "x");
+              vertScrollbar -= getBordersSize(styles, "y");
+
+              result.width -= horizScrollbar;
+              result.height -= vertScrollbar;
+            }
+
+            return getClientRect(result);
+          }
+
+          function getOffsetRectRelativeToArbitraryNode(children, parent) {
+            var isIE10 = isIE10$1();
+            var isHTML = parent.nodeName === "HTML";
+            var childrenRect = getBoundingClientRect(children);
+            var parentRect = getBoundingClientRect(parent);
+            var scrollParent = getScrollParent(children);
+
+            var styles = getStyleComputedProperty(parent);
+            var borderTopWidth = parseFloat(styles.borderTopWidth, 10);
+            var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
+
+            var offsets = getClientRect({
+              top: childrenRect.top - parentRect.top - borderTopWidth,
+              left: childrenRect.left - parentRect.left - borderLeftWidth,
+              width: childrenRect.width,
+              height: childrenRect.height
+            });
+            offsets.marginTop = 0;
+            offsets.marginLeft = 0;
+
+            // Subtract margins of documentElement in case it's being used as parent
+            // we do this only on HTML because it's the only element that behaves
+            // differently when margins are applied to it. The margins are included in
+            // the box of the documentElement, in the other cases not.
+            if (!isIE10 && isHTML) {
+              var marginTop = parseFloat(styles.marginTop, 10);
+              var marginLeft = parseFloat(styles.marginLeft, 10);
+
+              offsets.top -= borderTopWidth - marginTop;
+              offsets.bottom -= borderTopWidth - marginTop;
+              offsets.left -= borderLeftWidth - marginLeft;
+              offsets.right -= borderLeftWidth - marginLeft;
+
+              // Attach marginTop and marginLeft because in some circumstances we may need them
+              offsets.marginTop = marginTop;
+              offsets.marginLeft = marginLeft;
+            }
+
+            if (
+              isIE10
+                ? parent.contains(scrollParent)
+                : parent === scrollParent && scrollParent.nodeName !== "BODY"
+            ) {
+              offsets = includeScroll(offsets, parent);
+            }
+
+            return offsets;
+          }
+
+          function getViewportOffsetRectRelativeToArtbitraryNode(element) {
+            var html = element.ownerDocument.documentElement;
+            var relativeOffset = getOffsetRectRelativeToArbitraryNode(
+              element,
+              html
+            );
+            var width = Math.max(html.clientWidth, window.innerWidth || 0);
+            var height = Math.max(html.clientHeight, window.innerHeight || 0);
+
+            var scrollTop = getScroll(html);
+            var scrollLeft = getScroll(html, "left");
+
+            var offset = {
+              top: scrollTop - relativeOffset.top + relativeOffset.marginTop,
+              left:
+                scrollLeft - relativeOffset.left + relativeOffset.marginLeft,
+              width: width,
+              height: height
+            };
+
+            return getClientRect(offset);
+          }
+
+          /**
+           * Check if the given element is fixed or is inside a fixed parent
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element
+           * @argument {Element} customContainer
+           * @returns {Boolean} answer to "isFixed?"
+           */
+          function isFixed(element) {
+            var nodeName = element.nodeName;
+            if (nodeName === "BODY" || nodeName === "HTML") {
+              return false;
+            }
+            if (getStyleComputedProperty(element, "position") === "fixed") {
+              return true;
+            }
+            return isFixed(getParentNode(element));
+          }
+
+          /**
+           * Computed the boundaries limits and return them
+           * @method
+           * @memberof Popper.Utils
+           * @param {HTMLElement} popper
+           * @param {HTMLElement} reference
+           * @param {number} padding
+           * @param {HTMLElement} boundariesElement - Element used to define the boundaries
+           * @returns {Object} Coordinates of the boundaries
+           */
+          function getBoundaries(
+            popper,
+            reference,
+            padding,
+            boundariesElement
+          ) {
+            // NOTE: 1 DOM access here
+            var boundaries = { top: 0, left: 0 };
+            var offsetParent = findCommonOffsetParent(popper, reference);
+
+            // Handle viewport case
+            if (boundariesElement === "viewport") {
+              boundaries = getViewportOffsetRectRelativeToArtbitraryNode(
+                offsetParent
+              );
+            } else {
+              // Handle other cases based on DOM element used as boundaries
+              var boundariesNode = void 0;
+              if (boundariesElement === "scrollParent") {
+                boundariesNode = getScrollParent(getParentNode(reference));
+                if (boundariesNode.nodeName === "BODY") {
+                  boundariesNode = popper.ownerDocument.documentElement;
+                }
+              } else if (boundariesElement === "window") {
+                boundariesNode = popper.ownerDocument.documentElement;
+              } else {
+                boundariesNode = boundariesElement;
+              }
+
+              var offsets = getOffsetRectRelativeToArbitraryNode(
+                boundariesNode,
+                offsetParent
+              );
+
+              // In case of HTML, we need a different computation
+              if (
+                boundariesNode.nodeName === "HTML" &&
+                !isFixed(offsetParent)
+              ) {
+                var _getWindowSizes = getWindowSizes(),
+                  height = _getWindowSizes.height,
+                  width = _getWindowSizes.width;
+
+                boundaries.top += offsets.top - offsets.marginTop;
+                boundaries.bottom = height + offsets.top;
+                boundaries.left += offsets.left - offsets.marginLeft;
+                boundaries.right = width + offsets.left;
+              } else {
+                // for all the other DOM elements, this one is good
+                boundaries = offsets;
+              }
+            }
+
+            // Add paddings
+            boundaries.left += padding;
+            boundaries.top += padding;
+            boundaries.right -= padding;
+            boundaries.bottom -= padding;
+
+            return boundaries;
+          }
+
+          function getArea(_ref) {
+            var width = _ref.width,
+              height = _ref.height;
+
+            return width * height;
+          }
+
+          /**
+           * Utility used to transform the `auto` placement to the placement with more
+           * available space.
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Object} data - The data object generated by update method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function computeAutoPlacement(
+            placement,
+            refRect,
+            popper,
+            reference,
+            boundariesElement
+          ) {
+            var padding =
+              arguments.length > 5 && arguments[5] !== undefined
+                ? arguments[5]
+                : 0;
+
+            if (placement.indexOf("auto") === -1) {
+              return placement;
+            }
+
+            var boundaries = getBoundaries(
+              popper,
+              reference,
+              padding,
+              boundariesElement
+            );
+
+            var rects = {
+              top: {
+                width: boundaries.width,
+                height: refRect.top - boundaries.top
+              },
+              right: {
+                width: boundaries.right - refRect.right,
+                height: boundaries.height
+              },
+              bottom: {
+                width: boundaries.width,
+                height: boundaries.bottom - refRect.bottom
+              },
+              left: {
+                width: refRect.left - boundaries.left,
+                height: boundaries.height
+              }
+            };
+
+            var sortedAreas = Object.keys(rects)
+              .map(function(key) {
+                return _extends(
+                  {
+                    key: key
+                  },
+                  rects[key],
+                  {
+                    area: getArea(rects[key])
+                  }
+                );
+              })
+              .sort(function(a, b) {
+                return b.area - a.area;
               });
 
-              var _extends =
-                Object.assign ||
-                function(target) {
-                  for (var i = 1; i < arguments.length; i++) {
-                    var source = arguments[i];
-                    for (var key in source) {
-                      if (Object.prototype.hasOwnProperty.call(source, key)) {
-                        target[key] = source[key];
-                      }
+            var filteredAreas = sortedAreas.filter(function(_ref2) {
+              var width = _ref2.width,
+                height = _ref2.height;
+              return (
+                width >= popper.clientWidth && height >= popper.clientHeight
+              );
+            });
+
+            var computedPlacement =
+              filteredAreas.length > 0
+                ? filteredAreas[0].key
+                : sortedAreas[0].key;
+
+            var variation = placement.split("-")[1];
+
+            return computedPlacement + (variation ? "-" + variation : "");
+          }
+
+          /**
+           * Get offsets to the reference element
+           * @method
+           * @memberof Popper.Utils
+           * @param {Object} state
+           * @param {Element} popper - the popper element
+           * @param {Element} reference - the reference element (the popper will be relative to this)
+           * @returns {Object} An object containing the offsets which will be applied to the popper
+           */
+          function getReferenceOffsets(state, popper, reference) {
+            var commonOffsetParent = findCommonOffsetParent(popper, reference);
+            return getOffsetRectRelativeToArbitraryNode(
+              reference,
+              commonOffsetParent
+            );
+          }
+
+          /**
+           * Get the outer sizes of the given element (offset size + margins)
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element
+           * @returns {Object} object containing width and height properties
+           */
+          function getOuterSizes(element) {
+            var styles = getComputedStyle(element);
+            var x =
+              parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
+            var y =
+              parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
+            var result = {
+              width: element.offsetWidth + y,
+              height: element.offsetHeight + x
+            };
+            return result;
+          }
+
+          /**
+           * Get the opposite placement of the given one
+           * @method
+           * @memberof Popper.Utils
+           * @argument {String} placement
+           * @returns {String} flipped placement
+           */
+          function getOppositePlacement(placement) {
+            var hash = {
+              left: "right",
+              right: "left",
+              bottom: "top",
+              top: "bottom"
+            };
+            return placement.replace(/left|right|bottom|top/g, function(
+              matched
+            ) {
+              return hash[matched];
+            });
+          }
+
+          /**
+           * Get offsets to the popper
+           * @method
+           * @memberof Popper.Utils
+           * @param {Object} position - CSS position the Popper will get applied
+           * @param {HTMLElement} popper - the popper element
+           * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
+           * @param {String} placement - one of the valid placement options
+           * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
+           */
+          function getPopperOffsets(popper, referenceOffsets, placement) {
+            placement = placement.split("-")[0];
+
+            // Get popper node sizes
+            var popperRect = getOuterSizes(popper);
+
+            // Add position, width and height to our offsets object
+            var popperOffsets = {
+              width: popperRect.width,
+              height: popperRect.height
+            };
+
+            // depending by the popper placement we have to compute its offsets slightly differently
+            var isHoriz = ["right", "left"].indexOf(placement) !== -1;
+            var mainSide = isHoriz ? "top" : "left";
+            var secondarySide = isHoriz ? "left" : "top";
+            var measurement = isHoriz ? "height" : "width";
+            var secondaryMeasurement = !isHoriz ? "height" : "width";
+
+            popperOffsets[mainSide] =
+              referenceOffsets[mainSide] +
+              referenceOffsets[measurement] / 2 -
+              popperRect[measurement] / 2;
+            if (placement === secondarySide) {
+              popperOffsets[secondarySide] =
+                referenceOffsets[secondarySide] -
+                popperRect[secondaryMeasurement];
+            } else {
+              popperOffsets[secondarySide] =
+                referenceOffsets[getOppositePlacement(secondarySide)];
+            }
+
+            return popperOffsets;
+          }
+
+          /**
+           * Mimics the `find` method of Array
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Array} arr
+           * @argument prop
+           * @argument value
+           * @returns index or -1
+           */
+          function find(arr, check) {
+            // use native find if supported
+            if (Array.prototype.find) {
+              return arr.find(check);
+            }
+
+            // use `filter` to obtain the same behavior of `find`
+            return arr.filter(check)[0];
+          }
+
+          /**
+           * Return the index of the matching object
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Array} arr
+           * @argument prop
+           * @argument value
+           * @returns index or -1
+           */
+          function findIndex(arr, prop, value) {
+            // use native findIndex if supported
+            if (Array.prototype.findIndex) {
+              return arr.findIndex(function(cur) {
+                return cur[prop] === value;
+              });
+            }
+
+            // use `find` + `indexOf` if `findIndex` isn't supported
+            var match = find(arr, function(obj) {
+              return obj[prop] === value;
+            });
+            return arr.indexOf(match);
+          }
+
+          /**
+           * Loop trough the list of modifiers and run them in order,
+           * each of them will then edit the data object.
+           * @method
+           * @memberof Popper.Utils
+           * @param {dataObject} data
+           * @param {Array} modifiers
+           * @param {String} ends - Optional modifier name used as stopper
+           * @returns {dataObject}
+           */
+          function runModifiers(modifiers, data, ends) {
+            var modifiersToRun =
+              ends === undefined
+                ? modifiers
+                : modifiers.slice(0, findIndex(modifiers, "name", ends));
+
+            modifiersToRun.forEach(function(modifier) {
+              if (modifier["function"]) {
+                // eslint-disable-line dot-notation
+                console.warn(
+                  "`modifier.function` is deprecated, use `modifier.fn`!"
+                );
+              }
+              var fn = modifier["function"] || modifier.fn; // eslint-disable-line dot-notation
+              if (modifier.enabled && isFunction(fn)) {
+                // Add properties to offsets to make them a complete clientRect object
+                // we do this before each modifier to make sure the previous one doesn't
+                // mess with these values
+                data.offsets.popper = getClientRect(data.offsets.popper);
+                data.offsets.reference = getClientRect(data.offsets.reference);
+
+                data = fn(data, modifier);
+              }
+            });
+
+            return data;
+          }
+
+          /**
+           * Updates the position of the popper, computing the new offsets and applying
+           * the new style.<br />
+           * Prefer `scheduleUpdate` over `update` because of performance reasons.
+           * @method
+           * @memberof Popper
+           */
+          function update() {
+            // if popper is destroyed, don't perform any further update
+            if (this.state.isDestroyed) {
+              return;
+            }
+
+            var data = {
+              instance: this,
+              styles: {},
+              arrowStyles: {},
+              attributes: {},
+              flipped: false,
+              offsets: {}
+            };
+
+            // compute reference element offsets
+            data.offsets.reference = getReferenceOffsets(
+              this.state,
+              this.popper,
+              this.reference
+            );
+
+            // compute auto placement, store placement inside the data object,
+            // modifiers will be able to edit `placement` if needed
+            // and refer to originalPlacement to know the original value
+            data.placement = computeAutoPlacement(
+              this.options.placement,
+              data.offsets.reference,
+              this.popper,
+              this.reference,
+              this.options.modifiers.flip.boundariesElement,
+              this.options.modifiers.flip.padding
+            );
+
+            // store the computed placement inside `originalPlacement`
+            data.originalPlacement = data.placement;
+
+            // compute the popper offsets
+            data.offsets.popper = getPopperOffsets(
+              this.popper,
+              data.offsets.reference,
+              data.placement
+            );
+            data.offsets.popper.position = "absolute";
+
+            // run the modifiers
+            data = runModifiers(this.modifiers, data);
+
+            // the first `update` will call `onCreate` callback
+            // the other ones will call `onUpdate` callback
+            if (!this.state.isCreated) {
+              this.state.isCreated = true;
+              this.options.onCreate(data);
+            } else {
+              this.options.onUpdate(data);
+            }
+          }
+
+          /**
+           * Helper used to know if the given modifier is enabled.
+           * @method
+           * @memberof Popper.Utils
+           * @returns {Boolean}
+           */
+          function isModifierEnabled(modifiers, modifierName) {
+            return modifiers.some(function(_ref) {
+              var name = _ref.name,
+                enabled = _ref.enabled;
+              return enabled && name === modifierName;
+            });
+          }
+
+          /**
+           * Get the prefixed supported property name
+           * @method
+           * @memberof Popper.Utils
+           * @argument {String} property (camelCase)
+           * @returns {String} prefixed property (camelCase or PascalCase, depending on the vendor prefix)
+           */
+          function getSupportedPropertyName(property) {
+            var prefixes = [false, "ms", "Webkit", "Moz", "O"];
+            var upperProp =
+              property.charAt(0).toUpperCase() + property.slice(1);
+
+            for (var i = 0; i < prefixes.length - 1; i++) {
+              var prefix = prefixes[i];
+              var toCheck = prefix ? "" + prefix + upperProp : property;
+              if (typeof document.body.style[toCheck] !== "undefined") {
+                return toCheck;
+              }
+            }
+            return null;
+          }
+
+          /**
+           * Destroy the popper
+           * @method
+           * @memberof Popper
+           */
+          function destroy() {
+            this.state.isDestroyed = true;
+
+            // touch DOM only if `applyStyle` modifier is enabled
+            if (isModifierEnabled(this.modifiers, "applyStyle")) {
+              this.popper.removeAttribute("x-placement");
+              this.popper.style.left = "";
+              this.popper.style.position = "";
+              this.popper.style.top = "";
+              this.popper.style[getSupportedPropertyName("transform")] = "";
+            }
+
+            this.disableEventListeners();
+
+            // remove the popper if user explicity asked for the deletion on destroy
+            // do not use `remove` because IE11 doesn't support it
+            if (this.options.removeOnDestroy) {
+              this.popper.parentNode.removeChild(this.popper);
+            }
+            return this;
+          }
+
+          /**
+           * Get the window associated with the element
+           * @argument {Element} element
+           * @returns {Window}
+           */
+          function getWindow(element) {
+            var ownerDocument = element.ownerDocument;
+            return ownerDocument ? ownerDocument.defaultView : window;
+          }
+
+          function attachToScrollParents(
+            scrollParent,
+            event,
+            callback,
+            scrollParents
+          ) {
+            var isBody = scrollParent.nodeName === "BODY";
+            var target = isBody
+              ? scrollParent.ownerDocument.defaultView
+              : scrollParent;
+            target.addEventListener(event, callback, { passive: true });
+
+            if (!isBody) {
+              attachToScrollParents(
+                getScrollParent(target.parentNode),
+                event,
+                callback,
+                scrollParents
+              );
+            }
+            scrollParents.push(target);
+          }
+
+          /**
+           * Setup needed event listeners used to update the popper position
+           * @method
+           * @memberof Popper.Utils
+           * @private
+           */
+          function setupEventListeners(reference, options, state, updateBound) {
+            // Resize event listener on window
+            state.updateBound = updateBound;
+            getWindow(reference).addEventListener("resize", state.updateBound, {
+              passive: true
+            });
+
+            // Scroll event listener on scroll parents
+            var scrollElement = getScrollParent(reference);
+            attachToScrollParents(
+              scrollElement,
+              "scroll",
+              state.updateBound,
+              state.scrollParents
+            );
+            state.scrollElement = scrollElement;
+            state.eventsEnabled = true;
+
+            return state;
+          }
+
+          /**
+           * It will add resize/scroll events and start recalculating
+           * position of the popper element when they are triggered.
+           * @method
+           * @memberof Popper
+           */
+          function enableEventListeners() {
+            if (!this.state.eventsEnabled) {
+              this.state = setupEventListeners(
+                this.reference,
+                this.options,
+                this.state,
+                this.scheduleUpdate
+              );
+            }
+          }
+
+          /**
+           * Remove event listeners used to update the popper position
+           * @method
+           * @memberof Popper.Utils
+           * @private
+           */
+          function removeEventListeners(reference, state) {
+            // Remove resize event listener on window
+            getWindow(reference).removeEventListener(
+              "resize",
+              state.updateBound
+            );
+
+            // Remove scroll event listener on scroll parents
+            state.scrollParents.forEach(function(target) {
+              target.removeEventListener("scroll", state.updateBound);
+            });
+
+            // Reset state
+            state.updateBound = null;
+            state.scrollParents = [];
+            state.scrollElement = null;
+            state.eventsEnabled = false;
+            return state;
+          }
+
+          /**
+           * It will remove resize/scroll events and won't recalculate popper position
+           * when they are triggered. It also won't trigger onUpdate callback anymore,
+           * unless you call `update` method manually.
+           * @method
+           * @memberof Popper
+           */
+          function disableEventListeners() {
+            if (this.state.eventsEnabled) {
+              cancelAnimationFrame(this.scheduleUpdate);
+              this.state = removeEventListeners(this.reference, this.state);
+            }
+          }
+
+          /**
+           * Tells if a given input is a number
+           * @method
+           * @memberof Popper.Utils
+           * @param {*} input to check
+           * @return {Boolean}
+           */
+          function isNumeric(n) {
+            return n !== "" && !isNaN(parseFloat(n)) && isFinite(n);
+          }
+
+          /**
+           * Set the style to the given popper
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element - Element to apply the style to
+           * @argument {Object} styles
+           * Object with a list of properties and values which will be applied to the element
+           */
+          function setStyles(element, styles) {
+            Object.keys(styles).forEach(function(prop) {
+              var unit = "";
+              // add unit if the value is numeric and is one of the following
+              if (
+                ["width", "height", "top", "right", "bottom", "left"].indexOf(
+                  prop
+                ) !== -1 &&
+                isNumeric(styles[prop])
+              ) {
+                unit = "px";
+              }
+              element.style[prop] = styles[prop] + unit;
+            });
+          }
+
+          /**
+           * Set the attributes to the given popper
+           * @method
+           * @memberof Popper.Utils
+           * @argument {Element} element - Element to apply the attributes to
+           * @argument {Object} styles
+           * Object with a list of properties and values which will be applied to the element
+           */
+          function setAttributes(element, attributes) {
+            Object.keys(attributes).forEach(function(prop) {
+              var value = attributes[prop];
+              if (value !== false) {
+                element.setAttribute(prop, attributes[prop]);
+              } else {
+                element.removeAttribute(prop);
+              }
+            });
+          }
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by `update` method
+           * @argument {Object} data.styles - List of style properties - values to apply to popper element
+           * @argument {Object} data.attributes - List of attribute properties - values to apply to popper element
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The same data object
+           */
+          function applyStyle(data) {
+            // any property present in `data.styles` will be applied to the popper,
+            // in this way we can make the 3rd party modifiers add custom styles to it
+            // Be aware, modifiers could override the properties defined in the previous
+            // lines of this modifier!
+            setStyles(data.instance.popper, data.styles);
+
+            // any property present in `data.attributes` will be applied to the popper,
+            // they will be set as HTML attributes of the element
+            setAttributes(data.instance.popper, data.attributes);
+
+            // if arrowElement is defined and arrowStyles has some properties
+            if (data.arrowElement && Object.keys(data.arrowStyles).length) {
+              setStyles(data.arrowElement, data.arrowStyles);
+            }
+
+            return data;
+          }
+
+          /**
+           * Set the x-placement attribute before everything else because it could be used
+           * to add margins to the popper margins needs to be calculated to get the
+           * correct popper offsets.
+           * @method
+           * @memberof Popper.modifiers
+           * @param {HTMLElement} reference - The reference element used to position the popper
+           * @param {HTMLElement} popper - The HTML element used as popper.
+           * @param {Object} options - Popper.js options
+           */
+          function applyStyleOnLoad(
+            reference,
+            popper,
+            options,
+            modifierOptions,
+            state
+          ) {
+            // compute reference element offsets
+            var referenceOffsets = getReferenceOffsets(
+              state,
+              popper,
+              reference
+            );
+
+            // compute auto placement, store placement inside the data object,
+            // modifiers will be able to edit `placement` if needed
+            // and refer to originalPlacement to know the original value
+            var placement = computeAutoPlacement(
+              options.placement,
+              referenceOffsets,
+              popper,
+              reference,
+              options.modifiers.flip.boundariesElement,
+              options.modifiers.flip.padding
+            );
+
+            popper.setAttribute("x-placement", placement);
+
+            // Apply `position` to popper before anything else because
+            // without the position applied we can't guarantee correct computations
+            setStyles(popper, { position: "absolute" });
+
+            return options;
+          }
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by `update` method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function computeStyle(data, options) {
+            var x = options.x,
+              y = options.y;
+            var popper = data.offsets.popper;
+
+            // Remove this legacy support in Popper.js v2
+
+            var legacyGpuAccelerationOption = find(
+              data.instance.modifiers,
+              function(modifier) {
+                return modifier.name === "applyStyle";
+              }
+            ).gpuAcceleration;
+            if (legacyGpuAccelerationOption !== undefined) {
+              console.warn(
+                "WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!"
+              );
+            }
+            var gpuAcceleration =
+              legacyGpuAccelerationOption !== undefined
+                ? legacyGpuAccelerationOption
+                : options.gpuAcceleration;
+
+            var offsetParent = getOffsetParent(data.instance.popper);
+            var offsetParentRect = getBoundingClientRect(offsetParent);
+
+            // Styles
+            var styles = {
+              position: popper.position
+            };
+
+            // floor sides to avoid blurry text
+            var offsets = {
+              left: Math.floor(popper.left),
+              top: Math.floor(popper.top),
+              bottom: Math.floor(popper.bottom),
+              right: Math.floor(popper.right)
+            };
+
+            var sideA = x === "bottom" ? "top" : "bottom";
+            var sideB = y === "right" ? "left" : "right";
+
+            // if gpuAcceleration is set to `true` and transform is supported,
+            //  we use `translate3d` to apply the position to the popper we
+            // automatically use the supported prefixed version if needed
+            var prefixedProperty = getSupportedPropertyName("transform");
+
+            // now, let's make a step back and look at this code closely (wtf?)
+            // If the content of the popper grows once it's been positioned, it
+            // may happen that the popper gets misplaced because of the new content
+            // overflowing its reference element
+            // To avoid this problem, we provide two options (x and y), which allow
+            // the consumer to define the offset origin.
+            // If we position a popper on top of a reference element, we can set
+            // `x` to `top` to make the popper grow towards its top instead of
+            // its bottom.
+            var left = void 0,
+              top = void 0;
+            if (sideA === "bottom") {
+              top = -offsetParentRect.height + offsets.bottom;
+            } else {
+              top = offsets.top;
+            }
+            if (sideB === "right") {
+              left = -offsetParentRect.width + offsets.right;
+            } else {
+              left = offsets.left;
+            }
+            if (gpuAcceleration && prefixedProperty) {
+              styles[prefixedProperty] =
+                "translate3d(" + left + "px, " + top + "px, 0)";
+              styles[sideA] = 0;
+              styles[sideB] = 0;
+              styles.willChange = "transform";
+            } else {
+              // othwerise, we use the standard `top`, `left`, `bottom` and `right` properties
+              var invertTop = sideA === "bottom" ? -1 : 1;
+              var invertLeft = sideB === "right" ? -1 : 1;
+              styles[sideA] = top * invertTop;
+              styles[sideB] = left * invertLeft;
+              styles.willChange = sideA + ", " + sideB;
+            }
+
+            // Attributes
+            var attributes = {
+              "x-placement": data.placement
+            };
+
+            // Update `data` attributes, styles and arrowStyles
+            data.attributes = _extends({}, attributes, data.attributes);
+            data.styles = _extends({}, styles, data.styles);
+            data.arrowStyles = _extends(
+              {},
+              data.offsets.arrow,
+              data.arrowStyles
+            );
+
+            return data;
+          }
+
+          /**
+           * Helper used to know if the given modifier depends from another one.<br />
+           * It checks if the needed modifier is listed and enabled.
+           * @method
+           * @memberof Popper.Utils
+           * @param {Array} modifiers - list of modifiers
+           * @param {String} requestingName - name of requesting modifier
+           * @param {String} requestedName - name of requested modifier
+           * @returns {Boolean}
+           */
+          function isModifierRequired(
+            modifiers,
+            requestingName,
+            requestedName
+          ) {
+            var requesting = find(modifiers, function(_ref) {
+              var name = _ref.name;
+              return name === requestingName;
+            });
+
+            var isRequired =
+              !!requesting &&
+              modifiers.some(function(modifier) {
+                return (
+                  modifier.name === requestedName &&
+                  modifier.enabled &&
+                  modifier.order < requesting.order
+                );
+              });
+
+            if (!isRequired) {
+              var _requesting = "`" + requestingName + "`";
+              var requested = "`" + requestedName + "`";
+              console.warn(
+                requested +
+                  " modifier is required by " +
+                  _requesting +
+                  " modifier in order to work, be sure to include it before " +
+                  _requesting +
+                  "!"
+              );
+            }
+            return isRequired;
+          }
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by update method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function arrow(data, options) {
+            var _data$offsets$arrow;
+
+            // arrow depends on keepTogether in order to work
+            if (
+              !isModifierRequired(
+                data.instance.modifiers,
+                "arrow",
+                "keepTogether"
+              )
+            ) {
+              return data;
+            }
+
+            var arrowElement = options.element;
+
+            // if arrowElement is a string, suppose it's a CSS selector
+            if (typeof arrowElement === "string") {
+              arrowElement = data.instance.popper.querySelector(arrowElement);
+
+              // if arrowElement is not found, don't run the modifier
+              if (!arrowElement) {
+                return data;
+              }
+            } else {
+              // if the arrowElement isn't a query selector we must check that the
+              // provided DOM node is child of its popper node
+              if (!data.instance.popper.contains(arrowElement)) {
+                console.warn(
+                  "WARNING: `arrow.element` must be child of its popper element!"
+                );
+                return data;
+              }
+            }
+
+            var placement = data.placement.split("-")[0];
+            var _data$offsets = data.offsets,
+              popper = _data$offsets.popper,
+              reference = _data$offsets.reference;
+
+            var isVertical = ["left", "right"].indexOf(placement) !== -1;
+
+            var len = isVertical ? "height" : "width";
+            var sideCapitalized = isVertical ? "Top" : "Left";
+            var side = sideCapitalized.toLowerCase();
+            var altSide = isVertical ? "left" : "top";
+            var opSide = isVertical ? "bottom" : "right";
+            var arrowElementSize = getOuterSizes(arrowElement)[len];
+
+            //
+            // extends keepTogether behavior making sure the popper and its
+            // reference have enough pixels in conjuction
+            //
+
+            // top/left side
+            if (reference[opSide] - arrowElementSize < popper[side]) {
+              data.offsets.popper[side] -=
+                popper[side] - (reference[opSide] - arrowElementSize);
+            }
+            // bottom/right side
+            if (reference[side] + arrowElementSize > popper[opSide]) {
+              data.offsets.popper[side] +=
+                reference[side] + arrowElementSize - popper[opSide];
+            }
+            data.offsets.popper = getClientRect(data.offsets.popper);
+
+            // compute center of the popper
+            var center =
+              reference[side] + reference[len] / 2 - arrowElementSize / 2;
+
+            // Compute the sideValue using the updated popper offsets
+            // take popper margin in account because we don't have this info available
+            var css = getStyleComputedProperty(data.instance.popper);
+            var popperMarginSide = parseFloat(
+              css["margin" + sideCapitalized],
+              10
+            );
+            var popperBorderSide = parseFloat(
+              css["border" + sideCapitalized + "Width"],
+              10
+            );
+            var sideValue =
+              center -
+              data.offsets.popper[side] -
+              popperMarginSide -
+              popperBorderSide;
+
+            // prevent arrowElement from being placed not contiguously to its popper
+            sideValue = Math.max(
+              Math.min(popper[len] - arrowElementSize, sideValue),
+              0
+            );
+
+            data.arrowElement = arrowElement;
+            data.offsets.arrow = ((_data$offsets$arrow = {}),
+            defineProperty(_data$offsets$arrow, side, Math.round(sideValue)),
+            defineProperty(_data$offsets$arrow, altSide, ""),
+            _data$offsets$arrow);
+
+            return data;
+          }
+
+          /**
+           * Get the opposite placement variation of the given one
+           * @method
+           * @memberof Popper.Utils
+           * @argument {String} placement variation
+           * @returns {String} flipped placement variation
+           */
+          function getOppositeVariation(variation) {
+            if (variation === "end") {
+              return "start";
+            } else if (variation === "start") {
+              return "end";
+            }
+            return variation;
+          }
+
+          /**
+           * List of accepted placements to use as values of the `placement` option.<br />
+           * Valid placements are:
+           * - `auto`
+           * - `top`
+           * - `right`
+           * - `bottom`
+           * - `left`
+           *
+           * Each placement can have a variation from this list:
+           * - `-start`
+           * - `-end`
+           *
+           * Variations are interpreted easily if you think of them as the left to right
+           * written languages. Horizontally (`top` and `bottom`), `start` is left and `end`
+           * is right.<br />
+           * Vertically (`left` and `right`), `start` is top and `end` is bottom.
+           *
+           * Some valid examples are:
+           * - `top-end` (on top of reference, right aligned)
+           * - `right-start` (on right of reference, top aligned)
+           * - `bottom` (on bottom, centered)
+           * - `auto-right` (on the side with more space available, alignment depends by placement)
+           *
+           * @static
+           * @type {Array}
+           * @enum {String}
+           * @readonly
+           * @method placements
+           * @memberof Popper
+           */
+          var placements = [
+            "auto-start",
+            "auto",
+            "auto-end",
+            "top-start",
+            "top",
+            "top-end",
+            "right-start",
+            "right",
+            "right-end",
+            "bottom-end",
+            "bottom",
+            "bottom-start",
+            "left-end",
+            "left",
+            "left-start"
+          ];
+
+          // Get rid of `auto` `auto-start` and `auto-end`
+          var validPlacements = placements.slice(3);
+
+          /**
+           * Given an initial placement, returns all the subsequent placements
+           * clockwise (or counter-clockwise).
+           *
+           * @method
+           * @memberof Popper.Utils
+           * @argument {String} placement - A valid placement (it accepts variations)
+           * @argument {Boolean} counter - Set to true to walk the placements counterclockwise
+           * @returns {Array} placements including their variations
+           */
+          function clockwise(placement) {
+            var counter =
+              arguments.length > 1 && arguments[1] !== undefined
+                ? arguments[1]
+                : false;
+
+            var index = validPlacements.indexOf(placement);
+            var arr = validPlacements
+              .slice(index + 1)
+              .concat(validPlacements.slice(0, index));
+            return counter ? arr.reverse() : arr;
+          }
+
+          var BEHAVIORS = {
+            FLIP: "flip",
+            CLOCKWISE: "clockwise",
+            COUNTERCLOCKWISE: "counterclockwise"
+          };
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by update method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function flip(data, options) {
+            // if `inner` modifier is enabled, we can't use the `flip` modifier
+            if (isModifierEnabled(data.instance.modifiers, "inner")) {
+              return data;
+            }
+
+            if (data.flipped && data.placement === data.originalPlacement) {
+              // seems like flip is trying to loop, probably there's not enough space on any of the flippable sides
+              return data;
+            }
+
+            var boundaries = getBoundaries(
+              data.instance.popper,
+              data.instance.reference,
+              options.padding,
+              options.boundariesElement
+            );
+
+            var placement = data.placement.split("-")[0];
+            var placementOpposite = getOppositePlacement(placement);
+            var variation = data.placement.split("-")[1] || "";
+
+            var flipOrder = [];
+
+            switch (options.behavior) {
+              case BEHAVIORS.FLIP:
+                flipOrder = [placement, placementOpposite];
+                break;
+              case BEHAVIORS.CLOCKWISE:
+                flipOrder = clockwise(placement);
+                break;
+              case BEHAVIORS.COUNTERCLOCKWISE:
+                flipOrder = clockwise(placement, true);
+                break;
+              default:
+                flipOrder = options.behavior;
+            }
+
+            flipOrder.forEach(function(step, index) {
+              if (placement !== step || flipOrder.length === index + 1) {
+                return data;
+              }
+
+              placement = data.placement.split("-")[0];
+              placementOpposite = getOppositePlacement(placement);
+
+              var popperOffsets = data.offsets.popper;
+              var refOffsets = data.offsets.reference;
+
+              // using floor because the reference offsets may contain decimals we are not going to consider here
+              var floor = Math.floor;
+              var overlapsRef =
+                (placement === "left" &&
+                  floor(popperOffsets.right) > floor(refOffsets.left)) ||
+                (placement === "right" &&
+                  floor(popperOffsets.left) < floor(refOffsets.right)) ||
+                (placement === "top" &&
+                  floor(popperOffsets.bottom) > floor(refOffsets.top)) ||
+                (placement === "bottom" &&
+                  floor(popperOffsets.top) < floor(refOffsets.bottom));
+
+              var overflowsLeft =
+                floor(popperOffsets.left) < floor(boundaries.left);
+              var overflowsRight =
+                floor(popperOffsets.right) > floor(boundaries.right);
+              var overflowsTop =
+                floor(popperOffsets.top) < floor(boundaries.top);
+              var overflowsBottom =
+                floor(popperOffsets.bottom) > floor(boundaries.bottom);
+
+              var overflowsBoundaries =
+                (placement === "left" && overflowsLeft) ||
+                (placement === "right" && overflowsRight) ||
+                (placement === "top" && overflowsTop) ||
+                (placement === "bottom" && overflowsBottom);
+
+              // flip the variation if required
+              var isVertical = ["top", "bottom"].indexOf(placement) !== -1;
+              var flippedVariation =
+                !!options.flipVariations &&
+                ((isVertical && variation === "start" && overflowsLeft) ||
+                  (isVertical && variation === "end" && overflowsRight) ||
+                  (!isVertical && variation === "start" && overflowsTop) ||
+                  (!isVertical && variation === "end" && overflowsBottom));
+
+              if (overlapsRef || overflowsBoundaries || flippedVariation) {
+                // this boolean to detect any flip loop
+                data.flipped = true;
+
+                if (overlapsRef || overflowsBoundaries) {
+                  placement = flipOrder[index + 1];
+                }
+
+                if (flippedVariation) {
+                  variation = getOppositeVariation(variation);
+                }
+
+                data.placement = placement + (variation ? "-" + variation : "");
+
+                // this object contains `position`, we want to preserve it along with
+                // any additional property we may add in the future
+                data.offsets.popper = _extends(
+                  {},
+                  data.offsets.popper,
+                  getPopperOffsets(
+                    data.instance.popper,
+                    data.offsets.reference,
+                    data.placement
+                  )
+                );
+
+                data = runModifiers(data.instance.modifiers, data, "flip");
+              }
+            });
+            return data;
+          }
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by update method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function keepTogether(data) {
+            var _data$offsets = data.offsets,
+              popper = _data$offsets.popper,
+              reference = _data$offsets.reference;
+
+            var placement = data.placement.split("-")[0];
+            var floor = Math.floor;
+            var isVertical = ["top", "bottom"].indexOf(placement) !== -1;
+            var side = isVertical ? "right" : "bottom";
+            var opSide = isVertical ? "left" : "top";
+            var measurement = isVertical ? "width" : "height";
+
+            if (popper[side] < floor(reference[opSide])) {
+              data.offsets.popper[opSide] =
+                floor(reference[opSide]) - popper[measurement];
+            }
+            if (popper[opSide] > floor(reference[side])) {
+              data.offsets.popper[opSide] = floor(reference[side]);
+            }
+
+            return data;
+          }
+
+          /**
+           * Converts a string containing value + unit into a px value number
+           * @function
+           * @memberof {modifiers~offset}
+           * @private
+           * @argument {String} str - Value + unit string
+           * @argument {String} measurement - `height` or `width`
+           * @argument {Object} popperOffsets
+           * @argument {Object} referenceOffsets
+           * @returns {Number|String}
+           * Value in pixels, or original string if no values were extracted
+           */
+          function toValue(str, measurement, popperOffsets, referenceOffsets) {
+            // separate value from unit
+            var split = str.match(/((?:\-|\+)?\d*\.?\d*)(.*)/);
+            var value = +split[1];
+            var unit = split[2];
+
+            // If it's not a number it's an operator, I guess
+            if (!value) {
+              return str;
+            }
+
+            if (unit.indexOf("%") === 0) {
+              var element = void 0;
+              switch (unit) {
+                case "%p":
+                  element = popperOffsets;
+                  break;
+                case "%":
+                case "%r":
+                default:
+                  element = referenceOffsets;
+              }
+
+              var rect = getClientRect(element);
+              return rect[measurement] / 100 * value;
+            } else if (unit === "vh" || unit === "vw") {
+              // if is a vh or vw, we calculate the size based on the viewport
+              var size = void 0;
+              if (unit === "vh") {
+                size = Math.max(
+                  document.documentElement.clientHeight,
+                  window.innerHeight || 0
+                );
+              } else {
+                size = Math.max(
+                  document.documentElement.clientWidth,
+                  window.innerWidth || 0
+                );
+              }
+              return size / 100 * value;
+            } else {
+              // if is an explicit pixel unit, we get rid of the unit and keep the value
+              // if is an implicit unit, it's px, and we return just the value
+              return value;
+            }
+          }
+
+          /**
+           * Parse an `offset` string to extrapolate `x` and `y` numeric offsets.
+           * @function
+           * @memberof {modifiers~offset}
+           * @private
+           * @argument {String} offset
+           * @argument {Object} popperOffsets
+           * @argument {Object} referenceOffsets
+           * @argument {String} basePlacement
+           * @returns {Array} a two cells array with x and y offsets in numbers
+           */
+          function parseOffset(
+            offset,
+            popperOffsets,
+            referenceOffsets,
+            basePlacement
+          ) {
+            var offsets = [0, 0];
+
+            // Use height if placement is left or right and index is 0 otherwise use width
+            // in this way the first offset will use an axis and the second one
+            // will use the other one
+            var useHeight = ["right", "left"].indexOf(basePlacement) !== -1;
+
+            // Split the offset string to obtain a list of values and operands
+            // The regex addresses values with the plus or minus sign in front (+10, -20, etc)
+            var fragments = offset.split(/(\+|\-)/).map(function(frag) {
+              return frag.trim();
+            });
+
+            // Detect if the offset string contains a pair of values or a single one
+            // they could be separated by comma or space
+            var divider = fragments.indexOf(
+              find(fragments, function(frag) {
+                return frag.search(/,|\s/) !== -1;
+              })
+            );
+
+            if (fragments[divider] && fragments[divider].indexOf(",") === -1) {
+              console.warn(
+                "Offsets separated by white space(s) are deprecated, use a comma (,) instead."
+              );
+            }
+
+            // If divider is found, we divide the list of values and operands to divide
+            // them by ofset X and Y.
+            var splitRegex = /\s*,\s*|\s+/;
+            var ops =
+              divider !== -1
+                ? [
+                    fragments
+                      .slice(0, divider)
+                      .concat([fragments[divider].split(splitRegex)[0]]),
+                    [fragments[divider].split(splitRegex)[1]].concat(
+                      fragments.slice(divider + 1)
+                    )
+                  ]
+                : [fragments];
+
+            // Convert the values with units to absolute pixels to allow our computations
+            ops = ops.map(function(op, index) {
+              // Most of the units rely on the orientation of the popper
+              var measurement = (index === 1 ? !useHeight : useHeight)
+                ? "height"
+                : "width";
+              var mergeWithPrevious = false;
+              return (op
+                  // This aggregates any `+` or `-` sign that aren't considered operators
+                  // e.g.: 10 + +5 => [10, +, +5]
+                  .reduce(function(a, b) {
+                    if (
+                      a[a.length - 1] === "" &&
+                      ["+", "-"].indexOf(b) !== -1
+                    ) {
+                      a[a.length - 1] = b;
+                      mergeWithPrevious = true;
+                      return a;
+                    } else if (mergeWithPrevious) {
+                      a[a.length - 1] += b;
+                      mergeWithPrevious = false;
+                      return a;
+                    } else {
+                      return a.concat(b);
                     }
-                  }
-                  return target;
-                };
+                  }, [])
+                  // Here we convert the string values into number values (in px)
+                  .map(function(str) {
+                    return toValue(
+                      str,
+                      measurement,
+                      popperOffsets,
+                      referenceOffsets
+                    );
+                  }) );
+            });
 
-              var _react = __webpack_require__(0);
+            // Loop trough the offsets arrays and execute the operations
+            ops.forEach(function(op, index) {
+              op.forEach(function(frag, index2) {
+                if (isNumeric(frag)) {
+                  offsets[index] += frag * (op[index2 - 1] === "-" ? -1 : 1);
+                }
+              });
+            });
+            return offsets;
+          }
 
-              var _propTypes = __webpack_require__(1);
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by update method
+           * @argument {Object} options - Modifiers configuration and options
+           * @argument {Number|String} options.offset=0
+           * The offset value as described in the modifier description
+           * @returns {Object} The data object, properly modified
+           */
+          function offset(data, _ref) {
+            var offset = _ref.offset;
+            var placement = data.placement,
+              _data$offsets = data.offsets,
+              popper = _data$offsets.popper,
+              reference = _data$offsets.reference;
 
-              var _propTypes2 = _interopRequireDefault(_propTypes);
+            var basePlacement = placement.split("-")[0];
 
-              function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
+            var offsets = void 0;
+            if (isNumeric(+offset)) {
+              offsets = [+offset, 0];
+            } else {
+              offsets = parseOffset(offset, popper, reference, basePlacement);
+            }
+
+            if (basePlacement === "left") {
+              popper.top += offsets[0];
+              popper.left -= offsets[1];
+            } else if (basePlacement === "right") {
+              popper.top += offsets[0];
+              popper.left += offsets[1];
+            } else if (basePlacement === "top") {
+              popper.left += offsets[0];
+              popper.top -= offsets[1];
+            } else if (basePlacement === "bottom") {
+              popper.left += offsets[0];
+              popper.top += offsets[1];
+            }
+
+            data.popper = popper;
+            return data;
+          }
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by `update` method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function preventOverflow(data, options) {
+            var boundariesElement =
+              options.boundariesElement ||
+              getOffsetParent(data.instance.popper);
+
+            // If offsetParent is the reference element, we really want to
+            // go one step up and use the next offsetParent as reference to
+            // avoid to make this modifier completely useless and look like broken
+            if (data.instance.reference === boundariesElement) {
+              boundariesElement = getOffsetParent(boundariesElement);
+            }
+
+            var boundaries = getBoundaries(
+              data.instance.popper,
+              data.instance.reference,
+              options.padding,
+              boundariesElement
+            );
+            options.boundaries = boundaries;
+
+            var order = options.priority;
+            var popper = data.offsets.popper;
+
+            var check = {
+              primary: function primary(placement) {
+                var value = popper[placement];
+                if (
+                  popper[placement] < boundaries[placement] &&
+                  !options.escapeWithReference
+                ) {
+                  value = Math.max(popper[placement], boundaries[placement]);
+                }
+                return defineProperty({}, placement, value);
+              },
+              secondary: function secondary(placement) {
+                var mainSide = placement === "right" ? "left" : "top";
+                var value = popper[mainSide];
+                if (
+                  popper[placement] > boundaries[placement] &&
+                  !options.escapeWithReference
+                ) {
+                  value = Math.min(
+                    popper[mainSide],
+                    boundaries[placement] -
+                      (placement === "right" ? popper.width : popper.height)
+                  );
+                }
+                return defineProperty({}, mainSide, value);
+              }
+            };
+
+            order.forEach(function(placement) {
+              var side =
+                ["left", "top"].indexOf(placement) !== -1
+                  ? "primary"
+                  : "secondary";
+              popper = _extends({}, popper, check[side](placement));
+            });
+
+            data.offsets.popper = popper;
+
+            return data;
+          }
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by `update` method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function shift(data) {
+            var placement = data.placement;
+            var basePlacement = placement.split("-")[0];
+            var shiftvariation = placement.split("-")[1];
+
+            // if shift shiftvariation is specified, run the modifier
+            if (shiftvariation) {
+              var _data$offsets = data.offsets,
+                reference = _data$offsets.reference,
+                popper = _data$offsets.popper;
+
+              var isVertical = ["bottom", "top"].indexOf(basePlacement) !== -1;
+              var side = isVertical ? "left" : "top";
+              var measurement = isVertical ? "width" : "height";
+
+              var shiftOffsets = {
+                start: defineProperty({}, side, reference[side]),
+                end: defineProperty(
+                  {},
+                  side,
+                  reference[side] + reference[measurement] - popper[measurement]
+                )
+              };
+
+              data.offsets.popper = _extends(
+                {},
+                popper,
+                shiftOffsets[shiftvariation]
+              );
+            }
+
+            return data;
+          }
+
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by update method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function hide(data) {
+            if (
+              !isModifierRequired(
+                data.instance.modifiers,
+                "hide",
+                "preventOverflow"
+              )
+            ) {
+              return data;
+            }
+
+            var refRect = data.offsets.reference;
+            var bound = find(data.instance.modifiers, function(modifier) {
+              return modifier.name === "preventOverflow";
+            }).boundaries;
+
+            if (
+              refRect.bottom < bound.top ||
+              refRect.left > bound.right ||
+              refRect.top > bound.bottom ||
+              refRect.right < bound.left
+            ) {
+              // Avoid unnecessary DOM access if visibility hasn't changed
+              if (data.hide === true) {
+                return data;
               }
 
-              function _objectWithoutProperties(obj, keys) {
-                var target = {};
-                for (var i in obj) {
-                  if (keys.indexOf(i) >= 0) continue;
-                  if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-                  target[i] = obj[i];
-                }
-                return target;
+              data.hide = true;
+              data.attributes["x-out-of-boundaries"] = "";
+            } else {
+              // Avoid unnecessary DOM access if visibility hasn't changed
+              if (data.hide === false) {
+                return data;
               }
 
-              var Arrow = function Arrow(props, context) {
-                var _props$component = props.component,
-                  component =
-                    _props$component === undefined ? "span" : _props$component,
-                  innerRef = props.innerRef,
-                  children = props.children,
-                  restProps = _objectWithoutProperties(props, [
-                    "component",
-                    "innerRef",
-                    "children"
-                  ]);
+              data.hide = false;
+              data.attributes["x-out-of-boundaries"] = false;
+            }
 
-                var popper = context.popper;
+            return data;
+          }
 
-                var arrowRef = function arrowRef(node) {
-                  popper.setArrowNode(node);
-                  if (typeof innerRef === "function") {
-                    innerRef(node);
-                  }
-                };
-                var arrowStyle = popper.getArrowStyle();
+          /**
+           * @function
+           * @memberof Modifiers
+           * @argument {Object} data - The data object generated by `update` method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {Object} The data object, properly modified
+           */
+          function inner(data) {
+            var placement = data.placement;
+            var basePlacement = placement.split("-")[0];
+            var _data$offsets = data.offsets,
+              popper = _data$offsets.popper,
+              reference = _data$offsets.reference;
 
-                if (typeof children === "function") {
-                  var arrowProps = {
-                    ref: arrowRef,
-                    style: arrowStyle
-                  };
-                  return children({
-                    arrowProps: arrowProps,
-                    restProps: restProps
-                  });
-                }
+            var isHoriz = ["left", "right"].indexOf(basePlacement) !== -1;
 
-                var componentProps = _extends({}, restProps, {
-                  style: _extends({}, arrowStyle, restProps.style)
+            var subtractLength = ["top", "left"].indexOf(basePlacement) === -1;
+
+            popper[isHoriz ? "left" : "top"] =
+              reference[basePlacement] -
+              (subtractLength ? popper[isHoriz ? "width" : "height"] : 0);
+
+            data.placement = getOppositePlacement(placement);
+            data.offsets.popper = getClientRect(popper);
+
+            return data;
+          }
+
+          /**
+           * Modifier function, each modifier can have a function of this type assigned
+           * to its `fn` property.<br />
+           * These functions will be called on each update, this means that you must
+           * make sure they are performant enough to avoid performance bottlenecks.
+           *
+           * @function ModifierFn
+           * @argument {dataObject} data - The data object generated by `update` method
+           * @argument {Object} options - Modifiers configuration and options
+           * @returns {dataObject} The data object, properly modified
+           */
+
+          /**
+           * Modifiers are plugins used to alter the behavior of your poppers.<br />
+           * Popper.js uses a set of 9 modifiers to provide all the basic functionalities
+           * needed by the library.
+           *
+           * Usually you don't want to override the `order`, `fn` and `onLoad` props.
+           * All the other properties are configurations that could be tweaked.
+           * @namespace modifiers
+           */
+          var modifiers = {
+            /**
+             * Modifier used to shift the popper on the start or end of its reference
+             * element.<br />
+             * It will read the variation of the `placement` property.<br />
+             * It can be one either `-end` or `-start`.
+             * @memberof modifiers
+             * @inner
+             */
+            shift: {
+              /** @prop {number} order=100 - Index used to define the order of execution */
+              order: 100,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: shift
+            },
+
+            /**
+             * The `offset` modifier can shift your popper on both its axis.
+             *
+             * It accepts the following units:
+             * - `px` or unitless, interpreted as pixels
+             * - `%` or `%r`, percentage relative to the length of the reference element
+             * - `%p`, percentage relative to the length of the popper element
+             * - `vw`, CSS viewport width unit
+             * - `vh`, CSS viewport height unit
+             *
+             * For length is intended the main axis relative to the placement of the popper.<br />
+             * This means that if the placement is `top` or `bottom`, the length will be the
+             * `width`. In case of `left` or `right`, it will be the height.
+             *
+             * You can provide a single value (as `Number` or `String`), or a pair of values
+             * as `String` divided by a comma or one (or more) white spaces.<br />
+             * The latter is a deprecated method because it leads to confusion and will be
+             * removed in v2.<br />
+             * Additionally, it accepts additions and subtractions between different units.
+             * Note that multiplications and divisions aren't supported.
+             *
+             * Valid examples are:
+             * ```
+             * 10
+             * '10%'
+             * '10, 10'
+             * '10%, 10'
+             * '10 + 10%'
+             * '10 - 5vh + 3%'
+             * '-10px + 5vh, 5px - 6%'
+             * ```
+             * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
+             * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
+             * > More on this [reading this issue](https://github.com/FezVrasta/popper.js/issues/373)
+             *
+             * @memberof modifiers
+             * @inner
+             */
+            offset: {
+              /** @prop {number} order=200 - Index used to define the order of execution */
+              order: 200,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: offset,
+              /** @prop {Number|String} offset=0
+               * The offset value as described in the modifier description
+               */
+              offset: 0
+            },
+
+            /**
+             * Modifier used to prevent the popper from being positioned outside the boundary.
+             *
+             * An scenario exists where the reference itself is not within the boundaries.<br />
+             * We can say it has "escaped the boundaries" — or just "escaped".<br />
+             * In this case we need to decide whether the popper should either:
+             *
+             * - detach from the reference and remain "trapped" in the boundaries, or
+             * - if it should ignore the boundary and "escape with its reference"
+             *
+             * When `escapeWithReference` is set to`true` and reference is completely
+             * outside its boundaries, the popper will overflow (or completely leave)
+             * the boundaries in order to remain attached to the edge of the reference.
+             *
+             * @memberof modifiers
+             * @inner
+             */
+            preventOverflow: {
+              /** @prop {number} order=300 - Index used to define the order of execution */
+              order: 300,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: preventOverflow,
+              /**
+               * @prop {Array} [priority=['left','right','top','bottom']]
+               * Popper will try to prevent overflow following these priorities by default,
+               * then, it could overflow on the left and on top of the `boundariesElement`
+               */
+              priority: ["left", "right", "top", "bottom"],
+              /**
+               * @prop {number} padding=5
+               * Amount of pixel used to define a minimum distance between the boundaries
+               * and the popper this makes sure the popper has always a little padding
+               * between the edges of its container
+               */
+              padding: 5,
+              /**
+               * @prop {String|HTMLElement} boundariesElement='scrollParent'
+               * Boundaries used by the modifier, can be `scrollParent`, `window`,
+               * `viewport` or any DOM element.
+               */
+              boundariesElement: "scrollParent"
+            },
+
+            /**
+             * Modifier used to make sure the reference and its popper stay near eachothers
+             * without leaving any gap between the two. Expecially useful when the arrow is
+             * enabled and you want to assure it to point to its reference element.
+             * It cares only about the first axis, you can still have poppers with margin
+             * between the popper and its reference element.
+             * @memberof modifiers
+             * @inner
+             */
+            keepTogether: {
+              /** @prop {number} order=400 - Index used to define the order of execution */
+              order: 400,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: keepTogether
+            },
+
+            /**
+             * This modifier is used to move the `arrowElement` of the popper to make
+             * sure it is positioned between the reference element and its popper element.
+             * It will read the outer size of the `arrowElement` node to detect how many
+             * pixels of conjuction are needed.
+             *
+             * It has no effect if no `arrowElement` is provided.
+             * @memberof modifiers
+             * @inner
+             */
+            arrow: {
+              /** @prop {number} order=500 - Index used to define the order of execution */
+              order: 500,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: arrow,
+              /** @prop {String|HTMLElement} element='[x-arrow]' - Selector or node used as arrow */
+              element: "[x-arrow]"
+            },
+
+            /**
+             * Modifier used to flip the popper's placement when it starts to overlap its
+             * reference element.
+             *
+             * Requires the `preventOverflow` modifier before it in order to work.
+             *
+             * **NOTE:** this modifier will interrupt the current update cycle and will
+             * restart it if it detects the need to flip the placement.
+             * @memberof modifiers
+             * @inner
+             */
+            flip: {
+              /** @prop {number} order=600 - Index used to define the order of execution */
+              order: 600,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: flip,
+              /**
+               * @prop {String|Array} behavior='flip'
+               * The behavior used to change the popper's placement. It can be one of
+               * `flip`, `clockwise`, `counterclockwise` or an array with a list of valid
+               * placements (with optional variations).
+               */
+              behavior: "flip",
+              /**
+               * @prop {number} padding=5
+               * The popper will flip if it hits the edges of the `boundariesElement`
+               */
+              padding: 5,
+              /**
+               * @prop {String|HTMLElement} boundariesElement='viewport'
+               * The element which will define the boundaries of the popper position,
+               * the popper will never be placed outside of the defined boundaries
+               * (except if keepTogether is enabled)
+               */
+              boundariesElement: "viewport"
+            },
+
+            /**
+             * Modifier used to make the popper flow toward the inner of the reference element.
+             * By default, when this modifier is disabled, the popper will be placed outside
+             * the reference element.
+             * @memberof modifiers
+             * @inner
+             */
+            inner: {
+              /** @prop {number} order=700 - Index used to define the order of execution */
+              order: 700,
+              /** @prop {Boolean} enabled=false - Whether the modifier is enabled or not */
+              enabled: false,
+              /** @prop {ModifierFn} */
+              fn: inner
+            },
+
+            /**
+             * Modifier used to hide the popper when its reference element is outside of the
+             * popper boundaries. It will set a `x-out-of-boundaries` attribute which can
+             * be used to hide with a CSS selector the popper when its reference is
+             * out of boundaries.
+             *
+             * Requires the `preventOverflow` modifier before it in order to work.
+             * @memberof modifiers
+             * @inner
+             */
+            hide: {
+              /** @prop {number} order=800 - Index used to define the order of execution */
+              order: 800,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: hide
+            },
+
+            /**
+             * Computes the style that will be applied to the popper element to gets
+             * properly positioned.
+             *
+             * Note that this modifier will not touch the DOM, it just prepares the styles
+             * so that `applyStyle` modifier can apply it. This separation is useful
+             * in case you need to replace `applyStyle` with a custom implementation.
+             *
+             * This modifier has `850` as `order` value to maintain backward compatibility
+             * with previous versions of Popper.js. Expect the modifiers ordering method
+             * to change in future major versions of the library.
+             *
+             * @memberof modifiers
+             * @inner
+             */
+            computeStyle: {
+              /** @prop {number} order=850 - Index used to define the order of execution */
+              order: 850,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: computeStyle,
+              /**
+               * @prop {Boolean} gpuAcceleration=true
+               * If true, it uses the CSS 3d transformation to position the popper.
+               * Otherwise, it will use the `top` and `left` properties.
+               */
+              gpuAcceleration: true,
+              /**
+               * @prop {string} [x='bottom']
+               * Where to anchor the X axis (`bottom` or `top`). AKA X offset origin.
+               * Change this if your popper should grow in a direction different from `bottom`
+               */
+              x: "bottom",
+              /**
+               * @prop {string} [x='left']
+               * Where to anchor the Y axis (`left` or `right`). AKA Y offset origin.
+               * Change this if your popper should grow in a direction different from `right`
+               */
+              y: "right"
+            },
+
+            /**
+             * Applies the computed styles to the popper element.
+             *
+             * All the DOM manipulations are limited to this modifier. This is useful in case
+             * you want to integrate Popper.js inside a framework or view library and you
+             * want to delegate all the DOM manipulations to it.
+             *
+             * Note that if you disable this modifier, you must make sure the popper element
+             * has its position set to `absolute` before Popper.js can do its work!
+             *
+             * Just disable this modifier and define you own to achieve the desired effect.
+             *
+             * @memberof modifiers
+             * @inner
+             */
+            applyStyle: {
+              /** @prop {number} order=900 - Index used to define the order of execution */
+              order: 900,
+              /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+              enabled: true,
+              /** @prop {ModifierFn} */
+              fn: applyStyle,
+              /** @prop {Function} */
+              onLoad: applyStyleOnLoad,
+              /**
+               * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
+               * @prop {Boolean} gpuAcceleration=true
+               * If true, it uses the CSS 3d transformation to position the popper.
+               * Otherwise, it will use the `top` and `left` properties.
+               */
+              gpuAcceleration: undefined
+            }
+          };
+
+          /**
+           * The `dataObject` is an object containing all the informations used by Popper.js
+           * this object get passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
+           * @name dataObject
+           * @property {Object} data.instance The Popper.js instance
+           * @property {String} data.placement Placement applied to popper
+           * @property {String} data.originalPlacement Placement originally defined on init
+           * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
+           * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper.
+           * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
+           * @property {Object} data.styles Any CSS property defined here will be applied to the popper, it expects the JavaScript nomenclature (eg. `marginBottom`)
+           * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow, it expects the JavaScript nomenclature (eg. `marginBottom`)
+           * @property {Object} data.boundaries Offsets of the popper boundaries
+           * @property {Object} data.offsets The measurements of popper, reference and arrow elements.
+           * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
+           * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
+           * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
+           */
+
+          /**
+           * Default options provided to Popper.js constructor.<br />
+           * These can be overriden using the `options` argument of Popper.js.<br />
+           * To override an option, simply pass as 3rd argument an object with the same
+           * structure of this object, example:
+           * ```
+           * new Popper(ref, pop, {
+           *   modifiers: {
+           *     preventOverflow: { enabled: false }
+           *   }
+           * })
+           * ```
+           * @type {Object}
+           * @static
+           * @memberof Popper
+           */
+          var Defaults = {
+            /**
+             * Popper's placement
+             * @prop {Popper.placements} placement='bottom'
+             */
+            placement: "bottom",
+
+            /**
+             * Whether events (resize, scroll) are initially enabled
+             * @prop {Boolean} eventsEnabled=true
+             */
+            eventsEnabled: true,
+
+            /**
+             * Set to true if you want to automatically remove the popper when
+             * you call the `destroy` method.
+             * @prop {Boolean} removeOnDestroy=false
+             */
+            removeOnDestroy: false,
+
+            /**
+             * Callback called when the popper is created.<br />
+             * By default, is set to no-op.<br />
+             * Access Popper.js instance with `data.instance`.
+             * @prop {onCreate}
+             */
+            onCreate: function onCreate() {},
+
+            /**
+             * Callback called when the popper is updated, this callback is not called
+             * on the initialization/creation of the popper, but only on subsequent
+             * updates.<br />
+             * By default, is set to no-op.<br />
+             * Access Popper.js instance with `data.instance`.
+             * @prop {onUpdate}
+             */
+            onUpdate: function onUpdate() {},
+
+            /**
+             * List of modifiers used to modify the offsets before they are applied to the popper.
+             * They provide most of the functionalities of Popper.js
+             * @prop {modifiers}
+             */
+            modifiers: modifiers
+          };
+
+          /**
+           * @callback onCreate
+           * @param {dataObject} data
+           */
+
+          /**
+           * @callback onUpdate
+           * @param {dataObject} data
+           */
+
+          // Utils
+          // Methods
+          var Popper = (function() {
+            /**
+             * Create a new Popper.js instance
+             * @class Popper
+             * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
+             * @param {HTMLElement} popper - The HTML element used as popper.
+             * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
+             * @return {Object} instance - The generated Popper.js instance
+             */
+            function Popper(reference, popper) {
+              var _this = this;
+
+              var options =
+                arguments.length > 2 && arguments[2] !== undefined
+                  ? arguments[2]
+                  : {};
+              classCallCheck(this, Popper);
+
+              this.scheduleUpdate = function() {
+                return requestAnimationFrame(_this.update);
+              };
+
+              // make update() debounced, so that it only runs at most once-per-tick
+              this.update = debounce(this.update.bind(this));
+
+              // with {} we create a new object with the options inside it
+              this.options = _extends({}, Popper.Defaults, options);
+
+              // init state
+              this.state = {
+                isDestroyed: false,
+                isCreated: false,
+                scrollParents: []
+              };
+
+              // get reference and popper elements (allow jQuery wrappers)
+              this.reference =
+                reference && reference.jquery ? reference[0] : reference;
+              this.popper = popper && popper.jquery ? popper[0] : popper;
+
+              // Deep merge modifiers options
+              this.options.modifiers = {};
+              Object.keys(
+                _extends({}, Popper.Defaults.modifiers, options.modifiers)
+              ).forEach(function(name) {
+                _this.options.modifiers[name] = _extends(
+                  {},
+                  Popper.Defaults.modifiers[name] || {},
+                  options.modifiers ? options.modifiers[name] : {}
+                );
+              });
+
+              // Refactoring modifiers' list (Object => Array)
+              this.modifiers = Object.keys(this.options.modifiers)
+                .map(function(name) {
+                  return _extends(
+                    {
+                      name: name
+                    },
+                    _this.options.modifiers[name]
+                  );
+                })
+                // sort the modifiers by order
+                .sort(function(a, b) {
+                  return a.order - b.order;
                 });
 
-                if (typeof component === "string") {
-                  componentProps.ref = arrowRef;
-                } else {
-                  componentProps.innerRef = arrowRef;
+              // modifiers have the ability to execute arbitrary code when Popper.js get inited
+              // such code is executed in the same order of its modifier
+              // they could add new properties to their options configuration
+              // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
+              this.modifiers.forEach(function(modifierOptions) {
+                if (
+                  modifierOptions.enabled &&
+                  isFunction(modifierOptions.onLoad)
+                ) {
+                  modifierOptions.onLoad(
+                    _this.reference,
+                    _this.popper,
+                    _this.options,
+                    modifierOptions,
+                    _this.state
+                  );
+                }
+              });
+
+              // fire the first update to position the popper in the right place
+              this.update();
+
+              var eventsEnabled = this.options.eventsEnabled;
+              if (eventsEnabled) {
+                // setup event listeners, they will take care of update the position in specific situations
+                this.enableEventListeners();
+              }
+
+              this.state.eventsEnabled = eventsEnabled;
+            }
+
+            // We can't use class properties because they don't get listed in the
+            // class prototype and break stuff like Sinon stubs
+
+            createClass(Popper, [
+              {
+                key: "update",
+                value: function update$$1() {
+                  return update.call(this);
+                }
+              },
+              {
+                key: "destroy",
+                value: function destroy$$1() {
+                  return destroy.call(this);
+                }
+              },
+              {
+                key: "enableEventListeners",
+                value: function enableEventListeners$$1() {
+                  return enableEventListeners.call(this);
+                }
+              },
+              {
+                key: "disableEventListeners",
+                value: function disableEventListeners$$1() {
+                  return disableEventListeners.call(this);
                 }
 
-                return (0, _react.createElement)(
-                  component,
-                  componentProps,
-                  children
-                );
-              };
+                /**
+                 * Schedule an update, it will run on the next UI update available
+                 * @method scheduleUpdate
+                 * @memberof Popper
+                 */
 
-              Arrow.contextTypes = {
-                popper: _propTypes2.default.object.isRequired
-              };
+                /**
+                 * Collection of utilities useful when writing custom modifiers.
+                 * Starting from version 1.7, this method is available only if you
+                 * include `popper-utils.js` before `popper.js`.
+                 *
+                 * **DEPRECATION**: This way to access PopperUtils is deprecated
+                 * and will be removed in v2! Use the PopperUtils module directly instead.
+                 * Due to the high instability of the methods contained in Utils, we can't
+                 * guarantee them to follow semver. Use them at your own risk!
+                 * @static
+                 * @private
+                 * @type {Object}
+                 * @deprecated since version 1.8
+                 * @member Utils
+                 * @memberof Popper
+                 */
+              }
+            ]);
+            return Popper;
+          })();
 
-              Arrow.propTypes = {
-                component: _propTypes2.default.oneOfType([
-                  _propTypes2.default.node,
-                  _propTypes2.default.func
-                ]),
-                innerRef: _propTypes2.default.func,
-                children: _propTypes2.default.oneOfType([
-                  _propTypes2.default.node,
-                  _propTypes2.default.func
-                ])
-              };
+          /**
+           * The `referenceObject` is an object that provides an interface compatible with Popper.js
+           * and lets you use it as replacement of a real DOM node.<br />
+           * You can use this method to position a popper relatively to a set of coordinates
+           * in case you don't have a DOM node to use as reference.
+           *
+           * ```
+           * new Popper(referenceObject, popperNode);
+           * ```
+           *
+           * NB: This feature isn't supported in Internet Explorer 10
+           * @name referenceObject
+           * @property {Function} data.getBoundingClientRect
+           * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
+           * @property {number} data.clientWidth
+           * An ES6 getter that will return the width of the virtual reference element.
+           * @property {number} data.clientHeight
+           * An ES6 getter that will return the height of the virtual reference element.
+           */
 
-              exports.default = Arrow;
+          Popper.Utils = (typeof window !== "undefined"
+            ? window
+            : global
+          ).PopperUtils;
+          Popper.placements = placements;
+          Popper.Defaults = Defaults;
 
-              /***/
-            }
-            /******/
-          ]
-        );
-      });
+          return Popper;
+        });
+        //# sourceMappingURL=popper.js.map
+
+        /* WEBPACK VAR INJECTION */
+      }.call(
+        exports,
+        (function() {
+          return this;
+        })()
+      ));
 
       /***/
     },
-    /* 342 */
+    /* 346 */
+    /***/ function(module, exports, __webpack_require__) {
+      "use strict";
+
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+
+      var _extends =
+        Object.assign ||
+        function(target) {
+          for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+          return target;
+        };
+
+      var _react = __webpack_require__(2);
+
+      var _propTypes = __webpack_require__(201);
+
+      var _propTypes2 = _interopRequireDefault(_propTypes);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      function _objectWithoutProperties(obj, keys) {
+        var target = {};
+        for (var i in obj) {
+          if (keys.indexOf(i) >= 0) continue;
+          if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+          target[i] = obj[i];
+        }
+        return target;
+      }
+
+      var Arrow = function Arrow(props, context) {
+        var _props$component = props.component,
+          component =
+            _props$component === undefined ? "span" : _props$component,
+          innerRef = props.innerRef,
+          children = props.children,
+          restProps = _objectWithoutProperties(props, [
+            "component",
+            "innerRef",
+            "children"
+          ]);
+
+        var popper = context.popper;
+
+        var arrowRef = function arrowRef(node) {
+          popper.setArrowNode(node);
+          if (typeof innerRef === "function") {
+            innerRef(node);
+          }
+        };
+        var arrowStyle = popper.getArrowStyle();
+
+        if (typeof children === "function") {
+          var arrowProps = {
+            ref: arrowRef,
+            style: arrowStyle
+          };
+          return children({ arrowProps: arrowProps, restProps: restProps });
+        }
+
+        var componentProps = _extends({}, restProps, {
+          style: _extends({}, arrowStyle, restProps.style)
+        });
+
+        if (typeof component === "string") {
+          componentProps.ref = arrowRef;
+        } else {
+          componentProps.innerRef = arrowRef;
+        }
+
+        return (0, _react.createElement)(component, componentProps, children);
+      };
+
+      Arrow.contextTypes = {
+        popper: _propTypes2.default.object.isRequired
+      };
+
+      Arrow.propTypes = {
+        component: _propTypes2.default.oneOfType([
+          _propTypes2.default.node,
+          _propTypes2.default.func
+        ]),
+        innerRef: _propTypes2.default.func,
+        children: _propTypes2.default.oneOfType([
+          _propTypes2.default.node,
+          _propTypes2.default.func
+        ])
+      };
+
+      exports.default = Arrow;
+
+      /***/
+    },
+    /* 347 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54011,7 +53836,7 @@
 
       /***/
     },
-    /* 343 */
+    /* 348 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54136,7 +53961,7 @@
 
       /***/
     },
-    /* 344 */
+    /* 349 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54251,7 +54076,7 @@
 
       /***/
     },
-    /* 345 */
+    /* 350 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54366,7 +54191,7 @@
 
       /***/
     },
-    /* 346 */
+    /* 351 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54485,7 +54310,7 @@
 
       /***/
     },
-    /* 347 */
+    /* 352 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54529,7 +54354,7 @@
 
       /***/
     },
-    /* 348 */
+    /* 353 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54679,7 +54504,7 @@
 
       /***/
     },
-    /* 349 */
+    /* 354 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54815,7 +54640,7 @@
 
       /***/
     },
-    /* 350 */
+    /* 355 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -54958,7 +54783,7 @@
 
       /***/
     },
-    /* 351 */
+    /* 356 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -55102,7 +54927,7 @@
 
       /***/
     },
-    /* 352 */
+    /* 357 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -55287,7 +55112,7 @@
 
       /***/
     },
-    /* 353 */
+    /* 358 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -55430,7 +55255,7 @@
 
       /***/
     },
-    /* 354 */
+    /* 359 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -55570,7 +55395,7 @@
 
       /***/
     },
-    /* 355 */
+    /* 360 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -55695,7 +55520,7 @@
 
       /***/
     },
-    /* 356 */
+    /* 361 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -55823,7 +55648,7 @@
 
       /***/
     },
-    /* 357 */
+    /* 362 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -55939,7 +55764,7 @@
 
       /***/
     },
-    /* 358 */
+    /* 363 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56091,7 +55916,7 @@
 
       /***/
     },
-    /* 359 */
+    /* 364 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56218,7 +56043,7 @@
 
       /***/
     },
-    /* 360 */
+    /* 365 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56359,7 +56184,7 @@
 
       /***/
     },
-    /* 361 */
+    /* 366 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56488,7 +56313,7 @@
 
       /***/
     },
-    /* 362 */
+    /* 367 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56603,7 +56428,7 @@
 
       /***/
     },
-    /* 363 */
+    /* 368 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56721,7 +56546,7 @@
 
       /***/
     },
-    /* 364 */
+    /* 369 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56836,7 +56661,7 @@
 
       /***/
     },
-    /* 365 */
+    /* 370 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -56954,7 +56779,7 @@
 
       /***/
     },
-    /* 366 */
+    /* 371 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -57070,7 +56895,7 @@
 
       /***/
     },
-    /* 367 */
+    /* 372 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -57188,7 +57013,7 @@
 
       /***/
     },
-    /* 368 */
+    /* 373 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -57303,7 +57128,7 @@
 
       /***/
     },
-    /* 369 */
+    /* 374 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -57518,7 +57343,7 @@
 
       /***/
     },
-    /* 370 */
+    /* 375 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -57633,7 +57458,7 @@
 
       /***/
     },
-    /* 371 */
+    /* 376 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -57760,7 +57585,7 @@
 
       /***/
     },
-    /* 372 */
+    /* 377 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -57889,7 +57714,7 @@
 
       /***/
     },
-    /* 373 */
+    /* 378 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58004,7 +57829,7 @@
 
       /***/
     },
-    /* 374 */
+    /* 379 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58158,7 +57983,7 @@
 
       /***/
     },
-    /* 375 */
+    /* 380 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58273,7 +58098,7 @@
 
       /***/
     },
-    /* 376 */
+    /* 381 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58389,7 +58214,7 @@
 
       /***/
     },
-    /* 377 */
+    /* 382 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58511,7 +58336,7 @@
 
       /***/
     },
-    /* 378 */
+    /* 383 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58626,7 +58451,7 @@
 
       /***/
     },
-    /* 379 */
+    /* 384 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58756,7 +58581,7 @@
 
       /***/
     },
-    /* 380 */
+    /* 385 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -58893,7 +58718,7 @@
 
       /***/
     },
-    /* 381 */
+    /* 386 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -59018,7 +58843,7 @@
 
       /***/
     },
-    /* 382 */
+    /* 387 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -59143,7 +58968,7 @@
 
       /***/
     },
-    /* 383 */
+    /* 388 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -59307,7 +59132,7 @@
 
       /***/
     },
-    /* 384 */
+    /* 389 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -59461,7 +59286,7 @@
 
       /***/
     },
-    /* 385 */
+    /* 390 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -59625,7 +59450,155 @@
 
       /***/
     },
-    /* 386 */
+    /* 391 */
+    /***/ function(module, exports, __webpack_require__) {
+      "use strict";
+
+      exports.__esModule = true;
+
+      var _react = __webpack_require__(2);
+
+      var _react2 = _interopRequireDefault(_react);
+
+      var _reactDatepicker = __webpack_require__(198);
+
+      var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
+
+      var _moment = __webpack_require__(209);
+
+      var _moment2 = _interopRequireDefault(_moment);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      function _possibleConstructorReturn(self, call) {
+        if (!self) {
+          throw new ReferenceError(
+            "this hasn't been initialised - super() hasn't been called"
+          );
+        }
+        return call && (typeof call === "object" || typeof call === "function")
+          ? call
+          : self;
+      }
+
+      function _inherits(subClass, superClass) {
+        if (typeof superClass !== "function" && superClass !== null) {
+          throw new TypeError(
+            "Super expression must either be null or a function, not " +
+              typeof superClass
+          );
+        }
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+          constructor: {
+            value: subClass,
+            enumerable: false,
+            writable: true,
+            configurable: true
+          }
+        });
+        if (superClass)
+          Object.setPrototypeOf
+            ? Object.setPrototypeOf(subClass, superClass)
+            : (subClass.__proto__ = superClass);
+      }
+
+      var InjectTimes = (function(_React$Component) {
+        _inherits(InjectTimes, _React$Component);
+
+        function InjectTimes() {
+          var _temp, _this, _ret;
+
+          _classCallCheck(this, InjectTimes);
+
+          for (
+            var _len = arguments.length, args = Array(_len), _key = 0;
+            _key < _len;
+            _key++
+          ) {
+            args[_key] = arguments[_key];
+          }
+
+          return (
+            (_ret = ((_temp = ((_this = _possibleConstructorReturn(
+              this,
+              _React$Component.call.apply(_React$Component, [this].concat(args))
+            )),
+            _this)),
+            (_this.state = {
+              startDate: (0, _moment2.default)()
+                .hours(16)
+                .minutes(30)
+            }),
+            (_this.handleChange = function(date) {
+              _this.setState({
+                startDate: date
+              });
+            }),
+            _temp)),
+            _possibleConstructorReturn(_this, _ret)
+          );
+        }
+
+        InjectTimes.prototype.render = function render() {
+          return _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "pre",
+              { className: "column example__code" },
+              _react2.default.createElement(
+                "code",
+                { className: "jsx" },
+                "\n<DatePicker\n    selected={this.state.startDate}\n    onChange={this.handleChange}",
+                _react2.default.createElement("br", null),
+                _react2.default.createElement(
+                  "strong",
+                  null,
+                  '    showTimeSelect\n    timeFormat="HH:mm"\n    injectTimes={[\n      moment().hours(0).minutes(1),\n      moment().hours(12).minutes(5),\n      moment().hours(23).minutes(59)\n    ]}\n    dateFormat="LLL"\n/>\n'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "column" },
+              _react2.default.createElement(_reactDatepicker2.default, {
+                selected: this.state.startDate,
+                onChange: this.handleChange,
+                showTimeSelect: true,
+                timeFormat: "HH:mm",
+                injectTimes: [
+                  (0, _moment2.default)()
+                    .hours(0)
+                    .minutes(1),
+                  (0, _moment2.default)()
+                    .hours(12)
+                    .minutes(5),
+                  (0, _moment2.default)()
+                    .hours(23)
+                    .minutes(59)
+                ],
+                dateFormat: "LLL"
+              })
+            )
+          );
+        };
+
+        return InjectTimes;
+      })(_react2.default.Component);
+
+      exports.default = InjectTimes;
+
+      /***/
+    },
+    /* 392 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -59740,7 +59713,7 @@
 
       /***/
     },
-    /* 387 */
+    /* 393 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -59855,14 +59828,14 @@
 
       /***/
     },
-    /* 388 */
+    /* 394 */
     /***/ function(module, exports) {
       // removed by extract-text-webpack-plugin
       /***/
     },
-    /* 389 */
-    388,
-    /* 390 */
+    /* 395 */
+    394,
+    /* 396 */
     /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
